@@ -3,3 +3,26 @@ START high-fidelity closed loop: arm=A3 sizing={'E_Na': 100.0, 'P_Na': 30.0, 'E_
 未在画像使用的覆盖授权项: electricity_override.price_sell
 D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-NW pv simulated CF 0.104005 differs from reference 0.170000 by -0.065995 (tolerance 0.05); generation parameters were not adjusted.
   ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
+SOLVE DONE: status=feasible elapsed=3041.1s
+{
+  "arm": "A3",
+  "status": "feasible",
+  "objectives": {
+    "f1_LCOE_yuan_per_mwh": 1417.8996250892153,
+    "f2_carbon_per_mtok_kgco2": 0.009507602714584663,
+    "f3_resilience_gap": 0.05357142857142855,
+    "f4_sla_violation": 8.715888192623034e-06
+  },
+  "resilience": {
+    "n_active": 82,
+    "n_skipped": 0,
+    "n_unproven": 0,
+    "censoring_rate": 1.0,
+    "t_island_mean": 10.714285714285715,
+    "eens": 0.0,
+    "n1_pass_rate": 1.0
+  },
+  "hand_checks_failed": [],
+  "all_configs_unchanged": true,
+  "elapsed_s": 3041.0504149
+}

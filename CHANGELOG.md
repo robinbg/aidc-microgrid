@@ -7,6 +7,60 @@
 
 ---
 
+## M3 收口（2026-10-17，基于 v2.9）
+
+单配置四目标闭环完成并验收：**268 项通过、0 失败、0 跳过**（M2.5 的 251 项
++ 新增 `tests/test_sizing_objective.py` 17 项），11 份 YAML 与 `_baseline.py`
+哈希未变。代码与全部验证产物已开源：<https://github.com/robinbg/aidc-microgrid>。
+
+**实现**：
+
+- `sizing/objective.py`：`evaluate_sizing`（低保真 5 代表周 × 权重 × 365/7 年化，
+  f3 = NaN 按 §4.2；高保真滚动年度 + 年度故障场景 → f3 按 §5.4 唯一公式）、
+  `capital_recovery_factor`、`storage_annualized_cost`（CRF 现算 + 替换成本）、
+  `compute_lcoe`（分母 = 年服务电量）、`compute_resilience_gap`（NaN 保持未知）、
+  `to_objective_vector`（未标定归一化范围时**拒绝** normalize=True）。
+- `sizing/_annual.py`：滚动时域年度调度（§13.1：52 窗 = 51×168h + 192h，
+  SOC 逐窗传递、任务逐窗按电量口径重新生成、首窗 soc(0)=soc_init、
+  末窗 soc(T_end)=soc_init、逐窗可行性单独记录、首个不可行窗即停止）
+  + 年度韧性接线（故障初始 SOC = 年度正常调度在故障起始小时的真实值）。
+- `model/dispatch.py`：新增**可选** `cfg["normal_soc_boundary"]`
+  （显式初值/终值/自由终端，三者互斥校验）；**缺省行为与原契约逐字节一致**，
+  由 `test_normal_soc_boundary_*` 守门。S-base 规则引擎从模型固定值读取
+  初始 SOC，滚动窗口下自动一致（`_baseline.py` 未改动）。
+
+**验证数字（R-NW、S-cost、种子 20260816；全部经独立手算公式复核通过）**：
+
+- 低保真：A0 LCOE 1349.98（储能成本精确为 0）、A3 LCOE 1476.19；
+  f2 两臂同值 0.02873（碳因子常数 → 时段平移无减碳渠道）；SLA 均 100%；
+  10 窗中 9 窗认证 gap ≤1%（A3 W-SUM 1.201%，60s 预算耗尽，如实报告）。
+- 高保真：A0 52/52 窗可行（21.4 min），f3 = 0.0694（EENS=0、t_island 下界均值
+  10.33h、40 active / 42 skip、n1_pass_rate = NaN 如实不折算）；
+  A3 52/52 窗可行（50.7 min），f1 = 1417.90、f2 = 0.0095076、f3 = 0.0536、
+  f4 = 8.7e-6（114,733 任务 1 个延迟）、n1_pass_rate = 1.0、82 场景全 active、
+  SOC 衔接审计通过（窗间 1e-9、首末窗回 soc_init）。
+- 试点标定（experiments.yaml 预定的 M3 任务）：50 组随机配置 × 5 代表周
+  = 250 个可行周值，S-balance 归一化范围 cost ∈ [181652.24, 648937.06]、
+  carbon ∈ [−26450.03, 37665.15]、heat ∈ [26658.66, 105101.70]。
+  **experiments.yaml 未修改**（哈希冻结是验收不变量），建议回填片段在
+  `outputs/m3_validation/normalization_pilot.json`，是否回填由规格方裁定；
+  回填前 S-balance 生产运行仍会被拒绝（按既有契约）。
+
+**如实记录的口径警示（M4 前必读）**：
+
+- **f3 仍全部右删失（censoring_rate = 1.0）→ 平坦，不得用于配置排序**；
+  且 A0 跳过 N-1 族场景导致两臂孤岛项加权分母不同，跨臂比较须用
+  common_non_n1 口径（M2.5 已提供）。
+- **高保真 A3 仅 20/52 窗在 60s 内认证 gap ≤1%**（中位 1.17%、最大 5.45%；
+  全部为经验证的可行整数解，状态 feasible，无最优宣称）。M4 矩阵前需决策
+  单窗时限/热启动策略，**不得以放宽 gap 口径替代**（§3.8）。
+- `green_matching_rate` 分母含充电且不追溯储能来源：A0 0.9997 vs A3 0.2351
+  的差异主要是口径效应，**不可跨储能规模直接对比**。
+- 试点 250 窗求解中 79 窗未在 60s 内认证 ≤1%（值仍来自验证过的可行解，
+  范围标定可用；分布已记录于 pilot 报告）。
+
+---
+
 ## M2.5 收口（2026-10-16，基于 v2.9）
 
 韧性评估（六类故障场景 × 4 配置臂）与正常调度**计算可行性**完成：

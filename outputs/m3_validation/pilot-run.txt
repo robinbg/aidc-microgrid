@@ -16,3 +16,36 @@ D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: Us
 D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-NW pv simulated CF 0.104005 differs from reference 0.170000 by -0.065995 (tolerance 0.05); generation parameters were not adjusted.
   ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
   5/50 elapsed=304s
+  10/50 elapsed=592s
+  15/50 elapsed=853s
+  20/50 elapsed=1139s
+  25/50 elapsed=1639s
+  30/50 elapsed=1916s
+  35/50 elapsed=2139s
+  40/50 elapsed=2407s
+  45/50 elapsed=2685s
+  50/50 elapsed=2920s
+{
+  "ranges": {
+    "cost": {
+      "min": 181652.237710594,
+      "max": 648937.0644760819
+    },
+    "carbon": {
+      "min": -26450.033866666636,
+      "max": 37665.1470271132
+    },
+    "heat": {
+      "min": 26658.660299999996,
+      "max": 105101.70408162841
+    }
+  },
+  "n_week_values": {
+    "cost": 250,
+    "carbon": 250,
+    "heat": 250
+  },
+  "n_infeasible": 0,
+  "uncertified": 79,
+  "elapsed_s": 2919.8619135999998
+}

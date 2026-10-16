@@ -1,0 +1,47 @@
+{
+  "stage": "M3-normalization-pilot",
+  "simulation": true,
+  "purpose": "S-balance 内层三项归一化范围（experiments.yaml normalization.ranges 的建议回填值）",
+  "method": {
+    "region": "R-NW",
+    "strategy_for_pilot": "S-cost",
+    "fidelity": "low (5 representative weeks, 168h each)",
+    "seed": 20260816,
+    "n_draws": 86,
+    "n_area_prefiltered": 36,
+    "n_samples_solved": 50,
+    "n_samples_infeasible": 0,
+    "n_week_values": {
+      "cost": 250,
+      "carbon": 250,
+      "heat": 250
+    },
+    "component_formulas": "cost = operating + SLA penalty; carbon = grid+boiler−ind_sub (kgCO2, excl. manufacturing); heat = −ind_rev−mun_rev·1_ext+boiler+hp_elec+SLA (exact §3.4 components)",
+    "time_limit_s": 60.0,
+    "mip_gap_target": 0.01,
+    "windows_not_certified_within_target": 79,
+    "gap_distribution": {
+      "min": 0.0012645859343103213,
+      "median": 0.0036558962692015214,
+      "max": 0.11552428688413863
+    },
+    "note": "范围基于 R-NW 单画像试点；是否需四画像联合标定属规格方决定"
+  },
+  "ranges": {
+    "cost": {
+      "min": 181652.237710594,
+      "max": 648937.0644760819
+    },
+    "carbon": {
+      "min": -26450.033866666636,
+      "max": 37665.1470271132
+    },
+    "heat": {
+      "min": 26658.660299999996,
+      "max": 105101.70408162841
+    }
+  },
+  "proposed_yaml_snippet": "normalization:\n  source: \"pilot_experiment\"\n  pilot_seed: 20260816\n  pilot_n_samples: 50\n  ranges:\n    cost: {min: 181652.237711, max: 648937.064476}\n    carbon: {min: -26450.033867, max: 37665.147027}\n    heat: {min: 26658.660300, max: 105101.704082}\n",
+  "elapsed_s": 2919.8619135999998,
+  "yaml_not_modified": true
+}
