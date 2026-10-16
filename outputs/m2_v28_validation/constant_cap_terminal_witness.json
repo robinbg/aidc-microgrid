@@ -1,0 +1,66 @@
+{
+  "scope": "Real normal S-cost feasibility witness; not an S-base result. No YAML changed. This case uses a constant grid cap and a valid hard-deadline task.",
+  "spec_version": "2.8",
+  "IT_base_derived_MW": 0.7182,
+  "gpu_task": {
+    "gpu": 800,
+    "duration_h": 1,
+    "arrive_h": 1,
+    "deadline_h": 2,
+    "latest_h": 2
+  },
+  "bus_demand_mw": [
+    0.96957,
+    1.72557
+  ],
+  "grid_import_capacity_mw": 1.5,
+  "eta_ch": 0.978,
+  "eta_dis": 0.978,
+  "sizing": {
+    "E_Na": 100.0,
+    "P_Na": 1.0,
+    "E_Li": 0.0,
+    "P_Li": 0.0
+  },
+  "baseline_forced_last_discharge_mwh": 0.22557000000000005,
+  "baseline_terminal_soc": 0.49769355828220857,
+  "minimal_physical_early_charge_mwh": 0.23583248648173943,
+  "minimal_physical_first_import_mw": 1.2054024864817394,
+  "actual_status": "optimal",
+  "actual_mip_gap": 0.0,
+  "actual_trajectory": {
+    "IT_load": [
+      0.7182,
+      1.2782
+    ],
+    "g_imp": [
+      1.5,
+      1.2182221918800002
+    ],
+    "p_ch_Na": [
+      0.53043,
+      0.0
+    ],
+    "p_dis_Na": [
+      0.0,
+      0.5073478081199998
+    ],
+    "soc_Na": [
+      0.5,
+      0.5051876054
+    ]
+  },
+  "actual_soc_full": [
+    0.5,
+    0.5051876054,
+    0.5
+  ],
+  "actual_task_schedule": [
+    {
+      "task_id": "fixed_last_hour",
+      "start_h": 1,
+      "end_h": 2,
+      "late": false
+    }
+  ]
+}

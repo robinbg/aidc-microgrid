@@ -1,0 +1,46 @@
+{
+  "configs\\chemistry_li.yaml": {
+    "sha256": "7125833501d101b04ec5994f0e5cced6dfbd5227187023f2b2778c3d65162fae",
+    "unchanged": true
+  },
+  "configs\\chemistry_na.yaml": {
+    "sha256": "5807a8141c79ca1638fa50f53bda1312d1d834e0bee5bc3dc2e71541c52a3345",
+    "unchanged": true
+  },
+  "configs\\economics.yaml": {
+    "sha256": "f1fa0ffe0e7b6e8cdbce9553a1a3796d7bf358a29e3bcad1d792369cf14a5d5c",
+    "unchanged": true
+  },
+  "configs\\experiments.yaml": {
+    "sha256": "97ff592a98912bfbc3ef701704892d7ea4ea6c21eaf6dee75bbed246ee124b18",
+    "unchanged": true
+  },
+  "configs\\generation.yaml": {
+    "sha256": "2a86aa4a7cd62ea0c2687f1c85b677c3fcbc60b9af611f1d5f3558b563e57809",
+    "unchanged": true
+  },
+  "configs\\registry.yaml": {
+    "sha256": "68d7feccf943e74118597ec9f9262a20abe6df7f05f29579d58fca30f545f149",
+    "unchanged": true
+  },
+  "configs\\system.yaml": {
+    "sha256": "8de2c0e758dafc153e80043d52257c4459fbc34e541468fd077cadaf4cb97b07",
+    "unchanged": true
+  },
+  "configs\\regions\\r_east.yaml": {
+    "sha256": "4be4d6afd85f77c3552a49897052de32a1703bf11b692423a3d360e6a03a9f70",
+    "unchanged": true
+  },
+  "configs\\regions\\r_nw.yaml": {
+    "sha256": "303ac1f6e3dd18128d2a755bc778ac64bff88d3780542c65907beae3db75970f",
+    "unchanged": true
+  },
+  "configs\\regions\\r_south.yaml": {
+    "sha256": "b543da1bc05092030e69d756bcbe96a6f161094854ccb20e44020031ecd3bd24",
+    "unchanged": true
+  },
+  "configs\\regions\\r_wpv.yaml": {
+    "sha256": "7b9c6e30ca0baedb50d2309cf02fe3225acc3e921d590f9dc7e07e3925ffc69a",
+    "unchanged": true
+  }
+}

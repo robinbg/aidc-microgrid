@@ -1,0 +1,19 @@
+未在画像使用的覆盖授权项: electricity_override.price_sell
+{
+  "hours": 168,
+  "tasks": 2200,
+  "requested_time_limit_s": 60.0,
+  "requested_gap": 0.01,
+  "elapsed_seconds": 57.612769899998966,
+  "status": "feasible",
+  "power_balance": [
+    true,
+    9.592326932761353e-14
+  ],
+  "heat_balance": [
+    true,
+    4.440892098500626e-16
+  ],
+  "sources_stable": true
+}
+gap 0.004067394244200738 objective 573239.5596181653

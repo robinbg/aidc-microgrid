@@ -1,0 +1,256 @@
+# 实验矩阵定义：配置臂 × 策略臂 × 种子
+# 见 SPEC §6
+
+# ---------------------------------------------------------------- 任务与 SLA 参数
+tasks:
+  # S3 的容忍窗口（SPEC §3.1）
+  # ⚠️ 取值应与该画像的 flexible_task_ratio 相称：
+  #    柔性低的画像需要更长容忍窗口才能产生足够调度空间，否则调度问题易不可行。
+  s3_tolerance_hours_default: 12.0
+  s3_tolerance_hours_by_region:
+    R-NW: 12.0        # 风电反调峰，夜间出力高，短容忍即可
+    R-WPV: 24.0       # 光伏日间尖峰，长容忍有利于日间偏移
+    R-EAST: 24.0      # 柔性低（0.45），长容忍以保持可行性
+    R-SOUTH: 24.0
+  # 硬要求（SPEC §3.1）：所有任务的 arrive_h + duration_h 与 latest_h 必须落在窗口内。
+  # 生成器需自校验，禁止截断任务时长或提前 deadline。
+
+sla:
+  # ⚠️ 惩罚系数 pen_sla 定义在 economics.yaml 的 penalties 段（唯一真源，见 registry.yaml），
+  #    此处不重复定义。本段只放策略层面的参数。
+  # S-carbon 策略无法把"元"惩罚项加进"kgCO₂"目标，改为硬约束（SPEC §3.5）
+  sla_floor: 0.95
+  # 若该约束导致不可行，须记录并报告，不得放松约束。
+  # S-balance 策略的 SLA 权重（归一化后）
+  w_sla_balance: 0.3
+
+# ---------------------------------------------------------------- 目标归一化范围（SPEC §3.5、§4.3）
+#
+# S-balance 需要把三项不同量纲的目标各归一化到 [0,1] 后加权。
+# ⚠️ 各 min/max 取自试点实验（如 50 次随机配置的评估范围），
+#    固定后写入此处并报告；范围一旦固定，所有实验复用，否则跨批次不可比。
+normalization:
+  source: "pilot_experiment"        # "pilot_experiment" | "manual"
+  pilot_seed: 20260816
+  pilot_n_samples: 50
+  ranges:
+    cost:    {min: null, max: null}    # 待试点实验填入
+    carbon:  {min: null, max: null}
+    heat:    {min: null, max: null}
+  # 说明：null 表示尚未标定，M3 阶段跑完试点实验后回填。
+
+# ---------------------------------------------------------------- 配置臂（4 条，必须全部实现）
+#
+# sizing_fixed：M4 阶段使用的固定候选配置（这是 M5 之前能跑通矩阵的前提）
+# sizing_free ：M5 阶段的外层优化变量
+#
+# ⚠️ M4 阶段的规模可比性（SPEC §6.1）：
+#    A1 / A2 / A3 的总能量容量统一为 150 MWh、总功率统一为 45 MW，
+#    以避免"配置优劣"混入"投资规模差异"。
+#    A0 为 0，其作用是建立无储能基线。
+#    结果表必须给出每臂投资额，跨臂比较时说明是否已做规模归一化。
+arms:
+  - id: A0
+    name: "无储能"
+    sizing_fixed: {E_Na: 0.0, P_Na: 0.0, E_Li: 0.0, P_Li: 0.0}
+    note: "基线臂，用于验证储能带来的增量价值"
+  - id: A1
+    name: "全锂电"
+    sizing_free: [E_Li, P_Li]
+    sizing_fixed: {E_Na: 0.0, P_Na: 0.0, E_Li: 150.0, P_Li: 45.0}
+  - id: A2
+    name: "全钠电"
+    sizing_free: [E_Na, P_Na]
+    sizing_fixed: {E_Na: 150.0, P_Na: 45.0, E_Li: 0.0, P_Li: 0.0}
+    note: "用于检验'全钠电'配置的物理合理性（功率型需求无锂电兜底）"
+  - id: A3
+    name: "钠锂分层"
+    sizing_free: [E_Na, P_Na, E_Li, P_Li]
+    sizing_fixed: {E_Na: 100.0, P_Na: 30.0, E_Li: 50.0, P_Li: 15.0}
+    note: "本方案主张的配置；能量与功率均按 2:1 分配给钠电与锂电"
+
+# ---------------------------------------------------------------- 容量边界（外层决策变量范围）
+sizing_bounds:
+  E_Na: [0.0, 200.0]     # MWh
+  P_Na: [0.0, 50.0]      # MW
+  E_Li: [0.0, 200.0]
+  P_Li: [0.0, 50.0]
+
+# ---------------------------------------------------------------- 策略臂（5 条）
+#
+# ⚠️ **五个策略各有独立的标量目标，不是同一套权重组合的不同取值**（SPEC §3.4）。
+#    早期版本在此处用 weights 五元组定义策略，与 SPEC 直接矛盾：
+#    权重组合会让五个策略退化成同一条 Pareto 曲面上的不同切点，
+#    失去"不同决策准则"的含义。
+#
+#    本段只保留**策略专属参数**（如 S-balance 的 SLA 权重、S-base 的规则开关）；
+#    各策略目标函数的**形式**见 SPEC §3.4–3.5，实现在 sizing/objective.py 与 model/dispatch.py。
+strategies:
+  - id: S-cost
+    name: "成本优先"
+    objective: "sum_t [购电 − 售电 − 工业供热收入 − 市政供热收入·1_ext + 锅炉燃料成本 + 弃电惩罚] + SLA_penalty_week"
+
+  - id: S-carbon
+    name: "碳排优先"
+    objective: "sum_t [g_imp·Δt·CI_grid + Q_boiler·Δt·ci_boiler − Q_ind·Δt·ci_ind_sub]"
+    constraint: "SLA_达标率 ≥ sla_floor（硬约束，见下）"
+
+  - id: S-heat
+    name: "供暖优先"
+    objective: "sum_t [− Q_ind·price_ind − Q_mun_hp·price_mun·1_ext + Q_boiler·boiler_unit_cost]·Δt + P_hp 电费 + SLA_penalty_week"
+    note: "⚠️ 目标**必须**含锅炉燃料成本与热泵电费，否则对余热利用中性化（SPEC §3.5）"
+
+  - id: S-balance
+    name: "均衡"
+    objective: "w_cost·cost_norm + w_carbon·carbon_norm + w_heat·heat_norm + w_sla·(1 − SLA_达标率)"
+    # ⚠️ 三项权重是**内层标量化**必需的（SPEC §3.5），v2.1 曾误删。
+    #    它们与"五个策略各有独立标量目标"不矛盾：
+    #    独立目标是说 S-cost/S-carbon/S-heat **不共用这一套权重**，
+    #    而不是说 S-balance 不需要权重——它本身就是"归一化后加权"的定义。
+    weights:
+      cost: 0.5
+      carbon: 0.5
+      heat: 0.5
+    # ⚠️ w_sla 的**唯一真源在下方 sla.w_sla_balance**，此处不重复定义。
+    #    S-balance 实现时读 sla.w_sla_balance。
+
+  - id: S-base
+    name: "基准调度"
+    objective: null          # 规则驱动，不做优化
+    storage_strategy: "no_arbitrage"
+    rules: "FCFS 任务调度 + 储能不主动套利 + 热泵取 min(热源侧, 需求侧) + 先市政后工业"
+    note: "作为方法对照；其目标值不与其他策略直接比较（量纲不同）"
+
+# ⚠️ 所有策略的辅助项（SPEC §2.4 六）：+ ε_dump·Σ Q_dump·Δt + ε_unused·Σ Q_unused·Δt
+#    单次加权是**近似**；两阶段是**容差内字典序**（加性容差，非严格字典序）。
+auxiliary_lexicographic_term:
+  eps_dump: 1.0e-6
+  eps_unused: 1.0e-6
+  method: "weighted_single_solve"    # "weighted_single_solve"（近似，默认）| "two_stage"
+  # two_stage：第二阶段约束 z ≤ z* + τ_abs，τ_abs = max(tau_floor, tau_rel·|z*|)
+  # ⚠️ 不得写成 z ≤ z*·(1+τ)：z* < 0 时（S-carbon 可为负）第二阶段不可行
+  tau_floor: 1.0e-6
+  tau_rel: 1.0e-9
+  # weighted_single_solve 的可接受误差门槛（§2.4（六）与 §9.31 用同一公式）：
+  #    门槛(z*) = max(tau_floor, tau_rel·|z*|)
+  #    |z(ε=1e-6) − z(ε=0)| ≤ 门槛(z*)
+  # ⚠️ 不要写成绝对差 < 1e-6：z* 较大时两者结论不同（v2.4 修正）
+  note: "须在报告中说明其存在、取值与方法。
+         若 Q_dump / Q_unused 参与结论，须验证其对并列解不敏感。"
+
+# ---------------------------------------------------------------- 种子
+seeds: [20260816, 1101, 1102, 1103, 1104]
+
+# ---------------------------------------------------------------- 实验总量
+matrix:
+  arms: [A0, A1, A2, A3]
+  strategies: [S-cost, S-carbon, S-heat, S-balance, S-base]
+  seeds: [20260816, 1101, 1102, 1103, 1104]
+  horizon_hours: 168
+  # 季节轮次：168h × 4 = 覆盖四季
+  season_rounds: 4
+  # 说明：total = 4 臂 × 5 策略 × 5 种子 = 100 组（见 SPEC §6.3）
+  # 每组在 4 个季节轮次上各跑一次，或使用全年高保真（两条路径选一，报告中写明）
+
+# ---------------------------------------------------------------- 多保真
+#
+# ⚠️ 低保真使用 5 个 168 小时代表周，而非 24 小时代表日（SPEC §4.2）。
+#    原因：S3 容忍窗口最大 24 h，24 h 窗口下 arrive + duration + tolerance > 24
+#    恒成立，任务无法容纳。168 h 窗口下余量充足（arrive ≤ 144 − duration）。
+#    另一个好处：低保真与主线实验使用完全相同的窗口长度与生成器，一致性更好。
+fidelity:
+  low:
+    mode: "representative_weeks"
+    weeks: [W-WIN, W-WINX, W-SPR, W-SUM, W-AUT]
+    hours_per_week: 168
+    total_hours: 840
+    weights:
+      W-WIN: 0.18      # 冬季典型周
+      W-WINX: 0.16     # 冬季极端周（全年最冷），单列以保证低温工况覆盖
+      W-SPR: 0.22
+      W-SUM: 0.22
+      W-AUT: 0.22
+    # ⚠️ 权重之和必须为 1.0，加载时校验
+    week_selection_rule: "各季节取最接近该季节中位工况的连续 168h；W-WINX 取全年 T_amb 最低点及其后连续 168h"
+    note: "相对全年 8760h 约 10 倍加速；代表周权重需在结果中输出并记录"
+  high:
+    mode: "full_year"
+    hours: 8760
+    include_resilience_scenarios: true
+
+# ---------------------------------------------------------------- 外层优化
+sizing_optimization:
+  bo:
+    backend: "botorch"          # 或 "scikit-optimize"；建议 botorch（支持多目标与约束）
+    budget_low_fidelity: 200    # 低保真评估预算（次）
+    budget_high_fidelity: 30    # 高保真确认预算（次）
+    acquisition: "ei"
+    initial_points: 20
+    normalize_inputs: true
+    noise_aware: true
+    note: "4-6 维低维问题，用标准 GP-BO 即可，勿引入高维方法（见 SPEC §4.1）"
+  scalarization:
+    method: "random_simplex"
+    n_weight_vectors: 20
+    note: "在单纯形上采样权重向量，每组解一个标量化问题，取并集后过滤非支配点"
+  grid_search:
+    points_per_dim: 10
+    dimensions: 4
+    total_evaluations: 10000
+    fidelity: "low"
+    note: "BO 的对照组，必须实现并在同一份数据上跑出对比（见 SPEC §4.4）"
+
+# ---------------------------------------------------------------- 敏感性分析（三组，必须全做）
+sensitivity:
+  - id: S1
+    name: "钠电参数区间"
+    parameters:
+      - "chemistry_na.cost.unit_cost_energy"     # low/mid/high
+      - "chemistry_na.temp_derating.gamma"
+      - "chemistry_na.lifetime.cycle_life"
+    note: "核心组：检验低温折减与循环寿命对结论的影响"
+  - id: S2
+    name: "锂价情景"
+    parameters:
+      - "chemistry_li.cost.unit_cost_energy"
+    multiplier_values: [0.6, 1.0, 1.6]
+    note: "给出'什么价格组合下钠电臂在 LCOE 上胜出'的判据（见 SPEC §6.5）"
+  - id: S3
+    name: "地区与算力条件"
+    parameters:
+      # ⚠️ 扫描"真实输入"，不是"校验参考值"（SPEC §6.5）：
+      #    cf_pv / cf_wind 只是 regions/*.yaml 里的校验用参考值（§7.4），
+      #    改它们只改变告警比较结果，逐时出力序列完全不变——
+      #    扫描会得到"结论不敏感"的假象，而真相是参数根本没进模型。
+      #    真正决定出力的是**装机容量**。
+      - "renewables.pv_capacity_mw"
+      - "renewables.wind_capacity_mw"
+      - "compute_override.flexible_task_ratio"
+    # 可选：若要扫描"资源质量"而非"装机规模"，用下列生成参数，
+    #       但**必须重新生成序列**，每次评估的输入数据不同，须在报告中说明。
+    optional_generation_parameters:
+      - "wind.weibull.c"
+      - "solar.clearness_index"
+    note: "检验任务柔性比与风光装机规模对配置结论的影响。cf_pv/cf_wind 禁用作扫描对象。"
+
+# ---------------------------------------------------------------- 报告输出
+reporting:
+  formats: [csv, markdown]
+  include_figures: true
+  # 必报指标见 SPEC §6.4
+  metrics:
+    - LCOE
+    - cost_per_mtok
+    - carbon_per_mtok
+    - green_matching_rate
+    - curtailment_rate
+    - sla_rate
+    - latency_p50
+    - latency_p90
+    - t_island_mean
+    - t_island_worst
+    - eens
+    - n1_pass_rate
+    - equivalent_cycles
+    - capacity_fade_estimate
+  disclaimer: "全部结果为确定性仿真结果，非真实设备测量数据。"

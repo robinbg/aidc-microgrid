@@ -1,0 +1,232 @@
+{
+  "notice": "Diagnostic experiment, NOT the product's implemented fault dispatch.\n\nReproduce why the pre-existing service tolerance rows alone do not freeze\nservice before a fourth objective. The production implementation additionally\nfreezes achieved stage-three services before applying that preference.\nAll scenarios below are synthetic in-memory inputs; configs are never edited.\n",
+  "created_at_utc": "2026-10-15T18:15:26.980771+00:00",
+  "source_sha256": {
+    "SPEC.md": "facd248eaf4c565a77f8ded52f16fc74ce4c14c7aad96f2812483b180362f0c9",
+    "src\\aidc\\model\\dispatch.py": "82a4db85d0daa30bf561571a93c03bc25f0a743f6e9ae3c6b8e2129185e8c59b",
+    "outputs\\m2_v29_validation\\fault_tolerance_diagnostic.py": "d5c7400b0859050bfac531332c7f61a8f2d6fa63d328a38b6c4e6b0b66cf7163"
+  },
+  "current_default_numerics": {
+    "backend": {
+      "backend": "scipy.optimize.milp/HiGHS",
+      "scipy_version": "1.15.3",
+      "highs_version": "1.8.0"
+    },
+    "options_explicitly_requested": {
+      "time_limit": 20.0,
+      "mip_rel_gap": 0.0,
+      "presolve": true,
+      "threads": 1,
+      "random_seed": 0,
+      "disp": false
+    },
+    "numerical_tolerance_note": "unspecified options use bundled HiGHS defaults",
+    "inputs": {
+      "sizing": {
+        "E_Na": 20.0,
+        "P_Na": 0.6,
+        "E_Li": 20.0,
+        "P_Li": 0.4
+      },
+      "initial_soc": {
+        "Na": 0.5,
+        "Li": 0.5
+      },
+      "IT_base_mw": 1.0,
+      "pue": 1.0,
+      "duration_h": 1.0,
+      "critical_fraction": 0.6,
+      "eta_ch": 1.0,
+      "eta_dis": 1.0,
+      "gamma": 1.0,
+      "grid_capacity_mw": 0.0,
+      "renewables_mw": 0.0,
+      "heat_demand_mw_th": 0.0
+    },
+    "stages": [
+      {
+        "level": "critical",
+        "status": 0,
+        "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+        "objective": 0.0,
+        "mip_gap": 0.0,
+        "mip_dual_bound": 0.0
+      },
+      {
+        "level": "noncritical",
+        "status": 0,
+        "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+        "objective": 0.0,
+        "mip_gap": 0.0,
+        "mip_dual_bound": 0.0
+      },
+      {
+        "level": "heat_gap",
+        "status": 0,
+        "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+        "objective": 0.0,
+        "mip_gap": 0.0,
+        "mip_dual_bound": 0.0
+      },
+      {
+        "level": "chemistry_preference",
+        "status": 0,
+        "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+        "objective": 0.4,
+        "mip_gap": 0.0,
+        "mip_dual_bound": 0.4
+      }
+    ],
+    "service_fixing_rows": [
+      {
+        "name": "diagnostic_only_fix_critical",
+        "upper": 0.0,
+        "coefficients": {
+          "shed_c[0]": 1.0
+        }
+      },
+      {
+        "name": "diagnostic_only_fix_noncritical",
+        "upper": 1e-06,
+        "coefficients": {
+          "shed_nc[0]": 1.0
+        }
+      },
+      {
+        "name": "diagnostic_only_fix_heat_gap",
+        "upper": 1e-06,
+        "coefficients": {
+          "unserved_heat[0]": 1.0
+        }
+      }
+    ],
+    "final_values": {
+      "shed_c": [
+        0.0
+      ],
+      "shed_nc": [
+        0.0
+      ],
+      "p_dis_Na": [
+        0.6
+      ],
+      "p_dis_Li": [
+        0.4
+      ]
+    },
+    "max_row_violation": 2.7755575615628914e-17
+  },
+  "explicit_tight_numerics": {
+    "backend": {
+      "backend": "scipy.optimize.milp/HiGHS",
+      "scipy_version": "1.15.3",
+      "highs_version": "1.8.0"
+    },
+    "options_explicitly_requested": {
+      "time_limit": 20.0,
+      "mip_rel_gap": 0.0,
+      "presolve": true,
+      "threads": 1,
+      "random_seed": 0,
+      "mip_abs_gap": 0.0,
+      "mip_feasibility_tolerance": 1e-09,
+      "primal_feasibility_tolerance": 1e-09,
+      "dual_feasibility_tolerance": 1e-09
+    },
+    "numerical_tolerance_note": "explicit 1e-9 feasibility tolerances expose objective-driven 1e-6 service exchange",
+    "inputs": {
+      "sizing": {
+        "E_Na": 20.0,
+        "P_Na": 0.6,
+        "E_Li": 20.0,
+        "P_Li": 0.4
+      },
+      "initial_soc": {
+        "Na": 0.5,
+        "Li": 0.5
+      },
+      "IT_base_mw": 1.0,
+      "pue": 1.0,
+      "duration_h": 1.0,
+      "critical_fraction": 0.6,
+      "eta_ch": 1.0,
+      "eta_dis": 1.0,
+      "gamma": 1.0,
+      "grid_capacity_mw": 0.0,
+      "renewables_mw": 0.0,
+      "heat_demand_mw_th": 0.0
+    },
+    "stages": [
+      {
+        "level": "critical",
+        "status": 0,
+        "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+        "objective": 0.0,
+        "mip_gap": 0.0,
+        "mip_dual_bound": 0.0
+      },
+      {
+        "level": "noncritical",
+        "status": 0,
+        "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+        "objective": 0.0,
+        "mip_gap": 0.0,
+        "mip_dual_bound": 0.0
+      },
+      {
+        "level": "heat_gap",
+        "status": 0,
+        "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+        "objective": 0.0,
+        "mip_gap": 0.0,
+        "mip_dual_bound": 0.0
+      },
+      {
+        "level": "chemistry_preference",
+        "status": 0,
+        "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+        "objective": 0.399999,
+        "mip_gap": 0.0,
+        "mip_dual_bound": 0.399999
+      }
+    ],
+    "service_fixing_rows": [
+      {
+        "name": "diagnostic_only_fix_critical",
+        "upper": 0.0,
+        "coefficients": {
+          "shed_c[0]": 1.0
+        }
+      },
+      {
+        "name": "diagnostic_only_fix_noncritical",
+        "upper": 1e-06,
+        "coefficients": {
+          "shed_nc[0]": 1.0
+        }
+      },
+      {
+        "name": "diagnostic_only_fix_heat_gap",
+        "upper": 1e-06,
+        "coefficients": {
+          "unserved_heat[0]": 1.0
+        }
+      }
+    ],
+    "final_values": {
+      "shed_c": [
+        0.0
+      ],
+      "shed_nc": [
+        1.0000000000287557e-06
+      ],
+      "p_dis_Na": [
+        0.6
+      ],
+      "p_dis_Li": [
+        0.399999
+      ]
+    },
+    "max_row_violation": 2.875570976809943e-17
+  }
+}

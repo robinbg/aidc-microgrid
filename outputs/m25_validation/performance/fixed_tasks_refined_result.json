@@ -1,0 +1,46 @@
+{
+  "hours": 168,
+  "tasks": 2200,
+  "budget_s": 30.0,
+  "source_hashes": {
+    "outputs\\m25_validation\\performance\\probe_fixed_tasks.py": "babefe2ab755f0da15568a212b8e6901ba837127825db6526668cee7cb0d114f",
+    "src\\aidc\\model\\dispatch.py": "d24f92d9c5308f322105feb86b7064a12c90b2bfb096f6cb63d21f63c367ab45",
+    "outputs\\m2_validation\\inputs_normal_168h_r_nw_a3.parquet": "b37c01f6980466fed3366e7094b3d5d3083607f9f18576a8d8d5b98f1f988b6e",
+    "outputs\\m2_validation\\tasks_normal_168h_r_nw_a3.csv": "98746f4c27a14c7f3f0d2d5ef7d28bc870092fd686c0c3284ad0924435c4677e",
+    "outputs\\m25_validation\\performance\\fixed_tasks_solution.npz": "b0b8f0d4b3bcc46b08129f67e4c943b184e2fe542e69968a3f23a96b2d0e726a"
+  },
+  "seed_original_combined_objective": 573812.6942542882,
+  "seed_original_validation": {
+    "bounds": 3.872457909892546e-13,
+    "rows": 6.927791673660977e-13,
+    "integrality": 3.552713678800501e-14
+  },
+  "surrogate_start_yuan": 603634.4505755573,
+  "surrogate_passes": [],
+  "preparation_s": 3.1862210999970557,
+  "remaining_physical_budget_s": 26.813778900002944,
+  "fixed_task_starts": 2200,
+  "active_binary_variables": 504,
+  "solver": {
+    "level": "fixed_tasks_physical_only",
+    "status": 0,
+    "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "objective": 572409.2489090593,
+    "mip_gap": 0.0009982242124308386,
+    "mip_dual_bound": 571837.8561373791,
+    "requested_mip_gap": 0.001,
+    "proven_optimal": false
+  },
+  "scope": "Feasible physical solution conditional on heuristic whole-task schedule; gap is NOT original-model global gap.",
+  "original_model_validation": {
+    "bounds": 2.595612613731646e-11,
+    "rows": 4.6490811200783355e-11,
+    "integrality": 1.779687508474126e-12
+  },
+  "combined_objective": 572409.2489090593,
+  "primary_objective": 572409.2489090593,
+  "sla_penalty": 0.0,
+  "improvement_yuan": 1403.4453452288872,
+  "accepted_as_better_incumbent": true,
+  "elapsed_s": 29.5002530999991
+}

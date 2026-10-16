@@ -1,0 +1,57 @@
+{
+  "scope": "This is a real normal S-cost feasibility witness, not an S-base implementation or test substitution.",
+  "spec_version": "2.8",
+  "eta_ch": 0.978,
+  "eta_dis": 0.978,
+  "bus_demand_mw": [
+    1.35,
+    1.35
+  ],
+  "renewable_mw": [
+    0,
+    0
+  ],
+  "import_capacity_mw": [
+    3,
+    0.5
+  ],
+  "sizing": {
+    "E_Na": 100.0,
+    "P_Na": 1.0,
+    "E_Li": 0.0,
+    "P_Li": 0.0
+  },
+  "soc_initial": 0.5,
+  "baseline_forced_last_discharge_mwh": 0.85,
+  "baseline_terminal_soc": 0.49130879345603273,
+  "physical_witness_status": "optimal",
+  "physical_witness_mip_gap": 0.0,
+  "physical_witness": {
+    "g_imp": [
+      2.35,
+      0.3935160000000001
+    ],
+    "p_ch_Na": [
+      1.0,
+      0.0
+    ],
+    "p_dis_Na": [
+      0.0,
+      0.956484
+    ],
+    "soc_Na": [
+      0.5,
+      0.50978
+    ]
+  },
+  "physical_soc_full": [
+    0.5,
+    0.50978,
+    0.5
+  ],
+  "physical_witness_early_charge_mwh": 0.8886714257635255,
+  "nominal_usable_band_at20": {
+    "lo": 0.10319999999999996,
+    "hi": 0.8968
+  }
+}

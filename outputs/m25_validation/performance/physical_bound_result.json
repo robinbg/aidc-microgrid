@@ -1,0 +1,28 @@
+{
+  "scope": "Lower-bound relaxation only; its trajectory is not an accepted dispatch. All physical binaries retained. Nonnegative SLA penalty omitted. Original job windows relaxed to necessary cumulative energy inequalities.",
+  "original_variables": 76884,
+  "n_variables": 4707,
+  "n_binary": 504,
+  "n_rows": 3866,
+  "candidate_original_upper_bound": 572360.5471332058,
+  "candidate_relaxation_inclusion": {
+    "bound": 2.842170943040401e-14,
+    "row": 3.907985046680551e-14
+  },
+  "seed_path": "outputs\\m25_validation\\performance\\fresh_fixed_tasks_solution.npz",
+  "source_sha256": "b016c6339524104c7aa0f7504acf0cf9ff67353456c89759c832c5b2227a65eb",
+  "preparation_s": 6.15224290000333,
+  "solver_s": 20.79899870000372,
+  "solver": {
+    "level": "physical_job_timing_relaxation",
+    "status": 0,
+    "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "objective": 571258.7606651399,
+    "mip_gap": 0.0005957805242206378,
+    "mip_dual_bound": 570918.4158212452,
+    "requested_mip_gap": 0.001,
+    "proven_optimal": false
+  },
+  "certified_original_global_gap": 0.0025196204021815756,
+  "total_s": 26.951628200004052
+}

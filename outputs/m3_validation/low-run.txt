@@ -1,0 +1,29 @@
+未在画像使用的覆盖授权项: electricity_override.price_sell
+START A0 low-fidelity closed loop (S-cost, R-NW, seed 20260816)
+未在画像使用的覆盖授权项: electricity_override.price_sell
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-NW pv simulated CF 0.104005 differs from reference 0.170000 by -0.065995 (tolerance 0.05); generation parameters were not adjusted.
+  ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
+DONE A0: status=feasible LCOE=1349.9816 f2=0.0287 f3=nan sla=1.000000 hand_checks 11/11 elapsed=56.9s
+START A3 low-fidelity closed loop (S-cost, R-NW, seed 20260816)
+未在画像使用的覆盖授权项: electricity_override.price_sell
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-NW pv simulated CF 0.104005 differs from reference 0.170000 by -0.065995 (tolerance 0.05); generation parameters were not adjusted.
+  ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
+DONE A3: status=feasible LCOE=1476.1852 f2=0.0287 f3=nan sla=1.000000 hand_checks 11/11 elapsed=243.4s
+{
+  "all_configs_unchanged": true,
+  "baseline_s_base_unchanged": true,
+  "arms": {
+    "A0": {
+      "f1_LCOE_yuan_per_mwh": 1349.9816243947978,
+      "f2_carbon_per_mtok_kgco2": 0.02867226677299514,
+      "f3_resilience_gap": NaN,
+      "f4_sla_violation": 0.0
+    },
+    "A3": {
+      "f1_LCOE_yuan_per_mwh": 1476.18520683483,
+      "f2_carbon_per_mtok_kgco2": 0.028672200067923276,
+      "f3_resilience_gap": NaN,
+      "f4_sla_violation": 0.0
+    }
+  }
+}

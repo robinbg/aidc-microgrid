@@ -1,0 +1,163 @@
+{
+  "spec_version": "2.7",
+  "client_date": "2026-10-16",
+  "status": "paused_for_spec_boundary_rulings; implementation_not_changed",
+  "original_rulings_understood": {
+    "fault_false": "Same-hour Na/Li discharge permitted, 1b follows the proven fixed critical objective",
+    "s_base": "Grid first; storage only supplements import-capacity shortfall"
+  },
+  "current_test_evidence": {
+    "collected": 156,
+    "passed": 153,
+    "failed": 3,
+    "skipped": 0,
+    "error": 0,
+    "by_file": {
+      "tests.test_chemistry_params": 46,
+      "tests.test_invariants": 100,
+      "tests.test_dispatch_smoke": 10
+    },
+    "failed_tests": [
+      {
+        "name": "test_fault_discharge_priority_within_hour",
+        "classname": "tests.test_invariants",
+        "type": null,
+        "message": "ValueError: fault two-chemistry discharge-order semantics await explicit policy confirmation"
+      },
+      {
+        "name": "test_fault_discharge_prefers_na",
+        "classname": "tests.test_invariants",
+        "type": null,
+        "message": "ValueError: fault two-chemistry discharge-order semantics await explicit policy confirmation"
+      },
+      {
+        "name": "test_s_base_storage_only_when_grid_capacity_binds",
+        "classname": "tests.test_invariants",
+        "type": null,
+        "message": "ValueError: S-base storage/grid priority semantics await explicit policy confirmation"
+      }
+    ],
+    "evidence_scope": "Current v2.7 before implementing the two newly decided policy branches; old report remains v2.6 evidence only."
+  },
+  "evidence_scope": "The old v2.6 report matches unchanged source hashes. Only test_invariants.py changed and added three D4 tests. The new run, rather than the old 153 total, is the current verification.",
+  "material_rule_findings": [
+    {
+      "id": "V27-A",
+      "source_lines": [
+        399,
+        1037,
+        1038,
+        1069,
+        1075,
+        1076,
+        1082
+      ],
+      "finding": "Mandatory surplus charging combined with no discharge below import capacity can make S-base terminal SOC greater than soc_ref. The grid top-up rule only addresses SOC below the reference.",
+      "counterexample": "Two hours; bus demand 1.35 MW, renewable [1.35,2.35] MW; grid cap30 MW; E_Na100 MWh, P_Na1 MW, soc0=.5, eta_ch=.978. The final surplus1 MWh charges to soc_end=.50978. No hour permits discharge and grid top-up cannot reduce SOC.",
+      "real_input_confirmation": "Saved 168h R-NW/A3 input has full-load bus demand upper bound6.200537 MW < grid cap30 MW, while renewable exceeds the upper bound in164 hours (including the first). Thus default charging+no-discharge can cause this problem in the actual baseline, not merely a toy case.",
+      "scope": "The global contract permits infeasible status, so a literal implementation can return infeasible. It cannot also produce the intended comparable near-A0 normal trajectory. Need an explicit decision whether this rule-induced infeasibility is accepted, or which surplus/terminal rule changes."
+    },
+    {
+      "id": "V27-B",
+      "source_lines": [
+        1154,
+        1173,
+        1174,
+        1182,
+        1188,
+        1189
+      ],
+      "finding": "Putting chemical preference level1b before noncritical service changes service priority, not just which chemistry supplies the same total load.",
+      "counterexample": "One hour, PUE1, IT1 MW, critical fraction.6, no grid/renewable/heat; Na can supply.6 MW and Li.4 MW, both with enough energy. Level1 has shed_c*=0. Level1b minimizes Li to0; fixing it forces shed_nc=.4 in level2. Both batteries together could serve all1 MW.",
+      "scope": "The stated order is implementable and preserves the critical optimum, but knowingly sacrifices noncritical service to save Li. Confirm that intent or revise the position of level1b. No stage was silently reordered."
+    }
+  ],
+  "additional_clarifications_and_test_gaps": [
+    {
+      "source_lines": [
+        1037,
+        1094,
+        1097
+      ],
+      "finding": "S-base says record unserved when power is insufficient; normal mode requires zero shedding. A1h1.35MW bus load with.5MW grid and zero storage has.85MW shortfall. Clarify whether unserved belongs only to an infeasible diagnostic or whether S-base has an explicit normal-mode exception."
+    },
+    {
+      "source_lines": [
+        1046,
+        1076,
+        1078
+      ],
+      "finding": "Single forward pass may coexist with whole-window price/SOC preprocessing, but not with a strictly causal no-lookahead interpretation. This is an algorithm-scope ambiguity, not a proved mathematical contradiction."
+    },
+    {
+      "source_lines": [
+        1133,
+        1136
+      ],
+      "finding": "For the nondefault parallel_discharge=true branch, specify whether proportional available power means the temperature/power cap or also the current SOC energy limit. The latter yields state-dependent bilinear ratios in the MILP. This does not alter the clear default false ruling."
+    },
+    {
+      "source_lines": [
+        1070,
+        1071
+      ],
+      "finding": "Text claims no charging and no discharging drifts SOC from its initial reference. The specified lossless state retention dynamic keeps SOC unchanged in that situation."
+    },
+    {
+      "file": "tests/test_invariants.py",
+      "finding": "Current S-base D4 case only tests shortfall below import capacity; the documented binding-capacity and top-up branches lack a concrete case. The Na-priority D4 assertion has an unconditional Na>=Li fallback, which by itself cannot prove minimum Li in the ample-Na case."
+    }
+  ],
+  "counterexample_values": {
+    "surplus_boundary": {
+      "hours": 2,
+      "IT_MW": 1,
+      "PUE": 1.35,
+      "heat_demand_MW_th": 0,
+      "industrial_capacity_MW_th": 0,
+      "PV_MW": [
+        1.35,
+        2.35
+      ],
+      "grid_import_cap_MW": 30,
+      "E_Na_MWh": 100,
+      "P_Na_MW": 1,
+      "eta_ch": 0.978,
+      "initial_soc": 0.5,
+      "forced_last_charge_MWh": 1,
+      "discharge_MWh": 0,
+      "terminal_soc_from_SOC_equation": 0.50978,
+      "required_terminal_soc": 0.5
+    },
+    "capacity_shortfall_boundary": {
+      "hours": 1,
+      "IT_MW": 1,
+      "PUE": 1.35,
+      "PV_MW": 0,
+      "grid_import_cap_MW": 0.5,
+      "storage_MW": 0,
+      "rule_unserved_elec_MW": 0.8500000000000001,
+      "normal_required_unserved_elec_MW": 0
+    },
+    "saved_168h_input": {
+      "max_bus_demand_upper_bound_MW": 6.200537311343879,
+      "grid_import_cap_MW": 30.0,
+      "hours_renewable_above_full_load_bus_bound": 164,
+      "initial_renewable_MW": 13.302147586770733,
+      "initial_bus_demand_upper_bound_MW": 6.188967465172764
+    }
+  },
+  "performance": "Existing 168h60s gap84.4% remains unresolved and must not be used to rank configurations or feed M3 BO; this run does not change horizon or solver tolerances.",
+  "source_and_config_edits": [],
+  "implementation_policy": "Per the standing user instruction, report newly discovered material spec issues before choosing different formulas or rules. No original ruling was re-asked.",
+  "new_artifacts_only": [
+    "outputs/m2_v27_validation/current_full_pytest.txt",
+    "outputs/m2_v27_validation/initial-current-tests.xml",
+    "outputs/m2_v27_validation/initial_evidence_sha256.json",
+    "outputs/m2_v27_validation/initial_runs.json",
+    "outputs/m2_v27_validation/initial_summary.json",
+    "outputs/m2_v27_validation/pre_run_hash_comparison.json",
+    "outputs/m2_v27_validation/rule_counterexamples.json",
+    "outputs/m2_v27_validation/strict_selfcheck.txt"
+  ]
+}

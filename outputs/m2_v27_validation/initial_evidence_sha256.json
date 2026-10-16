@@ -1,0 +1,8 @@
+{
+  "pre_run_hash_comparison.json": "40b42039dfb8e5e1cb473ac296770dbc3375326224a42d14b7305f5ce3ebff15",
+  "initial_runs.json": "90dabda1373c46bc0ab898a5b0123123d31c4d4631c27762454da7c302994047",
+  "initial_summary.json": "b9a35463638bb91b668e647df00024e988bb88c94e466623ca43c2975e2bc5f3",
+  "current_full_pytest.txt": "5b44cfbc3f9c6c85f6acc25b20905f087819e7e67d407d7893d9687c7d4379e5",
+  "initial-current-tests.xml": "751bc0d8108cd53c1f9b0b0072ff2d81c01911e69ad0de5abdd5cdaef2912ab2",
+  "strict_selfcheck.txt": "570ee57235ed59de657b80a816700cff986ce47d653995fc9a9d4e81d3fde968"
+}

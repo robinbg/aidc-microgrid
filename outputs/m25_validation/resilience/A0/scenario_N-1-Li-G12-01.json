@@ -1,0 +1,30 @@
+{
+  "scenario_id": "N-1-Li-G12-01",
+  "reports_t_island": true,
+  "t_island_h": null,
+  "censored": null,
+  "eens_mwh": null,
+  "unserved_elec_mwh": null,
+  "unserved_heat_mwh_th": null,
+  "heat_outage_cost_yuan": null,
+  "full_service": null,
+  "full_service_strict": null,
+  "notes": "Li has zero installed energy; no failed component exists",
+  "probability": 0.012195121951219513,
+  "counts_toward_n1_pass": false,
+  "scenario_type": "n1_plus_grid",
+  "status": "skipped",
+  "skipped": true,
+  "skip_reason": "Li has zero installed energy; no failed component exists",
+  "level1_proven": false,
+  "eens_critical_mwh": null,
+  "solver_info": {},
+  "initial_soc_source": "",
+  "critical_it_fraction": 0.6,
+  "duration_h": 12.0,
+  "time_step_h": 1.0,
+  "renewable_reference": "",
+  "physical_checks": {
+    "skipped": true
+  }
+}

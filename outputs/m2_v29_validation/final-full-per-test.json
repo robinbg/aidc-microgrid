@@ -1,0 +1,952 @@
+[
+  {
+    "name": "tests.test_chemistry_params::test_all_configs_parse",
+    "status": "passed",
+    "duration_seconds": 0.323
+  },
+  {
+    "name": "tests.test_chemistry_params::test_curve_blocks_have_points_key",
+    "status": "passed",
+    "duration_seconds": 0.082
+  },
+  {
+    "name": "tests.test_chemistry_params::test_curve_scale_range_present",
+    "status": "passed",
+    "duration_seconds": 0.002
+  },
+  {
+    "name": "tests.test_chemistry_params::test_unit_fields_declared",
+    "status": "passed",
+    "duration_seconds": 0.001
+  },
+  {
+    "name": "tests.test_chemistry_params::test_curves_are_monotonic_in_temperature",
+    "status": "passed",
+    "duration_seconds": 0.003
+  },
+  {
+    "name": "tests.test_chemistry_params::test_gamma_within_unit_interval",
+    "status": "passed",
+    "duration_seconds": 0.001
+  },
+  {
+    "name": "tests.test_chemistry_params::test_charge_rate_decreases_at_low_temperature",
+    "status": "passed",
+    "duration_seconds": 0.001
+  },
+  {
+    "name": "tests.test_chemistry_params::test_lithium_low_temp_derating_steeper_than_sodium",
+    "status": "passed",
+    "duration_seconds": 0.002
+  },
+  {
+    "name": "tests.test_chemistry_params::test_unit_conversion_factor_applied",
+    "status": "passed",
+    "duration_seconds": 0.423
+  },
+  {
+    "name": "tests.test_chemistry_params::test_low_temp_charge_margin_binds",
+    "status": "passed",
+    "duration_seconds": 0.033
+  },
+  {
+    "name": "tests.test_chemistry_params::test_soc_window_not_shrunk_by_gamma",
+    "status": "passed",
+    "duration_seconds": 0.036
+  },
+  {
+    "name": "tests.test_chemistry_params::test_all_parameters_have_interval",
+    "status": "passed",
+    "duration_seconds": 0.001
+  },
+  {
+    "name": "tests.test_chemistry_params::test_placeholder_sources_are_marked",
+    "status": "passed",
+    "duration_seconds": 0.002
+  },
+  {
+    "name": "tests.test_chemistry_params::test_curve_interpolates_and_clamps_without_modifying_input",
+    "status": "passed",
+    "duration_seconds": 0.002
+  },
+  {
+    "name": "tests.test_chemistry_params::test_invalid_curve_rejected[temperatures0-values0]",
+    "status": "passed",
+    "duration_seconds": 0.001
+  },
+  {
+    "name": "tests.test_chemistry_params::test_invalid_curve_rejected[temperatures1-values1]",
+    "status": "passed",
+    "duration_seconds": 0.001
+  },
+  {
+    "name": "tests.test_chemistry_params::test_invalid_curve_rejected[temperatures2-values2]",
+    "status": "passed",
+    "duration_seconds": 0.002
+  },
+  {
+    "name": "tests.test_chemistry_params::test_invalid_curve_rejected[temperatures3-values3]",
+    "status": "passed",
+    "duration_seconds": 0.002
+  },
+  {
+    "name": "tests.test_chemistry_params::test_invalid_curve_rejected[temperatures4-values4]",
+    "status": "passed",
+    "duration_seconds": 0.003
+  },
+  {
+    "name": "tests.test_chemistry_params::test_invalid_curve_rejected[temperatures5-values5]",
+    "status": "passed",
+    "duration_seconds": 0.002
+  },
+  {
+    "name": "tests.test_chemistry_params::test_usable_band_clips_both_sides",
+    "status": "passed",
+    "duration_seconds": 0.04
+  },
+  {
+    "name": "tests.test_chemistry_params::test_power_zero_capacity_and_no_gamma_double_derating",
+    "status": "passed",
+    "duration_seconds": 0.045
+  },
+  {
+    "name": "tests.test_chemistry_params::test_low_scenario_scales_curves_and_selects_scalar_intervals",
+    "status": "passed",
+    "duration_seconds": 0.049
+  },
+  {
+    "name": "tests.test_chemistry_params::test_high_gamma_preserves_scaling_interpolates_and_clips_only_band[na]",
+    "status": "passed",
+    "duration_seconds": 0.098
+  },
+  {
+    "name": "tests.test_chemistry_params::test_high_gamma_preserves_scaling_interpolates_and_clips_only_band[li]",
+    "status": "passed",
+    "duration_seconds": 0.087
+  },
+  {
+    "name": "tests.test_chemistry_params::test_high_efficiency_and_safety_are_still_capped_at_one",
+    "status": "passed",
+    "duration_seconds": 0.1
+  },
+  {
+    "name": "tests.test_chemistry_params::test_lithium_price_scenario_is_isolated",
+    "status": "passed",
+    "duration_seconds": 0.088
+  },
+  {
+    "name": "tests.test_chemistry_params::test_storage_temperature_uses_installation_config",
+    "status": "passed",
+    "duration_seconds": 0.337
+  },
+  {
+    "name": "tests.test_chemistry_params::test_conversion_is_recursive_idempotent_and_nonmutating[\\u5143/kWh-\\u5143/MWh-2000.0]",
+    "status": "passed",
+    "duration_seconds": 0.002
+  },
+  {
+    "name": "tests.test_chemistry_params::test_conversion_is_recursive_idempotent_and_nonmutating[\\u5143/kW-\\u5143/MW-2000.0]",
+    "status": "passed",
+    "duration_seconds": 0.003
+  },
+  {
+    "name": "tests.test_chemistry_params::test_conversion_is_recursive_idempotent_and_nonmutating[\\u5143/kWh/\\u5e74-\\u5143/MWh/\\u5e74-2000.0]",
+    "status": "passed",
+    "duration_seconds": 0.002
+  },
+  {
+    "name": "tests.test_chemistry_params::test_conversion_is_recursive_idempotent_and_nonmutating[m\\xb2/kWh-m\\xb2/MWh-2000.0]",
+    "status": "passed",
+    "duration_seconds": 0.002
+  },
+  {
+    "name": "tests.test_chemistry_params::test_conversion_is_recursive_idempotent_and_nonmutating[kgCO\\u2082/kWh-kgCO\\u2082/MWh-2000.0]",
+    "status": "passed",
+    "duration_seconds": 0.003
+  },
+  {
+    "name": "tests.test_chemistry_params::test_conversion_is_recursive_idempotent_and_nonmutating[kW/\\u5361-MW/\\u5361-0.002]",
+    "status": "passed",
+    "duration_seconds": 0.003
+  },
+  {
+    "name": "tests.test_chemistry_params::test_duplicate_yaml_keys_fail_at_nested_path",
+    "status": "passed",
+    "duration_seconds": 0.042
+  },
+  {
+    "name": "tests.test_chemistry_params::test_unit_metadata_missing_or_incompatible_fails",
+    "status": "passed",
+    "duration_seconds": 0.003
+  },
+  {
+    "name": "tests.test_chemistry_params::test_thermal_unit_suffix_cannot_be_overridden_by_metadata[heat_mw_th-MW_th-MW]",
+    "status": "passed",
+    "duration_seconds": 0.003
+  },
+  {
+    "name": "tests.test_chemistry_params::test_thermal_unit_suffix_cannot_be_overridden_by_metadata[heat_mwh_th-MWh_th-MWh]",
+    "status": "passed",
+    "duration_seconds": 0.003
+  },
+  {
+    "name": "tests.test_chemistry_params::test_placeholder_warning_is_once_per_source_file",
+    "status": "passed",
+    "duration_seconds": 0.086
+  },
+  {
+    "name": "tests.test_chemistry_params::test_configuration_bundle_closes_registry_and_preserves_regions",
+    "status": "passed",
+    "duration_seconds": 0.363
+  },
+  {
+    "name": "tests.test_chemistry_params::test_chemistry_factory_matches_raw_internal_and_file_loading[low]",
+    "status": "passed",
+    "duration_seconds": 0.084
+  },
+  {
+    "name": "tests.test_chemistry_params::test_chemistry_factory_matches_raw_internal_and_file_loading[mid]",
+    "status": "passed",
+    "duration_seconds": 0.09
+  },
+  {
+    "name": "tests.test_chemistry_params::test_chemistry_factory_matches_raw_internal_and_file_loading[high]",
+    "status": "passed",
+    "duration_seconds": 0.077
+  },
+  {
+    "name": "tests.test_chemistry_params::test_registry_rejects_unlisted_override_and_forbidden_alias",
+    "status": "passed",
+    "duration_seconds": 0.74
+  },
+  {
+    "name": "tests.test_chemistry_params::test_registry_rejects_duplicate_truth_and_unresolvable_dependency",
+    "status": "passed",
+    "duration_seconds": 1.059
+  },
+  {
+    "name": "tests.test_chemistry_params::test_registry_rejects_cycles_and_derived_config_keys",
+    "status": "passed",
+    "duration_seconds": 1.088
+  },
+  {
+    "name": "tests.test_invariants::test_power_balance_closed[path0]",
+    "status": "passed",
+    "duration_seconds": 0.314
+  },
+  {
+    "name": "tests.test_invariants::test_power_balance_closed[path1]",
+    "status": "passed",
+    "duration_seconds": 0.032
+  },
+  {
+    "name": "tests.test_invariants::test_power_balance_closed[path2]",
+    "status": "passed",
+    "duration_seconds": 0.033
+  },
+  {
+    "name": "tests.test_invariants::test_power_balance_closed[path3]",
+    "status": "passed",
+    "duration_seconds": 0.024
+  },
+  {
+    "name": "tests.test_invariants::test_power_balance_closed[path4]",
+    "status": "passed",
+    "duration_seconds": 0.031
+  },
+  {
+    "name": "tests.test_invariants::test_power_balance_closed[path5]",
+    "status": "passed",
+    "duration_seconds": 0.022
+  },
+  {
+    "name": "tests.test_invariants::test_soc_within_bounds[path0]",
+    "status": "passed",
+    "duration_seconds": 0.023
+  },
+  {
+    "name": "tests.test_invariants::test_soc_within_bounds[path1]",
+    "status": "passed",
+    "duration_seconds": 0.023
+  },
+  {
+    "name": "tests.test_invariants::test_soc_within_bounds[path2]",
+    "status": "passed",
+    "duration_seconds": 0.021
+  },
+  {
+    "name": "tests.test_invariants::test_soc_within_bounds[path3]",
+    "status": "passed",
+    "duration_seconds": 0.016
+  },
+  {
+    "name": "tests.test_invariants::test_soc_within_bounds[path4]",
+    "status": "passed",
+    "duration_seconds": 0.022
+  },
+  {
+    "name": "tests.test_invariants::test_soc_within_bounds[path5]",
+    "status": "passed",
+    "duration_seconds": 0.019
+  },
+  {
+    "name": "tests.test_invariants::test_charge_discharge_mutual_exclusion[path0]",
+    "status": "passed",
+    "duration_seconds": 0.029
+  },
+  {
+    "name": "tests.test_invariants::test_charge_discharge_mutual_exclusion[path1]",
+    "status": "passed",
+    "duration_seconds": 0.03
+  },
+  {
+    "name": "tests.test_invariants::test_charge_discharge_mutual_exclusion[path2]",
+    "status": "passed",
+    "duration_seconds": 0.026
+  },
+  {
+    "name": "tests.test_invariants::test_charge_discharge_mutual_exclusion[path3]",
+    "status": "passed",
+    "duration_seconds": 0.025
+  },
+  {
+    "name": "tests.test_invariants::test_charge_discharge_mutual_exclusion[path4]",
+    "status": "passed",
+    "duration_seconds": 0.02
+  },
+  {
+    "name": "tests.test_invariants::test_charge_discharge_mutual_exclusion[path5]",
+    "status": "passed",
+    "duration_seconds": 0.023
+  },
+  {
+    "name": "tests.test_invariants::test_power_limits[path0]",
+    "status": "passed",
+    "duration_seconds": 0.135
+  },
+  {
+    "name": "tests.test_invariants::test_power_limits[path1]",
+    "status": "passed",
+    "duration_seconds": 0.164
+  },
+  {
+    "name": "tests.test_invariants::test_power_limits[path2]",
+    "status": "passed",
+    "duration_seconds": 0.149
+  },
+  {
+    "name": "tests.test_invariants::test_power_limits[path3]",
+    "status": "passed",
+    "duration_seconds": 0.146
+  },
+  {
+    "name": "tests.test_invariants::test_power_limits[path4]",
+    "status": "passed",
+    "duration_seconds": 0.252
+  },
+  {
+    "name": "tests.test_invariants::test_power_limits[path5]",
+    "status": "passed",
+    "duration_seconds": 0.156
+  },
+  {
+    "name": "tests.test_invariants::test_task_completeness",
+    "status": "passed",
+    "duration_seconds": 0.567
+  },
+  {
+    "name": "tests.test_invariants::test_municipal_heat_rigid[path0]",
+    "status": "passed",
+    "duration_seconds": 0.041
+  },
+  {
+    "name": "tests.test_invariants::test_municipal_heat_rigid[path1]",
+    "status": "passed",
+    "duration_seconds": 0.041
+  },
+  {
+    "name": "tests.test_invariants::test_municipal_heat_rigid[path2]",
+    "status": "passed",
+    "duration_seconds": 0.028
+  },
+  {
+    "name": "tests.test_invariants::test_municipal_heat_rigid[path3]",
+    "status": "passed",
+    "duration_seconds": 0.028
+  },
+  {
+    "name": "tests.test_invariants::test_municipal_heat_rigid[path4]",
+    "status": "passed",
+    "duration_seconds": 0.033
+  },
+  {
+    "name": "tests.test_invariants::test_municipal_heat_rigid[path5]",
+    "status": "passed",
+    "duration_seconds": 0.022
+  },
+  {
+    "name": "tests.test_invariants::test_heat_pump_physical_limit[path0]",
+    "status": "passed",
+    "duration_seconds": 0.046
+  },
+  {
+    "name": "tests.test_invariants::test_heat_pump_physical_limit[path1]",
+    "status": "passed",
+    "duration_seconds": 0.032
+  },
+  {
+    "name": "tests.test_invariants::test_heat_pump_physical_limit[path2]",
+    "status": "passed",
+    "duration_seconds": 0.024
+  },
+  {
+    "name": "tests.test_invariants::test_heat_pump_physical_limit[path3]",
+    "status": "passed",
+    "duration_seconds": 0.027
+  },
+  {
+    "name": "tests.test_invariants::test_heat_pump_physical_limit[path4]",
+    "status": "passed",
+    "duration_seconds": 0.028
+  },
+  {
+    "name": "tests.test_invariants::test_heat_pump_physical_limit[path5]",
+    "status": "passed",
+    "duration_seconds": 0.054
+  },
+  {
+    "name": "tests.test_invariants::test_determinism",
+    "status": "passed",
+    "duration_seconds": 0.219
+  },
+  {
+    "name": "tests.test_invariants::test_no_storage_degeneration",
+    "status": "passed",
+    "duration_seconds": 0.056
+  },
+  {
+    "name": "tests.test_invariants::test_params_actually_used",
+    "status": "passed",
+    "duration_seconds": 0.242
+  },
+  {
+    "name": "tests.test_invariants::test_infeasible_not_silent",
+    "status": "passed",
+    "duration_seconds": 0.056
+  },
+  {
+    "name": "tests.test_invariants::test_cumulative_discharge_capacity_derated",
+    "status": "passed",
+    "duration_seconds": 0.077
+  },
+  {
+    "name": "tests.test_invariants::test_charge_discharge_roundtrip_is_lossless",
+    "status": "passed",
+    "duration_seconds": 0.003
+  },
+  {
+    "name": "tests.test_invariants::test_energy_limits_positive_part",
+    "status": "passed",
+    "duration_seconds": 0.004
+  },
+  {
+    "name": "tests.test_invariants::test_energy_limits_positive_part_solves",
+    "status": "passed",
+    "duration_seconds": 0.111
+  },
+  {
+    "name": "tests.test_invariants::test_bus_side_limits_respect_efficiency",
+    "status": "passed",
+    "duration_seconds": 0.003
+  },
+  {
+    "name": "tests.test_invariants::test_soc_stays_within_usable_band",
+    "status": "passed",
+    "duration_seconds": 0.466
+  },
+  {
+    "name": "tests.test_invariants::test_energy_balance_always_closes",
+    "status": "passed",
+    "duration_seconds": 0.19
+  },
+  {
+    "name": "tests.test_invariants::test_temperature_drop_does_not_make_infeasible",
+    "status": "passed",
+    "duration_seconds": 0.146
+  },
+  {
+    "name": "tests.test_invariants::test_usable_band_scales_with_gamma",
+    "status": "passed",
+    "duration_seconds": 0.003
+  },
+  {
+    "name": "tests.test_invariants::test_heat_source_balance[path0]",
+    "status": "passed",
+    "duration_seconds": 0.026
+  },
+  {
+    "name": "tests.test_invariants::test_heat_source_balance[path1]",
+    "status": "passed",
+    "duration_seconds": 0.031
+  },
+  {
+    "name": "tests.test_invariants::test_heat_source_balance[path2]",
+    "status": "passed",
+    "duration_seconds": 0.034
+  },
+  {
+    "name": "tests.test_invariants::test_heat_source_balance[path3]",
+    "status": "passed",
+    "duration_seconds": 0.026
+  },
+  {
+    "name": "tests.test_invariants::test_heat_source_balance[path4]",
+    "status": "passed",
+    "duration_seconds": 0.033
+  },
+  {
+    "name": "tests.test_invariants::test_heat_source_balance[path5]",
+    "status": "passed",
+    "duration_seconds": 0.032
+  },
+  {
+    "name": "tests.test_invariants::test_heat_output_balance[path0]",
+    "status": "passed",
+    "duration_seconds": 0.036
+  },
+  {
+    "name": "tests.test_invariants::test_heat_output_balance[path1]",
+    "status": "passed",
+    "duration_seconds": 0.027
+  },
+  {
+    "name": "tests.test_invariants::test_heat_output_balance[path2]",
+    "status": "passed",
+    "duration_seconds": 0.024
+  },
+  {
+    "name": "tests.test_invariants::test_heat_output_balance[path3]",
+    "status": "passed",
+    "duration_seconds": 0.039
+  },
+  {
+    "name": "tests.test_invariants::test_heat_output_balance[path4]",
+    "status": "passed",
+    "duration_seconds": 0.023
+  },
+  {
+    "name": "tests.test_invariants::test_heat_output_balance[path5]",
+    "status": "passed",
+    "duration_seconds": 0.023
+  },
+  {
+    "name": "tests.test_invariants::test_municipal_demand_always_met[path0]",
+    "status": "passed",
+    "duration_seconds": 0.026
+  },
+  {
+    "name": "tests.test_invariants::test_municipal_demand_always_met[path1]",
+    "status": "passed",
+    "duration_seconds": 0.022
+  },
+  {
+    "name": "tests.test_invariants::test_municipal_demand_always_met[path2]",
+    "status": "passed",
+    "duration_seconds": 0.032
+  },
+  {
+    "name": "tests.test_invariants::test_municipal_demand_always_met[path3]",
+    "status": "passed",
+    "duration_seconds": 0.03
+  },
+  {
+    "name": "tests.test_invariants::test_municipal_demand_always_met[path4]",
+    "status": "passed",
+    "duration_seconds": 0.043
+  },
+  {
+    "name": "tests.test_invariants::test_municipal_demand_always_met[path5]",
+    "status": "passed",
+    "duration_seconds": 0.049
+  },
+  {
+    "name": "tests.test_invariants::test_heat_supply_upper_bound",
+    "status": "passed",
+    "duration_seconds": 0.021
+  },
+  {
+    "name": "tests.test_invariants::test_heat_balance_full_window",
+    "status": "passed",
+    "duration_seconds": 0.023
+  },
+  {
+    "name": "tests.test_invariants::test_heat_allocation_identities",
+    "status": "passed",
+    "duration_seconds": 0.287
+  },
+  {
+    "name": "tests.test_invariants::test_heat_allocation_binary_present",
+    "status": "passed",
+    "duration_seconds": 0.032
+  },
+  {
+    "name": "tests.test_invariants::test_s_heat_objective_includes_boiler_cost",
+    "status": "passed",
+    "duration_seconds": 0.07
+  },
+  {
+    "name": "tests.test_invariants::test_boiler_cost_coefficient_positive",
+    "status": "passed",
+    "duration_seconds": 0.128
+  },
+  {
+    "name": "tests.test_invariants::test_fault_served_load_chain",
+    "status": "passed",
+    "duration_seconds": 0.008
+  },
+  {
+    "name": "tests.test_invariants::test_fault_heat_unserved_not_always_zero",
+    "status": "passed",
+    "duration_seconds": 0.074
+  },
+  {
+    "name": "tests.test_invariants::test_fault_level1_optimality_declared",
+    "status": "passed",
+    "duration_seconds": 0.003
+  },
+  {
+    "name": "tests.test_invariants::test_t_island_and_censoring_share_threshold",
+    "status": "passed",
+    "duration_seconds": 0.024
+  },
+  {
+    "name": "tests.test_invariants::test_n1_uses_critical_scope",
+    "status": "passed",
+    "duration_seconds": 0.013
+  },
+  {
+    "name": "tests.test_invariants::test_fault_discharge_priority_within_hour",
+    "status": "passed",
+    "duration_seconds": 0.111
+  },
+  {
+    "name": "tests.test_invariants::test_fault_chemistry_preference_preserves_noncritical_service",
+    "status": "passed",
+    "duration_seconds": 0.063
+  },
+  {
+    "name": "tests.test_invariants::test_fault_discharge_prefers_na",
+    "status": "passed",
+    "duration_seconds": 0.087
+  },
+  {
+    "name": "tests.test_invariants::test_s_base_storage_only_when_grid_capacity_binds",
+    "status": "passed",
+    "duration_seconds": 0.079
+  },
+  {
+    "name": "tests.test_invariants::test_s_base_terminal_precharge_covers_last_hour_forced_discharge",
+    "status": "passed",
+    "duration_seconds": 0.052
+  },
+  {
+    "name": "tests.test_invariants::test_s_base_grid_recharge_uses_lowest_price_then_earliest_tie",
+    "status": "passed",
+    "duration_seconds": 0.059
+  },
+  {
+    "name": "tests.test_invariants::test_s_base_surplus_stops_at_reference_and_audits_soc_cap_curtailment[storage-power-1MW]",
+    "status": "passed",
+    "duration_seconds": 0.056
+  },
+  {
+    "name": "tests.test_invariants::test_s_base_surplus_stops_at_reference_and_audits_soc_cap_curtailment[A0-no-storage]",
+    "status": "passed",
+    "duration_seconds": 0.058
+  },
+  {
+    "name": "tests.test_invariants::test_s_base_surplus_stops_at_reference_and_audits_soc_cap_curtailment[storage-no-power]",
+    "status": "passed",
+    "duration_seconds": 0.06
+  },
+  {
+    "name": "tests.test_invariants::test_s_base_physical_shortage_remains_infeasible",
+    "status": "passed",
+    "duration_seconds": 0.043
+  },
+  {
+    "name": "tests.test_invariants::test_normal_mode_dump_is_zero",
+    "status": "passed",
+    "duration_seconds": 0.003
+  },
+  {
+    "name": "tests.test_invariants::test_waste_heat_serves_municipal_first",
+    "status": "passed",
+    "duration_seconds": 0.005
+  },
+  {
+    "name": "tests.test_invariants::test_merit_order_economics_consistent",
+    "status": "passed",
+    "duration_seconds": 0.002
+  },
+  {
+    "name": "tests.test_invariants::test_config_duplicate_keys_within_namespace",
+    "status": "passed",
+    "duration_seconds": 0.561
+  },
+  {
+    "name": "tests.test_invariants::test_region_override_authorized",
+    "status": "passed",
+    "duration_seconds": 0.198
+  },
+  {
+    "name": "tests.test_invariants::test_canonical_quantities_unique",
+    "status": "passed",
+    "duration_seconds": 0.204
+  },
+  {
+    "name": "tests.test_invariants::test_zero_acceptance_implies_zero_heat_pump",
+    "status": "passed",
+    "duration_seconds": 0.06
+  },
+  {
+    "name": "tests.test_invariants::test_heat_pump_bounded_by_acceptance",
+    "status": "passed",
+    "duration_seconds": 0.028
+  },
+  {
+    "name": "tests.test_invariants::test_representative_week_tasks_within_window",
+    "status": "passed",
+    "duration_seconds": 0.783
+  },
+  {
+    "name": "tests.test_invariants::test_representative_week_weights_sum_to_one",
+    "status": "passed",
+    "duration_seconds": 0.565
+  },
+  {
+    "name": "tests.test_invariants::test_flexible_ratio_matches_target",
+    "status": "passed",
+    "duration_seconds": 0.047
+  },
+  {
+    "name": "tests.test_invariants::test_capacity_factor_matches_region_reference",
+    "status": "passed",
+    "duration_seconds": 0.025
+  },
+  {
+    "name": "tests.test_invariants::test_flexible_ratio_feasible_pretest",
+    "status": "passed",
+    "duration_seconds": 0.003
+  },
+  {
+    "name": "tests.test_invariants::test_extended_series_length",
+    "status": "passed",
+    "duration_seconds": 0.024
+  },
+  {
+    "name": "tests.test_invariants::test_extreme_week_window_within_bounds",
+    "status": "passed",
+    "duration_seconds": 0.034
+  },
+  {
+    "name": "tests.test_invariants::test_hand_calculated_small_case",
+    "status": "passed",
+    "duration_seconds": 0.103
+  },
+  {
+    "name": "tests.test_invariants::test_modules_importable",
+    "status": "passed",
+    "duration_seconds": 0.362
+  },
+  {
+    "name": "tests.test_invariants::test_unit_metadata_completeness",
+    "status": "passed",
+    "duration_seconds": 0.44
+  },
+  {
+    "name": "tests.test_invariants::test_derived_from_resolvable",
+    "status": "passed",
+    "duration_seconds": 0.073
+  },
+  {
+    "name": "tests.test_invariants::test_pure_storage_conditional_band[0-0.1]",
+    "status": "passed",
+    "duration_seconds": 0.006
+  },
+  {
+    "name": "tests.test_invariants::test_pure_storage_conditional_band[0-0.2]",
+    "status": "passed",
+    "duration_seconds": 0.007
+  },
+  {
+    "name": "tests.test_invariants::test_pure_storage_conditional_band[0-0.5]",
+    "status": "passed",
+    "duration_seconds": 0.005
+  },
+  {
+    "name": "tests.test_invariants::test_pure_storage_conditional_band[0-0.8]",
+    "status": "passed",
+    "duration_seconds": 0.006
+  },
+  {
+    "name": "tests.test_invariants::test_pure_storage_conditional_band[0-0.9]",
+    "status": "passed",
+    "duration_seconds": 0.005
+  },
+  {
+    "name": "tests.test_invariants::test_pure_storage_conditional_band[0.4-0.1]",
+    "status": "passed",
+    "duration_seconds": 0.005
+  },
+  {
+    "name": "tests.test_invariants::test_pure_storage_conditional_band[0.4-0.2]",
+    "status": "passed",
+    "duration_seconds": 0.004
+  },
+  {
+    "name": "tests.test_invariants::test_pure_storage_conditional_band[0.4-0.5]",
+    "status": "passed",
+    "duration_seconds": 0.009
+  },
+  {
+    "name": "tests.test_invariants::test_pure_storage_conditional_band[0.4-0.8]",
+    "status": "passed",
+    "duration_seconds": 0.006
+  },
+  {
+    "name": "tests.test_invariants::test_pure_storage_conditional_band[0.4-0.9]",
+    "status": "passed",
+    "duration_seconds": 0.006
+  },
+  {
+    "name": "tests.test_invariants::test_pure_storage_conditional_band[1-0.1]",
+    "status": "passed",
+    "duration_seconds": 0.005
+  },
+  {
+    "name": "tests.test_invariants::test_pure_storage_conditional_band[1-0.2]",
+    "status": "passed",
+    "duration_seconds": 0.005
+  },
+  {
+    "name": "tests.test_invariants::test_pure_storage_conditional_band[1-0.5]",
+    "status": "passed",
+    "duration_seconds": 0.007
+  },
+  {
+    "name": "tests.test_invariants::test_pure_storage_conditional_band[1-0.8]",
+    "status": "passed",
+    "duration_seconds": 0.005
+  },
+  {
+    "name": "tests.test_invariants::test_pure_storage_conditional_band[1-0.9]",
+    "status": "passed",
+    "duration_seconds": 0.004
+  },
+  {
+    "name": "tests.test_invariants::test_pure_storage_conditional_band[1.1-0.1]",
+    "status": "passed",
+    "duration_seconds": 0.005
+  },
+  {
+    "name": "tests.test_invariants::test_pure_storage_conditional_band[1.1-0.2]",
+    "status": "passed",
+    "duration_seconds": 0.004
+  },
+  {
+    "name": "tests.test_invariants::test_pure_storage_conditional_band[1.1-0.5]",
+    "status": "passed",
+    "duration_seconds": 0.005
+  },
+  {
+    "name": "tests.test_invariants::test_pure_storage_conditional_band[1.1-0.8]",
+    "status": "passed",
+    "duration_seconds": 0.006
+  },
+  {
+    "name": "tests.test_invariants::test_pure_storage_conditional_band[1.1-0.9]",
+    "status": "passed",
+    "duration_seconds": 0.006
+  },
+  {
+    "name": "tests.test_invariants::test_storage_cycles_area_and_lifetime",
+    "status": "passed",
+    "duration_seconds": 0.144
+  },
+  {
+    "name": "tests.test_invariants::test_pure_heat_full_window_and_zero_acceptance",
+    "status": "passed",
+    "duration_seconds": 0.008
+  },
+  {
+    "name": "tests.test_invariants::test_sla_penalty_counts_late_decisions_once",
+    "status": "passed",
+    "duration_seconds": 0.046
+  },
+  {
+    "name": "tests.test_invariants::test_auxiliary_term_does_not_change_optimum",
+    "status": "passed",
+    "duration_seconds": 0.493
+  },
+  {
+    "name": "tests.test_invariants::test_two_stage_auxiliary_accepts_negative_carbon_optimum",
+    "status": "passed",
+    "duration_seconds": 0.057
+  },
+  {
+    "name": "tests.test_invariants::test_carbon_accounting_nontrivial_internal_units",
+    "status": "passed",
+    "duration_seconds": 0.004
+  },
+  {
+    "name": "tests.test_dispatch_smoke::test_ts_has_required_columns",
+    "status": "passed",
+    "duration_seconds": 0.452
+  },
+  {
+    "name": "tests.test_dispatch_smoke::test_dispatch_solves_no_storage",
+    "status": "passed",
+    "duration_seconds": 0.056
+  },
+  {
+    "name": "tests.test_dispatch_smoke::test_dispatch_respects_municipal_heat",
+    "status": "passed",
+    "duration_seconds": 0.058
+  },
+  {
+    "name": "tests.test_dispatch_smoke::test_pue_varies_with_temperature",
+    "status": "passed",
+    "duration_seconds": 0.051
+  },
+  {
+    "name": "tests.test_dispatch_smoke::test_fault_blackout_pauses_tasks_and_keeps_gas_backup",
+    "status": "passed",
+    "duration_seconds": 0.078
+  },
+  {
+    "name": "tests.test_dispatch_smoke::test_normal_without_energy_is_explicitly_infeasible",
+    "status": "passed",
+    "duration_seconds": 0.045
+  },
+  {
+    "name": "tests.test_dispatch_smoke::test_invalid_task_contract_is_rejected_without_clipping[S1-already-in-base]",
+    "status": "passed",
+    "duration_seconds": 0.019
+  },
+  {
+    "name": "tests.test_dispatch_smoke::test_invalid_task_contract_is_rejected_without_clipping[negative-arrival]",
+    "status": "passed",
+    "duration_seconds": 0.019
+  },
+  {
+    "name": "tests.test_dispatch_smoke::test_invalid_task_contract_is_rejected_without_clipping[window-out-of-bounds]",
+    "status": "passed",
+    "duration_seconds": 0.02
+  },
+  {
+    "name": "tests.test_dispatch_smoke::test_generated_input_dispatch_and_trajectory_csv_roundtrip",
+    "status": "passed",
+    "duration_seconds": 0.479
+  }
+]

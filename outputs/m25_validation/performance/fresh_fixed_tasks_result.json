@@ -1,0 +1,62 @@
+{
+  "hours": 168,
+  "tasks": 2200,
+  "budget_s": 25.0,
+  "source_hashes": {
+    "outputs\\m25_validation\\performance\\probe_fixed_tasks.py": "ac05890193c4886c012d66e4a343f512b05d8f697abef61c09372eb2f74f906b",
+    "src\\aidc\\model\\dispatch.py": "b016c6339524104c7aa0f7504acf0cf9ff67353456c89759c832c5b2227a65eb",
+    "outputs\\m2_validation\\inputs_normal_168h_r_nw_a3.parquet": "b37c01f6980466fed3366e7094b3d5d3083607f9f18576a8d8d5b98f1f988b6e",
+    "outputs\\m2_validation\\tasks_normal_168h_r_nw_a3.csv": "98746f4c27a14c7f3f0d2d5ef7d28bc870092fd686c0c3284ad0924435c4677e"
+  },
+  "seed_source": "live_deterministic_s_base",
+  "seed_original_combined_objective": 608792.9450927158,
+  "seed_original_validation": {
+    "bounds": 0.0,
+    "rows": 3.552713678800501e-15,
+    "integrality": 0.0
+  },
+  "surrogate_start_yuan": 608792.9450927157,
+  "surrogate_passes": [
+    {
+      "pass": 1,
+      "moves": 1102,
+      "surrogate_yuan": 603682.2198391308
+    },
+    {
+      "pass": 2,
+      "moves": 15,
+      "surrogate_yuan": 603681.7278196996
+    },
+    {
+      "pass": 3,
+      "moves": 0,
+      "surrogate_yuan": 603681.7278196996
+    }
+  ],
+  "preparation_s": 9.586712800002715,
+  "remaining_physical_budget_s": 15.413287199997285,
+  "fixed_task_starts": 2200,
+  "active_binary_variables": 504,
+  "solver": {
+    "level": "fixed_tasks_physical_only",
+    "status": 0,
+    "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "objective": 572360.5471332058,
+    "mip_gap": 0.0006629099108990487,
+    "mip_dual_bound": 571981.1236539036,
+    "requested_mip_gap": 0.001,
+    "proven_optimal": false
+  },
+  "scope": "Feasible physical solution conditional on heuristic whole-task schedule; gap is NOT original-model global gap.",
+  "original_model_validation": {
+    "bounds": 2.1316282072803006e-14,
+    "rows": 3.907985046680551e-14,
+    "integrality": 2.6645352591003757e-15
+  },
+  "combined_objective": 572360.5471332058,
+  "primary_objective": 572360.5471332058,
+  "sla_penalty": 0.0,
+  "improvement_yuan": 36432.39795950998,
+  "accepted_as_better_incumbent": true,
+  "elapsed_s": 24.022917700000107
+}

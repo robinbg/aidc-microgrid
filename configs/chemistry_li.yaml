@@ -1,0 +1,157 @@
+# 锂电参数（对照体系：磷酸铁锂 LFP）
+#
+# ⚠️ 全部数值为占位值（placeholder），必须在 M1 阶段用公开数据手册 / 检测报告 /
+#    公开文献标定后替换。每条参数请更新 `source` 字段说明来源。
+#
+# 结构与环境单位约定与 chemistry_na.yaml 完全一致，代码用同一套公式处理。
+# 曲线块结构：{points, source, scale_range}，见 SPEC §1.3。
+#
+# 重要提醒（SPEC §1.3）：锂电低温折减曲线默认比钠电更陡，这是当前占位值的设定。
+#   标定后若该关系改变，配置结论应相应翻转，这是方案设计允许的结果。
+#   不要为了得到预期结论而人为调整本文件数值。
+
+chemistry: li
+display_name: "磷酸铁锂（LFP）"
+
+# ---------------------------------------------------------------- 成本
+# ⚠️ 锂价波动会显著改变 unit_cost_energy，这是敏感性分析 S2 的扫描对象
+cost:
+  unit_cost_energy:
+    low: 0.28
+    mid: 0.40
+    high: 0.55
+    unit: "元/kWh"
+    internal_unit: "元/MWh"
+    source: "PLACEHOLDER — 需替换为公开电芯/系统报价口径"
+  unit_cost_power:
+    low: 280.0
+    mid: 420.0
+    high: 600.0
+    unit: "元/kW"
+    internal_unit: "元/MW"
+    source: "PLACEHOLDER"
+  opex_annual:
+    low: 8.0
+    mid: 15.0
+    high: 25.0
+    unit: "元/kWh/年"
+    internal_unit: "元/MWh/年"
+    source: "PLACEHOLDER"
+
+# ---------------------------------------------------------------- 寿命
+lifetime:
+  cycle_life:
+    low: 4000.0
+    mid: 6000.0
+    high: 8000.0
+    source: "PLACEHOLDER — LFP 循环寿命是行业标杆，勿低设"
+  calendar_life:
+    low: 8.0
+    mid: 12.0
+    high: 15.0
+    source: "PLACEHOLDER"
+
+# ---------------------------------------------------------------- 低温特性
+#
+# ⚠️ 默认设置：低温折减比钠电更陡、充电倍率限制更严（依据是低温析锂风险）。
+#    具体数值必须标定；标定后若曲线不再更陡，配置结论应相应翻转并如实报告。
+temp_derating:
+  gamma:
+    scale_range: [0.9, 1.0, 1.1]
+    points:
+      - {T: -30, value: 0.45}
+      - {T: -20, value: 0.62}
+      - {T: -10, value: 0.78}
+      - {T:   0, value: 0.88}
+      - {T:  25, value: 1.00}
+      - {T:  45, value: 0.98}
+    source: "PLACEHOLDER — 需替换为公开低温放电容量保持率数据"
+    note: "γ 只作用于可用 SOC 带（以 soc.init 为中心对称收缩），不进入 SOC 动态。见 SPEC §2.3"
+
+  c_max_charge:
+    scale_range: [0.9, 1.0, 1.1]
+    points:
+      - {T: -30, value: 0.02}
+      - {T: -20, value: 0.05}
+      - {T: -10, value: 0.12}
+      - {T:   0, value: 0.25}
+      - {T:  25, value: 1.00}
+      - {T:  45, value: 0.80}
+    source: "PLACEHOLDER — 低温充电受析锂限制，须显著保守"
+
+  c_max_discharge:
+    scale_range: [0.9, 1.0, 1.1]
+    points:
+      - {T: -30, value: 0.10}
+      - {T: -20, value: 0.25}
+      - {T: -10, value: 0.45}
+      - {T:   0, value: 0.70}
+      - {T:  25, value: 1.00}
+      - {T:  45, value: 1.00}
+    source: "PLACEHOLDER"
+
+# ---------------------------------------------------------------- 效率
+efficiency:
+  eta_charge:
+    scale_range: [0.98, 1.0, 1.02]
+    points:
+      - {T: -30, value: 0.88}
+      - {T: -20, value: 0.91}
+      - {T: -10, value: 0.94}
+      - {T:   0, value: 0.96}
+      - {T:  25, value: 0.97}
+      - {T:  45, value: 0.97}
+    source: "PLACEHOLDER"
+  eta_discharge:
+    scale_range: [0.98, 1.0, 1.02]
+    points:
+      - {T: -30, value: 0.90}
+      - {T: -20, value: 0.93}
+      - {T: -10, value: 0.95}
+      - {T:   0, value: 0.96}
+      - {T:  25, value: 0.97}
+      - {T:  45, value: 0.97}
+    source: "PLACEHOLDER"
+
+# ---------------------------------------------------------------- SOC 边界
+# 标称窗口恒定，不随温度收缩；低温由温度相关可用带表达（SPEC §2.3）。
+# 结构说明同 chemistry_na.yaml。
+soc:
+  min: 0.10
+  max: 0.90
+  init: 0.50
+  terminal_equal_init: true
+
+# ---------------------------------------------------------------- 安全
+safety:
+  low_temp_charge_margin:
+    scale_range: [0.95, 1.0, 1.05]
+    points:
+      - {T: -30, value: 0.4}
+      - {T: -20, value: 0.6}
+      - {T: -10, value: 0.8}
+      - {T:   0, value: 0.9}
+      - {T:  25, value: 1.00}
+    source: "PLACEHOLDER — 锂电低温充电的额外保守裕度（析锂风险）"
+
+# ---------------------------------------------------------------- 足迹约束
+# 单位：m²/kWh（配置）× 1000 → m²/MWh（内部）。公式内不得再乘 1000。
+footprint:
+  area_per_kwh:
+    low: 0.018
+    mid: 0.025
+    high: 0.035
+    unit: "m²/kWh"
+    internal_unit: "m²/MWh"
+    source: "PLACEHOLDER"
+
+# ---------------------------------------------------------------- 全生命周期碳足迹
+# 单位：kgCO₂/kWh（配置）× 1000 → kgCO₂/MWh（内部）
+lcc:
+  manufacturing_kgco2_per_kwh:
+    low: 50.0
+    mid: 85.0
+    high: 130.0
+    unit: "kgCO₂/kWh"
+    internal_unit: "kgCO₂/MWh"
+    source: "PLACEHOLDER — 口径需注明是否含上游材料"

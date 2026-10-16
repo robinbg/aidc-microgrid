@@ -1,0 +1,90 @@
+{
+  "source_hash": "82a4db85d0daa30bf561571a93c03bc25f0a743f6e9ae3c6b8e2129185e8c59b",
+  "original_variables": 76884,
+  "original_binary": 72850,
+  "n_variables": 8498,
+  "n_integer": 4464,
+  "initial_rows": 9132,
+  "groups": 26,
+  "interval_LB": -26880.0,
+  "feasible_UB": 581560.9549059827,
+  "preparation_s": 12.873625700005505,
+  "iterations": [
+    {
+      "wall_s": 15.036352800001623,
+      "status": "HighsModelStatus.kTimeLimit",
+      "primal": 581560.9549059827,
+      "dual": -1132.7914233561605,
+      "gap": 1.0019478464188492,
+      "nodes": 0,
+      "iteration": 0,
+      "violations": 0,
+      "original_restoration": {
+        "bounds": 2.6645352591003757e-15,
+        "rows": 7.105427357601002e-15,
+        "integer": 0.0,
+        "objective": 1.1641532182693481e-10
+      },
+      "valid_original_objective": 581560.9549059827,
+      "valid_global_gap": 1.0019478464188492
+    },
+    {
+      "wall_s": 15.029177800002799,
+      "status": "HighsModelStatus.kTimeLimit",
+      "primal": 581560.9549059827,
+      "dual": -1132.7914233561605,
+      "gap": 1.0019478464188492,
+      "nodes": 0,
+      "iteration": 1,
+      "violations": 0,
+      "original_restoration": {
+        "bounds": 2.6645352591003757e-15,
+        "rows": 7.105427357601002e-15,
+        "integer": 0.0,
+        "objective": 1.1641532182693481e-10
+      },
+      "valid_original_objective": 581560.9549059827,
+      "valid_global_gap": 1.0019478464188492
+    },
+    {
+      "wall_s": 15.0331800999993,
+      "status": "HighsModelStatus.kTimeLimit",
+      "primal": 581560.9549059827,
+      "dual": -1132.7914233561605,
+      "gap": 1.0019478464188492,
+      "nodes": 0,
+      "iteration": 2,
+      "violations": 0,
+      "original_restoration": {
+        "bounds": 2.6645352591003757e-15,
+        "rows": 7.105427357601002e-15,
+        "integer": 0.0,
+        "objective": 1.1641532182693481e-10
+      },
+      "valid_original_objective": 581560.9549059827,
+      "valid_global_gap": 1.0019478464188492
+    },
+    {
+      "wall_s": 11.978449200003524,
+      "status": "HighsModelStatus.kTimeLimit",
+      "primal": 581560.9549059827,
+      "dual": -1132.7914233561605,
+      "gap": 1.0019478464188492,
+      "nodes": 0,
+      "iteration": 3,
+      "violations": 0,
+      "original_restoration": {
+        "bounds": 2.6645352591003757e-15,
+        "rows": 7.105427357601002e-15,
+        "integer": 0.0,
+        "objective": 1.1641532182693481e-10
+      },
+      "valid_original_objective": 581560.9549059827,
+      "valid_global_gap": 1.0019478464188492
+    }
+  ],
+  "total_s": 73.8691317000048,
+  "best_original_objective": 581560.9549059827,
+  "solver_total_s": 60.99525119999453,
+  "final_rows": 9132
+}

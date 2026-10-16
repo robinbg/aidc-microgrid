@@ -1,0 +1,56 @@
+........................................................................ [ 26%]
+........................................................................ [ 53%]
+........................................................................ [ 80%]
+....................................................                     [100%]
+============================== warnings summary ===============================
+tests/test_dispatch_smoke.py::test_generated_input_dispatch_and_trajectory_csv_roundtrip
+  D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-EAST wind simulated CF 0.336692 differs from reference 0.220000 by +0.116692 (tolerance 0.05); generation parameters were not adjusted.
+    ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
+
+tests/test_invariants.py::test_representative_week_weights_sum_to_one
+  D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-EAST wind simulated CF 0.333663 differs from reference 0.220000 by +0.113663 (tolerance 0.05); generation parameters were not adjusted.
+    ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
+
+tests/test_invariants.py::test_representative_week_weights_sum_to_one
+tests/test_sizing_objective.py::test_evaluate_sizing_low_fidelity_a0_closed_loop
+tests/test_sizing_objective.py::test_evaluate_sizing_low_fidelity_a3_storage_cost_flows
+tests/test_sizing_objective.py::test_evaluate_sizing_infeasible_not_silent
+tests/test_sizing_objective.py::test_evaluate_sizing_determinism
+tests/test_sizing_objective.py::test_evaluate_sizing_determinism
+  D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-NW pv simulated CF 0.104005 differs from reference 0.170000 by -0.065995 (tolerance 0.05); generation parameters were not adjusted.
+    ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
+
+tests/test_invariants.py::test_representative_week_weights_sum_to_one
+  D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-SOUTH wind simulated CF 0.333663 differs from reference 0.200000 by +0.133663 (tolerance 0.05); generation parameters were not adjusted.
+    ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
+
+tests/test_invariants.py::test_representative_week_weights_sum_to_one
+  D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-WPV pv simulated CF 0.099135 differs from reference 0.220000 by -0.120865 (tolerance 0.05); generation parameters were not adjusted.
+    ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
+
+tests/test_invariants.py::test_representative_week_weights_sum_to_one
+  D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-WPV wind simulated CF 0.333728 differs from reference 0.280000 by +0.053728 (tolerance 0.05); generation parameters were not adjusted.
+    ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
+
+tests/test_invariants.py::test_extended_series_length
+  D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\tests\test_invariants.py:1690: UserWarning: R-EAST wind simulated CF 0.333663 differs from reference 0.220000 by +0.113663 (tolerance 0.05); generation parameters were not adjusted.
+    assert verify_capacity_factors(ts, *args) == verify_capacity_factors(modified, *args)
+
+tests/test_invariants.py::test_extended_series_length
+  D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\tests\test_invariants.py:1690: UserWarning: R-NW pv simulated CF 0.104005 differs from reference 0.170000 by -0.065995 (tolerance 0.05); generation parameters were not adjusted.
+    assert verify_capacity_factors(ts, *args) == verify_capacity_factors(modified, *args)
+
+tests/test_invariants.py::test_extended_series_length
+  D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\tests\test_invariants.py:1690: UserWarning: R-SOUTH wind simulated CF 0.333663 differs from reference 0.200000 by +0.133663 (tolerance 0.05); generation parameters were not adjusted.
+    assert verify_capacity_factors(ts, *args) == verify_capacity_factors(modified, *args)
+
+tests/test_invariants.py::test_extended_series_length
+  D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\tests\test_invariants.py:1690: UserWarning: R-WPV pv simulated CF 0.099135 differs from reference 0.220000 by -0.120865 (tolerance 0.05); generation parameters were not adjusted.
+    assert verify_capacity_factors(ts, *args) == verify_capacity_factors(modified, *args)
+
+tests/test_invariants.py::test_extended_series_length
+  D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\tests\test_invariants.py:1690: UserWarning: R-WPV wind simulated CF 0.333728 differs from reference 0.280000 by +0.053728 (tolerance 0.05); generation parameters were not adjusted.
+    assert verify_capacity_factors(ts, *args) == verify_capacity_factors(modified, *args)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+268 passed, 16 warnings in 87.14s (0:01:27)

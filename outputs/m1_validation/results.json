@@ -1,0 +1,512 @@
+{
+  "spec_version": "2.6",
+  "client_date": "2026-10-15",
+  "status": "m1_complete_m2_in_progress",
+  "simulation_notice": "全部序列均为确定性仿真，未标定，不是真实设备或站点数据。",
+  "pending": [],
+  "test_results": {
+    "first_integration": {
+      "passed": 54,
+      "failed": 1,
+      "deselected": 33
+    },
+    "accepted_runs": {
+      "chemistry": {
+        "command": [
+          "C:\\Users\\Lee Master\\anaconda3\\python.exe",
+          "-B",
+          "-m",
+          "pytest",
+          "tests/test_chemistry_params.py",
+          "-p",
+          "no:cacheprovider",
+          "--basetemp",
+          "D:\\ClaudeWorkspace\\09-aidc-microgrid-kickoff\\outputs\\m1_validation\\pytest-temp-chemistry",
+          "--tb=short",
+          "-ra",
+          "-o",
+          "addopts="
+        ],
+        "returncode": 0,
+        "log": "D:\\ClaudeWorkspace\\09-aidc-microgrid-kickoff\\outputs\\m1_validation\\chemistry-accepted-tests.txt"
+      },
+      "invariants": {
+        "command": [
+          "C:\\Users\\Lee Master\\anaconda3\\python.exe",
+          "-B",
+          "-m",
+          "pytest",
+          "tests/test_invariants.py",
+          "-m",
+          "not solver",
+          "-p",
+          "no:cacheprovider",
+          "--basetemp",
+          "D:\\ClaudeWorkspace\\09-aidc-microgrid-kickoff\\outputs\\m1_validation\\pytest-temp-invariants",
+          "--tb=short",
+          "-ra",
+          "-o",
+          "addopts="
+        ],
+        "returncode": 0,
+        "log": "D:\\ClaudeWorkspace\\09-aidc-microgrid-kickoff\\outputs\\m1_validation\\invariants-accepted-tests.txt"
+      }
+    },
+    "historical_initial": {
+      "chemistry": {
+        "passed": 40,
+        "failed": 0
+      },
+      "invariants_not_solver": {
+        "passed": 41,
+        "failed": 1,
+        "deselected": 33,
+        "failed_test": "test_capacity_factor_matches_region_reference"
+      },
+      "first_integration": {
+        "passed": 54,
+        "failed": 1,
+        "deselected": 33
+      }
+    }
+  },
+  "solver_tests_excluded_by_marker": [
+    "test_power_balance_closed",
+    "test_soc_within_bounds",
+    "test_charge_discharge_mutual_exclusion",
+    "test_power_limits",
+    "test_task_completeness",
+    "test_municipal_heat_rigid",
+    "test_heat_pump_physical_limit",
+    "test_determinism",
+    "test_no_storage_degeneration",
+    "test_params_actually_used",
+    "test_infeasible_not_silent",
+    "test_energy_limits_positive_part_solves",
+    "test_soc_stays_within_usable_band",
+    "test_temperature_drop_does_not_make_infeasible",
+    "test_heat_source_balance",
+    "test_heat_output_balance",
+    "test_municipal_demand_always_met",
+    "test_heat_supply_upper_bound",
+    "test_heat_balance_full_window",
+    "test_heat_allocation_identities",
+    "test_heat_allocation_binary_present",
+    "test_s_heat_objective_includes_boiler_cost",
+    "test_boiler_cost_coefficient_positive",
+    "test_fault_served_load_chain",
+    "test_fault_heat_unserved_not_always_zero",
+    "test_fault_level1_optimality_declared",
+    "test_t_island_and_censoring_share_threshold",
+    "test_n1_uses_critical_scope",
+    "test_normal_mode_dump_is_zero",
+    "test_waste_heat_serves_municipal_first",
+    "test_zero_acceptance_implies_zero_heat_pump",
+    "test_heat_pump_bounded_by_acceptance",
+    "test_hand_calculated_small_case"
+  ],
+  "regions": [
+    {
+      "region": "R-EAST",
+      "seed": 20260816,
+      "hours": 8928,
+      "annual_hours": 8760,
+      "T_min": -5.0,
+      "T_max": 38.0,
+      "IT_base_mw": 1.0752,
+      "night_pv_max_mw": 0.0,
+      "capacity_factors": {
+        "annual_hours_used": 8760,
+        "tolerance": 0.05,
+        "cf_pv_skipped": false,
+        "cf_pv_actual": 0.1113516996760272,
+        "cf_pv_reference": 0.14,
+        "cf_pv_deviation": -0.02864830032397281,
+        "cf_wind_skipped": false,
+        "cf_wind_actual": 0.3336632416964716,
+        "cf_wind_reference": 0.22,
+        "cf_wind_deviation": 0.1136632416964716,
+        "passed": false
+      },
+      "week_ids": [
+        "W-WIN",
+        "W-WINX",
+        "W-SPR",
+        "W-SUM",
+        "W-AUT"
+      ],
+      "week_weights": [
+        0.18,
+        0.16,
+        0.22,
+        0.22,
+        0.22
+      ],
+      "task_count": 1438,
+      "task_summary": {
+        "E_S1_mwh": 180.6336,
+        "E_tasks_mwh": 147.938,
+        "E_IT_mwh": 328.5716,
+        "flexible_ratio": 0.4502458520456424,
+        "flexible_ratio_target": 0.45,
+        "flexible_ratio_deviation": 0.0002458520456423696,
+        "n_by_priority": {
+          "S2": 645,
+          "S3": 793
+        },
+        "gpu_total_hours": 211340.0,
+        "tokens_mtok": 190206.0,
+        "sla_penalty_basis_mtok": 104891.06954102921,
+        "precheck_note": "通过此预检不等于任务集一定可调度（仍需满足到达、截止、非抢占约束）；可调度性的真正验证在 M2 的求解阶段"
+      },
+      "task_resamples": 619,
+      "required_avg_utilization": 0.2727272727272727,
+      "choices": {
+        "temperature": "calendar-boundary winter cosine; configured daily extreme hours; climate clipping",
+        "solar": "local solar time; horizontal elevation; 23.44 degree tilt; day 81 equinox; ambient module-temperature proxy",
+        "weather": "daily Markov chain at stationary distribution; hourly configured clearness draws",
+        "wind": "Weibull draws; configured AR(1) smoothing and seasonal/night modulation",
+        "carbon": "constant configured regional mean; fluctuation amplitude unavailable",
+        "heat": "seasonal base-to-peak demand linear in climate-normalized coldness"
+      }
+    },
+    {
+      "region": "R-NW",
+      "seed": 20260816,
+      "hours": 8928,
+      "annual_hours": 8760,
+      "T_min": -23.419524535893583,
+      "T_max": 30.0,
+      "IT_base_mw": 0.7182,
+      "night_pv_max_mw": 0.0,
+      "capacity_factors": {
+        "annual_hours_used": 8760,
+        "tolerance": 0.05,
+        "cf_pv_skipped": false,
+        "cf_pv_actual": 0.10400456610371688,
+        "cf_pv_reference": 0.17,
+        "cf_pv_deviation": -0.06599543389628314,
+        "cf_wind_skipped": false,
+        "cf_wind_actual": 0.3344903127815978,
+        "cf_wind_reference": 0.35,
+        "cf_wind_deviation": -0.01550968721840218,
+        "passed": false
+      },
+      "week_ids": [
+        "W-WIN",
+        "W-WINX",
+        "W-SPR",
+        "W-SUM",
+        "W-AUT"
+      ],
+      "week_weights": [
+        0.18,
+        0.16,
+        0.22,
+        0.22,
+        0.22
+      ],
+      "task_count": 2200,
+      "task_summary": {
+        "E_S1_mwh": 120.65759999999997,
+        "E_tasks_mwh": 224.1575,
+        "E_IT_mwh": 344.8151,
+        "flexible_ratio": 0.6500802894072795,
+        "flexible_ratio_target": 0.65,
+        "flexible_ratio_deviation": 8.028940727944356e-05,
+        "n_by_priority": {
+          "S2": 1001,
+          "S3": 1199
+        },
+        "gpu_total_hours": 320225.0,
+        "tokens_mtok": 288202.5,
+        "sla_penalty_basis_mtok": 157070.36250000002,
+        "precheck_note": "通过此预检不等于任务集一定可调度（仍需满足到达、截止、非抢占约束）；可调度性的真正验证在 M2 的求解阶段"
+      },
+      "task_resamples": 704,
+      "required_avg_utilization": 0.37229944732875564,
+      "choices": {
+        "temperature": "calendar-boundary winter cosine; configured daily extreme hours; climate clipping",
+        "solar": "local solar time; horizontal elevation; 23.44 degree tilt; day 81 equinox; ambient module-temperature proxy",
+        "weather": "daily Markov chain at stationary distribution; hourly configured clearness draws",
+        "wind": "Weibull draws; configured AR(1) smoothing and seasonal/night modulation",
+        "carbon": "constant configured regional mean; fluctuation amplitude unavailable",
+        "heat": "seasonal base-to-peak demand linear in climate-normalized coldness"
+      }
+    },
+    {
+      "region": "R-SOUTH",
+      "seed": 20260816,
+      "hours": 8928,
+      "annual_hours": 8760,
+      "T_min": 5.0,
+      "T_max": 38.0,
+      "IT_base_mw": 1.0752,
+      "night_pv_max_mw": 0.0,
+      "capacity_factors": {
+        "annual_hours_used": 8760,
+        "tolerance": 0.05,
+        "cf_pv_skipped": false,
+        "cf_pv_actual": 0.117179000772735,
+        "cf_pv_reference": 0.13,
+        "cf_pv_deviation": -0.012820999227264998,
+        "cf_wind_skipped": false,
+        "cf_wind_actual": 0.3336632416964716,
+        "cf_wind_reference": 0.2,
+        "cf_wind_deviation": 0.1336632416964716,
+        "passed": false
+      },
+      "week_ids": [
+        "W-WIN",
+        "W-WINX",
+        "W-SPR",
+        "W-SUM",
+        "W-AUT"
+      ],
+      "week_weights": [
+        0.18,
+        0.16,
+        0.22,
+        0.22,
+        0.22
+      ],
+      "task_count": 1763,
+      "task_summary": {
+        "E_S1_mwh": 180.6336,
+        "E_tasks_mwh": 180.656,
+        "E_IT_mwh": 361.2896,
+        "flexible_ratio": 0.5000310000620001,
+        "flexible_ratio_target": 0.5,
+        "flexible_ratio_deviation": 3.100006200007499e-05,
+        "n_by_priority": {
+          "S2": 808,
+          "S3": 955
+        },
+        "gpu_total_hours": 258080.0,
+        "tokens_mtok": 232272.0,
+        "sla_penalty_basis_mtok": 125819.48950652298,
+        "precheck_note": "通过此预检不等于任务集一定可调度（仍需满足到达、截止、非抢占约束）；可调度性的真正验证在 M2 的求解阶段"
+      },
+      "task_resamples": 757,
+      "required_avg_utilization": 0.3333333333333333,
+      "choices": {
+        "temperature": "calendar-boundary winter cosine; configured daily extreme hours; climate clipping",
+        "solar": "local solar time; horizontal elevation; 23.44 degree tilt; day 81 equinox; ambient module-temperature proxy",
+        "weather": "daily Markov chain at stationary distribution; hourly configured clearness draws",
+        "wind": "Weibull draws; configured AR(1) smoothing and seasonal/night modulation",
+        "carbon": "constant configured regional mean; fluctuation amplitude unavailable",
+        "heat": "seasonal base-to-peak demand linear in climate-normalized coldness"
+      }
+    },
+    {
+      "region": "R-WPV",
+      "seed": 20260816,
+      "hours": 8928,
+      "annual_hours": 8760,
+      "T_min": -18.0,
+      "T_max": 38.0,
+      "IT_base_mw": 0.7182,
+      "night_pv_max_mw": 0.0,
+      "capacity_factors": {
+        "annual_hours_used": 8760,
+        "tolerance": 0.05,
+        "cf_pv_skipped": false,
+        "cf_pv_actual": 0.09913534000924376,
+        "cf_pv_reference": 0.22,
+        "cf_pv_deviation": -0.12086465999075624,
+        "cf_wind_skipped": false,
+        "cf_wind_actual": 0.3337275227972922,
+        "cf_wind_reference": 0.28,
+        "cf_wind_deviation": 0.05372752279729215,
+        "passed": false
+      },
+      "week_ids": [
+        "W-WIN",
+        "W-WINX",
+        "W-SPR",
+        "W-SUM",
+        "W-AUT"
+      ],
+      "week_weights": [
+        0.18,
+        0.16,
+        0.22,
+        0.22,
+        0.22
+      ],
+      "task_count": 2821,
+      "task_summary": {
+        "E_S1_mwh": 120.65759999999997,
+        "E_tasks_mwh": 281.5925,
+        "E_IT_mwh": 402.2501,
+        "flexible_ratio": 0.7000433312508809,
+        "flexible_ratio_target": 0.7,
+        "flexible_ratio_deviation": 4.333125088096246e-05,
+        "n_by_priority": {
+          "S2": 1328,
+          "S3": 1493
+        },
+        "gpu_total_hours": 402275.0,
+        "tokens_mtok": 362047.5,
+        "sla_penalty_basis_mtok": 191611.8105281815,
+        "precheck_note": "通过此预检不等于任务集一定可调度（仍需满足到达、截止、非抢占约束）；可调度性的真正验证在 M2 的求解阶段"
+      },
+      "task_resamples": 1210,
+      "required_avg_utilization": 0.46776084407971846,
+      "choices": {
+        "temperature": "calendar-boundary winter cosine; configured daily extreme hours; climate clipping",
+        "solar": "local solar time; horizontal elevation; 23.44 degree tilt; day 81 equinox; ambient module-temperature proxy",
+        "weather": "daily Markov chain at stationary distribution; hourly configured clearness draws",
+        "wind": "Weibull draws; configured AR(1) smoothing and seasonal/night modulation",
+        "carbon": "constant configured regional mean; fluctuation amplitude unavailable",
+        "heat": "seasonal base-to-peak demand linear in climate-normalized coldness"
+      }
+    }
+  ],
+  "warnings": [
+    "R-EAST wind simulated CF 0.333663 differs from reference 0.220000 by +0.113663 (tolerance 0.05); generation parameters were not adjusted.",
+    "R-NW pv simulated CF 0.104005 differs from reference 0.170000 by -0.065995 (tolerance 0.05); generation parameters were not adjusted.",
+    "R-SOUTH wind simulated CF 0.333663 differs from reference 0.200000 by +0.133663 (tolerance 0.05); generation parameters were not adjusted.",
+    "R-WPV pv simulated CF 0.099135 differs from reference 0.220000 by -0.120865 (tolerance 0.05); generation parameters were not adjusted.",
+    "R-WPV wind simulated CF 0.333728 differs from reference 0.280000 by +0.053728 (tolerance 0.05); generation parameters were not adjusted."
+  ],
+  "placeholder_sources": {
+    "chemistry_na": {
+      "count": 13,
+      "paths": [
+        "cost.unit_cost_energy",
+        "cost.unit_cost_power",
+        "cost.opex_annual",
+        "lifetime.cycle_life",
+        "lifetime.calendar_life",
+        "temp_derating.gamma",
+        "temp_derating.c_max_charge",
+        "temp_derating.c_max_discharge",
+        "efficiency.eta_charge",
+        "efficiency.eta_discharge",
+        "safety.low_temp_charge_margin",
+        "footprint.area_per_kwh",
+        "lcc.manufacturing_kgco2_per_kwh"
+      ]
+    },
+    "chemistry_li": {
+      "count": 13,
+      "paths": [
+        "cost.unit_cost_energy",
+        "cost.unit_cost_power",
+        "cost.opex_annual",
+        "lifetime.cycle_life",
+        "lifetime.calendar_life",
+        "temp_derating.gamma",
+        "temp_derating.c_max_charge",
+        "temp_derating.c_max_discharge",
+        "efficiency.eta_charge",
+        "efficiency.eta_discharge",
+        "safety.low_temp_charge_margin",
+        "footprint.area_per_kwh",
+        "lcc.manufacturing_kgco2_per_kwh"
+      ]
+    },
+    "generation": {
+      "count": 11,
+      "paths": [
+        "wind.weibull.k",
+        "wind.weibull.c",
+        "wind.weibull.ar1_rho",
+        "wind.weibull.seasonal_amplitude",
+        "wind.weibull.diurnal_amplitude",
+        "wind.power_curve",
+        "solar.clearness_index",
+        "solar.weather_markov",
+        "solar.temp_coefficient",
+        "temperature.min_hour",
+        "temperature.max_hour"
+      ],
+      "calibration_todo": "当前全地区趋同，需分地区标定 Weibull 与晴空指数使容量因子进入 ±0.05 范围；未调整参数凑参考值。"
+    }
+  },
+  "protected_files": {
+    "configs\\chemistry_li.yaml": {
+      "unchanged": true,
+      "sha256": "7125833501d101b04ec5994f0e5cced6dfbd5227187023f2b2778c3d65162fae"
+    },
+    "configs\\chemistry_na.yaml": {
+      "unchanged": true,
+      "sha256": "5807a8141c79ca1638fa50f53bda1312d1d834e0bee5bc3dc2e71541c52a3345"
+    },
+    "configs\\economics.yaml": {
+      "unchanged": true,
+      "sha256": "f1fa0ffe0e7b6e8cdbce9553a1a3796d7bf358a29e3bcad1d792369cf14a5d5c"
+    },
+    "configs\\experiments.yaml": {
+      "unchanged": true,
+      "sha256": "97ff592a98912bfbc3ef701704892d7ea4ea6c21eaf6dee75bbed246ee124b18"
+    },
+    "configs\\generation.yaml": {
+      "unchanged": true,
+      "sha256": "2a86aa4a7cd62ea0c2687f1c85b677c3fcbc60b9af611f1d5f3558b563e57809"
+    },
+    "configs\\registry.yaml": {
+      "unchanged": true,
+      "sha256": "68d7feccf943e74118597ec9f9262a20abe6df7f05f29579d58fca30f545f149"
+    },
+    "configs\\system.yaml": {
+      "unchanged": true,
+      "sha256": "8de2c0e758dafc153e80043d52257c4459fbc34e541468fd077cadaf4cb97b07"
+    },
+    "configs\\regions\\r_east.yaml": {
+      "unchanged": true,
+      "sha256": "4be4d6afd85f77c3552a49897052de32a1703bf11b692423a3d360e6a03a9f70"
+    },
+    "configs\\regions\\r_nw.yaml": {
+      "unchanged": true,
+      "sha256": "303ac1f6e3dd18128d2a755bc778ac64bff88d3780542c65907beae3db75970f"
+    },
+    "configs\\regions\\r_south.yaml": {
+      "unchanged": true,
+      "sha256": "b543da1bc05092030e69d756bcbe96a6f161094854ccb20e44020031ecd3bd24"
+    },
+    "configs\\regions\\r_wpv.yaml": {
+      "unchanged": true,
+      "sha256": "7b9c6e30ca0baedb50d2309cf02fe3225acc3e921d590f9dc7e07e3925ffc69a"
+    },
+    "src\\aidc\\model\\dispatch.py": {
+      "unchanged": true,
+      "sha256": "f67ea5618e3ab9c6dfc3ebaece4325dc7f24c91ee0a4445c58dc171d1cda21d8"
+    }
+  },
+  "changed_code_files": [
+    "src/aidc/data/chemistry.py",
+    "src/aidc/data/timeseries.py",
+    "src/aidc/data/tasks.py",
+    "src/aidc/data/__init__.py",
+    "src/aidc/model/storage.py",
+    "src/aidc/model/thermal.py",
+    "src/aidc/model/__init__.py",
+    "tests/test_chemistry_params.py",
+    "tests/test_invariants.py",
+    "pyproject.toml"
+  ],
+  "code_sha256": {
+    "src/aidc/data/chemistry.py": "a8ebf1378da70cf5202a14dc07ffe668bc097ac1638170b205af47a84d2dc941",
+    "src/aidc/data/timeseries.py": "623621213920a0f904bee7e52f7c2163f121bde0b2ee6895865604d8d2a7626d",
+    "src/aidc/data/tasks.py": "63f49f7cc41ef9d3f051c1077a9ef022119f00c399ec8c94d4b939360eccefe5",
+    "src/aidc/data/__init__.py": "97e4a348057ff1c2fed700f808bef4eb89bb346fb1dfd13a9a3ba8a305d9c093",
+    "src/aidc/model/storage.py": "bc17bec3be820ab9e78217f8a9edab9bf6fa6a0d7b9208580fcb009af204a7a7",
+    "src/aidc/model/thermal.py": "c76856305722e4097f6f79d9cd6e70e503543fbe26d8282343d13c5c9ecac6a5",
+    "src/aidc/model/__init__.py": "5187b41dec5780399994e652f8d5d099821a30845c9ec86d7dfd629bf70262ee",
+    "tests/test_chemistry_params.py": "a8f29954d12b3c0c9cf3e1cb08b5d92ac093fdbc2f20e27aabaa6ccd69861963",
+    "tests/test_invariants.py": "274c8909540c76448cc213e1f99eb78d1d21469101b02d87b851466920fddd0a",
+    "pyproject.toml": "f17ff4a86094121bbb5cf69b38b3dc0ce101d7acafbdbc78ad835e333e3e1f04"
+  },
+  "storage_checks": {
+    "eta1_discharge_mwh": 20.0,
+    "eta09_discharge_mwh": 18.0,
+    "hot_to_cold_charge_limit_mwh": 0.0
+  },
+  "user_decisions": {
+    "gamma_high": "保留gamma>1，仅截断可用SOC带",
+    "capacity_factors": "接受正确计算和告警；当前五项超差作为标定未完成项，不阻塞M2"
+  },
+  "protection_scope": "Historical M1 acceptance snapshot only. dispatch.py changed later with explicit M2 authorization; current hashes are in outputs/m2_validation/report.json."
+}

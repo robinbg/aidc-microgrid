@@ -1,0 +1,112 @@
+============================= test session starts =============================
+platform win32 -- Python 3.13.5, pytest-9.1.1, pluggy-1.5.0
+rootdir: D:\ClaudeWorkspace\09-aidc-microgrid-kickoff
+configfile: pyproject.toml
+plugins: anyio-4.11.0, langsmith-0.4.42, asyncio-1.4.0
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collected 156 items
+
+tests\test_chemistry_params.py ......................................... [ 26%]
+.....                                                                    [ 29%]
+tests\test_invariants.py ............................................... [ 59%]
+.....FFF.............................................                    [ 93%]
+tests\test_dispatch_smoke.py ..........                                  [100%]
+
+================================== FAILURES ===================================
+__________________ test_fault_discharge_priority_within_hour __________________
+tests\test_invariants.py:1129: in test_fault_discharge_priority_within_hour
+    result = _m2_fault_two_chem_result()
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests\test_invariants.py:130: in _m2_fault_two_chem_result
+    return _m2_run(ts, tasks, cfg, dict(E_Na=4., P_Na=0.05, E_Li=20., P_Li=5.), mode="fault")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests\test_invariants.py:99: in _m2_run
+    result = solve_dispatch(ts, tasks, cfg, sizing, strategy, 20260816, mip_gap=0, mode=mode)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src\aidc\model\dispatch.py:635: in solve_dispatch
+    _apply_fault_storage_policy(model)
+src\aidc\model\dispatch.py:682: in _apply_fault_storage_policy
+    raise ValueError("fault two-chemistry discharge-order semantics await explicit policy confirmation")
+E   ValueError: fault two-chemistry discharge-order semantics await explicit policy confirmation
+_______________________ test_fault_discharge_prefers_na _______________________
+tests\test_invariants.py:1153: in test_fault_discharge_prefers_na
+    result = _m2_fault_ample_result()
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+tests\test_invariants.py:142: in _m2_fault_ample_result
+    return _m2_run(ts, tasks, cfg, dict(E_Na=20., P_Na=5., E_Li=20., P_Li=5.), mode="fault")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests\test_invariants.py:99: in _m2_run
+    result = solve_dispatch(ts, tasks, cfg, sizing, strategy, 20260816, mip_gap=0, mode=mode)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src\aidc\model\dispatch.py:635: in solve_dispatch
+    _apply_fault_storage_policy(model)
+src\aidc\model\dispatch.py:682: in _apply_fault_storage_policy
+    raise ValueError("fault two-chemistry discharge-order semantics await explicit policy confirmation")
+E   ValueError: fault two-chemistry discharge-order semantics await explicit policy confirmation
+______________ test_s_base_storage_only_when_grid_capacity_binds ______________
+tests\test_invariants.py:1184: in test_s_base_storage_only_when_grid_capacity_binds
+    result = _m2_s_base_result()
+             ^^^^^^^^^^^^^^^^^^^
+tests\test_invariants.py:149: in _m2_s_base_result
+    return _m2_run(ts, tasks, cfg, strategy="S-base")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests\test_invariants.py:99: in _m2_run
+    result = solve_dispatch(ts, tasks, cfg, sizing, strategy, 20260816, mip_gap=0, mode=mode)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src\aidc\model\dispatch.py:656: in solve_dispatch
+    _apply_baseline_rules(model)
+src\aidc\model\dispatch.py:686: in _apply_baseline_rules
+    raise ValueError("S-base storage/grid priority semantics await explicit policy confirmation")
+E   ValueError: S-base storage/grid priority semantics await explicit policy confirmation
+============================== warnings summary ===============================
+tests/test_invariants.py::test_representative_week_weights_sum_to_one
+  D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-EAST wind simulated CF 0.333663 differs from reference 0.220000 by +0.113663 (tolerance 0.05); generation parameters were not adjusted.
+    ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
+
+tests/test_invariants.py::test_representative_week_weights_sum_to_one
+  D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-NW pv simulated CF 0.104005 differs from reference 0.170000 by -0.065995 (tolerance 0.05); generation parameters were not adjusted.
+    ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
+
+tests/test_invariants.py::test_representative_week_weights_sum_to_one
+  D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-SOUTH wind simulated CF 0.333663 differs from reference 0.200000 by +0.133663 (tolerance 0.05); generation parameters were not adjusted.
+    ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
+
+tests/test_invariants.py::test_representative_week_weights_sum_to_one
+  D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-WPV pv simulated CF 0.099135 differs from reference 0.220000 by -0.120865 (tolerance 0.05); generation parameters were not adjusted.
+    ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
+
+tests/test_invariants.py::test_representative_week_weights_sum_to_one
+  D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-WPV wind simulated CF 0.333728 differs from reference 0.280000 by +0.053728 (tolerance 0.05); generation parameters were not adjusted.
+    ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
+
+tests/test_invariants.py::test_extended_series_length
+  D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\tests\test_invariants.py:1536: UserWarning: R-EAST wind simulated CF 0.333663 differs from reference 0.220000 by +0.113663 (tolerance 0.05); generation parameters were not adjusted.
+    assert verify_capacity_factors(ts, *args) == verify_capacity_factors(modified, *args)
+
+tests/test_invariants.py::test_extended_series_length
+  D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\tests\test_invariants.py:1536: UserWarning: R-NW pv simulated CF 0.104005 differs from reference 0.170000 by -0.065995 (tolerance 0.05); generation parameters were not adjusted.
+    assert verify_capacity_factors(ts, *args) == verify_capacity_factors(modified, *args)
+
+tests/test_invariants.py::test_extended_series_length
+  D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\tests\test_invariants.py:1536: UserWarning: R-SOUTH wind simulated CF 0.333663 differs from reference 0.200000 by +0.133663 (tolerance 0.05); generation parameters were not adjusted.
+    assert verify_capacity_factors(ts, *args) == verify_capacity_factors(modified, *args)
+
+tests/test_invariants.py::test_extended_series_length
+  D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\tests\test_invariants.py:1536: UserWarning: R-WPV pv simulated CF 0.099135 differs from reference 0.220000 by -0.120865 (tolerance 0.05); generation parameters were not adjusted.
+    assert verify_capacity_factors(ts, *args) == verify_capacity_factors(modified, *args)
+
+tests/test_invariants.py::test_extended_series_length
+  D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\tests\test_invariants.py:1536: UserWarning: R-WPV wind simulated CF 0.333728 differs from reference 0.280000 by +0.053728 (tolerance 0.05); generation parameters were not adjusted.
+    assert verify_capacity_factors(ts, *args) == verify_capacity_factors(modified, *args)
+
+tests/test_dispatch_smoke.py::test_generated_input_dispatch_and_trajectory_csv_roundtrip
+  D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-EAST wind simulated CF 0.336692 differs from reference 0.220000 by +0.116692 (tolerance 0.05); generation parameters were not adjusted.
+    ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+- generated xml file: D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\outputs\m2_v27_validation\initial-current-tests.xml -
+=========================== short test summary info ===========================
+FAILED tests/test_invariants.py::test_fault_discharge_priority_within_hour - ...
+FAILED tests/test_invariants.py::test_fault_discharge_prefers_na - ValueError...
+FAILED tests/test_invariants.py::test_s_base_storage_only_when_grid_capacity_binds
+================= 3 failed, 153 passed, 11 warnings in 19.22s =================

@@ -1,0 +1,27 @@
+{
+  "source_hash": "d24f92d9c5308f322105feb86b7064a12c90b2bfb096f6cb63d21f63c367ab45",
+  "original_variables": 76884,
+  "original_binary": 72850,
+  "n_variables": 12892,
+  "n_integer": 4464,
+  "initial_rows": 55526,
+  "groups": 26,
+  "interval_LB": -26880.0,
+  "feasible_UB": 581560.9549059827,
+  "preparation_s": 9.621368700005405,
+  "iterations": [
+    {
+      "wall_s": 60.44256750000204,
+      "status": "1",
+      "primal": null,
+      "dual": null,
+      "gap": null,
+      "nodes": null,
+      "iteration": 0
+    }
+  ],
+  "total_s": 70.06641140000283,
+  "best_original_objective": 581560.9549059827,
+  "solver_total_s": 60.444714600002044,
+  "final_rows": 55526
+}

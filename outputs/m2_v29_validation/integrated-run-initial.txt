@@ -1,0 +1,7 @@
+未在画像使用的覆盖授权项: electricity_override.price_sell
+START normal_sbase_168h_r_nw_a0: 168h/2200 tasks
+DONE normal_sbase_168h_r_nw_a0: feasible, 2.451s
+START normal_sbase_168h_r_nw_a3: 168h/2200 tasks
+DONE normal_sbase_168h_r_nw_a3: feasible, 2.440s
+START synthetic fault24h, no renewable, gas retained
+DONE fault24h: optimal, 0.138s

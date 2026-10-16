@@ -1,0 +1,253 @@
+{
+  "status": "passed",
+  "python": "3.13.5",
+  "numpy": "2.1.3",
+  "script_sha256": "ce8fd3e638dc694f6a7ec2cee778c497afe1a604e8d56c48fa9937f13030cece",
+  "exhaustive_finite_check": {
+    "horizon": 4,
+    "jobs_per_group": 3,
+    "possible_windows": 10,
+    "window_multisets": 220,
+    "count_distributions_per_group": 20,
+    "checks": 4400,
+    "passed_by_row_regime": {
+      "endpoint": 4400,
+      "tight_hull": 4400,
+      "indecomposable": 4400
+    },
+    "case_digest_sha256": "749582757586a84191c26b58f4c69bf8af49737c598ea5b2c4e9a3e4d07510a5"
+  },
+  "saved_workload": {
+    "available": true,
+    "path": "D:\\ClaudeWorkspace\\09-aidc-microgrid-kickoff\\outputs\\m2_validation\\tasks_normal_168h_r_nw_a3.csv",
+    "input_sha256": "98746f4c27a14c7f3f0d2d5ef7d28bc870092fd686c0c3284ad0924435c4677e",
+    "horizon": 168,
+    "jobs": 2200,
+    "groups": 26,
+    "hall_row_totals": {
+      "endpoint": 60994,
+      "tight_hull": 47266,
+      "indecomposable": 44991
+    },
+    "by_group": [
+      {
+        "gpu": 5,
+        "duration_h": 2,
+        "jobs": 89,
+        "endpoint": 2812,
+        "tight_hull": 2521,
+        "indecomposable": 2485
+      },
+      {
+        "gpu": 5,
+        "duration_h": 3,
+        "jobs": 89,
+        "endpoint": 2564,
+        "tight_hull": 2330,
+        "indecomposable": 2256
+      },
+      {
+        "gpu": 5,
+        "duration_h": 4,
+        "jobs": 84,
+        "endpoint": 2367,
+        "tight_hull": 2127,
+        "indecomposable": 2017
+      },
+      {
+        "gpu": 5,
+        "duration_h": 6,
+        "jobs": 39,
+        "endpoint": 631,
+        "tight_hull": 570,
+        "indecomposable": 233
+      },
+      {
+        "gpu": 10,
+        "duration_h": 2,
+        "jobs": 108,
+        "endpoint": 2787,
+        "tight_hull": 2558,
+        "indecomposable": 2492
+      },
+      {
+        "gpu": 10,
+        "duration_h": 3,
+        "jobs": 99,
+        "endpoint": 2769,
+        "tight_hull": 2487,
+        "indecomposable": 2240
+      },
+      {
+        "gpu": 10,
+        "duration_h": 4,
+        "jobs": 156,
+        "endpoint": 5195,
+        "tight_hull": 4115,
+        "indecomposable": 4019
+      },
+      {
+        "gpu": 10,
+        "duration_h": 6,
+        "jobs": 138,
+        "endpoint": 4154,
+        "tight_hull": 3210,
+        "indecomposable": 3095
+      },
+      {
+        "gpu": 10,
+        "duration_h": 8,
+        "jobs": 101,
+        "endpoint": 3114,
+        "tight_hull": 2134,
+        "indecomposable": 2128
+      },
+      {
+        "gpu": 10,
+        "duration_h": 12,
+        "jobs": 41,
+        "endpoint": 824,
+        "tight_hull": 494,
+        "indecomposable": 480
+      },
+      {
+        "gpu": 20,
+        "duration_h": 2,
+        "jobs": 63,
+        "endpoint": 1385,
+        "tight_hull": 1241,
+        "indecomposable": 897
+      },
+      {
+        "gpu": 20,
+        "duration_h": 3,
+        "jobs": 71,
+        "endpoint": 1437,
+        "tight_hull": 1292,
+        "indecomposable": 1173
+      },
+      {
+        "gpu": 20,
+        "duration_h": 4,
+        "jobs": 167,
+        "endpoint": 5646,
+        "tight_hull": 4293,
+        "indecomposable": 4162
+      },
+      {
+        "gpu": 20,
+        "duration_h": 6,
+        "jobs": 154,
+        "endpoint": 4734,
+        "tight_hull": 3541,
+        "indecomposable": 3505
+      },
+      {
+        "gpu": 20,
+        "duration_h": 8,
+        "jobs": 105,
+        "endpoint": 2989,
+        "tight_hull": 2146,
+        "indecomposable": 2133
+      },
+      {
+        "gpu": 20,
+        "duration_h": 12,
+        "jobs": 53,
+        "endpoint": 1266,
+        "tight_hull": 812,
+        "indecomposable": 785
+      },
+      {
+        "gpu": 40,
+        "duration_h": 2,
+        "jobs": 26,
+        "endpoint": 312,
+        "tight_hull": 299,
+        "indecomposable": 132
+      },
+      {
+        "gpu": 40,
+        "duration_h": 3,
+        "jobs": 29,
+        "endpoint": 390,
+        "tight_hull": 346,
+        "indecomposable": 89
+      },
+      {
+        "gpu": 40,
+        "duration_h": 4,
+        "jobs": 113,
+        "endpoint": 3458,
+        "tight_hull": 2542,
+        "indecomposable": 2524
+      },
+      {
+        "gpu": 40,
+        "duration_h": 6,
+        "jobs": 132,
+        "endpoint": 4080,
+        "tight_hull": 2791,
+        "indecomposable": 2785
+      },
+      {
+        "gpu": 40,
+        "duration_h": 8,
+        "jobs": 114,
+        "endpoint": 3256,
+        "tight_hull": 2245,
+        "indecomposable": 2231
+      },
+      {
+        "gpu": 40,
+        "duration_h": 12,
+        "jobs": 52,
+        "endpoint": 1160,
+        "tight_hull": 828,
+        "indecomposable": 818
+      },
+      {
+        "gpu": 80,
+        "duration_h": 4,
+        "jobs": 36,
+        "endpoint": 606,
+        "tight_hull": 386,
+        "indecomposable": 378
+      },
+      {
+        "gpu": 80,
+        "duration_h": 6,
+        "jobs": 66,
+        "endpoint": 1385,
+        "tight_hull": 978,
+        "indecomposable": 976
+      },
+      {
+        "gpu": 80,
+        "duration_h": 8,
+        "jobs": 55,
+        "endpoint": 1423,
+        "tight_hull": 818,
+        "indecomposable": 817
+      },
+      {
+        "gpu": 80,
+        "duration_h": 12,
+        "jobs": 20,
+        "endpoint": 250,
+        "tight_hull": 162,
+        "indecomposable": 141
+      }
+    ],
+    "condition": "All late candidates removed; allowed start interval [arrive, deadline-duration]."
+  },
+  "scope": "Independent finite validation; imports no production dispatch implementation.",
+  "general_prerequisites": [
+    "Each job has a nonempty contiguous allowed integer start interval.",
+    "Counts are nonnegative integers and sum to the number of jobs in that group.",
+    "Only GPU count and duration affect physical constraints within a group.",
+    "All per-job late terms are absent or identically zero before aggregation.",
+    "Deterministic integer matching reconstructs actual jobs and metrics."
+  ],
+  "elapsed_s": 9.223648400002276
+}

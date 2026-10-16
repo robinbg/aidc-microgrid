@@ -1,0 +1,25 @@
+{
+  "mode": "real HiGHS setSolution; entire original 168h MILP",
+  "seed_file": "outputs\\m25_validation\\performance\\fixed_tasks_refined_solution.npz",
+  "seed_sha256": "f66d0e1d0c2e32d6fef363e5faa7c1db0be5ce7d5f239f09a701d2ad5c54e70e",
+  "seed_combined_cost": 572409.2489090593,
+  "seed_validation": {
+    "bounds": 2.595612613731646e-11,
+    "rows": 4.6490811200783355e-11,
+    "integrality": 1.779687508474126e-12
+  },
+  "preparation_s": 6.820716300004278,
+  "requested_solve_s": 22.234679799999867,
+  "solver_wall_s": 24.144166199999745,
+  "status": "HighsModelStatus.kTimeLimit",
+  "primal": 572409.2489090593,
+  "dual": -182986.74592078035,
+  "gap": 1.3196781782780944,
+  "nodes": 0,
+  "total_wall_s": 30.965513299997838,
+  "original_validation": {
+    "bounds": 2.595612613731646e-11,
+    "rows": 4.6490811200783355e-11,
+    "integrality": 1.779687508474126e-12
+  }
+}

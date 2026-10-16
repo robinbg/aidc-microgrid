@@ -1,0 +1,31 @@
+{
+  "command": [
+    "C:\\Users\\Lee Master\\anaconda3\\python.exe",
+    "-B",
+    "-m",
+    "pytest",
+    "tests/test_invariants.py",
+    "-k",
+    "fault_chemistry_preference_preserves_noncritical_service or s_base_terminal_precharge or s_base_grid_recharge or s_base_surplus_stops or s_base_physical_shortage",
+    "-p",
+    "no:cacheprovider",
+    "--basetemp",
+    "D:\\ClaudeWorkspace\\09-aidc-microgrid-kickoff\\outputs\\m2_v29_validation\\pytest-temp-newcases-initial",
+    "--tb=short",
+    "-ra",
+    "-o",
+    "addopts=",
+    "--junitxml",
+    "D:\\ClaudeWorkspace\\09-aidc-microgrid-kickoff\\outputs\\m2_v29_validation\\newcases-initial.xml"
+  ],
+  "returncode": 1,
+  "elapsed_seconds": 8.758680582046509,
+  "sha256_before": {
+    "src/aidc/model/dispatch.py": "4932b5233663abe82659563c65bae6324a7ce0c0954c55a7b6d2b2d233dc1e97",
+    "tests/test_invariants.py": "49fd5ad577533d2d512c294296d7aed0d291922be83f8b2d1be52e9bdea07798"
+  },
+  "sha256_after": {
+    "src/aidc/model/dispatch.py": "4932b5233663abe82659563c65bae6324a7ce0c0954c55a7b6d2b2d233dc1e97",
+    "tests/test_invariants.py": "49fd5ad577533d2d512c294296d7aed0d291922be83f8b2d1be52e9bdea07798"
+  }
+}

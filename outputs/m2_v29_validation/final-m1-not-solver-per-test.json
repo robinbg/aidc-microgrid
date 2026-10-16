@@ -1,0 +1,217 @@
+[
+  {
+    "name": "tests.test_invariants::test_cumulative_discharge_capacity_derated",
+    "status": "passed",
+    "duration_seconds": 1.752
+  },
+  {
+    "name": "tests.test_invariants::test_charge_discharge_roundtrip_is_lossless",
+    "status": "passed",
+    "duration_seconds": 0.005
+  },
+  {
+    "name": "tests.test_invariants::test_energy_limits_positive_part",
+    "status": "passed",
+    "duration_seconds": 0.003
+  },
+  {
+    "name": "tests.test_invariants::test_bus_side_limits_respect_efficiency",
+    "status": "passed",
+    "duration_seconds": 0.005
+  },
+  {
+    "name": "tests.test_invariants::test_energy_balance_always_closes",
+    "status": "passed",
+    "duration_seconds": 0.023
+  },
+  {
+    "name": "tests.test_invariants::test_usable_band_scales_with_gamma",
+    "status": "passed",
+    "duration_seconds": 0.003
+  },
+  {
+    "name": "tests.test_invariants::test_merit_order_economics_consistent",
+    "status": "passed",
+    "duration_seconds": 0.469
+  },
+  {
+    "name": "tests.test_invariants::test_config_duplicate_keys_within_namespace",
+    "status": "passed",
+    "duration_seconds": 0.365
+  },
+  {
+    "name": "tests.test_invariants::test_region_override_authorized",
+    "status": "passed",
+    "duration_seconds": 0.042
+  },
+  {
+    "name": "tests.test_invariants::test_canonical_quantities_unique",
+    "status": "passed",
+    "duration_seconds": 0.142
+  },
+  {
+    "name": "tests.test_invariants::test_representative_week_tasks_within_window",
+    "status": "passed",
+    "duration_seconds": 0.691
+  },
+  {
+    "name": "tests.test_invariants::test_representative_week_weights_sum_to_one",
+    "status": "passed",
+    "duration_seconds": 0.549
+  },
+  {
+    "name": "tests.test_invariants::test_flexible_ratio_matches_target",
+    "status": "passed",
+    "duration_seconds": 0.047
+  },
+  {
+    "name": "tests.test_invariants::test_capacity_factor_matches_region_reference",
+    "status": "passed",
+    "duration_seconds": 0.022
+  },
+  {
+    "name": "tests.test_invariants::test_flexible_ratio_feasible_pretest",
+    "status": "passed",
+    "duration_seconds": 0.005
+  },
+  {
+    "name": "tests.test_invariants::test_extended_series_length",
+    "status": "passed",
+    "duration_seconds": 0.025
+  },
+  {
+    "name": "tests.test_invariants::test_extreme_week_window_within_bounds",
+    "status": "passed",
+    "duration_seconds": 0.036
+  },
+  {
+    "name": "tests.test_invariants::test_modules_importable",
+    "status": "passed",
+    "duration_seconds": 0.375
+  },
+  {
+    "name": "tests.test_invariants::test_unit_metadata_completeness",
+    "status": "passed",
+    "duration_seconds": 0.364
+  },
+  {
+    "name": "tests.test_invariants::test_derived_from_resolvable",
+    "status": "passed",
+    "duration_seconds": 0.054
+  },
+  {
+    "name": "tests.test_invariants::test_pure_storage_conditional_band[0-0.1]",
+    "status": "passed",
+    "duration_seconds": 0.005
+  },
+  {
+    "name": "tests.test_invariants::test_pure_storage_conditional_band[0-0.2]",
+    "status": "passed",
+    "duration_seconds": 0.006
+  },
+  {
+    "name": "tests.test_invariants::test_pure_storage_conditional_band[0-0.5]",
+    "status": "passed",
+    "duration_seconds": 0.004
+  },
+  {
+    "name": "tests.test_invariants::test_pure_storage_conditional_band[0-0.8]",
+    "status": "passed",
+    "duration_seconds": 0.005
+  },
+  {
+    "name": "tests.test_invariants::test_pure_storage_conditional_band[0-0.9]",
+    "status": "passed",
+    "duration_seconds": 0.004
+  },
+  {
+    "name": "tests.test_invariants::test_pure_storage_conditional_band[0.4-0.1]",
+    "status": "passed",
+    "duration_seconds": 0.003
+  },
+  {
+    "name": "tests.test_invariants::test_pure_storage_conditional_band[0.4-0.2]",
+    "status": "passed",
+    "duration_seconds": 0.004
+  },
+  {
+    "name": "tests.test_invariants::test_pure_storage_conditional_band[0.4-0.5]",
+    "status": "passed",
+    "duration_seconds": 0.004
+  },
+  {
+    "name": "tests.test_invariants::test_pure_storage_conditional_band[0.4-0.8]",
+    "status": "passed",
+    "duration_seconds": 0.004
+  },
+  {
+    "name": "tests.test_invariants::test_pure_storage_conditional_band[0.4-0.9]",
+    "status": "passed",
+    "duration_seconds": 0.004
+  },
+  {
+    "name": "tests.test_invariants::test_pure_storage_conditional_band[1-0.1]",
+    "status": "passed",
+    "duration_seconds": 0.004
+  },
+  {
+    "name": "tests.test_invariants::test_pure_storage_conditional_band[1-0.2]",
+    "status": "passed",
+    "duration_seconds": 0.005
+  },
+  {
+    "name": "tests.test_invariants::test_pure_storage_conditional_band[1-0.5]",
+    "status": "passed",
+    "duration_seconds": 0.005
+  },
+  {
+    "name": "tests.test_invariants::test_pure_storage_conditional_band[1-0.8]",
+    "status": "passed",
+    "duration_seconds": 0.004
+  },
+  {
+    "name": "tests.test_invariants::test_pure_storage_conditional_band[1-0.9]",
+    "status": "passed",
+    "duration_seconds": 0.004
+  },
+  {
+    "name": "tests.test_invariants::test_pure_storage_conditional_band[1.1-0.1]",
+    "status": "passed",
+    "duration_seconds": 0.004
+  },
+  {
+    "name": "tests.test_invariants::test_pure_storage_conditional_band[1.1-0.2]",
+    "status": "passed",
+    "duration_seconds": 0.005
+  },
+  {
+    "name": "tests.test_invariants::test_pure_storage_conditional_band[1.1-0.5]",
+    "status": "passed",
+    "duration_seconds": 0.004
+  },
+  {
+    "name": "tests.test_invariants::test_pure_storage_conditional_band[1.1-0.8]",
+    "status": "passed",
+    "duration_seconds": 0.005
+  },
+  {
+    "name": "tests.test_invariants::test_pure_storage_conditional_band[1.1-0.9]",
+    "status": "passed",
+    "duration_seconds": 0.004
+  },
+  {
+    "name": "tests.test_invariants::test_storage_cycles_area_and_lifetime",
+    "status": "passed",
+    "duration_seconds": 0.098
+  },
+  {
+    "name": "tests.test_invariants::test_pure_heat_full_window_and_zero_acceptance",
+    "status": "passed",
+    "duration_seconds": 0.005
+  },
+  {
+    "name": "tests.test_invariants::test_carbon_accounting_nontrivial_internal_units",
+    "status": "passed",
+    "duration_seconds": 0.005
+  }
+]

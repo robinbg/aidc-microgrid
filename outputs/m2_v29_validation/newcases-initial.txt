@@ -1,0 +1,74 @@
+============================= test session starts =============================
+platform win32 -- Python 3.13.5, pytest-9.1.1, pluggy-1.5.0
+rootdir: D:\ClaudeWorkspace\09-aidc-microgrid-kickoff
+configfile: pyproject.toml
+plugins: anyio-4.11.0, langsmith-0.4.42, asyncio-1.4.0
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collected 105 items / 100 deselected / 5 selected
+
+tests\test_invariants.py .FFFF                                           [100%]
+
+================================== FAILURES ===================================
+______ test_s_base_terminal_precharge_covers_last_hour_forced_discharge _______
+tests\test_invariants.py:1269: in test_s_base_terminal_precharge_covers_last_hour_forced_discharge
+    result = _m2_s_base_rule_result(monkeypatch, ts, tasks, cfg)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests\test_invariants.py:1243: in _m2_s_base_rule_result
+    return dispatch.solve_dispatch(ts, tasks, cfg, sizing, "S-base", 20260816,
+src\aidc\model\dispatch.py:681: in solve_dispatch
+    _apply_baseline_rules(model)
+src\aidc\model\dispatch.py:755: in _apply_baseline_rules
+    raise ValueError("S-base storage/grid priority semantics await explicit policy confirmation")
+E   ValueError: S-base storage/grid priority semantics await explicit policy confirmation
+________ test_s_base_grid_recharge_uses_lowest_price_then_earliest_tie ________
+tests\test_invariants.py:1290: in test_s_base_grid_recharge_uses_lowest_price_then_earliest_tie
+    result = _m2_s_base_rule_result(monkeypatch, ts, tasks, cfg)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests\test_invariants.py:1243: in _m2_s_base_rule_result
+    return dispatch.solve_dispatch(ts, tasks, cfg, sizing, "S-base", 20260816,
+src\aidc\model\dispatch.py:681: in solve_dispatch
+    _apply_baseline_rules(model)
+src\aidc\model\dispatch.py:755: in _apply_baseline_rules
+    raise ValueError("S-base storage/grid priority semantics await explicit policy confirmation")
+E   ValueError: S-base storage/grid priority semantics await explicit policy confirmation
+____ test_s_base_surplus_stops_at_reference_and_audits_soc_cap_curtailment ____
+tests\test_invariants.py:1304: in test_s_base_surplus_stops_at_reference_and_audits_soc_cap_curtailment
+    result = _m2_s_base_rule_result(monkeypatch, ts, tasks, cfg)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests\test_invariants.py:1243: in _m2_s_base_rule_result
+    return dispatch.solve_dispatch(ts, tasks, cfg, sizing, "S-base", 20260816,
+src\aidc\model\dispatch.py:681: in solve_dispatch
+    _apply_baseline_rules(model)
+src\aidc\model\dispatch.py:755: in _apply_baseline_rules
+    raise ValueError("S-base storage/grid priority semantics await explicit policy confirmation")
+E   ValueError: S-base storage/grid priority semantics await explicit policy confirmation
+______________ test_s_base_physical_shortage_remains_infeasible _______________
+tests\test_invariants.py:1323: in test_s_base_physical_shortage_remains_infeasible
+    result = _m2_s_base_rule_result(monkeypatch, ts, tasks, cfg,
+tests\test_invariants.py:1243: in _m2_s_base_rule_result
+    return dispatch.solve_dispatch(ts, tasks, cfg, sizing, "S-base", 20260816,
+src\aidc\model\dispatch.py:681: in solve_dispatch
+    _apply_baseline_rules(model)
+src\aidc\model\dispatch.py:755: in _apply_baseline_rules
+    raise ValueError("S-base storage/grid priority semantics await explicit policy confirmation")
+E   ValueError: S-base storage/grid priority semantics await explicit policy confirmation
+============================== warnings summary ===============================
+tests/test_invariants.py::test_s_base_terminal_precharge_covers_last_hour_forced_discharge
+tests/test_invariants.py::test_s_base_terminal_precharge_covers_last_hour_forced_discharge
+tests/test_invariants.py::test_s_base_grid_recharge_uses_lowest_price_then_earliest_tie
+tests/test_invariants.py::test_s_base_grid_recharge_uses_lowest_price_then_earliest_tie
+tests/test_invariants.py::test_s_base_surplus_stops_at_reference_and_audits_soc_cap_curtailment
+tests/test_invariants.py::test_s_base_surplus_stops_at_reference_and_audits_soc_cap_curtailment
+tests/test_invariants.py::test_s_base_physical_shortage_remains_infeasible
+tests/test_invariants.py::test_s_base_physical_shortage_remains_infeasible
+  D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\tests\test_invariants.py:1231: DeprecationWarning: Conversion of an array with ndim > 0 to a scalar is deprecated, and will error in future. Ensure you extract a single element from your array before performing this operation. (Deprecated NumPy 1.25.)
+    efficiencies = (float(chemistry.eta_charge(20.)), float(chemistry.eta_discharge(20.)))
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+- generated xml file: D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\outputs\m2_v29_validation\newcases-initial.xml -
+=========================== short test summary info ===========================
+FAILED tests/test_invariants.py::test_s_base_terminal_precharge_covers_last_hour_forced_discharge
+FAILED tests/test_invariants.py::test_s_base_grid_recharge_uses_lowest_price_then_earliest_tie
+FAILED tests/test_invariants.py::test_s_base_surplus_stops_at_reference_and_audits_soc_cap_curtailment
+FAILED tests/test_invariants.py::test_s_base_physical_shortage_remains_infeasible
+=========== 4 failed, 1 passed, 100 deselected, 8 warnings in 5.59s ===========

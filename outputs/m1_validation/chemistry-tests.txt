@@ -1,0 +1,11 @@
+============================= test session starts =============================
+platform win32 -- Python 3.13.5, pytest-9.1.1, pluggy-1.5.0
+rootdir: D:\ClaudeWorkspace\09-aidc-microgrid-kickoff
+configfile: pyproject.toml
+plugins: anyio-4.11.0, langsmith-0.4.42, asyncio-1.4.0
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collected 40 items
+
+tests\test_chemistry_params.py ........................................  [100%]
+
+============================= 40 passed in 5.94s ==============================

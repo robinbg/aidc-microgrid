@@ -1,0 +1,51 @@
+{
+  "command": [
+    "C:\\Users\\Lee Master\\anaconda3\\python.exe",
+    "-B",
+    "-m",
+    "pytest",
+    "tests",
+    "-p",
+    "no:cacheprovider",
+    "--basetemp",
+    "D:\\ClaudeWorkspace\\09-aidc-microgrid-kickoff\\outputs\\m25_validation\\pytest-temp-final",
+    "--tb=short",
+    "-ra",
+    "-o",
+    "addopts=",
+    "--junitxml",
+    "D:\\ClaudeWorkspace\\09-aidc-microgrid-kickoff\\outputs\\m25_validation\\final-full.xml"
+  ],
+  "returncode": 0,
+  "elapsed_seconds": 58.59743570000137,
+  "counts": {
+    "passed": 251
+  },
+  "total": 251,
+  "by_module": {
+    "tests.test_chemistry_params": 46,
+    "tests.test_cost_bound": 5,
+    "tests.test_dispatch_smoke": 10,
+    "tests.test_incumbent_cut": 6,
+    "tests.test_incumbent_search": 4,
+    "tests.test_invariants": 134,
+    "tests.test_resilience_edge_cases": 5,
+    "tests.test_resilience_metrics": 15,
+    "tests.test_resilience_scenarios": 26
+  },
+  "skip_list": [],
+  "sources_stable": true,
+  "configs_unchanged_from_m1": {
+    "configs\\chemistry_li.yaml": true,
+    "configs\\chemistry_na.yaml": true,
+    "configs\\economics.yaml": true,
+    "configs\\experiments.yaml": true,
+    "configs\\generation.yaml": true,
+    "configs\\registry.yaml": true,
+    "configs\\system.yaml": true,
+    "configs\\regions\\r_east.yaml": true,
+    "configs\\regions\\r_nw.yaml": true,
+    "configs\\regions\\r_south.yaml": true,
+    "configs\\regions\\r_wpv.yaml": true
+  }
+}

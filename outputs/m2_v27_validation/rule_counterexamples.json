@@ -1,0 +1,39 @@
+{
+  "surplus_boundary": {
+    "hours": 2,
+    "IT_MW": 1,
+    "PUE": 1.35,
+    "heat_demand_MW_th": 0,
+    "industrial_capacity_MW_th": 0,
+    "PV_MW": [
+      1.35,
+      2.35
+    ],
+    "grid_import_cap_MW": 30,
+    "E_Na_MWh": 100,
+    "P_Na_MW": 1,
+    "eta_ch": 0.978,
+    "initial_soc": 0.5,
+    "forced_last_charge_MWh": 1,
+    "discharge_MWh": 0,
+    "terminal_soc_from_SOC_equation": 0.50978,
+    "required_terminal_soc": 0.5
+  },
+  "capacity_shortfall_boundary": {
+    "hours": 1,
+    "IT_MW": 1,
+    "PUE": 1.35,
+    "PV_MW": 0,
+    "grid_import_cap_MW": 0.5,
+    "storage_MW": 0,
+    "rule_unserved_elec_MW": 0.8500000000000001,
+    "normal_required_unserved_elec_MW": 0
+  },
+  "saved_168h_input": {
+    "max_bus_demand_upper_bound_MW": 6.200537311343879,
+    "grid_import_cap_MW": 30.0,
+    "hours_renewable_above_full_load_bus_bound": 164,
+    "initial_renewable_MW": 13.302147586770733,
+    "initial_bus_demand_upper_bound_MW": 6.188967465172764
+  }
+}

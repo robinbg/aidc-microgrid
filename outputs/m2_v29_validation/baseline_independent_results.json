@@ -1,0 +1,560 @@
+{
+  "notice": "Independent synthetic checks of frozen deterministic S-base rules.\n\nThe MILP entry point is replaced with a probe that raises on every invocation;\nit never returns a fake optimiser result. Each case uses real solve_dispatch,\nthe deterministic baseline implementation and the shared physical-row checks.\nNo production code or config is changed by this evidence script.\n",
+  "created_at_utc": "2026-10-15T18:21:17.258659+00:00",
+  "source_sha256": {
+    "SPEC.md": "facd248eaf4c565a77f8ded52f16fc74ce4c14c7aad96f2812483b180362f0c9",
+    "src\\aidc\\model\\dispatch.py": "82a4db85d0daa30bf561571a93c03bc25f0a743f6e9ae3c6b8e2129185e8c59b",
+    "src\\aidc\\model\\_baseline.py": "ecd1d13633ab448f0d3bb6defce706ce3344888a5331450eb0234921d7ba3770",
+    "outputs\\m2_v29_validation\\baseline_independent_validation.py": "7fed58014edbb4b0a917b3b15f7ed584976b11873fa802e9312be46f9ee028dc",
+    "outputs\\m2_v29_validation\\fault_tolerance_diagnostic.py": "d5c7400b0859050bfac531332c7f61a8f2d6fa63d328a38b6c4e6b0b66cf7163"
+  },
+  "config_sha256": {
+    "configs\\chemistry_li.yaml": "7125833501d101b04ec5994f0e5cced6dfbd5227187023f2b2778c3d65162fae",
+    "configs\\chemistry_na.yaml": "5807a8141c79ca1638fa50f53bda1312d1d834e0bee5bc3dc2e71541c52a3345",
+    "configs\\economics.yaml": "f1fa0ffe0e7b6e8cdbce9553a1a3796d7bf358a29e3bcad1d792369cf14a5d5c",
+    "configs\\experiments.yaml": "97ff592a98912bfbc3ef701704892d7ea4ea6c21eaf6dee75bbed246ee124b18",
+    "configs\\generation.yaml": "2a86aa4a7cd62ea0c2687f1c85b677c3fcbc60b9af611f1d5f3558b563e57809",
+    "configs\\regions\\r_east.yaml": "4be4d6afd85f77c3552a49897052de32a1703bf11b692423a3d360e6a03a9f70",
+    "configs\\regions\\r_nw.yaml": "303ac1f6e3dd18128d2a755bc778ac64bff88d3780542c65907beae3db75970f",
+    "configs\\regions\\r_south.yaml": "b543da1bc05092030e69d756bcbe96a6f161094854ccb20e44020031ecd3bd24",
+    "configs\\regions\\r_wpv.yaml": "7b9c6e30ca0baedb50d2309cf02fe3225acc3e921d590f9dc7e07e3925ffc69a",
+    "configs\\registry.yaml": "68d7feccf943e74118597ec9f9262a20abe6df7f05f29579d58fca30f545f149",
+    "configs\\system.yaml": "8de2c0e758dafc153e80043d52257c4459fbc34e541468fd077cadaf4cb97b07"
+  },
+  "milp_forbidden_probe": {
+    "method": "replace _run_milp with an unconditional raising probe; restore afterward",
+    "call_count": 0
+  },
+  "cases": [
+    {
+      "name": "time-dependent efficiencies and renewable/grid reserve counted once",
+      "inputs": {
+        "timeseries": {
+          "T_amb": [
+            -20.0,
+            20.0,
+            -20.0,
+            20.0
+          ],
+          "T_storage": [
+            -20.0,
+            20.0,
+            -20.0,
+            20.0
+          ],
+          "PUE": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "P_pv_avail": [
+            0.7,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "P_wind_avail": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "price_buy": [
+            30.0,
+            10.0,
+            20.0,
+            40.0
+          ],
+          "price_sell": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "CI_grid": [
+            580.0,
+            580.0,
+            580.0,
+            580.0
+          ],
+          "IT_base": [
+            0.5,
+            0.6,
+            1.5,
+            0.5
+          ],
+          "Q_mun_demand": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "Q_ind_capacity": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "g_imp_capacity": [
+            1.2,
+            1.2,
+            1.2,
+            1.2
+          ]
+        },
+        "sizing": {
+          "E_Na": 4.0,
+          "P_Na": 1.0,
+          "E_Li": 0.0,
+          "P_Li": 0.0
+        },
+        "eta_ch": [
+          0.8,
+          0.9,
+          0.8,
+          0.9
+        ],
+        "eta_dis": [
+          0.75,
+          0.95,
+          0.75,
+          0.95
+        ],
+        "dt_hours": 1.0
+      },
+      "output": {
+        "status": "feasible",
+        "backend": "deterministic_fcfs_rules",
+        "optimized": false,
+        "objective_is_nan": true,
+        "mip_gap_is_nan": true,
+        "optimizer_stages": [],
+        "audit": {
+          "s_base_grid_charge_mwh": 0.2666666666666668,
+          "s_base_grid_charge_hours": [
+            1
+          ],
+          "s_base_surplus_charge_mwh": 0.19999999999999996,
+          "s_base_curtailed_from_soc_cap_mwh": 0.0,
+          "s_base_terminal_reserve_mwh": 0.46666666666666673,
+          "s_base_forced_discharge_mwh": 0.30000000000000004,
+          "s_base_grid_charge_by_hour_mwh": [
+            0.0,
+            0.2666666666666668,
+            0.0,
+            0.0
+          ],
+          "s_base_surplus_charge_by_hour_mwh": [
+            0.19999999999999996,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "s_base_curtailed_from_soc_cap_by_hour_mwh": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "s_base_soc_cap_curtailment_scope": "marginal additional feasible charging at actual hourly SOC after removing strategy quota only; not a full counterfactual trajectory",
+          "s_base_task_starts": {},
+          "s_base_storage_reallocations": [],
+          "s_base_energy_accounting": "per-slot battery withdrawals d/eta_dis matched to eta_ch*c",
+          "s_base_bound_residual": 0.0,
+          "s_base_integer_residual": 0.0,
+          "s_base_model_row_residual": 0.0
+        },
+        "soc_full": {
+          "Na": [
+            0.5,
+            0.54,
+            0.6,
+            0.5,
+            0.5
+          ],
+          "Li": [
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            0.5
+          ]
+        },
+        "battery_charge_mwh": 0.4000000000000001,
+        "battery_withdrawal_mwh": 0.4000000000000001,
+        "battery_balance_residual": 0.0
+      }
+    },
+    {
+      "name": "FCFS whole-task placement with GPU contention and stable same-arrival order",
+      "inputs": {
+        "tasks": [
+          {
+            "task_id": "first",
+            "priority": "S2",
+            "gpu": 5118,
+            "duration_h": 2,
+            "arrive_h": 0,
+            "deadline_h": 4,
+            "tolerance_h": 0,
+            "latest_h": 4,
+            "tokens_mtok": 9212.4
+          },
+          {
+            "task_id": "second",
+            "priority": "S2",
+            "gpu": 5118,
+            "duration_h": 1,
+            "arrive_h": 0,
+            "deadline_h": 4,
+            "tolerance_h": 0,
+            "latest_h": 4,
+            "tokens_mtok": 4606.2
+          }
+        ],
+        "planning_gpu_capacity": 5118,
+        "timeseries": {
+          "T_amb": [
+            20.0,
+            20.0,
+            20.0,
+            20.0
+          ],
+          "T_storage": [
+            20.0,
+            20.0,
+            20.0,
+            20.0
+          ],
+          "PUE": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "P_pv_avail": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "P_wind_avail": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "price_buy": [
+            430.0,
+            430.0,
+            430.0,
+            430.0
+          ],
+          "price_sell": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "CI_grid": [
+            580.0,
+            580.0,
+            580.0,
+            580.0
+          ],
+          "IT_base": [
+            0.5,
+            0.5,
+            0.5,
+            0.5
+          ],
+          "Q_mun_demand": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "Q_ind_capacity": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "g_imp_capacity": [
+            30.0,
+            30.0,
+            30.0,
+            30.0
+          ]
+        },
+        "sizing": {
+          "E_Na": 0.0,
+          "P_Na": 0.0,
+          "E_Li": 0.0,
+          "P_Li": 0.0
+        }
+      },
+      "output": {
+        "status": "feasible",
+        "backend": "deterministic_fcfs_rules",
+        "optimized": false,
+        "objective_is_nan": true,
+        "mip_gap_is_nan": true,
+        "optimizer_stages": [],
+        "audit": {
+          "s_base_grid_charge_mwh": 0.0,
+          "s_base_grid_charge_hours": [],
+          "s_base_surplus_charge_mwh": 0.0,
+          "s_base_curtailed_from_soc_cap_mwh": 0.0,
+          "s_base_terminal_reserve_mwh": 0.0,
+          "s_base_forced_discharge_mwh": 0.0,
+          "s_base_grid_charge_by_hour_mwh": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "s_base_surplus_charge_by_hour_mwh": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "s_base_curtailed_from_soc_cap_by_hour_mwh": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "s_base_soc_cap_curtailment_scope": "marginal additional feasible charging at actual hourly SOC after removing strategy quota only; not a full counterfactual trajectory",
+          "s_base_task_starts": {
+            "first": 0,
+            "second": 2
+          },
+          "s_base_storage_reallocations": [],
+          "s_base_energy_accounting": "per-slot battery withdrawals d/eta_dis matched to eta_ch*c",
+          "s_base_bound_residual": 0.0,
+          "s_base_integer_residual": 0.0,
+          "s_base_model_row_residual": 0.0
+        },
+        "soc_full": {
+          "Na": [
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            0.5
+          ],
+          "Li": [
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            0.5
+          ]
+        },
+        "task_schedule": [
+          {
+            "task_id": "first",
+            "start_h": 0,
+            "end_h": 2,
+            "late": false
+          },
+          {
+            "task_id": "second",
+            "start_h": 2,
+            "end_h": 3,
+            "late": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "marginal SOC-strategy-cap attribution with E_Na=4.0",
+      "inputs": {
+        "timeseries": {
+          "T_amb": [
+            20.0
+          ],
+          "T_storage": [
+            20.0
+          ],
+          "PUE": [
+            1.0
+          ],
+          "P_pv_avail": [
+            100.0
+          ],
+          "P_wind_avail": [
+            0.0
+          ],
+          "price_buy": [
+            430.0
+          ],
+          "price_sell": [
+            0.0
+          ],
+          "CI_grid": [
+            580.0
+          ],
+          "IT_base": [
+            0.5
+          ],
+          "Q_mun_demand": [
+            0.0
+          ],
+          "Q_ind_capacity": [
+            0.0
+          ],
+          "g_imp_capacity": [
+            30.0
+          ]
+        },
+        "sizing": {
+          "E_Na": 4.0,
+          "P_Na": 1.0,
+          "E_Li": 0.0,
+          "P_Li": 0.0
+        },
+        "expected_marginal_cap_curtailment_mwh": 1.0
+      },
+      "output": {
+        "status": "feasible",
+        "backend": "deterministic_fcfs_rules",
+        "optimized": false,
+        "objective_is_nan": true,
+        "mip_gap_is_nan": true,
+        "optimizer_stages": [],
+        "audit": {
+          "s_base_grid_charge_mwh": 0.0,
+          "s_base_grid_charge_hours": [],
+          "s_base_surplus_charge_mwh": 0.0,
+          "s_base_curtailed_from_soc_cap_mwh": 1.0,
+          "s_base_terminal_reserve_mwh": 0.0,
+          "s_base_forced_discharge_mwh": 0.0,
+          "s_base_grid_charge_by_hour_mwh": [
+            0.0
+          ],
+          "s_base_surplus_charge_by_hour_mwh": [
+            0.0
+          ],
+          "s_base_curtailed_from_soc_cap_by_hour_mwh": [
+            1.0
+          ],
+          "s_base_soc_cap_curtailment_scope": "marginal additional feasible charging at actual hourly SOC after removing strategy quota only; not a full counterfactual trajectory",
+          "s_base_task_starts": {},
+          "s_base_storage_reallocations": [],
+          "s_base_energy_accounting": "per-slot battery withdrawals d/eta_dis matched to eta_ch*c",
+          "s_base_bound_residual": 0.0,
+          "s_base_integer_residual": 0.0,
+          "s_base_model_row_residual": 0.0
+        },
+        "soc_full": {
+          "Na": [
+            0.5,
+            0.5
+          ],
+          "Li": [
+            0.5,
+            0.5
+          ]
+        },
+        "all_curtailment_mwh": 99.5
+      }
+    },
+    {
+      "name": "marginal SOC-strategy-cap attribution with E_Na=0.0",
+      "inputs": {
+        "timeseries": {
+          "T_amb": [
+            20.0
+          ],
+          "T_storage": [
+            20.0
+          ],
+          "PUE": [
+            1.0
+          ],
+          "P_pv_avail": [
+            100.0
+          ],
+          "P_wind_avail": [
+            0.0
+          ],
+          "price_buy": [
+            430.0
+          ],
+          "price_sell": [
+            0.0
+          ],
+          "CI_grid": [
+            580.0
+          ],
+          "IT_base": [
+            0.5
+          ],
+          "Q_mun_demand": [
+            0.0
+          ],
+          "Q_ind_capacity": [
+            0.0
+          ],
+          "g_imp_capacity": [
+            30.0
+          ]
+        },
+        "sizing": {
+          "E_Na": 0.0,
+          "P_Na": 0.0,
+          "E_Li": 0.0,
+          "P_Li": 0.0
+        },
+        "expected_marginal_cap_curtailment_mwh": 0.0
+      },
+      "output": {
+        "status": "feasible",
+        "backend": "deterministic_fcfs_rules",
+        "optimized": false,
+        "objective_is_nan": true,
+        "mip_gap_is_nan": true,
+        "optimizer_stages": [],
+        "audit": {
+          "s_base_grid_charge_mwh": 0.0,
+          "s_base_grid_charge_hours": [],
+          "s_base_surplus_charge_mwh": 0.0,
+          "s_base_curtailed_from_soc_cap_mwh": 0.0,
+          "s_base_terminal_reserve_mwh": 0.0,
+          "s_base_forced_discharge_mwh": 0.0,
+          "s_base_grid_charge_by_hour_mwh": [
+            0.0
+          ],
+          "s_base_surplus_charge_by_hour_mwh": [
+            0.0
+          ],
+          "s_base_curtailed_from_soc_cap_by_hour_mwh": [
+            0.0
+          ],
+          "s_base_soc_cap_curtailment_scope": "marginal additional feasible charging at actual hourly SOC after removing strategy quota only; not a full counterfactual trajectory",
+          "s_base_task_starts": {},
+          "s_base_storage_reallocations": [],
+          "s_base_energy_accounting": "per-slot battery withdrawals d/eta_dis matched to eta_ch*c",
+          "s_base_bound_residual": 0.0,
+          "s_base_integer_residual": 0.0,
+          "s_base_model_row_residual": 0.0
+        },
+        "soc_full": {
+          "Na": [
+            0.5,
+            0.5
+          ],
+          "Li": [
+            0.5,
+            0.5
+          ]
+        },
+        "all_curtailment_mwh": 99.5
+      }
+    }
+  ]
+}

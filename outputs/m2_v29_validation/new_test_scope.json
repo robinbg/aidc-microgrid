@@ -1,0 +1,36 @@
+{
+  "edited_file": "tests\\test_invariants.py",
+  "sha256": "1e21a672a0878ba060c528931df17867c5c79747926c72fff6f116a786e11f38",
+  "new_test_functions": [
+    {
+      "name": "test_fault_chemistry_preference_preserves_noncritical_service",
+      "line": 1142,
+      "docstring": "化学偏好必须在全部服务目标之后，不能用非关键供电换少放 Li。"
+    },
+    {
+      "name": "test_s_base_terminal_precharge_covers_last_hour_forced_discharge",
+      "line": 1270,
+      "docstring": "恒定进口容量；末小时触顶须提前补足双向效率损失，不能因规则而不可行。"
+    },
+    {
+      "name": "test_s_base_grid_recharge_uses_lowest_price_then_earliest_tie",
+      "line": 1291,
+      "docstring": "先放后补，两个并列最低价小时均有充电余量时，选择时间较早者。"
+    },
+    {
+      "name": "test_s_base_surplus_stops_at_reference_and_audits_soc_cap_curtailment",
+      "line": 1311,
+      "docstring": "弃电归因须受真实功率与可用能量限制，不能把 A0 弃电归因于 SOC 策略上界。"
+    },
+    {
+      "name": "test_s_base_physical_shortage_remains_infeasible",
+      "line": 1342,
+      "docstring": "正常模式无储能且电网短缺时必须原样报不可行，不能交付削减的正常轨迹。"
+    }
+  ],
+  "new_testcases": 7,
+  "existing_physical_expectations_changed": false,
+  "helper_contract_change": "S-base success is feasible with optimized=False; actual MILP retains optimal status requirement.",
+  "mock_scope": "Patches _run_milp to raise solely to assert S-base never invokes optimization; trajectories still come from production deterministic rules.",
+  "cap_curtailment_formula": "min(surplus_bus_mwh, temperature_power_limit*dt, E_nom*positive_part(soc_hi-soc)/eta_ch) after removing strategy cap; A0/P0 attribution=0, P1 positive attribution=1MWh while actual curtailment=2MWh."
+}

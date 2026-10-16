@@ -1,0 +1,52 @@
+{
+  "spec_first_line": "# 09 开工包 · 技术契约（SPEC v2.8）",
+  "command": [
+    "C:\\Users\\Lee Master\\anaconda3\\python.exe",
+    "-B",
+    "-m",
+    "pytest",
+    "tests/test_chemistry_params.py",
+    "tests/test_invariants.py",
+    "tests/test_dispatch_smoke.py",
+    "-p",
+    "no:cacheprovider",
+    "--basetemp",
+    "D:\\ClaudeWorkspace\\09-aidc-microgrid-kickoff\\outputs\\m2_v28_validation\\pytest-temp-initial",
+    "--tb=short",
+    "-ra",
+    "-o",
+    "addopts=",
+    "--junitxml",
+    "D:\\ClaudeWorkspace\\09-aidc-microgrid-kickoff\\outputs\\m2_v28_validation\\initial-current-tests.xml"
+  ],
+  "returncode": 1,
+  "elapsed_seconds": 39.53311038017273,
+  "collected": 156,
+  "passed": 153,
+  "failed": 3,
+  "skipped": 0,
+  "errors": 0,
+  "by_file": {
+    "tests.test_chemistry_params": 46,
+    "tests.test_invariants": 100,
+    "tests.test_dispatch_smoke": 10
+  },
+  "failed_tests": [
+    {
+      "name": "test_fault_discharge_priority_within_hour",
+      "classname": "tests.test_invariants",
+      "message": "ValueError: fault two-chemistry discharge-order semantics await explicit policy confirmation"
+    },
+    {
+      "name": "test_fault_discharge_prefers_na",
+      "classname": "tests.test_invariants",
+      "message": "ValueError: fault two-chemistry discharge-order semantics await explicit policy confirmation"
+    },
+    {
+      "name": "test_s_base_storage_only_when_grid_capacity_binds",
+      "classname": "tests.test_invariants",
+      "message": "ValueError: S-base storage/grid priority semantics await explicit policy confirmation"
+    }
+  ],
+  "files_changed_during_run": []
+}

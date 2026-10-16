@@ -1,0 +1,35 @@
+{
+  "hours": 168,
+  "tasks": 2200,
+  "n_variables": 76884,
+  "binary_count": 72850,
+  "input_hashes": {
+    "src\\aidc\\model\\dispatch.py": "82a4db85d0daa30bf561571a93c03bc25f0a743f6e9ae3c6b8e2129185e8c59b",
+    "src\\aidc\\model\\_baseline.py": "ecd1d13633ab448f0d3bb6defce706ce3344888a5331450eb0234921d7ba3770",
+    "outputs\\m2_validation\\inputs_normal_168h_r_nw_a3.parquet": "b37c01f6980466fed3366e7094b3d5d3083607f9f18576a8d8d5b98f1f988b6e",
+    "outputs\\m2_validation\\tasks_normal_168h_r_nw_a3.csv": "98746f4c27a14c7f3f0d2d5ef7d28bc870092fd686c0c3284ad0924435c4677e"
+  },
+  "incumbent": {
+    "bound_error": 0.0,
+    "row_error": 3.552713678800501e-15,
+    "integrality_error": 0.0,
+    "primary": 608792.9450927158,
+    "sla_penalty": 0.0
+  },
+  "preparation_s": 5.676373700000113,
+  "solve_wall_s": 63.36825050000334,
+  "solver": {
+    "level": "cutoff_full168",
+    "status": 1,
+    "message": "Time limit reached. (HiGHS Status 13: Time limit reached)",
+    "objective": 581560.9549059827,
+    "mip_gap": 0.023547871520383047,
+    "mip_dual_bound": 567866.4322585854,
+    "requested_mip_gap": 0.01,
+    "proven_optimal": false
+  },
+  "primary_value": 581560.9549052115,
+  "auxiliary_value": 7.711435244412845e-07,
+  "sla_penalty": 0.0,
+  "total_wall_s": 69.62231739999697
+}

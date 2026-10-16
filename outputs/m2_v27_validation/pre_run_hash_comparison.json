@@ -1,0 +1,71 @@
+{
+  "recorded_spec": "2.6",
+  "current_spec_first_line": "# 09 开工包 · 技术契约（SPEC v2.7）",
+  "files": {
+    "src/aidc/data/chemistry.py": {
+      "report_sha256": "a9770de90d1daff32828192ac2978919142bdc3b972eef87c6f67ffbc4fff087",
+      "current_sha256": "a9770de90d1daff32828192ac2978919142bdc3b972eef87c6f67ffbc4fff087",
+      "matches_report": true
+    },
+    "src/aidc/data/timeseries.py": {
+      "report_sha256": "623621213920a0f904bee7e52f7c2163f121bde0b2ee6895865604d8d2a7626d",
+      "current_sha256": "623621213920a0f904bee7e52f7c2163f121bde0b2ee6895865604d8d2a7626d",
+      "matches_report": true
+    },
+    "src/aidc/data/tasks.py": {
+      "report_sha256": "63f49f7cc41ef9d3f051c1077a9ef022119f00c399ec8c94d4b939360eccefe5",
+      "current_sha256": "63f49f7cc41ef9d3f051c1077a9ef022119f00c399ec8c94d4b939360eccefe5",
+      "matches_report": true
+    },
+    "src/aidc/data/__init__.py": {
+      "report_sha256": "d989401705d33599b6558c5b04a84f749e435bc538f2a6cc6da9e091e80b8414",
+      "current_sha256": "d989401705d33599b6558c5b04a84f749e435bc538f2a6cc6da9e091e80b8414",
+      "matches_report": true
+    },
+    "src/aidc/model/storage.py": {
+      "report_sha256": "bc17bec3be820ab9e78217f8a9edab9bf6fa6a0d7b9208580fcb009af204a7a7",
+      "current_sha256": "bc17bec3be820ab9e78217f8a9edab9bf6fa6a0d7b9208580fcb009af204a7a7",
+      "matches_report": true
+    },
+    "src/aidc/model/thermal.py": {
+      "report_sha256": "c76856305722e4097f6f79d9cd6e70e503543fbe26d8282343d13c5c9ecac6a5",
+      "current_sha256": "c76856305722e4097f6f79d9cd6e70e503543fbe26d8282343d13c5c9ecac6a5",
+      "matches_report": true
+    },
+    "src/aidc/model/carbon.py": {
+      "report_sha256": "7dbc492a0251f7a4055dcdcd1b9a812e13602702574b84d841a3cbddab2db42c",
+      "current_sha256": "7dbc492a0251f7a4055dcdcd1b9a812e13602702574b84d841a3cbddab2db42c",
+      "matches_report": true
+    },
+    "src/aidc/model/dispatch.py": {
+      "report_sha256": "bbb7d3fbd5b8d11f90d3fc4eccc6a78de856863f330bacec03fdff72e5146df5",
+      "current_sha256": "bbb7d3fbd5b8d11f90d3fc4eccc6a78de856863f330bacec03fdff72e5146df5",
+      "matches_report": true
+    },
+    "src/aidc/model/__init__.py": {
+      "report_sha256": "54e437ff9f09f6089189f22bfe70c13d4dd1cfd00f5d6de127e2a8589e706b6b",
+      "current_sha256": "54e437ff9f09f6089189f22bfe70c13d4dd1cfd00f5d6de127e2a8589e706b6b",
+      "matches_report": true
+    },
+    "tests/test_chemistry_params.py": {
+      "report_sha256": "681dc34e23573240d1427bae8d780f5c169732ac6cf6bcbf381582e909e9184b",
+      "current_sha256": "681dc34e23573240d1427bae8d780f5c169732ac6cf6bcbf381582e909e9184b",
+      "matches_report": true
+    },
+    "tests/test_invariants.py": {
+      "report_sha256": "fa0252946e3e4a23f0101584e6434de3d63c37c63f0686b35e6271759ca010c7",
+      "current_sha256": "abbf552b27665b481e265e38d276eda3d1785946baed54c366dfc0ef0d297a55",
+      "matches_report": false
+    },
+    "tests/test_dispatch_smoke.py": {
+      "report_sha256": "206c55d6a7a7db409ad3a71f28b173c610add37ca59721adc068b7d399f47f65",
+      "current_sha256": "206c55d6a7a7db409ad3a71f28b173c610add37ca59721adc068b7d399f47f65",
+      "matches_report": true
+    },
+    "pyproject.toml": {
+      "report_sha256": "f17ff4a86094121bbb5cf69b38b3dc0ce101d7acafbdbc78ad835e333e3e1f04",
+      "current_sha256": "f17ff4a86094121bbb5cf69b38b3dc0ce101d7acafbdbc78ad835e333e3e1f04",
+      "matches_report": true
+    }
+  }
+}

@@ -1,0 +1,1508 @@
+[
+  {
+    "module": "tests.test_chemistry_params",
+    "name": "test_all_configs_parse",
+    "status": "passed",
+    "seconds": 0.402
+  },
+  {
+    "module": "tests.test_chemistry_params",
+    "name": "test_curve_blocks_have_points_key",
+    "status": "passed",
+    "seconds": 0.115
+  },
+  {
+    "module": "tests.test_chemistry_params",
+    "name": "test_curve_scale_range_present",
+    "status": "passed",
+    "seconds": 0.002
+  },
+  {
+    "module": "tests.test_chemistry_params",
+    "name": "test_unit_fields_declared",
+    "status": "passed",
+    "seconds": 0.003
+  },
+  {
+    "module": "tests.test_chemistry_params",
+    "name": "test_curves_are_monotonic_in_temperature",
+    "status": "passed",
+    "seconds": 0.006
+  },
+  {
+    "module": "tests.test_chemistry_params",
+    "name": "test_gamma_within_unit_interval",
+    "status": "passed",
+    "seconds": 0.003
+  },
+  {
+    "module": "tests.test_chemistry_params",
+    "name": "test_charge_rate_decreases_at_low_temperature",
+    "status": "passed",
+    "seconds": 0.005
+  },
+  {
+    "module": "tests.test_chemistry_params",
+    "name": "test_lithium_low_temp_derating_steeper_than_sodium",
+    "status": "passed",
+    "seconds": 0.002
+  },
+  {
+    "module": "tests.test_chemistry_params",
+    "name": "test_unit_conversion_factor_applied",
+    "status": "passed",
+    "seconds": 0.541
+  },
+  {
+    "module": "tests.test_chemistry_params",
+    "name": "test_low_temp_charge_margin_binds",
+    "status": "passed",
+    "seconds": 0.064
+  },
+  {
+    "module": "tests.test_chemistry_params",
+    "name": "test_soc_window_not_shrunk_by_gamma",
+    "status": "passed",
+    "seconds": 0.068
+  },
+  {
+    "module": "tests.test_chemistry_params",
+    "name": "test_all_parameters_have_interval",
+    "status": "passed",
+    "seconds": 0.006
+  },
+  {
+    "module": "tests.test_chemistry_params",
+    "name": "test_placeholder_sources_are_marked",
+    "status": "passed",
+    "seconds": 0.004
+  },
+  {
+    "module": "tests.test_chemistry_params",
+    "name": "test_curve_interpolates_and_clamps_without_modifying_input",
+    "status": "passed",
+    "seconds": 0.004
+  },
+  {
+    "module": "tests.test_chemistry_params",
+    "name": "test_invalid_curve_rejected[temperatures0-values0]",
+    "status": "passed",
+    "seconds": 0.003
+  },
+  {
+    "module": "tests.test_chemistry_params",
+    "name": "test_invalid_curve_rejected[temperatures1-values1]",
+    "status": "passed",
+    "seconds": 0.003
+  },
+  {
+    "module": "tests.test_chemistry_params",
+    "name": "test_invalid_curve_rejected[temperatures2-values2]",
+    "status": "passed",
+    "seconds": 0.003
+  },
+  {
+    "module": "tests.test_chemistry_params",
+    "name": "test_invalid_curve_rejected[temperatures3-values3]",
+    "status": "passed",
+    "seconds": 0.003
+  },
+  {
+    "module": "tests.test_chemistry_params",
+    "name": "test_invalid_curve_rejected[temperatures4-values4]",
+    "status": "passed",
+    "seconds": 0.006
+  },
+  {
+    "module": "tests.test_chemistry_params",
+    "name": "test_invalid_curve_rejected[temperatures5-values5]",
+    "status": "passed",
+    "seconds": 0.003
+  },
+  {
+    "module": "tests.test_chemistry_params",
+    "name": "test_usable_band_clips_both_sides",
+    "status": "passed",
+    "seconds": 0.057
+  },
+  {
+    "module": "tests.test_chemistry_params",
+    "name": "test_power_zero_capacity_and_no_gamma_double_derating",
+    "status": "passed",
+    "seconds": 0.085
+  },
+  {
+    "module": "tests.test_chemistry_params",
+    "name": "test_low_scenario_scales_curves_and_selects_scalar_intervals",
+    "status": "passed",
+    "seconds": 0.064
+  },
+  {
+    "module": "tests.test_chemistry_params",
+    "name": "test_high_gamma_preserves_scaling_interpolates_and_clips_only_band[na]",
+    "status": "passed",
+    "seconds": 0.142
+  },
+  {
+    "module": "tests.test_chemistry_params",
+    "name": "test_high_gamma_preserves_scaling_interpolates_and_clips_only_band[li]",
+    "status": "passed",
+    "seconds": 0.102
+  },
+  {
+    "module": "tests.test_chemistry_params",
+    "name": "test_high_efficiency_and_safety_are_still_capped_at_one",
+    "status": "passed",
+    "seconds": 0.168
+  },
+  {
+    "module": "tests.test_chemistry_params",
+    "name": "test_lithium_price_scenario_is_isolated",
+    "status": "passed",
+    "seconds": 0.113
+  },
+  {
+    "module": "tests.test_chemistry_params",
+    "name": "test_storage_temperature_uses_installation_config",
+    "status": "passed",
+    "seconds": 0.526
+  },
+  {
+    "module": "tests.test_chemistry_params",
+    "name": "test_conversion_is_recursive_idempotent_and_nonmutating[\\u5143/kWh-\\u5143/MWh-2000.0]",
+    "status": "passed",
+    "seconds": 0.003
+  },
+  {
+    "module": "tests.test_chemistry_params",
+    "name": "test_conversion_is_recursive_idempotent_and_nonmutating[\\u5143/kW-\\u5143/MW-2000.0]",
+    "status": "passed",
+    "seconds": 0.003
+  },
+  {
+    "module": "tests.test_chemistry_params",
+    "name": "test_conversion_is_recursive_idempotent_and_nonmutating[\\u5143/kWh/\\u5e74-\\u5143/MWh/\\u5e74-2000.0]",
+    "status": "passed",
+    "seconds": 0.003
+  },
+  {
+    "module": "tests.test_chemistry_params",
+    "name": "test_conversion_is_recursive_idempotent_and_nonmutating[m\\xb2/kWh-m\\xb2/MWh-2000.0]",
+    "status": "passed",
+    "seconds": 0.002
+  },
+  {
+    "module": "tests.test_chemistry_params",
+    "name": "test_conversion_is_recursive_idempotent_and_nonmutating[kgCO\\u2082/kWh-kgCO\\u2082/MWh-2000.0]",
+    "status": "passed",
+    "seconds": 0.002
+  },
+  {
+    "module": "tests.test_chemistry_params",
+    "name": "test_conversion_is_recursive_idempotent_and_nonmutating[kW/\\u5361-MW/\\u5361-0.002]",
+    "status": "passed",
+    "seconds": 0.003
+  },
+  {
+    "module": "tests.test_chemistry_params",
+    "name": "test_duplicate_yaml_keys_fail_at_nested_path",
+    "status": "passed",
+    "seconds": 0.271
+  },
+  {
+    "module": "tests.test_chemistry_params",
+    "name": "test_unit_metadata_missing_or_incompatible_fails",
+    "status": "passed",
+    "seconds": 0.003
+  },
+  {
+    "module": "tests.test_chemistry_params",
+    "name": "test_thermal_unit_suffix_cannot_be_overridden_by_metadata[heat_mw_th-MW_th-MW]",
+    "status": "passed",
+    "seconds": 0.005
+  },
+  {
+    "module": "tests.test_chemistry_params",
+    "name": "test_thermal_unit_suffix_cannot_be_overridden_by_metadata[heat_mwh_th-MWh_th-MWh]",
+    "status": "passed",
+    "seconds": 0.003
+  },
+  {
+    "module": "tests.test_chemistry_params",
+    "name": "test_placeholder_warning_is_once_per_source_file",
+    "status": "passed",
+    "seconds": 0.123
+  },
+  {
+    "module": "tests.test_chemistry_params",
+    "name": "test_configuration_bundle_closes_registry_and_preserves_regions",
+    "status": "passed",
+    "seconds": 0.497
+  },
+  {
+    "module": "tests.test_chemistry_params",
+    "name": "test_chemistry_factory_matches_raw_internal_and_file_loading[low]",
+    "status": "passed",
+    "seconds": 0.12
+  },
+  {
+    "module": "tests.test_chemistry_params",
+    "name": "test_chemistry_factory_matches_raw_internal_and_file_loading[mid]",
+    "status": "passed",
+    "seconds": 0.118
+  },
+  {
+    "module": "tests.test_chemistry_params",
+    "name": "test_chemistry_factory_matches_raw_internal_and_file_loading[high]",
+    "status": "passed",
+    "seconds": 0.111
+  },
+  {
+    "module": "tests.test_chemistry_params",
+    "name": "test_registry_rejects_unlisted_override_and_forbidden_alias",
+    "status": "passed",
+    "seconds": 0.908
+  },
+  {
+    "module": "tests.test_chemistry_params",
+    "name": "test_registry_rejects_duplicate_truth_and_unresolvable_dependency",
+    "status": "passed",
+    "seconds": 0.945
+  },
+  {
+    "module": "tests.test_chemistry_params",
+    "name": "test_registry_rejects_cycles_and_derived_config_keys",
+    "status": "passed",
+    "seconds": 1.304
+  },
+  {
+    "module": "tests.test_cost_bound",
+    "name": "test_cost_lower_bound_is_below_real_original_optimum[False]",
+    "status": "passed",
+    "seconds": 0.594
+  },
+  {
+    "module": "tests.test_cost_bound",
+    "name": "test_cost_lower_bound_is_below_real_original_optimum[True]",
+    "status": "passed",
+    "seconds": 0.624
+  },
+  {
+    "module": "tests.test_cost_bound",
+    "name": "test_cost_lower_bound_retains_explicit_objective_constant",
+    "status": "passed",
+    "seconds": 0.599
+  },
+  {
+    "module": "tests.test_cost_bound",
+    "name": "test_cost_lower_bound_does_not_relax_fault_or_unrelated_objective",
+    "status": "passed",
+    "seconds": 0.743
+  },
+  {
+    "module": "tests.test_cost_bound",
+    "name": "test_cost_lower_bound_zero_budget_returns_no_certificate",
+    "status": "passed",
+    "seconds": 0.655
+  },
+  {
+    "module": "tests.test_dispatch_smoke",
+    "name": "test_ts_has_required_columns",
+    "status": "passed",
+    "seconds": 0.49
+  },
+  {
+    "module": "tests.test_dispatch_smoke",
+    "name": "test_dispatch_solves_no_storage",
+    "status": "passed",
+    "seconds": 0.058
+  },
+  {
+    "module": "tests.test_dispatch_smoke",
+    "name": "test_dispatch_respects_municipal_heat",
+    "status": "passed",
+    "seconds": 0.056
+  },
+  {
+    "module": "tests.test_dispatch_smoke",
+    "name": "test_pue_varies_with_temperature",
+    "status": "passed",
+    "seconds": 0.051
+  },
+  {
+    "module": "tests.test_dispatch_smoke",
+    "name": "test_fault_blackout_pauses_tasks_and_keeps_gas_backup",
+    "status": "passed",
+    "seconds": 0.077
+  },
+  {
+    "module": "tests.test_dispatch_smoke",
+    "name": "test_normal_without_energy_is_explicitly_infeasible",
+    "status": "passed",
+    "seconds": 0.054
+  },
+  {
+    "module": "tests.test_dispatch_smoke",
+    "name": "test_invalid_task_contract_is_rejected_without_clipping[S1-already-in-base]",
+    "status": "passed",
+    "seconds": 0.028
+  },
+  {
+    "module": "tests.test_dispatch_smoke",
+    "name": "test_invalid_task_contract_is_rejected_without_clipping[negative-arrival]",
+    "status": "passed",
+    "seconds": 0.023
+  },
+  {
+    "module": "tests.test_dispatch_smoke",
+    "name": "test_invalid_task_contract_is_rejected_without_clipping[window-out-of-bounds]",
+    "status": "passed",
+    "seconds": 0.022
+  },
+  {
+    "module": "tests.test_dispatch_smoke",
+    "name": "test_generated_input_dispatch_and_trajectory_csv_roundtrip",
+    "status": "passed",
+    "seconds": 0.346
+  },
+  {
+    "module": "tests.test_incumbent_cut",
+    "name": "test_feasible_cut_keeps_original_optimum_and_integrality[False]",
+    "status": "passed",
+    "seconds": 0.59
+  },
+  {
+    "module": "tests.test_incumbent_cut",
+    "name": "test_feasible_cut_keeps_original_optimum_and_integrality[True]",
+    "status": "passed",
+    "seconds": 0.542
+  },
+  {
+    "module": "tests.test_incumbent_cut",
+    "name": "test_infeasible_rule_candidate_does_not_constrain_the_milp",
+    "status": "passed",
+    "seconds": 0.566
+  },
+  {
+    "module": "tests.test_incumbent_cut",
+    "name": "test_non_cost_strategy_has_no_hidden_rule_objective_cut",
+    "status": "passed",
+    "seconds": 0.498
+  },
+  {
+    "module": "tests.test_incumbent_cut",
+    "name": "test_inconsistent_lower_bound_cannot_become_zero_gap",
+    "status": "passed",
+    "seconds": 0.002
+  },
+  {
+    "module": "tests.test_incumbent_cut",
+    "name": "test_large_cost_call_returns_integer_jobs_with_global_certificate",
+    "status": "passed",
+    "seconds": 1.427
+  },
+  {
+    "module": "tests.test_incumbent_search",
+    "name": "test_real_incumbent_improves_heat_alignment_without_mutating_model",
+    "status": "passed",
+    "seconds": 0.64
+  },
+  {
+    "module": "tests.test_incumbent_search",
+    "name": "test_expired_deadline_returns_original_seed_without_runner",
+    "status": "passed",
+    "seconds": 0.522
+  },
+  {
+    "module": "tests.test_incumbent_search",
+    "name": "test_invalid_original_incumbent_is_rejected_before_search",
+    "status": "passed",
+    "seconds": 0.533
+  },
+  {
+    "module": "tests.test_incumbent_search",
+    "name": "test_failed_physical_solve_preserves_seed_and_reports_no_global_gap",
+    "status": "passed",
+    "seconds": 0.532
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_power_balance_closed[path0]",
+    "status": "passed",
+    "seconds": 0.231
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_power_balance_closed[path1]",
+    "status": "passed",
+    "seconds": 0.022
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_power_balance_closed[path2]",
+    "status": "passed",
+    "seconds": 0.145
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_power_balance_closed[path3]",
+    "status": "passed",
+    "seconds": 0.053
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_power_balance_closed[path4]",
+    "status": "passed",
+    "seconds": 0.036
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_power_balance_closed[path5]",
+    "status": "passed",
+    "seconds": 0.021
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_soc_within_bounds[path0]",
+    "status": "passed",
+    "seconds": 0.028
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_soc_within_bounds[path1]",
+    "status": "passed",
+    "seconds": 0.017
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_soc_within_bounds[path2]",
+    "status": "passed",
+    "seconds": 0.024
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_soc_within_bounds[path3]",
+    "status": "passed",
+    "seconds": 0.016
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_soc_within_bounds[path4]",
+    "status": "passed",
+    "seconds": 0.016
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_soc_within_bounds[path5]",
+    "status": "passed",
+    "seconds": 0.031
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_charge_discharge_mutual_exclusion[path0]",
+    "status": "passed",
+    "seconds": 0.017
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_charge_discharge_mutual_exclusion[path1]",
+    "status": "passed",
+    "seconds": 0.03
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_charge_discharge_mutual_exclusion[path2]",
+    "status": "passed",
+    "seconds": 0.016
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_charge_discharge_mutual_exclusion[path3]",
+    "status": "passed",
+    "seconds": 0.031
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_charge_discharge_mutual_exclusion[path4]",
+    "status": "passed",
+    "seconds": 0.017
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_charge_discharge_mutual_exclusion[path5]",
+    "status": "passed",
+    "seconds": 0.03
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_power_limits[path0]",
+    "status": "passed",
+    "seconds": 0.176
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_power_limits[path1]",
+    "status": "passed",
+    "seconds": 0.203
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_power_limits[path2]",
+    "status": "passed",
+    "seconds": 0.158
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_power_limits[path3]",
+    "status": "passed",
+    "seconds": 0.133
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_power_limits[path4]",
+    "status": "passed",
+    "seconds": 0.129
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_power_limits[path5]",
+    "status": "passed",
+    "seconds": 0.173
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_task_completeness",
+    "status": "passed",
+    "seconds": 0.684
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_municipal_heat_rigid[path0]",
+    "status": "passed",
+    "seconds": 0.016
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_municipal_heat_rigid[path1]",
+    "status": "passed",
+    "seconds": 0.019
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_municipal_heat_rigid[path2]",
+    "status": "passed",
+    "seconds": 0.017
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_municipal_heat_rigid[path3]",
+    "status": "passed",
+    "seconds": 0.031
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_municipal_heat_rigid[path4]",
+    "status": "passed",
+    "seconds": 0.016
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_municipal_heat_rigid[path5]",
+    "status": "passed",
+    "seconds": 0.031
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_heat_pump_physical_limit[path0]",
+    "status": "passed",
+    "seconds": 0.021
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_heat_pump_physical_limit[path1]",
+    "status": "passed",
+    "seconds": 0.026
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_heat_pump_physical_limit[path2]",
+    "status": "passed",
+    "seconds": 0.019
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_heat_pump_physical_limit[path3]",
+    "status": "passed",
+    "seconds": 0.017
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_heat_pump_physical_limit[path4]",
+    "status": "passed",
+    "seconds": 0.02
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_heat_pump_physical_limit[path5]",
+    "status": "passed",
+    "seconds": 0.026
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_determinism",
+    "status": "passed",
+    "seconds": 0.109
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_no_storage_degeneration",
+    "status": "passed",
+    "seconds": 0.059
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_params_actually_used",
+    "status": "passed",
+    "seconds": 0.219
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_infeasible_not_silent",
+    "status": "passed",
+    "seconds": 0.044
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_cumulative_discharge_capacity_derated",
+    "status": "passed",
+    "seconds": 0.101
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_charge_discharge_roundtrip_is_lossless",
+    "status": "passed",
+    "seconds": 0.004
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_energy_limits_positive_part",
+    "status": "passed",
+    "seconds": 0.005
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_energy_limits_positive_part_solves",
+    "status": "passed",
+    "seconds": 0.121
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_bus_side_limits_respect_efficiency",
+    "status": "passed",
+    "seconds": 0.004
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_soc_stays_within_usable_band",
+    "status": "passed",
+    "seconds": 0.395
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_energy_balance_always_closes",
+    "status": "passed",
+    "seconds": 0.023
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_temperature_drop_does_not_make_infeasible",
+    "status": "passed",
+    "seconds": 0.119
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_usable_band_scales_with_gamma",
+    "status": "passed",
+    "seconds": 0.003
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_heat_source_balance[path0]",
+    "status": "passed",
+    "seconds": 0.02
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_heat_source_balance[path1]",
+    "status": "passed",
+    "seconds": 0.024
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_heat_source_balance[path2]",
+    "status": "passed",
+    "seconds": 0.019
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_heat_source_balance[path3]",
+    "status": "passed",
+    "seconds": 0.019
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_heat_source_balance[path4]",
+    "status": "passed",
+    "seconds": 0.016
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_heat_source_balance[path5]",
+    "status": "passed",
+    "seconds": 0.016
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_heat_output_balance[path0]",
+    "status": "passed",
+    "seconds": 0.017
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_heat_output_balance[path1]",
+    "status": "passed",
+    "seconds": 0.017
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_heat_output_balance[path2]",
+    "status": "passed",
+    "seconds": 0.019
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_heat_output_balance[path3]",
+    "status": "passed",
+    "seconds": 0.016
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_heat_output_balance[path4]",
+    "status": "passed",
+    "seconds": 0.017
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_heat_output_balance[path5]",
+    "status": "passed",
+    "seconds": 0.017
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_municipal_demand_always_met[path0]",
+    "status": "passed",
+    "seconds": 0.016
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_municipal_demand_always_met[path1]",
+    "status": "passed",
+    "seconds": 0.017
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_municipal_demand_always_met[path2]",
+    "status": "passed",
+    "seconds": 0.017
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_municipal_demand_always_met[path3]",
+    "status": "passed",
+    "seconds": 0.018
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_municipal_demand_always_met[path4]",
+    "status": "passed",
+    "seconds": 0.017
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_municipal_demand_always_met[path5]",
+    "status": "passed",
+    "seconds": 0.016
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_heat_supply_upper_bound",
+    "status": "passed",
+    "seconds": 0.006
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_heat_balance_full_window",
+    "status": "passed",
+    "seconds": 0.011
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_heat_allocation_identities",
+    "status": "passed",
+    "seconds": 0.174
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_heat_allocation_binary_present",
+    "status": "passed",
+    "seconds": 0.026
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_s_heat_objective_includes_boiler_cost",
+    "status": "passed",
+    "seconds": 0.067
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_boiler_cost_coefficient_positive",
+    "status": "passed",
+    "seconds": 0.105
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_fault_served_load_chain",
+    "status": "passed",
+    "seconds": 0.007
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_fault_heat_unserved_not_always_zero",
+    "status": "passed",
+    "seconds": 0.062
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_fault_level1_optimality_declared",
+    "status": "passed",
+    "seconds": 0.002
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_t_island_and_censoring_share_threshold",
+    "status": "passed",
+    "seconds": 0.006
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_n1_uses_critical_scope",
+    "status": "passed",
+    "seconds": 0.004
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_fault_discharge_priority_within_hour",
+    "status": "passed",
+    "seconds": 0.079
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_fault_chemistry_preference_preserves_noncritical_service",
+    "status": "passed",
+    "seconds": 0.062
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_fault_discharge_prefers_na",
+    "status": "passed",
+    "seconds": 0.138
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_s_base_storage_only_when_grid_capacity_binds",
+    "status": "passed",
+    "seconds": 0.062
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_s_base_terminal_precharge_covers_last_hour_forced_discharge",
+    "status": "passed",
+    "seconds": 0.045
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_s_base_grid_recharge_uses_lowest_price_then_earliest_tie",
+    "status": "passed",
+    "seconds": 0.04
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_s_base_surplus_stops_at_reference_and_audits_soc_cap_curtailment[storage-power-1MW]",
+    "status": "passed",
+    "seconds": 0.052
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_s_base_surplus_stops_at_reference_and_audits_soc_cap_curtailment[A0-no-storage]",
+    "status": "passed",
+    "seconds": 0.042
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_s_base_surplus_stops_at_reference_and_audits_soc_cap_curtailment[storage-no-power]",
+    "status": "passed",
+    "seconds": 0.046
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_s_base_physical_shortage_remains_infeasible",
+    "status": "passed",
+    "seconds": 0.036
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_normal_mode_dump_is_zero",
+    "status": "passed",
+    "seconds": 0.002
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_waste_heat_serves_municipal_first",
+    "status": "passed",
+    "seconds": 0.005
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_merit_order_economics_consistent",
+    "status": "passed",
+    "seconds": 0.002
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_config_duplicate_keys_within_namespace",
+    "status": "passed",
+    "seconds": 0.409
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_region_override_authorized",
+    "status": "passed",
+    "seconds": 0.064
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_canonical_quantities_unique",
+    "status": "passed",
+    "seconds": 0.168
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_zero_acceptance_implies_zero_heat_pump",
+    "status": "passed",
+    "seconds": 0.046
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_heat_pump_bounded_by_acceptance",
+    "status": "passed",
+    "seconds": 0.005
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_representative_week_tasks_within_window",
+    "status": "passed",
+    "seconds": 0.716
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_representative_week_weights_sum_to_one",
+    "status": "passed",
+    "seconds": 0.379
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_flexible_ratio_matches_target",
+    "status": "passed",
+    "seconds": 0.041
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_capacity_factor_matches_region_reference",
+    "status": "passed",
+    "seconds": 0.015
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_flexible_ratio_feasible_pretest",
+    "status": "passed",
+    "seconds": 0.004
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_extended_series_length",
+    "status": "passed",
+    "seconds": 0.023
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_extreme_week_window_within_bounds",
+    "status": "passed",
+    "seconds": 0.034
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_hand_calculated_small_case",
+    "status": "passed",
+    "seconds": 0.092
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_modules_importable",
+    "status": "passed",
+    "seconds": 0.395
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_unit_metadata_completeness",
+    "status": "passed",
+    "seconds": 0.418
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_derived_from_resolvable",
+    "status": "passed",
+    "seconds": 0.068
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_pure_storage_conditional_band[0-0.1]",
+    "status": "passed",
+    "seconds": 0.003
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_pure_storage_conditional_band[0-0.2]",
+    "status": "passed",
+    "seconds": 0.004
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_pure_storage_conditional_band[0-0.5]",
+    "status": "passed",
+    "seconds": 0.004
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_pure_storage_conditional_band[0-0.8]",
+    "status": "passed",
+    "seconds": 0.005
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_pure_storage_conditional_band[0-0.9]",
+    "status": "passed",
+    "seconds": 0.005
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_pure_storage_conditional_band[0.4-0.1]",
+    "status": "passed",
+    "seconds": 0.004
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_pure_storage_conditional_band[0.4-0.2]",
+    "status": "passed",
+    "seconds": 0.003
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_pure_storage_conditional_band[0.4-0.5]",
+    "status": "passed",
+    "seconds": 0.003
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_pure_storage_conditional_band[0.4-0.8]",
+    "status": "passed",
+    "seconds": 0.003
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_pure_storage_conditional_band[0.4-0.9]",
+    "status": "passed",
+    "seconds": 0.004
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_pure_storage_conditional_band[1-0.1]",
+    "status": "passed",
+    "seconds": 0.004
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_pure_storage_conditional_band[1-0.2]",
+    "status": "passed",
+    "seconds": 0.004
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_pure_storage_conditional_band[1-0.5]",
+    "status": "passed",
+    "seconds": 0.004
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_pure_storage_conditional_band[1-0.8]",
+    "status": "passed",
+    "seconds": 0.003
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_pure_storage_conditional_band[1-0.9]",
+    "status": "passed",
+    "seconds": 0.003
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_pure_storage_conditional_band[1.1-0.1]",
+    "status": "passed",
+    "seconds": 0.004
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_pure_storage_conditional_band[1.1-0.2]",
+    "status": "passed",
+    "seconds": 0.005
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_pure_storage_conditional_band[1.1-0.5]",
+    "status": "passed",
+    "seconds": 0.004
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_pure_storage_conditional_band[1.1-0.8]",
+    "status": "passed",
+    "seconds": 0.004
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_pure_storage_conditional_band[1.1-0.9]",
+    "status": "passed",
+    "seconds": 0.004
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_storage_cycles_area_and_lifetime",
+    "status": "passed",
+    "seconds": 0.108
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_pure_heat_full_window_and_zero_acceptance",
+    "status": "passed",
+    "seconds": 0.005
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_sla_penalty_counts_late_decisions_once",
+    "status": "passed",
+    "seconds": 0.044
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_auxiliary_term_does_not_change_optimum",
+    "status": "passed",
+    "seconds": 0.472
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_two_stage_auxiliary_accepts_negative_carbon_optimum",
+    "status": "passed",
+    "seconds": 0.073
+  },
+  {
+    "module": "tests.test_invariants",
+    "name": "test_carbon_accounting_nontrivial_internal_units",
+    "status": "passed",
+    "seconds": 0.004
+  },
+  {
+    "module": "tests.test_resilience_edge_cases",
+    "name": "test_absent_incumbent_propagates_nan_instead_of_dropping_failed_scenario",
+    "status": "passed",
+    "seconds": 0.009
+  },
+  {
+    "module": "tests.test_resilience_edge_cases",
+    "name": "test_zero_energy_failed_component_is_skipped_with_nan_and_reason",
+    "status": "passed",
+    "seconds": 0.583
+  },
+  {
+    "module": "tests.test_resilience_edge_cases",
+    "name": "test_n1_critical_service_can_pass_with_noncritical_shedding",
+    "status": "passed",
+    "seconds": 0.598
+  },
+  {
+    "module": "tests.test_resilience_edge_cases",
+    "name": "test_renewable_targets_only_reduce_actual_power_and_keep_nighttime_zero",
+    "status": "passed",
+    "seconds": 0.64
+  },
+  {
+    "module": "tests.test_resilience_edge_cases",
+    "name": "test_recorded_normal_terminal_soc_is_used_without_defaulting_to_half",
+    "status": "passed",
+    "seconds": 0.534
+  },
+  {
+    "module": "tests.test_resilience_metrics",
+    "name": "test_critical_load_is_it_side_and_ignores_paused_tasks",
+    "status": "passed",
+    "seconds": 0.472
+  },
+  {
+    "module": "tests.test_resilience_metrics",
+    "name": "test_grid_fault_uses_bus_side_eens_and_gas_outage_gap",
+    "status": "passed",
+    "seconds": 0.545
+  },
+  {
+    "module": "tests.test_resilience_metrics",
+    "name": "test_n1_keeps_grid_and_has_no_island_metric",
+    "status": "passed",
+    "seconds": 0.636
+  },
+  {
+    "module": "tests.test_resilience_metrics",
+    "name": "test_grid_fault_with_renewables_is_censored_at_window_lower_bound",
+    "status": "passed",
+    "seconds": 0.527
+  },
+  {
+    "module": "tests.test_resilience_metrics",
+    "name": "test_combined_n1_grid_disables_failed_chemistry_and_import",
+    "status": "passed",
+    "seconds": 0.569
+  },
+  {
+    "module": "tests.test_resilience_metrics",
+    "name": "test_window_overflow_rejected_instead_of_silently_truncated",
+    "status": "passed",
+    "seconds": 0.508
+  },
+  {
+    "module": "tests.test_resilience_metrics",
+    "name": "test_initial_soc_must_be_supplied_for_from_normal_end",
+    "status": "passed",
+    "seconds": 0.504
+  },
+  {
+    "module": "tests.test_resilience_metrics",
+    "name": "test_aggregation_uses_conditional_probability_for_island_lower_bound",
+    "status": "passed",
+    "seconds": 0.007
+  },
+  {
+    "module": "tests.test_resilience_metrics",
+    "name": "test_unproven_is_not_censored_and_does_not_enter_duration_denominator",
+    "status": "passed",
+    "seconds": 0.007
+  },
+  {
+    "module": "tests.test_resilience_metrics",
+    "name": "test_skips_are_explicit_and_eens_weights_renormalize_over_applied_scenarios",
+    "status": "passed",
+    "seconds": 0.006
+  },
+  {
+    "module": "tests.test_resilience_metrics",
+    "name": "test_n1_count_rate_is_distinct_from_probability_weighted_rate",
+    "status": "passed",
+    "seconds": 0.013
+  },
+  {
+    "module": "tests.test_resilience_metrics",
+    "name": "test_empty_results_have_undefined_metrics_not_fake_zero_service",
+    "status": "passed",
+    "seconds": 0.003
+  },
+  {
+    "module": "tests.test_resilience_metrics",
+    "name": "test_invalid_scenario_probabilities_are_rejected[-0.1]",
+    "status": "passed",
+    "seconds": 0.003
+  },
+  {
+    "module": "tests.test_resilience_metrics",
+    "name": "test_invalid_scenario_probabilities_are_rejected[nan]",
+    "status": "passed",
+    "seconds": 0.003
+  },
+  {
+    "module": "tests.test_resilience_metrics",
+    "name": "test_invalid_scenario_probabilities_are_rejected[inf]",
+    "status": "passed",
+    "seconds": 0.003
+  },
+  {
+    "module": "tests.test_resilience_scenarios",
+    "name": "test_six_scenario_types_counts_flags_and_sampling_weights",
+    "status": "passed",
+    "seconds": 0.529
+  },
+  {
+    "module": "tests.test_resilience_scenarios",
+    "name": "test_scenarios_are_deterministic_without_input_mutation",
+    "status": "passed",
+    "seconds": 0.548
+  },
+  {
+    "module": "tests.test_resilience_scenarios",
+    "name": "test_accepts_all_documented_config_wrappers",
+    "status": "passed",
+    "seconds": 0.579
+  },
+  {
+    "module": "tests.test_resilience_scenarios",
+    "name": "test_windows_never_wrap_and_grid_samples_cover_daytime_and_nighttime",
+    "status": "passed",
+    "seconds": 0.491
+  },
+  {
+    "module": "tests.test_resilience_scenarios",
+    "name": "test_renewable_profile_is_independent_clock_hour_percentile_not_global_minimum",
+    "status": "passed",
+    "seconds": 0.507
+  },
+  {
+    "module": "tests.test_resilience_scenarios",
+    "name": "test_combined_scenarios_reuse_matching_grid_windows_and_n1_is_paired",
+    "status": "passed",
+    "seconds": 0.541
+  },
+  {
+    "module": "tests.test_resilience_scenarios",
+    "name": "test_disabled_n1_is_omitted_but_remaining_probabilities_are_normalized",
+    "status": "passed",
+    "seconds": 0.635
+  },
+  {
+    "module": "tests.test_resilience_scenarios",
+    "name": "test_summary_empty_schema_and_nonmutation",
+    "status": "passed",
+    "seconds": 0.56
+  },
+  {
+    "module": "tests.test_resilience_scenarios",
+    "name": "test_rejects_invalid_configuration_instead_of_silently_changing_scenario[renewable_drop_percentile--1]",
+    "status": "passed",
+    "seconds": 0.492
+  },
+  {
+    "module": "tests.test_resilience_scenarios",
+    "name": "test_rejects_invalid_configuration_instead_of_silently_changing_scenario[renewable_drop_percentile-101]",
+    "status": "passed",
+    "seconds": 0.498
+  },
+  {
+    "module": "tests.test_resilience_scenarios",
+    "name": "test_rejects_invalid_configuration_instead_of_silently_changing_scenario[renewable_drop_percentile-nan]",
+    "status": "passed",
+    "seconds": 0.566
+  },
+  {
+    "module": "tests.test_resilience_scenarios",
+    "name": "test_rejects_invalid_configuration_instead_of_silently_changing_scenario[n_samples_per_outage-0]",
+    "status": "passed",
+    "seconds": 0.452
+  },
+  {
+    "module": "tests.test_resilience_scenarios",
+    "name": "test_rejects_invalid_configuration_instead_of_silently_changing_scenario[n_samples_per_outage-25]",
+    "status": "passed",
+    "seconds": 0.459
+  },
+  {
+    "module": "tests.test_resilience_scenarios",
+    "name": "test_rejects_invalid_configuration_instead_of_silently_changing_scenario[n_samples_per_outage-2.5]",
+    "status": "passed",
+    "seconds": 0.498
+  },
+  {
+    "module": "tests.test_resilience_scenarios",
+    "name": "test_rejects_invalid_configuration_instead_of_silently_changing_scenario[grid_outage_hours-value6]",
+    "status": "passed",
+    "seconds": 0.548
+  },
+  {
+    "module": "tests.test_resilience_scenarios",
+    "name": "test_rejects_invalid_configuration_instead_of_silently_changing_scenario[grid_outage_hours-value7]",
+    "status": "passed",
+    "seconds": 0.592
+  },
+  {
+    "module": "tests.test_resilience_scenarios",
+    "name": "test_rejects_invalid_configuration_instead_of_silently_changing_scenario[grid_outage_extended_hours-value8]",
+    "status": "passed",
+    "seconds": 0.584
+  },
+  {
+    "module": "tests.test_resilience_scenarios",
+    "name": "test_rejects_invalid_configuration_instead_of_silently_changing_scenario[renewable_drop_hours-value9]",
+    "status": "passed",
+    "seconds": 0.584
+  },
+  {
+    "module": "tests.test_resilience_scenarios",
+    "name": "test_rejects_invalid_configuration_instead_of_silently_changing_scenario[n1_observation_hours-121]",
+    "status": "passed",
+    "seconds": 0.587
+  },
+  {
+    "module": "tests.test_resilience_scenarios",
+    "name": "test_rejects_invalid_configuration_instead_of_silently_changing_scenario[n1_storage_failure-true]",
+    "status": "passed",
+    "seconds": 0.54
+  },
+  {
+    "module": "tests.test_resilience_scenarios",
+    "name": "test_rejects_invalid_history[short]",
+    "status": "passed",
+    "seconds": 0.507
+  },
+  {
+    "module": "tests.test_resilience_scenarios",
+    "name": "test_rejects_invalid_history[irregular]",
+    "status": "passed",
+    "seconds": 0.477
+  },
+  {
+    "module": "tests.test_resilience_scenarios",
+    "name": "test_rejects_invalid_history[duplicate]",
+    "status": "passed",
+    "seconds": 0.487
+  },
+  {
+    "module": "tests.test_resilience_scenarios",
+    "name": "test_rejects_invalid_history[nan]",
+    "status": "passed",
+    "seconds": 0.478
+  },
+  {
+    "module": "tests.test_resilience_scenarios",
+    "name": "test_rejects_invalid_history[negative]",
+    "status": "passed",
+    "seconds": 0.5
+  },
+  {
+    "module": "tests.test_resilience_scenarios",
+    "name": "test_rejects_invalid_history[missing]",
+    "status": "passed",
+    "seconds": 0.478
+  }
+]

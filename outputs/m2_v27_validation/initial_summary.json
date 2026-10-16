@@ -1,0 +1,33 @@
+{
+  "collected": 156,
+  "passed": 153,
+  "failed": 3,
+  "skipped": 0,
+  "error": 0,
+  "by_file": {
+    "tests.test_chemistry_params": 46,
+    "tests.test_invariants": 100,
+    "tests.test_dispatch_smoke": 10
+  },
+  "failed_tests": [
+    {
+      "name": "test_fault_discharge_priority_within_hour",
+      "classname": "tests.test_invariants",
+      "type": null,
+      "message": "ValueError: fault two-chemistry discharge-order semantics await explicit policy confirmation"
+    },
+    {
+      "name": "test_fault_discharge_prefers_na",
+      "classname": "tests.test_invariants",
+      "type": null,
+      "message": "ValueError: fault two-chemistry discharge-order semantics await explicit policy confirmation"
+    },
+    {
+      "name": "test_s_base_storage_only_when_grid_capacity_binds",
+      "classname": "tests.test_invariants",
+      "type": null,
+      "message": "ValueError: S-base storage/grid priority semantics await explicit policy confirmation"
+    }
+  ],
+  "evidence_scope": "Current v2.7 before implementing the two newly decided policy branches; old report remains v2.6 evidence only."
+}

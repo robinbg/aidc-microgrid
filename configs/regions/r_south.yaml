@@ -1,0 +1,72 @@
+# 地区画像 R-SOUTH：南方湿热
+# 典型场景：粤港澳大湾区
+#
+# ⚠️ 全部数值为占位值。气象与负荷序列由确定性生成器生成（固定种子）。
+
+region_id: R-SOUTH
+display_name: "南方湿热"
+latitude: 22.54
+longitude: 114.06
+
+# ---------------------------------------------------------------- 气候
+climate:
+  T_min_celsius: 5.0             # 无严寒，低温折减完全不起作用
+  T_max_celsius: 38.0
+  T_mean_annual: 23.0
+  seasonal_amplitude: 9.0
+  diurnal_amplitude: 5.0
+  noise_std: 1.8
+  note: "高温高湿，制冷负荷大；无供热需求；需考虑极端天气（台风）场景"
+
+# ---------------------------------------------------------------- 可再生资源
+renewables:
+  pv_capacity_mw: 10.0
+  wind_capacity_mw: 5.0
+  cf_pv: 0.13
+  cf_wind: 0.20
+  wind_anticorrelation_strength: 0.2
+  source: "PLACEHOLDER"
+
+# ---------------------------------------------------------------- 电价覆盖
+electricity_override:
+  price_valley: 350.0
+  price_flat: 600.0
+  price_peak: 1000.0
+
+# ---------------------------------------------------------------- 碳因子覆盖
+carbon_override:
+  ci_grid_mid: 420.0
+
+# ---------------------------------------------------------------- 供热需求
+heat:
+  q_mun_demand_peak_mw_th: 0.0
+  q_mun_demand_base_mw_th: 0.0
+  q_ind_capacity_mw_th: 0.0      # 无工业用热需求（SPEC §7.3）
+  heating_season_months: []
+  note: "无供热需求。⚠️ 必须同时把工业供热接纳能力置 0，
+        否则求解器会凭售价凭空产生供热收入，使余热回收在本画像下虚假地具备经济价值。
+        置 0 后，余热回收确实不产生收益——这是真实的对照条件。"
+
+# ---------------------------------------------------------------- 算力条件
+# IT_base 为导出量，不在此处设定（SPEC §2.2）
+compute_override:
+  gpu_capacity_total: 6144
+  s1_reserved_fraction: 0.25     # 导出 IT_base ≈ 1.075 MW
+  # 可达性校验：E_tasks 需求 ≈ 181 MWh，最大可发电量 ≈ 542 MWh，利用率 ≈ 33%
+  flexible_task_ratio: 0.50
+
+# ---------------------------------------------------------------- 储能布置条件
+storage_site_override:
+  area_limit_m2: 4000.0
+  outdoor_installation: false
+  indoor_temp_offset: 15.0       # 室内布置，储能温度 = 环境温度 + 偏移
+  indoor_temp_floor: 18.0        # 南方机房温度下限偏高
+  indoor_temp_ceiling: 35.0
+  note: "高温环境对储能热管理提出更高要求，且无冬季低温优势可用。室内布置使低温折减几乎不构成约束。"
+
+# ---------------------------------------------------------------- 极端天气
+extreme_weather:
+  typhoon_season_months: [6, 7, 8, 9, 10]
+  # 台风场景下电网可能长时间不可用，且可再生出力同时受影响
+  grid_outage_extended_hours: 24
+  note: "本画像的韧性重心是极端天气下的长时供电保障，而非低温性能"

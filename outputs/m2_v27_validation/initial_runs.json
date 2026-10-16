@@ -1,0 +1,37 @@
+[
+  {
+    "label": "current_full_pytest",
+    "command": [
+      "C:\\Users\\Lee Master\\anaconda3\\python.exe",
+      "-B",
+      "-m",
+      "pytest",
+      "tests/test_chemistry_params.py",
+      "tests/test_invariants.py",
+      "tests/test_dispatch_smoke.py",
+      "-p",
+      "no:cacheprovider",
+      "--basetemp",
+      "D:\\ClaudeWorkspace\\09-aidc-microgrid-kickoff\\outputs\\m2_v27_validation\\pytest-temp-initial",
+      "--tb=short",
+      "-ra",
+      "-o",
+      "addopts=",
+      "--junitxml",
+      "D:\\ClaudeWorkspace\\09-aidc-microgrid-kickoff\\outputs\\m2_v27_validation\\initial-current-tests.xml"
+    ],
+    "returncode": 1,
+    "elapsed_seconds": 23.7325222492218
+  },
+  {
+    "label": "strict_selfcheck",
+    "command": [
+      "C:\\Users\\Lee Master\\anaconda3\\python.exe",
+      "-B",
+      "tools/selfcheck.py",
+      "--strict"
+    ],
+    "returncode": 1,
+    "elapsed_seconds": 0.7631862163543701
+  }
+]

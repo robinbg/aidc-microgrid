@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.venv/
+venv/
+
+# pytest 临时目录（可能含系统锁定句柄，非交付物）
+outputs/**/pytest-temp-*/
+outputs/m1-chemistry-pytest-temp/
+outputs/pytest-smoke-independent-*/
+outputs/m2-pytest-tmp-dispatch/
+outputs/m2-pytest-tmp-dispatch-2/
+outputs/m2-dispatch-combined-check/
+
+# 已作废的内部草稿（自我声明可删除，避免误读；见其文件头）
+reply.txt

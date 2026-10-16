@@ -1,0 +1,336 @@
+# 参数身份登记表
+#
+# ⚠️ 本文件是**元数据**，不参与业务计算。它的作用是让"同一参数被定义两次"
+#    这类问题可被自动检测。
+#
+# 为什么需要它：YAML 重复键与跨文件重复定义**都是静默的**——解析器不报错，
+# 加载顺序决定取值。历史上已抓到四处（见各条 history 字段）。
+#
+# 但**不能用裸参数名做检查**：`unit_cost_energy` 在钠电与锂电配置中同名，
+# 是不同参数；地区覆盖配置与默认配置同名，是已授权的覆盖机制。
+# 因此检测基于三层规则（见 SPEC §1.5）：
+#   规则一 命名空间 + 路径（同一 (namespace, path) 出现两次即错误）
+#   规则二 授权覆盖清单（地区只许覆盖白名单内的键）
+#   规则三 本文件的规范量登记（捕获"异名同量"）
+#
+# 加载器实现要求：不检查裸名。命名空间由文件角色决定（见下）。
+
+# ---------------------------------------------------------------- 命名空间映射
+namespaces:
+  chemistry_na.yaml: "chem.na"
+  chemistry_li.yaml: "chem.li"
+  system.yaml: "system"
+  economics.yaml: "econ"
+  generation.yaml: "gen"
+  experiments.yaml: "exp"
+  registry.yaml: "registry"
+  "regions/*.yaml": "region.<画像ID>"      # 如 region.R-NW
+  note: "参数身份 = (namespace, 点分路径)。同一身份出现两次即错误。"
+
+# ---------------------------------------------------------------- 规则二：授权覆盖清单
+#
+# ⚠️ 本清单列出的是**地区命名空间内的路径**（即 regions/*.yaml 里实际出现的键），
+#    不是被覆盖的默认配置路径。这样规则二才可机械校验：
+#        region 命名空间的每个叶子路径必须命中本清单或 region_exclusive。
+#
+#    为什么改成这种写法：早期版本按"被覆盖的默认路径"列（如
+#    system.compute.gpu_capacity_total），而地区文件里写的是
+#    compute_override.gpu_capacity_total，两者字面不同，
+#    加载器必须做前缀映射才能比对——映射规则本身没写在规格里，
+#    于是这条检查实际无法实现，"授权"形同虚设。
+#
+#    地区文件对默认配置的覆盖一律使用 `*_override` 段，
+#    使覆盖意图在文件里显式可见（见下方 authorized 段）。
+region_override_authorized:
+  - "electricity_override.price_valley"
+  - "electricity_override.price_flat"
+  - "electricity_override.price_peak"
+  - "electricity_override.price_sell"
+  - "carbon_override.ci_grid_mid"
+  - "compute_override.gpu_capacity_total"
+  - "compute_override.s1_reserved_fraction"
+  - "storage_site_override.area_limit_m2"
+  - "storage_site_override.outdoor_installation"
+  - "storage_site_override.indoor_temp_offset"
+  - "storage_site_override.indoor_temp_floor"
+  - "storage_site_override.indoor_temp_ceiling"
+
+# 地区独占：只允许在 regions/*.yaml 中定义（默认配置里不存在的键）
+region_exclusive:
+  - "region_id"
+  - "display_name"
+  - "latitude"
+  - "longitude"
+  - "climate.*"
+  - "renewables.*"
+  - "heat.*"
+  - "extreme_weather.*"
+  - "compute_override.flexible_task_ratio"
+  - "heating_season_months"
+
+# 默认独占：地区文件中不得覆盖（全局方法设定，按画像改动会让四画像不可比）
+default_exclusive:
+  - "chem.*"
+  - "gen.*"
+  - "exp.*"
+  - "econ.finance.*"
+  - "econ.penalties.*"
+  - "econ.resilience.*"
+  - "econ.heat_carbon.*"
+  - "system.pue"
+  - "system.solver"
+  - "system.compute.gpu_power"
+  - "system.thermal.cop"
+  - "system.thermal.eta_recovery"
+  - "system.thermal.kappa_cooling_heat"
+
+# ---------------------------------------------------------------- 规则三：规范量登记
+#
+# ⚠️ 登记分**两类**（SPEC §1.5）：
+#
+#   canonical_config_truths  配置真源。每个物理量的**唯一授权位置**与禁止别名。
+#                            位置必须两两不同。
+#   derived_quantities       派生量。由真源换算而来，**不是独立配置项**，
+#                            因此**没有 authorized 字段**。
+#
+# 为什么分开：单一物理量的不同单位表达（如 kW/卡 与 MW/卡）本质是同一个量，
+# 若都登记成 authorized 会违反"位置两两不同"的断言。
+canonical_config_truths:
+  - quantity_id: gpu_capacity_total
+    description: "集群总卡数（算力规模的唯一真源）"
+    authorized: "system.compute.gpu_capacity_total"
+    forbidden_aliases:
+      - "system.compute.total_gpu_count"
+      - "system.compute.gpu_total"
+    note: "多个派生量以它为 derived_from；地区可覆盖（见 region_override_authorized）"
+
+  - quantity_id: gpu_single_card_power
+    description: "单卡功率（配置单位 kW/卡）"
+    authorized: "system.compute.gpu_power"
+    forbidden_aliases:
+      - "system.compute.gpu_power_kw_per_card"
+      - "system.compute.p_card"
+    history: "v1.1 曾用 gpu_power_kw_per_card（含单位后缀），已改为 gpu_power + unit 字段"
+
+  - quantity_id: s1_reserved_fraction
+    description: "留给 S1（不可迁移在线推理）的卡数比例"
+    authorized: "system.compute.s1_reserved_fraction"
+    forbidden_aliases:
+      - "system.compute.s1_reserved_count"
+    note: "用比例而非绝对卡数，保证与总量自洽（见 §AB1）；地区可覆盖"
+
+  - quantity_id: it_overhead_mw
+    description: "与算力无关的固定电负荷"
+    authorized: "system.compute.it_overhead_mw"
+    forbidden_aliases:
+      - "system.compute.fixed_load_mw"
+
+  - quantity_id: sla_floor
+    description: "S-carbon 策略的 SLA 达标率硬约束下限"
+    authorized: "exp.sla.sla_floor"
+    forbidden_aliases:
+      - "econ.sla_floor"
+    note: "S-carbon 无法把元惩罚加进碳目标，改用硬约束（SPEC §3.5）"
+
+  - quantity_id: max_required_avg_utilization
+    description: "柔性占比可达性预检的利用率阈值"
+    authorized: "gen.task_generation_constraints.max_required_avg_utilization"
+    forbidden_aliases:
+      - "gen.max_required_avg_utilization"
+    note: "派生量 minimum_required_avg_utilization 以此为依赖；不得超过会失去筛选作用"
+
+  - quantity_id: boiler_carbon_intensity
+    description: "备用热源（燃气锅炉）单位供热碳排"
+    authorized: "econ.heat_carbon.ci_boiler"
+    forbidden_aliases:
+      - "system.thermal.backup_heat.ci_kgco2_per_mwh_th"
+    history: "v1.7 曾在 system.yaml 与 economics.yaml 两处定义（异名同量），已收口"
+
+  - quantity_id: industrial_heat_substituted_ci
+    description: "工业供热所替代热源的碳强度"
+    authorized: "econ.heat_carbon.ci_ind_substituted"
+    forbidden_aliases:
+      - "system.thermal.ci_ind_substituted"
+    history: "v1.7 曾在两处定义，已收口"
+
+  - quantity_id: backup_heat_capacity
+    description: "备用热源供热容量"
+    authorized: "system.thermal.backup_heat.q_capacity_mw_th"
+    forbidden_aliases: []
+
+  - quantity_id: backup_heat_unit_cost
+    description: "备用热源单位供热成本"
+    authorized: "system.thermal.backup_heat.unit_cost_yuan_per_mwh_th"
+    forbidden_aliases: []
+
+  - quantity_id: heat_pump_cop
+    description: "热泵性能系数"
+    authorized: "system.thermal.cop"
+    forbidden_aliases:
+      - "system.thermal.COP"
+      - "econ.heat_pump_cop"
+
+  - quantity_id: heat_recovery_fraction
+    description: "IT 侧排热可回收比例"
+    authorized: "system.thermal.eta_recovery"
+    forbidden_aliases:
+      - "system.thermal.recovery_rate"
+      - "system.thermal.heat_recovery_ratio"
+
+  - quantity_id: cooling_heat_recovery_kappa
+    description: "制冷侧排热的可回收比例"
+    authorized: "system.thermal.kappa_cooling_heat"
+    forbidden_aliases:
+      - "system.thermal.kappa"
+
+  - quantity_id: utility_grid_carbon_intensity
+    description: "电网碳因子（默认值）"
+    authorized: "econ.carbon.ci_grid_mid"
+    forbidden_aliases:
+      - "system.carbon.ci_grid"
+      - "econ.ci_grid"
+
+  - quantity_id: pue_curve
+    description: "PUE 随环境温度的分段线性曲线"
+    authorized: "system.pue"
+    forbidden_aliases:
+      - "system.pue_curve"
+      - "econ.pue"
+
+  - quantity_id: municipal_heat_price
+    description: "市政供热结算价"
+    authorized: "system.thermal.heat_price_mun"
+    forbidden_aliases:
+      - "econ.heat_price_mun"
+    note: "当前**不允许**按画像覆盖（未列入 region_override_authorized）。
+           供热结算价若按画像变动，会改变各画像的供热经济性比较基准，
+           使跨画像推荐表混入价格假设差异。如确需覆盖，须同时改规格与清单。"
+
+  - quantity_id: industrial_heat_price
+    description: "工业供热售价"
+    authorized: "system.thermal.heat_price_ind"
+    forbidden_aliases:
+      - "econ.heat_price_ind"
+
+  - quantity_id: sla_penalty_coefficient
+    description: "SLA 惩罚系数"
+    authorized: "econ.penalties.pen_sla"
+    forbidden_aliases:
+      - "exp.sla.pen_sla"
+    history: "experiments.yaml 的 sla 段只放 sla_floor 与 w_sla_balance，不放惩罚系数（v1.8 已收口）"
+
+# ---------------------------------------------------------------- 派生量
+#
+# ⚠️ 派生量**不是配置项**，不得有 authorized 字段。
+#    它们由配置真源按固定公式换算而来，见 §1.1 的换算表。
+#
+# ⚠️ `derived_from` 必须是**可解析的引用**（SPEC §1.5）：
+#    取值为某个 canonical_config_truths 的 authorized 位置，
+#    或另一个 derived_quantity 的 quantity_id。
+#    **禁止写自然语言描述**——加载器无法解析，测试也无法校验。
+#    依赖多个来源时用列表，每项都可解析。
+derived_quantities:
+  - quantity_id: single_card_power_mw
+    description: "单卡功率（内部单位 MW/卡）"
+    derived_from: "system.compute.gpu_power"
+    derivation: "value_MW_per_card = value_kW_per_card / 1000"
+    must_not_appear_as_config: true
+    forbidden_aliases:
+      - "system.compute.p_card_mw"
+    note: "内部单位换算结果，见 §1.1 换算表。禁止作为配置项出现。"
+
+  - quantity_id: gpu_capacity_s1_reserved
+    description: "S1 预留卡数"
+    derived_from:
+      - "system.compute.gpu_capacity_total"
+      - "system.compute.s1_reserved_fraction"
+    derivation: "reserved = round(total × s1_reserved_fraction)"
+    must_not_appear_as_config: true
+    forbidden_aliases:
+      - "system.compute.gpu_capacity_s1_reserved"
+
+  - quantity_id: it_base_mw
+    description: "不可迁移基础负荷（MW）"
+    derived_from:
+      - "gpu_capacity_s1_reserved"
+      - "system.compute.gpu_power"
+      - "system.compute.it_overhead_mw"
+    derivation: "IT_base = gpu_capacity_s1_reserved × gpu_power + it_overhead_mw"
+    must_not_appear_as_config: true
+    forbidden_aliases:
+      - "system.compute.it_base_mw"
+      - "region.*.compute_override.it_base_mw"
+    history: "v1.5 曾作为独立旋钮，导致与预留卡数不自洽（AB1），v1.6 起为派生量"
+    note: "直接依赖 gpu_capacity_s1_reserved（**另一个派生量**，故写其 quantity_id
+           而非展开成 gpu_capacity_total——展开会掩盖真实依赖链）。
+           间接依赖 gpu_capacity_total 与 s1_reserved_fraction，由链式解析获得。"
+
+  - quantity_id: gpu_capacity_plan
+    description: "规划可用卡数"
+    derived_from:
+      - "system.compute.gpu_capacity_total"
+      - "system.compute.s1_reserved_fraction"
+    derivation: "plan = total − round(total × s1_reserved_fraction)"
+    must_not_appear_as_config: true
+    forbidden_aliases:
+      - "system.compute.gpu_capacity_plan"
+
+  - quantity_id: minimum_required_avg_utilization
+    description: "柔性占比可达性预检所需的平均利用率"
+    derived_from:
+      - "gpu_capacity_plan"
+      - "system.compute.gpu_power"
+      - "gen.task_generation_constraints.max_required_avg_utilization"
+    derivation: "u_req = (E_S1·R/(1−R)) / (gpu_capacity_plan · p_card_mw · horizon_hours)"
+    must_not_appear_as_config: true
+    forbidden_aliases: []
+    note: "⚠️ E_S1 与任务需求**不是配置项**（由 M1 生成器在其 attrs 中回传），
+           因此**不得**写进 derived_from——那会违反「derived_from 必须可解析」。
+           只列真正来自配置的依赖：gpu_capacity_plan（派生量 ID）、gpu_power、
+           以及阈值本身（写其 authorized 路径）。horizon_hours 由窗口长度给出，同属运行时量。
+           ⚠️ v2.2 曾把阈值写成规范真源 ID `max_required_avg_utilization`——
+           **规范真源只能用 authorized 路径引用**，ID 简写不合法（v2.3 修正）。"
+
+# ---------------------------------------------------------------- 有意保留的同名
+#
+# 以下同名**是合法的**，检测器不得报错。列出以备复核。
+intentional_same_name:
+  - paths: ["chem.na.cost.unit_cost_energy", "chem.li.cost.unit_cost_energy"]
+    reason: "钠电与锂电的单位造价是两个不同的量，同名自然"
+  - paths: ["chem.na.temp_derating.gamma", "chem.li.temp_derating.gamma"]
+    reason: "同上，两套化学体系各自一条曲线"
+  - paths: ["system.compute.gpu_capacity_total", "region.R-NW.compute_override.gpu_capacity_total"]
+    reason: "地区覆盖机制，路径含 _override 前缀，命名空间不同"
+  - paths: ["system.storage_common.area_limit_m2", "region.*.storage_site_override.area_limit_m2"]
+    reason: "同上；地区侧键名带 _override 后缀，与默认配置的 storage_common / storage_site_default 均不同名"
+
+# ---------------------------------------------------------------- 检测算法
+#
+# 1. 解析全部配置，建 {(namespace, path): value} 与出现计数
+#    ⚠️ 用自定义 loader，遇 YAML 重复键即报错（PyYAML 默认静默取后者）
+# 2. 规则一：同一 (namespace, path) 出现 > 1 次                  → 报错
+# 3. 规则二（地区覆盖，**按地区命名空间内的叶子路径校验**）：
+#      对每个 region.<ID> 命名空间的叶子路径 p：
+#        p ∈ region_override_authorized（精确匹配或通配匹配）  → 通过
+#        p ∈ region_exclusive                                → 通过
+#        p 属于文档键（source / note / display_name 等）        → 通过
+#        否则                                                 → 报错
+#      反向：region_override_authorized 中的键若在**全部**画像文件中都未出现
+#        → 告警（可能是已废弃的授权项），不报错
+# 4. 规则三：任一 forbidden_alias（两类合计）被定义              → 报错
+# 5. 登记结构校验：
+#      canonical_config_truths 的 authorized 位置两两不同          → 否则报错
+#      derived_quantities 的 derived_from 每项都可解析为
+#        canonical_config_truths 的 authorized 位置，
+#        或另一个 derived_quantity 的 quantity_id
+#        （含自然语言即报错——见 SPEC §1.5）                     → 否则报错
+#      derived_quantities 的 quantity_id 不出现在任一 authorized  → 否则报错
+#      derived_quantities 不得有 authorized 字段                   → 否则报错
+#      must_not_appear_as_config 为 true 的项不得作为配置键出现    → 否则报错
+# 6. 反向检查：每个 authorized / derived_from 位置必须存在        → 否则告警
+# 7. 输出解析清单与覆盖关系日志，供人工复核
+#
+# ⚠️ 明确不做：不检查"同一裸参数名出现多次"。
+#    intentional_same_name 中的两类合法情形都由命名空间天然区分。
+# ⚠️ "位置两两不同"只适用于 canonical_config_truths；
+#    derived_quantities 共享真源是正常的（同一物理量的不同单位表达）。

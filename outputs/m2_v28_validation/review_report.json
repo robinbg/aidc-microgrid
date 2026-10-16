@@ -1,0 +1,242 @@
+{
+  "spec_version": "2.8",
+  "client_date": "2026-10-16",
+  "status": "new_S_base_boundary_reported_before_implementation",
+  "source_test_config_edits": [],
+  "settled_rulings_not_reasked": [
+    "Na/Li may discharge within the same hour.",
+    "Chemical preference is level4 after all three service objectives, never critical epsilon or level1b.",
+    "S-base is grid-first, renewable surplus charging and grid top-up capped at soc_ref under the current rule.",
+    "Window-input lookahead/preprocessing is permitted; optimization is not.",
+    "parallel=true ratios use power caps, not SOC energy limits."
+  ],
+  "remaining_findings": [
+    {
+      "id": "V28-1",
+      "kind": "material_terminal_counterexample",
+      "source_lines": [
+        1082,
+        1084,
+        1114,
+        1122,
+        1123,
+        2452,
+        2454,
+        2455
+      ],
+      "finding": "Capping all charging at soc_ref prevents correcting a final-hour forced discharge. It does not guarantee terminal equality for the newly required grid-capacity-binding cases.",
+      "constant_grid_cap_counterexample": {
+        "scope": "Real normal S-cost feasibility witness; not an S-base result. No YAML changed. This case uses a constant grid cap and a valid hard-deadline task.",
+        "spec_version": "2.8",
+        "IT_base_derived_MW": 0.7182,
+        "gpu_task": {
+          "gpu": 800,
+          "duration_h": 1,
+          "arrive_h": 1,
+          "deadline_h": 2,
+          "latest_h": 2
+        },
+        "bus_demand_mw": [
+          0.96957,
+          1.72557
+        ],
+        "grid_import_capacity_mw": 1.5,
+        "eta_ch": 0.978,
+        "eta_dis": 0.978,
+        "sizing": {
+          "E_Na": 100.0,
+          "P_Na": 1.0,
+          "E_Li": 0.0,
+          "P_Li": 0.0
+        },
+        "baseline_forced_last_discharge_mwh": 0.22557000000000005,
+        "baseline_terminal_soc": 0.49769355828220857,
+        "minimal_physical_early_charge_mwh": 0.23583248648173943,
+        "minimal_physical_first_import_mw": 1.2054024864817394,
+        "actual_status": "optimal",
+        "actual_mip_gap": 0.0,
+        "actual_trajectory": {
+          "IT_load": [
+            0.7182,
+            1.2782
+          ],
+          "g_imp": [
+            1.5,
+            1.2182221918800002
+          ],
+          "p_ch_Na": [
+            0.53043,
+            0.0
+          ],
+          "p_dis_Na": [
+            0.0,
+            0.5073478081199998
+          ],
+          "soc_Na": [
+            0.5,
+            0.5051876054
+          ]
+        },
+        "actual_soc_full": [
+          0.5,
+          0.5051876054,
+          0.5
+        ],
+        "actual_task_schedule": [
+          {
+            "task_id": "fixed_last_hour",
+            "start_h": 1,
+            "end_h": 2,
+            "late": false
+          }
+        ]
+      },
+      "interpretation": "The final-hour deficit is physically serviceable, and a real normal MILP reaches the required terminal SOC. S-base alone forbids the necessary earlier precharge above soc_ref. This is rule-induced terminal infeasibility, not inadequate total hardware capacity.",
+      "decision_needed": "Either specify a bounded terminal-reserve/precharge exception, or explicitly accept/report this baseline-policy infeasibility. Do not label its unavoidable terminal deficit an implementation bug."
+    },
+    {
+      "id": "V28-2",
+      "kind": "unqualified_status_statement_conflicts_with_explicit_physical_exception",
+      "source_lines": [
+        1114,
+        1122,
+        1142,
+        1144,
+        1145,
+        2454,
+        2457
+      ],
+      "finding": "The same section prohibits all normal infeasible results but explicitly orders an infeasible result for a1h1.35MW load with0.5MW grid and no storage.",
+      "scope": "The physical-shortfall diagnostic rule is already clear and is not being re-asked. The unconditional never-infeasible wording must be scoped to avoid contradicting that explicit exception. It also cannot be used to conceal V28-1."
+    },
+    {
+      "id": "V28-3",
+      "kind": "incorrect_physical_rationale",
+      "source_lines": [
+        326,
+        327,
+        341,
+        1118,
+        1119
+      ],
+      "finding": "The space above soc_ref is physically usable under the symmetric band; excluding it is an S-base policy choice, not a capacity fact.",
+      "counterexample": "gamma=.5, soc_ref=.5 and nominal[.1,.9] give band[.3,.7]. The upper half is available for charging. Actual middle-scenario Na parameters at20C give band[.1032,.8968].",
+      "scope": "Do not propagate the S-base policy cap into global usable_band or the other four strategies."
+    }
+  ],
+  "tests": {
+    "spec_first_line": "# 09 开工包 · 技术契约（SPEC v2.8）",
+    "command": [
+      "C:\\Users\\Lee Master\\anaconda3\\python.exe",
+      "-B",
+      "-m",
+      "pytest",
+      "tests/test_chemistry_params.py",
+      "tests/test_invariants.py",
+      "tests/test_dispatch_smoke.py",
+      "-p",
+      "no:cacheprovider",
+      "--basetemp",
+      "D:\\ClaudeWorkspace\\09-aidc-microgrid-kickoff\\outputs\\m2_v28_validation\\pytest-temp-initial",
+      "--tb=short",
+      "-ra",
+      "-o",
+      "addopts=",
+      "--junitxml",
+      "D:\\ClaudeWorkspace\\09-aidc-microgrid-kickoff\\outputs\\m2_v28_validation\\initial-current-tests.xml"
+    ],
+    "returncode": 1,
+    "elapsed_seconds": 39.53311038017273,
+    "collected": 156,
+    "passed": 153,
+    "failed": 3,
+    "skipped": 0,
+    "errors": 0,
+    "by_file": {
+      "tests.test_chemistry_params": 46,
+      "tests.test_invariants": 100,
+      "tests.test_dispatch_smoke": 10
+    },
+    "failed_tests": [
+      {
+        "name": "test_fault_discharge_priority_within_hour",
+        "classname": "tests.test_invariants",
+        "message": "ValueError: fault two-chemistry discharge-order semantics await explicit policy confirmation"
+      },
+      {
+        "name": "test_fault_discharge_prefers_na",
+        "classname": "tests.test_invariants",
+        "message": "ValueError: fault two-chemistry discharge-order semantics await explicit policy confirmation"
+      },
+      {
+        "name": "test_s_base_storage_only_when_grid_capacity_binds",
+        "classname": "tests.test_invariants",
+        "message": "ValueError: S-base storage/grid priority semantics await explicit policy confirmation"
+      }
+    ],
+    "files_changed_during_run": []
+  },
+  "per_test_results": "outputs/m2_v28_validation/initial-current-tests.xml",
+  "per_test_names": "outputs/m2_v28_validation/test_names.json",
+  "raw_test_log": "outputs/m2_v28_validation/current_full_pytest.txt",
+  "evidence_hashes": "outputs/m2_v28_validation/initial_evidence_sha256.json",
+  "additional_time_varying_cap_witness": {
+    "scope": "This is a real normal S-cost feasibility witness, not an S-base implementation or test substitution.",
+    "spec_version": "2.8",
+    "eta_ch": 0.978,
+    "eta_dis": 0.978,
+    "bus_demand_mw": [
+      1.35,
+      1.35
+    ],
+    "renewable_mw": [
+      0,
+      0
+    ],
+    "import_capacity_mw": [
+      3,
+      0.5
+    ],
+    "sizing": {
+      "E_Na": 100.0,
+      "P_Na": 1.0,
+      "E_Li": 0.0,
+      "P_Li": 0.0
+    },
+    "soc_initial": 0.5,
+    "baseline_forced_last_discharge_mwh": 0.85,
+    "baseline_terminal_soc": 0.49130879345603273,
+    "physical_witness_status": "optimal",
+    "physical_witness_mip_gap": 0.0,
+    "physical_witness": {
+      "g_imp": [
+        2.35,
+        0.3935160000000001
+      ],
+      "p_ch_Na": [
+        1.0,
+        0.0
+      ],
+      "p_dis_Na": [
+        0.0,
+        0.956484
+      ],
+      "soc_Na": [
+        0.5,
+        0.50978
+      ]
+    },
+    "physical_soc_full": [
+      0.5,
+      0.50978,
+      0.5
+    ],
+    "physical_witness_early_charge_mwh": 0.8886714257635255,
+    "nominal_usable_band_at20": {
+      "lo": 0.10319999999999996,
+      "hi": 0.8968
+    }
+  },
+  "performance": "The earlier168h84.4%gap limitation remains unresolved; no horizon, task-window, config or solver-gap change was made.",
+  "next_action": "Wait for the material S-base terminal/status ruling per the standing user instruction to report spec conflicts before choosing behavior."
+}

@@ -1,0 +1,180 @@
+# 钠电参数
+#
+# ⚠️ 全部数值为占位值（placeholder），必须在 M1 阶段用公开数据手册 / 第三方检测报告 /
+#    公开文献标定后替换。每条参数请更新 `source` 字段说明来源。
+#
+# 区间约定：成本与寿命类参数用 {low, mid, high} 三元组，mid 用于默认仿真。
+# 曲线类参数用 {points, source, scale_range} 结构，scale_range 用于敏感性扫描。
+#
+# 结构说明（v1.1 修正）：
+#   曲线块内 `points` 与 `source` 是同一层级的映射键，`points` 的值才是序列。
+#   v1.0 曾把 source 写在序列项同一缩进层，那是非法 YAML，已修正。
+#
+# 单位：本文件沿用行业惯用单位（元/kWh、元/kW、m²/kWh 等）。
+#   加载时由 chemistry.py 统一换算为内部单位（元/MWh 等），换算表见 SPEC §1.1。
+#   禁止在未换算的情况下直接把本文件数值代入 MW/MWh 口径的公式。
+
+chemistry: na
+display_name: "钠离子电池（层状氧化物 / 硬碳体系）"
+
+# ---------------------------------------------------------------- 成本
+# 单位：元/kWh（能量）、元/kW（功率）、元/kWh/年（运维）
+cost:
+  unit_cost_energy:
+    low: 0.35
+    mid: 0.50
+    high: 0.70
+    unit: "元/kWh"
+    internal_unit: "元/MWh"
+    source: "PLACEHOLDER — 需替换为公开电芯/系统报价口径"
+  unit_cost_power:
+    low: 300.0
+    mid: 450.0
+    high: 650.0
+    unit: "元/kW"
+    internal_unit: "元/MW"
+    source: "PLACEHOLDER — PCS/逆变器与功率型配置造价"
+  opex_annual:
+    low: 8.0
+    mid: 15.0
+    high: 25.0
+    unit: "元/kWh/年"
+    internal_unit: "元/MWh/年"
+    source: "PLACEHOLDER"
+
+# ---------------------------------------------------------------- 寿命
+lifetime:
+  cycle_life:
+    low: 3000.0
+    mid: 6000.0
+    high: 10000.0
+    source: "PLACEHOLDER — 三大体系（层状氧化物/聚阴离子/普鲁士蓝）差异极大"
+  calendar_life:
+    low: 8.0
+    mid: 12.0
+    high: 15.0
+    source: "PLACEHOLDER"
+
+# ---------------------------------------------------------------- 低温特性（本项目关键机制）
+#
+# points: 分段线性插值的断点，T 单位 ℃。
+#   低于最低断点或高于最高断点时取端点值（不外推）。
+# scale_range: 敏感性扫描时对整条曲线乘的系数（在 (0,1] 内截断）。
+#   mid 对应 1.0，即不缩放。
+#
+# ⚠️ gamma / c_max 曲线是本方案配置结论的物理基础，必须用公开数据标定后替换。
+#    锂电（chemistry_li.yaml）的同名曲线默认更陡，形成对比；
+#    该差异必须来自数据来源，不得为得到预期结论而人为设置。
+temp_derating:
+  gamma:
+    scale_range: [0.9, 1.0, 1.1]
+    points:
+      - {T: -30, value: 0.80}
+      - {T: -20, value: 0.88}
+      - {T: -10, value: 0.93}
+      - {T:   0, value: 0.96}
+      - {T:  25, value: 1.00}
+      - {T:  45, value: 0.99}
+    source: "PLACEHOLDER — 需替换为公开低温放电容量保持率数据"
+    note: "γ 只作用于可用 SOC 带（以 soc.init 为中心对称收缩），不进入 SOC 动态。见 SPEC §2.3"
+
+  c_max_charge:
+    scale_range: [0.9, 1.0, 1.1]
+    points:
+      - {T: -30, value: 0.05}
+      - {T: -20, value: 0.10}
+      - {T: -10, value: 0.20}
+      - {T:   0, value: 0.35}
+      - {T:  25, value: 1.00}
+      - {T:  45, value: 0.80}
+    source: "PLACEHOLDER"
+    note: "低温充电受限是钠电安全的首要约束"
+
+  c_max_discharge:
+    scale_range: [0.9, 1.0, 1.1]
+    points:
+      - {T: -30, value: 0.15}
+      - {T: -20, value: 0.30}
+      - {T: -10, value: 0.50}
+      - {T:   0, value: 0.80}
+      - {T:  25, value: 1.00}
+      - {T:  45, value: 1.00}
+    source: "PLACEHOLDER"
+
+# ---------------------------------------------------------------- 效率
+efficiency:
+  eta_charge:
+    scale_range: [0.98, 1.0, 1.02]
+    points:
+      - {T: -30, value: 0.92}
+      - {T: -20, value: 0.94}
+      - {T: -10, value: 0.96}
+      - {T:   0, value: 0.97}
+      - {T:  25, value: 0.98}
+      - {T:  45, value: 0.98}
+    source: "PLACEHOLDER"
+    note: "缩放后需在 (0,1] 内截断"
+  eta_discharge:
+    scale_range: [0.98, 1.0, 1.02]
+    points:
+      - {T: -30, value: 0.92}
+      - {T: -20, value: 0.94}
+      - {T: -10, value: 0.96}
+      - {T:   0, value: 0.97}
+      - {T:  25, value: 0.98}
+      - {T:  45, value: 0.98}
+    source: "PLACEHOLDER"
+
+# ---------------------------------------------------------------- SOC 边界
+#
+# ⚠️ 标称窗口恒定，不随温度收缩（SPEC §2.3）。
+#    低温对可用能量的影响由温度相关可用带表达：
+#        half_band = 0.5 × (soc.max − soc.min)
+#        soc_hi(T) = soc.init + γ(T) × half_band
+#        soc_lo(T) = soc.init − γ(T) × half_band
+#    以 soc.init 为中心对称收缩，保证初始状态恒可行。
+#    能量可用性约束加在能量流上（e_ch ≤ E_nom·(soc_hi − soc)），不加在状态上，
+#    因此温度骤降不会导致不可行。
+#
+#    为什么要以 soc.init 为中心：若收缩上界（soc.max × γ），
+#    锂电在 -25℃ 下上界约 0.48 < soc.init = 0.50，开局即不可行。
+soc:
+  min: 0.10
+  max: 0.90
+  init: 0.50
+  terminal_equal_init: true
+
+# ---------------------------------------------------------------- 安全
+safety:
+  low_temp_charge_margin:
+    scale_range: [0.95, 1.0, 1.05]
+    points:
+      - {T: -30, value: 0.5}
+      - {T: -20, value: 0.7}
+      - {T: -10, value: 0.85}
+      - {T:   0, value: 0.95}
+      - {T:  25, value: 1.00}
+    source: "PLACEHOLDER"
+    note: "在 c_max_charge 之上再乘的保守系数，体现析钠风险；缩放后截断至 (0,1]"
+
+# ---------------------------------------------------------------- 足迹约束
+# 单位：m²/kWh（配置）× 1000 → m²/MWh（内部）。公式内不得再乘 1000。
+footprint:
+  area_per_kwh:
+    low: 0.035
+    mid: 0.045
+    high: 0.060
+    unit: "m²/kWh"
+    internal_unit: "m²/MWh"
+    source: "PLACEHOLDER — 钠电能量密度低于锂电，占地与承重是约束而非加分项"
+
+# ---------------------------------------------------------------- 全生命周期碳足迹
+# 单位：kgCO₂/kWh（配置）× 1000 → kgCO₂/MWh（内部）
+lcc:
+  manufacturing_kgco2_per_kwh:
+    low: 40.0
+    mid: 70.0
+    high: 110.0
+    unit: "kgCO₂/kWh"
+    internal_unit: "kgCO₂/MWh"
+    source: "PLACEHOLDER — 口径需注明是否含上游材料"

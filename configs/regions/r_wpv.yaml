@@ -1,0 +1,62 @@
+# 地区画像 R-WPV：西北光伏富集
+# 典型场景：新疆哈密、青海格尔木一带
+#
+# ⚠️ 全部数值为占位值。气象与负荷序列由确定性生成器生成（固定种子）。
+
+region_id: R-WPV
+display_name: "西北光伏富集"
+latitude: 42.83
+longitude: 93.51
+
+# ---------------------------------------------------------------- 气候
+climate:
+  T_min_celsius: -18.0
+  T_max_celsius: 38.0
+  T_mean_annual: 8.0
+  seasonal_amplitude: 20.0
+  diurnal_amplitude: 12.0        # 昼夜温差大是本地区特征
+  noise_std: 2.5
+
+# ---------------------------------------------------------------- 可再生资源
+renewables:
+  pv_capacity_mw: 60.0           # 光伏为主
+  wind_capacity_mw: 15.0
+  cf_pv: 0.22                    # 辐照资源好，容量因子高于北方风电区
+  cf_wind: 0.28
+  wind_anticorrelation_strength: 0.3
+  source: "PLACEHOLDER — 需用公开辐照度数据或典型气象年标定"
+
+# ---------------------------------------------------------------- 电价覆盖
+electricity_override:
+  price_valley: 250.0
+  price_flat: 400.0
+  price_peak: 700.0
+  note: "电价差更大，峰段与谷段价差显著，套利空间大"
+
+# ---------------------------------------------------------------- 碳因子覆盖
+carbon_override:
+  ci_grid_mid: 600.0
+
+# ---------------------------------------------------------------- 供热需求
+# 已按系统产热能力重标定（SPEC §7.3）；余热贡献占比约 58%
+heat:
+  q_mun_demand_peak_mw_th: 2.5
+  q_mun_demand_base_mw_th: 0.8
+  q_ind_capacity_mw_th: 1.5
+  heating_season_months: [11, 12, 1, 2, 3]
+  note: "供热季较短、需求中等；峰值缺口由备用热源补足"
+
+# ---------------------------------------------------------------- 算力条件
+# IT_base 为导出量，不在此处设定（SPEC §2.2）
+compute_override:
+  gpu_capacity_total: 6144
+  s1_reserved_fraction: 0.167    # 导出 IT_base ≈ 0.718 MW
+  # 可达性校验：E_tasks 需求 ≈ 241 MWh，最大可发电量 ≈ 602 MWh，利用率 ≈ 40%
+  flexible_task_ratio: 0.70
+  note: "光伏日间出力尖峰，算力日间偏移的价值高"
+
+# ---------------------------------------------------------------- 储能布置条件
+storage_site_override:
+  area_limit_m2: 10000.0
+  outdoor_installation: true
+  note: "昼夜温差大，储能热管理需求高；冬季低温仍显著"

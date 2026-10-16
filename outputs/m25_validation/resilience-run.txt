@@ -1,0 +1,159 @@
+未在画像使用的覆盖授权项: electricity_override.price_sell
+START A0: 82 scenarios
+A0 10/82: optimal
+A0 20/82: optimal
+A0 30/82: optimal
+A0 40/82: optimal
+A0 50/82: skipped
+A0 60/82: skipped
+A0 70/82: skipped
+A0 80/82: skipped
+A0 82/82: skipped
+START A1: 82 scenarios
+A1 10/82: optimal
+A1 20/82: optimal
+A1 30/82: optimal
+A1 40/82: optimal
+A1 50/82: optimal
+A1 60/82: optimal
+A1 70/82: optimal
+A1 80/82: optimal
+A1 82/82: optimal
+START A2: 82 scenarios
+A2 10/82: optimal
+A2 20/82: optimal
+A2 30/82: optimal
+A2 40/82: optimal
+A2 50/82: skipped
+A2 60/82: skipped
+A2 70/82: skipped
+A2 80/82: skipped
+A2 82/82: skipped
+START A3: 82 scenarios
+A3 10/82: optimal
+A3 20/82: optimal
+A3 30/82: optimal
+A3 40/82: optimal
+A3 50/82: optimal
+A3 60/82: optimal
+A3 70/82: optimal
+A3 80/82: optimal
+A3 82/82: optimal
+{
+  "A0": {
+    "t_island_mean": 10.333333333333332,
+    "t_island_worst": 2.0,
+    "t_island_mean_is_lower_bound": true,
+    "censoring_rate": 1.0,
+    "weighted_censoring_rate": 0.9999999999999998,
+    "eens": 0.0,
+    "eens_critical": 0.0,
+    "eens_heat": 0.0,
+    "heat_outage_cost_yuan": 0.0,
+    "n1_pass_rate": null,
+    "weighted_n1_pass_rate": null,
+    "n_scenarios": 82,
+    "n_active": 40,
+    "n_skipped": 42,
+    "n_failed": 0,
+    "n_unproven": 0,
+    "unproven_rate": 0.0,
+    "n_t_island": 30,
+    "n_n1": 0,
+    "probability_mass": 0.9999999999999999,
+    "active_probability_mass": 0.4878048780487805,
+    "t_island_probability_mass": 0.36585365853658547,
+    "eens_includes_unproven_incumbents": false,
+    "aggregation_basis": "Count censoring/N-1 rates; conditional probability-weighted island lower-bound mean; renormalized non-skipped EENS probabilities.",
+    "warnings": [
+      "More than 50% of proven island observations are right-censored; extend outage duration."
+    ]
+  },
+  "A1": {
+    "t_island_mean": 10.6,
+    "t_island_worst": 2.0,
+    "t_island_mean_is_lower_bound": true,
+    "censoring_rate": 1.0,
+    "weighted_censoring_rate": 1.0,
+    "eens": 0.0,
+    "eens_critical": 0.0,
+    "eens_heat": 0.0,
+    "heat_outage_cost_yuan": 0.0,
+    "n1_pass_rate": 1.0,
+    "weighted_n1_pass_rate": 1.0,
+    "n_scenarios": 82,
+    "n_active": 61,
+    "n_skipped": 21,
+    "n_failed": 0,
+    "n_unproven": 0,
+    "unproven_rate": 0.0,
+    "n_t_island": 50,
+    "n_n1": 1,
+    "probability_mass": 0.9999999999999999,
+    "active_probability_mass": 0.7439024390243902,
+    "t_island_probability_mass": 0.6097560975609756,
+    "eens_includes_unproven_incumbents": false,
+    "aggregation_basis": "Count censoring/N-1 rates; conditional probability-weighted island lower-bound mean; renormalized non-skipped EENS probabilities.",
+    "warnings": [
+      "More than 50% of proven island observations are right-censored; extend outage duration."
+    ]
+  },
+  "A2": {
+    "t_island_mean": 10.6,
+    "t_island_worst": 2.0,
+    "t_island_mean_is_lower_bound": true,
+    "censoring_rate": 1.0,
+    "weighted_censoring_rate": 1.0,
+    "eens": 0.0,
+    "eens_critical": 0.0,
+    "eens_heat": 0.0,
+    "heat_outage_cost_yuan": 0.0,
+    "n1_pass_rate": 1.0,
+    "weighted_n1_pass_rate": 1.0,
+    "n_scenarios": 82,
+    "n_active": 61,
+    "n_skipped": 21,
+    "n_failed": 0,
+    "n_unproven": 0,
+    "unproven_rate": 0.0,
+    "n_t_island": 50,
+    "n_n1": 1,
+    "probability_mass": 0.9999999999999999,
+    "active_probability_mass": 0.7439024390243902,
+    "t_island_probability_mass": 0.6097560975609756,
+    "eens_includes_unproven_incumbents": false,
+    "aggregation_basis": "Count censoring/N-1 rates; conditional probability-weighted island lower-bound mean; renormalized non-skipped EENS probabilities.",
+    "warnings": [
+      "More than 50% of proven island observations are right-censored; extend outage duration."
+    ]
+  },
+  "A3": {
+    "t_island_mean": 10.714285714285715,
+    "t_island_worst": 2.0,
+    "t_island_mean_is_lower_bound": true,
+    "censoring_rate": 1.0,
+    "weighted_censoring_rate": 1.0,
+    "eens": 0.0,
+    "eens_critical": 0.0,
+    "eens_heat": 0.0,
+    "heat_outage_cost_yuan": 0.0,
+    "n1_pass_rate": 1.0,
+    "weighted_n1_pass_rate": 1.0,
+    "n_scenarios": 82,
+    "n_active": 82,
+    "n_skipped": 0,
+    "n_failed": 0,
+    "n_unproven": 0,
+    "unproven_rate": 0.0,
+    "n_t_island": 70,
+    "n_n1": 2,
+    "probability_mass": 0.9999999999999999,
+    "active_probability_mass": 0.9999999999999999,
+    "t_island_probability_mass": 0.8536585365853658,
+    "eens_includes_unproven_incumbents": false,
+    "aggregation_basis": "Count censoring/N-1 rates; conditional probability-weighted island lower-bound mean; renormalized non-skipped EENS probabilities.",
+    "warnings": [
+      "More than 50% of proven island observations are right-censored; extend outage duration."
+    ]
+  }
+}

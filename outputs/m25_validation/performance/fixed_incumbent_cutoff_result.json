@@ -1,0 +1,33 @@
+{
+  "hours": 168,
+  "tasks": 2200,
+  "n_variables": 76884,
+  "binary_count": 72850,
+  "input_hashes": {
+    "src\\aidc\\model\\dispatch.py": "d24f92d9c5308f322105feb86b7064a12c90b2bfb096f6cb63d21f63c367ab45",
+    "src\\aidc\\model\\_baseline.py": "ecd1d13633ab448f0d3bb6defce706ce3344888a5331450eb0234921d7ba3770",
+    "outputs\\m2_validation\\inputs_normal_168h_r_nw_a3.parquet": "b37c01f6980466fed3366e7094b3d5d3083607f9f18576a8d8d5b98f1f988b6e",
+    "outputs\\m2_validation\\tasks_normal_168h_r_nw_a3.csv": "98746f4c27a14c7f3f0d2d5ef7d28bc870092fd686c0c3284ad0924435c4677e"
+  },
+  "incumbent": {
+    "bound_error": 3.872457909892546e-13,
+    "row_error": 6.927791673660977e-13,
+    "integrality_error": 3.552713678800501e-14,
+    "primary": 573812.6942542882,
+    "sla_penalty": 0.0
+  },
+  "preparation_s": 9.5717397000044,
+  "requested_solver_time_s": 24.428009099996416,
+  "solve_wall_s": 27.570082899997942,
+  "solver": {
+    "level": "cutoff_full168",
+    "status": 1,
+    "message": "Time limit reached. (HiGHS Status 13: model_status is Time limit reached; primal_status is None)",
+    "objective": null,
+    "mip_gap": null,
+    "mip_dual_bound": null,
+    "requested_mip_gap": 0.01,
+    "proven_optimal": false
+  },
+  "total_wall_s": 37.14213070000551
+}

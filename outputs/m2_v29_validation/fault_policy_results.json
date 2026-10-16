@@ -1,0 +1,589 @@
+{
+  "notice": "Synthetic in-memory cases through actual solve_dispatch and bundled HiGHS; no config edits",
+  "dispatch_sha256": "4932b5233663abe82659563c65bae6324a7ce0c0954c55a7b6d2b2d233dc1e97",
+  "validation_script_sha256": "0b5fed3a66e06dbb6f634c6bfef35ae225e4f9cba3051d5549a94cff07c201b6",
+  "cases": [
+    {
+      "name": "same-hour sequential supplement, all services retained",
+      "sizing": {
+        "E_Na": 20.0,
+        "P_Na": 0.6,
+        "E_Li": 20.0,
+        "P_Li": 0.4
+      },
+      "base_it_mw": 1.0,
+      "initial_soc_Na": 0.5,
+      "parallel": false,
+      "status": "optimal",
+      "actual_discharge_mw_Na_Li": [
+        0.6,
+        0.4
+      ],
+      "expected": [
+        0.6,
+        0.4
+      ],
+      "stages": [
+        {
+          "level": "critical",
+          "status": 0,
+          "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+          "objective": 0.0,
+          "mip_gap": 0.0,
+          "mip_dual_bound": 0.0,
+          "requested_mip_gap": 0.0,
+          "proven_optimal": true
+        },
+        {
+          "level": "noncritical",
+          "status": 0,
+          "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+          "objective": 0.0,
+          "mip_gap": 0.0,
+          "mip_dual_bound": 0.0,
+          "requested_mip_gap": 0.0,
+          "proven_optimal": true
+        },
+        {
+          "level": "heat_gap",
+          "status": 0,
+          "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+          "objective": 0.0,
+          "mip_gap": 0.0,
+          "mip_dual_bound": 0.0,
+          "requested_mip_gap": 0.0,
+          "proven_optimal": true
+        },
+        {
+          "level": "chemistry_preference",
+          "status": 0,
+          "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+          "objective": 0.4,
+          "mip_gap": 0.0,
+          "mip_dual_bound": 0.4,
+          "requested_mip_gap": 0.0,
+          "proven_optimal": true
+        }
+      ],
+      "frozen_service": {
+        "values": {
+          "critical": 0.0,
+          "noncritical": 0.0,
+          "heat_gap": 0.0
+        },
+        "rows": {
+          "critical": "freeze_service_before_preference_critical",
+          "noncritical": "freeze_service_before_preference_noncritical",
+          "heat_gap": "freeze_service_before_preference_heat_gap"
+        },
+        "basis": "achieved feasible stage-three service; not a global optimality claim"
+      },
+      "fault_storage_policy": {
+        "discharge_order": [
+          "Na",
+          "Li"
+        ],
+        "parallel_discharge": false,
+        "same_hour_dual_discharge_allowed": true,
+        "preference_level": 4,
+        "preference_chemistry": "Li",
+        "ratio_basis": "temperature power caps, excluding SOC energy limits",
+        "encoding": "service-first lexicographic preference"
+      },
+      "backend": "scipy.optimize.milp/HiGHS"
+    },
+    {
+      "name": "Na ample; Li preference zero",
+      "sizing": {
+        "E_Na": 20.0,
+        "P_Na": 2.0,
+        "E_Li": 20.0,
+        "P_Li": 2.0
+      },
+      "base_it_mw": 1.0,
+      "initial_soc_Na": 0.5,
+      "parallel": false,
+      "status": "optimal",
+      "actual_discharge_mw_Na_Li": [
+        1.0,
+        0.0
+      ],
+      "expected": [
+        1.0,
+        0.0
+      ],
+      "stages": [
+        {
+          "level": "critical",
+          "status": 0,
+          "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+          "objective": 0.0,
+          "mip_gap": 0.0,
+          "mip_dual_bound": 0.0,
+          "requested_mip_gap": 0.0,
+          "proven_optimal": true
+        },
+        {
+          "level": "noncritical",
+          "status": 0,
+          "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+          "objective": 0.0,
+          "mip_gap": 0.0,
+          "mip_dual_bound": 0.0,
+          "requested_mip_gap": 0.0,
+          "proven_optimal": true
+        },
+        {
+          "level": "heat_gap",
+          "status": 0,
+          "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+          "objective": 0.0,
+          "mip_gap": 0.0,
+          "mip_dual_bound": 0.0,
+          "requested_mip_gap": 0.0,
+          "proven_optimal": true
+        },
+        {
+          "level": "chemistry_preference",
+          "status": 0,
+          "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+          "objective": 0.0,
+          "mip_gap": 0.0,
+          "mip_dual_bound": 0.0,
+          "requested_mip_gap": 0.0,
+          "proven_optimal": true
+        }
+      ],
+      "frozen_service": {
+        "values": {
+          "critical": 0.0,
+          "noncritical": 0.0,
+          "heat_gap": 0.0
+        },
+        "rows": {
+          "critical": "freeze_service_before_preference_critical",
+          "noncritical": "freeze_service_before_preference_noncritical",
+          "heat_gap": "freeze_service_before_preference_heat_gap"
+        },
+        "basis": "achieved feasible stage-three service; not a global optimality claim"
+      },
+      "fault_storage_policy": {
+        "discharge_order": [
+          "Na",
+          "Li"
+        ],
+        "parallel_discharge": false,
+        "same_hour_dual_discharge_allowed": true,
+        "preference_level": 4,
+        "preference_chemistry": "Li",
+        "ratio_basis": "temperature power caps, excluding SOC energy limits",
+        "encoding": "service-first lexicographic preference"
+      },
+      "backend": "scipy.optimize.milp/HiGHS"
+    },
+    {
+      "name": "configured reversed order",
+      "sizing": {
+        "E_Na": 20.0,
+        "P_Na": 2.0,
+        "E_Li": 20.0,
+        "P_Li": 2.0
+      },
+      "base_it_mw": 1.0,
+      "initial_soc_Na": 0.5,
+      "parallel": false,
+      "status": "optimal",
+      "actual_discharge_mw_Na_Li": [
+        0.0,
+        1.0
+      ],
+      "expected": [
+        0.0,
+        1.0
+      ],
+      "stages": [
+        {
+          "level": "critical",
+          "status": 0,
+          "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+          "objective": 0.0,
+          "mip_gap": 0.0,
+          "mip_dual_bound": 0.0,
+          "requested_mip_gap": 0.0,
+          "proven_optimal": true
+        },
+        {
+          "level": "noncritical",
+          "status": 0,
+          "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+          "objective": 0.0,
+          "mip_gap": 0.0,
+          "mip_dual_bound": 0.0,
+          "requested_mip_gap": 0.0,
+          "proven_optimal": true
+        },
+        {
+          "level": "heat_gap",
+          "status": 0,
+          "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+          "objective": 0.0,
+          "mip_gap": 0.0,
+          "mip_dual_bound": 0.0,
+          "requested_mip_gap": 0.0,
+          "proven_optimal": true
+        },
+        {
+          "level": "chemistry_preference",
+          "status": 0,
+          "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+          "objective": 0.0,
+          "mip_gap": 0.0,
+          "mip_dual_bound": 0.0,
+          "requested_mip_gap": 0.0,
+          "proven_optimal": true
+        }
+      ],
+      "frozen_service": {
+        "values": {
+          "critical": 0.0,
+          "noncritical": 0.0,
+          "heat_gap": 0.0
+        },
+        "rows": {
+          "critical": "freeze_service_before_preference_critical",
+          "noncritical": "freeze_service_before_preference_noncritical",
+          "heat_gap": "freeze_service_before_preference_heat_gap"
+        },
+        "basis": "achieved feasible stage-three service; not a global optimality claim"
+      },
+      "fault_storage_policy": {
+        "discharge_order": [
+          "Li",
+          "Na"
+        ],
+        "parallel_discharge": false,
+        "same_hour_dual_discharge_allowed": true,
+        "preference_level": 4,
+        "preference_chemistry": "Na",
+        "ratio_basis": "temperature power caps, excluding SOC energy limits",
+        "encoding": "service-first lexicographic preference"
+      },
+      "backend": "scipy.optimize.milp/HiGHS"
+    },
+    {
+      "name": "power-cap ratio 1:2 while both have energy",
+      "sizing": {
+        "E_Na": 20.0,
+        "P_Na": 1.0,
+        "E_Li": 20.0,
+        "P_Li": 2.0
+      },
+      "base_it_mw": 1.5,
+      "initial_soc_Na": 0.5,
+      "parallel": true,
+      "status": "optimal",
+      "actual_discharge_mw_Na_Li": [
+        0.5,
+        1.0
+      ],
+      "expected": [
+        0.5,
+        1.0
+      ],
+      "stages": [
+        {
+          "level": "critical",
+          "status": 0,
+          "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+          "objective": 0.0,
+          "mip_gap": 0.0,
+          "mip_dual_bound": 0.0,
+          "requested_mip_gap": 0.0,
+          "proven_optimal": true
+        },
+        {
+          "level": "noncritical",
+          "status": 0,
+          "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+          "objective": 0.0,
+          "mip_gap": 0.0,
+          "mip_dual_bound": 0.0,
+          "requested_mip_gap": 0.0,
+          "proven_optimal": true
+        },
+        {
+          "level": "heat_gap",
+          "status": 0,
+          "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+          "objective": 0.0,
+          "mip_gap": 0.0,
+          "mip_dual_bound": 0.0,
+          "requested_mip_gap": 0.0,
+          "proven_optimal": true
+        },
+        {
+          "level": "chemistry_preference",
+          "status": 0,
+          "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+          "objective": 1.0,
+          "mip_gap": 0.0,
+          "mip_dual_bound": 1.0,
+          "requested_mip_gap": 0.0,
+          "proven_optimal": true
+        }
+      ],
+      "frozen_service": {
+        "values": {
+          "critical": 0.0,
+          "noncritical": 0.0,
+          "heat_gap": 0.0
+        },
+        "rows": {
+          "critical": "freeze_service_before_preference_critical",
+          "noncritical": "freeze_service_before_preference_noncritical",
+          "heat_gap": "freeze_service_before_preference_heat_gap"
+        },
+        "basis": "achieved feasible stage-three service; not a global optimality claim"
+      },
+      "fault_storage_policy": {
+        "discharge_order": [
+          "Na",
+          "Li"
+        ],
+        "parallel_discharge": true,
+        "same_hour_dual_discharge_allowed": true,
+        "preference_level": 4,
+        "preference_chemistry": "Li",
+        "ratio_basis": "temperature power caps, excluding SOC energy limits",
+        "encoding": "bounded proportional allocation: p_x=min(power_cap_x*lambda,positive_SOC_energy_limit_x)",
+        "constraint_rows": [
+          "fault_energy_positive_lower_Na_0",
+          "fault_energy_positive_upper_state_Na_0",
+          "fault_energy_positive_upper_zero_Na_0",
+          "fault_parallel_upper_energy_Na_0",
+          "fault_parallel_upper_share_Na_0",
+          "fault_parallel_lower_energy_Na_0",
+          "fault_parallel_lower_share_Na_0",
+          "fault_energy_positive_lower_Li_0",
+          "fault_energy_positive_upper_state_Li_0",
+          "fault_energy_positive_upper_zero_Li_0",
+          "fault_parallel_upper_energy_Li_0",
+          "fault_parallel_upper_share_Li_0",
+          "fault_parallel_lower_energy_Li_0",
+          "fault_parallel_lower_share_Li_0"
+        ]
+      },
+      "backend": "scipy.optimize.milp/HiGHS"
+    },
+    {
+      "name": "Na at usable lower bound; Li fully supplements",
+      "sizing": {
+        "E_Na": 20.0,
+        "P_Na": 1.0,
+        "E_Li": 20.0,
+        "P_Li": 2.0
+      },
+      "base_it_mw": 1.5,
+      "initial_soc_Na": 0.1,
+      "parallel": true,
+      "status": "optimal",
+      "actual_discharge_mw_Na_Li": [
+        0.0,
+        1.5
+      ],
+      "expected": [
+        0.0,
+        1.5
+      ],
+      "stages": [
+        {
+          "level": "critical",
+          "status": 0,
+          "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+          "objective": 0.0,
+          "mip_gap": 0.0,
+          "mip_dual_bound": 0.0,
+          "requested_mip_gap": 0.0,
+          "proven_optimal": true
+        },
+        {
+          "level": "noncritical",
+          "status": 0,
+          "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+          "objective": 0.0,
+          "mip_gap": 0.0,
+          "mip_dual_bound": 0.0,
+          "requested_mip_gap": 0.0,
+          "proven_optimal": true
+        },
+        {
+          "level": "heat_gap",
+          "status": 0,
+          "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+          "objective": 0.0,
+          "mip_gap": 0.0,
+          "mip_dual_bound": 0.0,
+          "requested_mip_gap": 0.0,
+          "proven_optimal": true
+        },
+        {
+          "level": "chemistry_preference",
+          "status": 0,
+          "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+          "objective": 1.5,
+          "mip_gap": 0.0,
+          "mip_dual_bound": 1.5,
+          "requested_mip_gap": 0.0,
+          "proven_optimal": true
+        }
+      ],
+      "frozen_service": {
+        "values": {
+          "critical": 0.0,
+          "noncritical": 0.0,
+          "heat_gap": 0.0
+        },
+        "rows": {
+          "critical": "freeze_service_before_preference_critical",
+          "noncritical": "freeze_service_before_preference_noncritical",
+          "heat_gap": "freeze_service_before_preference_heat_gap"
+        },
+        "basis": "achieved feasible stage-three service; not a global optimality claim"
+      },
+      "fault_storage_policy": {
+        "discharge_order": [
+          "Na",
+          "Li"
+        ],
+        "parallel_discharge": true,
+        "same_hour_dual_discharge_allowed": true,
+        "preference_level": 4,
+        "preference_chemistry": "Li",
+        "ratio_basis": "temperature power caps, excluding SOC energy limits",
+        "encoding": "bounded proportional allocation: p_x=min(power_cap_x*lambda,positive_SOC_energy_limit_x)",
+        "constraint_rows": [
+          "fault_energy_positive_lower_Na_0",
+          "fault_energy_positive_upper_state_Na_0",
+          "fault_energy_positive_upper_zero_Na_0",
+          "fault_parallel_upper_energy_Na_0",
+          "fault_parallel_upper_share_Na_0",
+          "fault_parallel_lower_energy_Na_0",
+          "fault_parallel_lower_share_Na_0",
+          "fault_energy_positive_lower_Li_0",
+          "fault_energy_positive_upper_state_Li_0",
+          "fault_energy_positive_upper_zero_Li_0",
+          "fault_parallel_upper_energy_Li_0",
+          "fault_parallel_upper_share_Li_0",
+          "fault_parallel_lower_energy_Li_0",
+          "fault_parallel_lower_share_Li_0"
+        ]
+      },
+      "backend": "scipy.optimize.milp/HiGHS"
+    },
+    {
+      "name": "Na saturates energy; Li supplements remainder",
+      "sizing": {
+        "E_Na": 20.0,
+        "P_Na": 1.0,
+        "E_Li": 20.0,
+        "P_Li": 2.0
+      },
+      "base_it_mw": 1.5,
+      "initial_soc_Na": 0.105,
+      "parallel": true,
+      "status": "optimal",
+      "actual_discharge_mw_Na_Li": [
+        0.10000000000000009,
+        1.4000000000000004
+      ],
+      "expected": [
+        0.1,
+        1.4
+      ],
+      "stages": [
+        {
+          "level": "critical",
+          "status": 0,
+          "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+          "objective": 0.0,
+          "mip_gap": 0.0,
+          "mip_dual_bound": 0.0,
+          "requested_mip_gap": 0.0,
+          "proven_optimal": true
+        },
+        {
+          "level": "noncritical",
+          "status": 0,
+          "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+          "objective": 0.0,
+          "mip_gap": 0.0,
+          "mip_dual_bound": 0.0,
+          "requested_mip_gap": 0.0,
+          "proven_optimal": true
+        },
+        {
+          "level": "heat_gap",
+          "status": 0,
+          "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+          "objective": 0.0,
+          "mip_gap": 0.0,
+          "mip_dual_bound": 0.0,
+          "requested_mip_gap": 0.0,
+          "proven_optimal": true
+        },
+        {
+          "level": "chemistry_preference",
+          "status": 0,
+          "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+          "objective": 1.4000000000000004,
+          "mip_gap": 0.0,
+          "mip_dual_bound": 1.4000000000000004,
+          "requested_mip_gap": 0.0,
+          "proven_optimal": true
+        }
+      ],
+      "frozen_service": {
+        "values": {
+          "critical": 0.0,
+          "noncritical": 0.0,
+          "heat_gap": 0.0
+        },
+        "rows": {
+          "critical": "freeze_service_before_preference_critical",
+          "noncritical": "freeze_service_before_preference_noncritical",
+          "heat_gap": "freeze_service_before_preference_heat_gap"
+        },
+        "basis": "achieved feasible stage-three service; not a global optimality claim"
+      },
+      "fault_storage_policy": {
+        "discharge_order": [
+          "Na",
+          "Li"
+        ],
+        "parallel_discharge": true,
+        "same_hour_dual_discharge_allowed": true,
+        "preference_level": 4,
+        "preference_chemistry": "Li",
+        "ratio_basis": "temperature power caps, excluding SOC energy limits",
+        "encoding": "bounded proportional allocation: p_x=min(power_cap_x*lambda,positive_SOC_energy_limit_x)",
+        "constraint_rows": [
+          "fault_energy_positive_lower_Na_0",
+          "fault_energy_positive_upper_state_Na_0",
+          "fault_energy_positive_upper_zero_Na_0",
+          "fault_parallel_upper_energy_Na_0",
+          "fault_parallel_upper_share_Na_0",
+          "fault_parallel_lower_energy_Na_0",
+          "fault_parallel_lower_share_Na_0",
+          "fault_energy_positive_lower_Li_0",
+          "fault_energy_positive_upper_state_Li_0",
+          "fault_energy_positive_upper_zero_Li_0",
+          "fault_parallel_upper_energy_Li_0",
+          "fault_parallel_upper_share_Li_0",
+          "fault_parallel_lower_energy_Li_0",
+          "fault_parallel_lower_share_Li_0"
+        ]
+      },
+      "backend": "scipy.optimize.milp/HiGHS"
+    }
+  ]
+}

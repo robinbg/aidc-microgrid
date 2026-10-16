@@ -1,0 +1,42 @@
+{
+  "chemistry": {
+    "command": [
+      "C:\\Users\\Lee Master\\anaconda3\\python.exe",
+      "-B",
+      "-m",
+      "pytest",
+      "tests/test_chemistry_params.py",
+      "-p",
+      "no:cacheprovider",
+      "--basetemp",
+      "D:\\ClaudeWorkspace\\09-aidc-microgrid-kickoff\\outputs\\m1_validation\\pytest-temp-chemistry",
+      "--tb=short",
+      "-ra",
+      "-o",
+      "addopts="
+    ],
+    "returncode": 0,
+    "log": "D:\\ClaudeWorkspace\\09-aidc-microgrid-kickoff\\outputs\\m1_validation\\chemistry-accepted-tests.txt"
+  },
+  "invariants": {
+    "command": [
+      "C:\\Users\\Lee Master\\anaconda3\\python.exe",
+      "-B",
+      "-m",
+      "pytest",
+      "tests/test_invariants.py",
+      "-m",
+      "not solver",
+      "-p",
+      "no:cacheprovider",
+      "--basetemp",
+      "D:\\ClaudeWorkspace\\09-aidc-microgrid-kickoff\\outputs\\m1_validation\\pytest-temp-invariants",
+      "--tb=short",
+      "-ra",
+      "-o",
+      "addopts="
+    ],
+    "returncode": 0,
+    "log": "D:\\ClaudeWorkspace\\09-aidc-microgrid-kickoff\\outputs\\m1_validation\\invariants-accepted-tests.txt"
+  }
+}

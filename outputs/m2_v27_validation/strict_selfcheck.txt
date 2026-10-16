@@ -1,0 +1,70 @@
+selfcheck: 3 ERROR, 61 WARN
+
+  [ERROR] README.md:34 指向已作废的历史附录编号，且无警告性说明：早期有九份决策附录（`SPEC-REVISIONS*.md`），其有效结论**已全部并入 SPEC.md**。
+  [ERROR] SPEC.md 规则小节 §9.24 落在测试条目区间（9.1–9.36），编号冲突
+  [ERROR] SPEC.md 规则小节 §9.25 落在测试条目区间（9.1–9.36），编号冲突
+
+  [WARN ] SPEC.md:815 引用 §10.5 但未找到同名标题（可能是简写）
+  [WARN ] SPEC.md:947 引用 §10.6 但未找到同名标题（可能是简写）
+  [WARN ] SPEC 登记了 test_all_configs_parse，但 test_invariants.py 未定义（可能改名或未创建）
+  [WARN ] SPEC 登记了 test_fault_mode_served_load_consistency，但 test_invariants.py 未定义（可能改名或未创建）
+  [WARN ] SPEC 登记了 test_unit_conversion_factor_applied，但 test_invariants.py 未定义（可能改名或未创建）
+  [WARN ] test_invariants.py 定义了 test_carbon_accounting_nontrivial_internal_units，但 SPEC §9 未登记
+  [WARN ] test_invariants.py 定义了 test_hand_calculated_small_case，但 SPEC §9 未登记
+  [WARN ] test_invariants.py 定义了 test_heat_pump_bounded_by_acceptance，但 SPEC §9 未登记
+  [WARN ] test_invariants.py 定义了 test_heat_pump_physical_limit，但 SPEC §9 未登记
+  [WARN ] test_invariants.py 定义了 test_municipal_heat_rigid，但 SPEC §9 未登记
+  [WARN ] test_invariants.py 定义了 test_pure_heat_full_window_and_zero_acceptance，但 SPEC §9 未登记
+  [WARN ] test_invariants.py 定义了 test_pure_storage_conditional_band，但 SPEC §9 未登记
+  [WARN ] test_invariants.py 定义了 test_sla_penalty_counts_late_decisions_once，但 SPEC §9 未登记
+  [WARN ] test_invariants.py 定义了 test_storage_cycles_area_and_lifetime，但 SPEC §9 未登记
+  [WARN ] test_invariants.py 定义了 test_two_stage_auxiliary_accepts_negative_carbon_optimum，但 SPEC §9 未登记
+  [WARN ] test_invariants.py 定义了 test_waste_heat_serves_municipal_first，但 SPEC §9 未登记
+  [WARN ] PROMPT.md:43 出现废弃概念 z_boiler（已删除（v1.9））但无作废说明：- §2.4 里**被否决的 `z_boiler`** 与**本节的 `y(t)`** 区别在哪里
+  [WARN ] PROMPT.md:202 出现废弃概念 heat_tolerance（已删除）但无作废说明：- 热泵出力受**双侧**上限（热源侧与需求侧取小，**无 heat_tolerance**）
+  [WARN ] PROMPT.md:278 出现废弃概念 z_boiler（已删除（v1.9））但无作废说明：**但也要制止它退回 `z_boiler` 那套**——那个二进制编码的是
+  [WARN ] PROMPT.md:281 出现废弃概念 Q_hp_max(t)（已改为常数差额上界（v2.3））但无作废说明：**它想把 `M` 取成 1e6 之类的大数，或取 `Q_hp_max(t)`**：制止两者。
+  [WARN ] SPEC.md:185 出现废弃概念 it_base_mw（已改为导出量（v1.6））但无作废说明：- `it_base_mw` 直接依赖的是 `gpu_capacity_s1_reserved`（**另一个派生量**），
+  [WARN ] SPEC.md:273 出现废弃概念 it_base_mw（已改为导出量（v1.6））但无作废说明：- 配置中**不出现** `it_base_mw` 这一项
+  [WARN ] SPEC.md:293 出现废弃概念 it_base_mw（已改为导出量（v1.6））但无作废说明：**为什么必须这样**：早期版本把 `it_base_mw` 当独立旋钮设为 8.0 MW，
+  [WARN ] SPEC.md:470 出现废弃概念 Q_hp_max(t)（已改为常数差额上界（v2.3））但无作废说明：Q_hp_max(t) = COP/(COP−1) · η_rec · IT_served(t)
+  [WARN ] SPEC.md:638 出现废弃概念 z_boiler（已删除（v1.9））但无作废说明：⚠️ **这个二进制与已被否决的 `z_boiler` 是完全不同的东西**（务必区分）：
+  [WARN ] SPEC.md:640 出现废弃概念 z_boiler（已删除（v1.9））但无作废说明：| | 被否决的 `z_boiler` | 本节的 `y` |
+  [WARN ] SPEC.md:1594 出现废弃概念 critical_load_fraction（已删除（v2.3））但无作废说明：原 `critical_load_fraction` 三项**删除**。
+  [WARN ] SPEC.md:2052 出现废弃概念 it_base_mw（已改为导出量（v1.6））但无作废说明：it_base_mw, horizon_hours, gpu_capacity_plan, p_card_mw,
+  [WARN ] SPEC.md:2057 出现废弃概念 it_base_mw（已改为导出量（v1.6））但无作废说明：it_base_mwh, horizon_hours, gpu_capacity_plan, flexible_ratio,
+  [WARN ] SPEC.md:2082 出现废弃概念 heat_tolerance（已删除）但无作废说明："""双侧上限，**无 heat_tolerance**。"""
+  [WARN ] SPEC.md:2287 出现废弃概念 Q_hp_max(t)（已改为常数差额上界（v2.3））但无作废说明：其次查 `M_1`/`M_2` 是否取了**常数差额上界**（§2.4；取 `Q_hp_max(t)` 会界不足）。
+  [WARN ] configs\registry.yaml:252 出现废弃概念 it_base_mw（已改为导出量（v1.6））但无作废说明：- quantity_id: it_base_mw
+  [WARN ] configs\registry.yaml:261 出现废弃概念 it_base_mw（已改为导出量（v1.6））但无作废说明：- "system.compute.it_base_mw"
+  [WARN ] configs\registry.yaml:262 出现废弃概念 it_base_mw（已改为导出量（v1.6））但无作废说明：- "region.*.compute_override.it_base_mw"
+  [WARN ] configs\system.yaml:34 出现废弃概念 it_base_mw（已改为导出量（v1.6））但无作废说明：it_base_mw_derived: 0.7182                # = 1026 × 0.7 kW / 1000
+  [WARN ] tests\test_dispatch_smoke.py:71 出现废弃概念 it_base_mw（已改为导出量（v1.6））但无作废说明："gpu_power_mw_per_card": p_card, "it_base_mw": base,
+  [WARN ] tests\test_invariants.py:904 出现废弃概念 z_boiler（已删除（v1.9））但无作废说明：assert not any("z_boiler" in name for name in names)
+  [WARN ] tests\test_invariants.py:1319 出现废弃概念 it_base_mw（已改为导出量（v1.6））但无作废说明：bundle["system"]["compute"]["it_base_mw"] = 8.0
+  [WARN ] tests\test_invariants.py:1486 出现废弃概念 it_base_mw（已改为导出量（v1.6））但无作废说明：E_S1        = it_base_mw · horizon_hours
+  [WARN ] tests\test_invariants.py:1498 出现废弃概念 it_base_mw（已改为导出量（v1.6））但无作废说明：若配置中仍残留独立的 it_base_mw 旋钮，本断言应失败。
+  [WARN ] tests\test_invariants.py:1509 出现废弃概念 it_base_mw（已改为导出量（v1.6））但无作废说明：assert "it_base_mw" not in region["compute_override"]
+  [WARN ] tests\test_invariants.py:1510 出现废弃概念 it_base_mw（已改为导出量（v1.6））但无作废说明：assert "it_base_mw" not in _m1_bundle()["system"]["compute"]
+  [WARN ] src\aidc\data\tasks.py:90 出现废弃概念 it_base_mw（已改为导出量（v1.6））但无作废说明：it_base_mw: float,
+  [WARN ] src\aidc\data\tasks.py:102 出现废弃概念 it_base_mw（已改为导出量（v1.6））但无作废说明：E_S1        = it_base_mw · horizon_hours
+  [WARN ] src\aidc\data\tasks.py:123 出现废弃概念 it_base_mw（已改为导出量（v1.6））但无作废说明：base_mw = _finite_number(it_base_mw, "it_base_mw")
+  [WARN ] src\aidc\data\tasks.py:163 出现废弃概念 it_base_mw（已改为导出量（v1.6））但无作废说明：it_base_mwh: float,
+  [WARN ] src\aidc\data\tasks.py:187 出现废弃概念 it_base_mw（已改为导出量（v1.6））但无作废说明：1. 计算 E_S1（由 it_base_mwh 传入）
+  [WARN ] src\aidc\data\tasks.py:198 出现废弃概念 it_base_mw（已改为导出量（v1.6））但无作废说明：it_base_mwh: 窗口内不可迁移 IT 电量 E_S1（MWh），由时间序列算出。
+  [WARN ] src\aidc\data\tasks.py:212 出现废弃概念 it_base_mw（已改为导出量（v1.6））但无作废说明：attrs["E_S1_mwh"]              = it_base_mwh
+  [WARN ] src\aidc\data\tasks.py:228 出现废弃概念 it_base_mw（已改为导出量（v1.6））但无作废说明：e_s1 = _finite_number(it_base_mwh, "it_base_mwh")
+  [WARN ] src\aidc\data\tasks.py:385 出现废弃概念 it_base_mw（已改为导出量（v1.6））但无作废说明：it_base_mwh: float,
+  [WARN ] src\aidc\data\tasks.py:408 出现废弃概念 it_base_mw（已改为导出量（v1.6））但无作废说明：it_base_mwh 与 p_card_mw 重算，但应优先取 attrs 以避免口径漂移）。
+  [WARN ] src\aidc\data\tasks.py:411 出现废弃概念 it_base_mw（已改为导出量（v1.6））但无作废说明：it_base_mwh: 窗口内不可迁移 IT 电量 E_S1
+  [WARN ] src\aidc\data\tasks.py:425 出现废弃概念 it_base_mw（已改为导出量（v1.6））但无作废说明：e_s1 = _finite_number(tasks.attrs.get("E_S1_mwh", it_base_mwh), "E_S1_
+  [WARN ] src\aidc\data\timeseries.py:247 出现废弃概念 it_base_mw（已改为导出量（v1.6））但无作废说明："gpu_power_mw_per_card": p_card, "it_base_mw": it_base,
+  [WARN ] src\aidc\data\timeseries.py:444 出现废弃概念 it_base_mw（已改为导出量（v1.6））但无作废说明："IT_base_mw": ts.attrs["it_base_mw"], "E_S1_annual_mwh": float(annual.
+  [WARN ] src\aidc\resilience\metrics.py:60 出现废弃概念 critical_load_fraction（已删除（v2.3））但无作废说明：早期版本的 `critical_load_fraction`（`online_inference` / `base_cooling` /
+  [WARN ] test_energy_limits_positive_part_solves 被 §9.A 声明为不需要求解器，但代码带了 @pytest.mark.solver
+  [WARN ] test_power_balance_closed（9.1）被 §9.B 列为需要求解器，但代码未带 @pytest.mark.solver
+  [WARN ] test_municipal_demand_always_met（9.8）被 §9.B 列为需要求解器，但代码未带 @pytest.mark.solver
+  [WARN ] test_fault_mode_served_load_consistency（9.32）被 §9.B 列为需要求解器，但代码未带 @pytest.mark.solver
+
+注意：本工具只检查一致性（引用、编号、常量、废弃概念），
+      不检查物理与数学正确性——那仍需人工复核。

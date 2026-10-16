@@ -1,0 +1,379 @@
+{
+  "service_before_chemistry": {
+    "status": "optimal",
+    "trajectory": {
+      "p_dis_Na": [
+        0.6
+      ],
+      "p_dis_Li": [
+        0.4
+      ],
+      "shed_c": [
+        0.0
+      ],
+      "shed_nc": [
+        0.0
+      ]
+    },
+    "stages": [
+      {
+        "level": "critical",
+        "status": 0,
+        "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+        "objective": 0.0,
+        "mip_gap": 0.0,
+        "mip_dual_bound": 0.0,
+        "requested_mip_gap": 0.0,
+        "proven_optimal": true
+      },
+      {
+        "level": "noncritical",
+        "status": 0,
+        "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+        "objective": 0.0,
+        "mip_gap": 0.0,
+        "mip_dual_bound": 0.0,
+        "requested_mip_gap": 0.0,
+        "proven_optimal": true
+      },
+      {
+        "level": "heat_gap",
+        "status": 0,
+        "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+        "objective": 0.0,
+        "mip_gap": 0.0,
+        "mip_dual_bound": 0.0,
+        "requested_mip_gap": 0.0,
+        "proven_optimal": true
+      },
+      {
+        "level": "chemistry_preference",
+        "status": 0,
+        "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+        "objective": 0.4,
+        "mip_gap": 0.0,
+        "mip_dual_bound": 0.4,
+        "requested_mip_gap": 0.0,
+        "proven_optimal": true
+      }
+    ],
+    "service_freeze": {
+      "values": {
+        "critical": 0.0,
+        "noncritical": 0.0,
+        "heat_gap": 0.0
+      },
+      "rows": {
+        "critical": "freeze_service_before_preference_critical",
+        "noncritical": "freeze_service_before_preference_noncritical",
+        "heat_gap": "freeze_service_before_preference_heat_gap"
+      },
+      "basis": "achieved feasible stage-three service; not a global optimality claim"
+    },
+    "backend": "scipy.optimize.milp/HiGHS"
+  },
+  "na_ample": {
+    "status": "optimal",
+    "trajectory": {
+      "p_dis_Na": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "p_dis_Li": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "shed_c": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "shed_nc": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "stages": [
+      {
+        "level": "critical",
+        "status": 0,
+        "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+        "objective": 0.0,
+        "mip_gap": 0.0,
+        "mip_dual_bound": 0.0,
+        "requested_mip_gap": 0.0,
+        "proven_optimal": true
+      },
+      {
+        "level": "noncritical",
+        "status": 0,
+        "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+        "objective": 0.0,
+        "mip_gap": 0.0,
+        "mip_dual_bound": 0.0,
+        "requested_mip_gap": 0.0,
+        "proven_optimal": true
+      },
+      {
+        "level": "heat_gap",
+        "status": 0,
+        "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+        "objective": 0.0,
+        "mip_gap": 0.0,
+        "mip_dual_bound": 0.0,
+        "requested_mip_gap": 0.0,
+        "proven_optimal": true
+      },
+      {
+        "level": "chemistry_preference",
+        "status": 0,
+        "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+        "objective": 0.0,
+        "mip_gap": 0.0,
+        "mip_dual_bound": 0.0,
+        "requested_mip_gap": 0.0,
+        "proven_optimal": true
+      }
+    ],
+    "service_freeze": {
+      "values": {
+        "critical": 0.0,
+        "noncritical": 0.0,
+        "heat_gap": 0.0
+      },
+      "rows": {
+        "critical": "freeze_service_before_preference_critical",
+        "noncritical": "freeze_service_before_preference_noncritical",
+        "heat_gap": "freeze_service_before_preference_heat_gap"
+      },
+      "basis": "achieved feasible stage-three service; not a global optimality claim"
+    },
+    "backend": "scipy.optimize.milp/HiGHS"
+  },
+  "parallel_power_ratio": {
+    "status": "optimal",
+    "trajectory": {
+      "p_dis_Na": [
+        0.5
+      ],
+      "p_dis_Li": [
+        1.0
+      ],
+      "shed_c": [
+        0.0
+      ],
+      "shed_nc": [
+        0.0
+      ]
+    },
+    "stages": [
+      {
+        "level": "critical",
+        "status": 0,
+        "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+        "objective": 0.0,
+        "mip_gap": 0.0,
+        "mip_dual_bound": 0.0,
+        "requested_mip_gap": 0.0,
+        "proven_optimal": true
+      },
+      {
+        "level": "noncritical",
+        "status": 0,
+        "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+        "objective": 0.0,
+        "mip_gap": 0.0,
+        "mip_dual_bound": 0.0,
+        "requested_mip_gap": 0.0,
+        "proven_optimal": true
+      },
+      {
+        "level": "heat_gap",
+        "status": 0,
+        "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+        "objective": 0.0,
+        "mip_gap": 0.0,
+        "mip_dual_bound": 0.0,
+        "requested_mip_gap": 0.0,
+        "proven_optimal": true
+      },
+      {
+        "level": "chemistry_preference",
+        "status": 0,
+        "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+        "objective": 1.0,
+        "mip_gap": 0.0,
+        "mip_dual_bound": 1.0,
+        "requested_mip_gap": 0.0,
+        "proven_optimal": true
+      }
+    ],
+    "service_freeze": {
+      "values": {
+        "critical": 0.0,
+        "noncritical": 0.0,
+        "heat_gap": 0.0
+      },
+      "rows": {
+        "critical": "freeze_service_before_preference_critical",
+        "noncritical": "freeze_service_before_preference_noncritical",
+        "heat_gap": "freeze_service_before_preference_heat_gap"
+      },
+      "basis": "achieved feasible stage-three service; not a global optimality claim"
+    },
+    "backend": "scipy.optimize.milp/HiGHS"
+  },
+  "parallel_empty_na": {
+    "status": "optimal",
+    "trajectory": {
+      "p_dis_Na": [
+        0.0
+      ],
+      "p_dis_Li": [
+        1.5
+      ],
+      "shed_c": [
+        0.0
+      ],
+      "shed_nc": [
+        0.0
+      ]
+    },
+    "stages": [
+      {
+        "level": "critical",
+        "status": 0,
+        "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+        "objective": 0.0,
+        "mip_gap": 0.0,
+        "mip_dual_bound": 0.0,
+        "requested_mip_gap": 0.0,
+        "proven_optimal": true
+      },
+      {
+        "level": "noncritical",
+        "status": 0,
+        "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+        "objective": 0.0,
+        "mip_gap": 0.0,
+        "mip_dual_bound": 0.0,
+        "requested_mip_gap": 0.0,
+        "proven_optimal": true
+      },
+      {
+        "level": "heat_gap",
+        "status": 0,
+        "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+        "objective": 0.0,
+        "mip_gap": 0.0,
+        "mip_dual_bound": 0.0,
+        "requested_mip_gap": 0.0,
+        "proven_optimal": true
+      },
+      {
+        "level": "chemistry_preference",
+        "status": 0,
+        "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+        "objective": 1.5,
+        "mip_gap": 0.0,
+        "mip_dual_bound": 1.5,
+        "requested_mip_gap": 0.0,
+        "proven_optimal": true
+      }
+    ],
+    "service_freeze": {
+      "values": {
+        "critical": 0.0,
+        "noncritical": 0.0,
+        "heat_gap": 0.0
+      },
+      "rows": {
+        "critical": "freeze_service_before_preference_critical",
+        "noncritical": "freeze_service_before_preference_noncritical",
+        "heat_gap": "freeze_service_before_preference_heat_gap"
+      },
+      "basis": "achieved feasible stage-three service; not a global optimality claim"
+    },
+    "backend": "scipy.optimize.milp/HiGHS"
+  },
+  "reverse_order": {
+    "status": "optimal",
+    "trajectory": {
+      "p_dis_Na": [
+        0.0
+      ],
+      "p_dis_Li": [
+        1.0
+      ],
+      "shed_c": [
+        0.0
+      ],
+      "shed_nc": [
+        0.0
+      ]
+    },
+    "stages": [
+      {
+        "level": "critical",
+        "status": 0,
+        "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+        "objective": 0.0,
+        "mip_gap": 0.0,
+        "mip_dual_bound": 0.0,
+        "requested_mip_gap": 0.0,
+        "proven_optimal": true
+      },
+      {
+        "level": "noncritical",
+        "status": 0,
+        "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+        "objective": 0.0,
+        "mip_gap": 0.0,
+        "mip_dual_bound": 0.0,
+        "requested_mip_gap": 0.0,
+        "proven_optimal": true
+      },
+      {
+        "level": "heat_gap",
+        "status": 0,
+        "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+        "objective": 0.0,
+        "mip_gap": 0.0,
+        "mip_dual_bound": 0.0,
+        "requested_mip_gap": 0.0,
+        "proven_optimal": true
+      },
+      {
+        "level": "chemistry_preference",
+        "status": 0,
+        "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+        "objective": 0.0,
+        "mip_gap": 0.0,
+        "mip_dual_bound": 0.0,
+        "requested_mip_gap": 0.0,
+        "proven_optimal": true
+      }
+    ],
+    "service_freeze": {
+      "values": {
+        "critical": 0.0,
+        "noncritical": 0.0,
+        "heat_gap": 0.0
+      },
+      "rows": {
+        "critical": "freeze_service_before_preference_critical",
+        "noncritical": "freeze_service_before_preference_noncritical",
+        "heat_gap": "freeze_service_before_preference_heat_gap"
+      },
+      "basis": "achieved feasible stage-three service; not a global optimality claim"
+    },
+    "backend": "scipy.optimize.milp/HiGHS"
+  }
+}

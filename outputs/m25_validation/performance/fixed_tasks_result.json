@@ -1,0 +1,62 @@
+{
+  "hours": 168,
+  "tasks": 2200,
+  "budget_s": 60.0,
+  "source_hashes": {
+    "outputs\\m25_validation\\performance\\probe_fixed_tasks.py": "d0b53f0c560865f08d2c3160316c804ae441334769cc1e9f4ae3f3260f7e1ba1",
+    "src\\aidc\\model\\dispatch.py": "d24f92d9c5308f322105feb86b7064a12c90b2bfb096f6cb63d21f63c367ab45",
+    "outputs\\m2_validation\\inputs_normal_168h_r_nw_a3.parquet": "b37c01f6980466fed3366e7094b3d5d3083607f9f18576a8d8d5b98f1f988b6e",
+    "outputs\\m2_validation\\tasks_normal_168h_r_nw_a3.csv": "98746f4c27a14c7f3f0d2d5ef7d28bc870092fd686c0c3284ad0924435c4677e",
+    "outputs\\m25_validation\\performance\\cutoff_solution.npz": "43bc5d1fc8373789f9f10423fa9676448f9c200732fc68e9f4317eb8f74859e2"
+  },
+  "seed_original_combined_objective": 581560.9549059827,
+  "seed_original_validation": {
+    "bounds": 2.6645352591003757e-15,
+    "rows": 7.105427357601002e-15,
+    "integrality": 0.0
+  },
+  "surrogate_start_yuan": 603969.6286983986,
+  "surrogate_passes": [
+    {
+      "pass": 1,
+      "moves": 382,
+      "surrogate_yuan": 603634.4543170163
+    },
+    {
+      "pass": 2,
+      "moves": 2,
+      "surrogate_yuan": 603634.4505755573
+    },
+    {
+      "pass": 3,
+      "moves": 0,
+      "surrogate_yuan": 603634.4505755573
+    }
+  ],
+  "preparation_s": 8.56287650000013,
+  "remaining_physical_budget_s": 51.43712349999987,
+  "fixed_task_starts": 2200,
+  "active_binary_variables": 504,
+  "solver": {
+    "level": "fixed_tasks_physical_only",
+    "status": 0,
+    "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "objective": 573812.6942542882,
+    "mip_gap": 0.0035273877890463798,
+    "mip_dual_bound": 571788.6343633758,
+    "requested_mip_gap": 0.01,
+    "proven_optimal": 0
+  },
+  "scope": "Physical optimum conditional on heuristic whole-task schedule; gap is NOT original-model global gap.",
+  "original_model_validation": {
+    "bounds": 3.872457909892546e-13,
+    "rows": 6.927791673660977e-13,
+    "integrality": 3.552713678800501e-14
+  },
+  "combined_objective": 573812.6942542882,
+  "primary_objective": 573812.6942542882,
+  "sla_penalty": 0.0,
+  "improvement_yuan": 7748.260651694494,
+  "accepted_as_better_incumbent": 1,
+  "elapsed_s": 21.708789900003467
+}

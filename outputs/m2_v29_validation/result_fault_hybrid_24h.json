@@ -1,0 +1,135 @@
+{
+  "status": "optimal",
+  "metrics": {
+    "objective_value": 0.0,
+    "operating_cost_yuan": 21784.300782973536,
+    "cost_total": 21784.300782973536,
+    "cost_grid": 0.0,
+    "revenue_heat": 0.0,
+    "sla_penalty_yuan": 0.0,
+    "sla_rate": 1.0,
+    "delay_count": 0,
+    "latency_p50": 0.0,
+    "latency_p90": 0.0,
+    "tokens_mtok": 21718.368,
+    "task_tokens_mtok": 0,
+    "s1_tokens_mtok": 21718.368,
+    "cost_per_mtok": 1.0030358074314578,
+    "carbon_per_mtok": 0.5516696940873019,
+    "carbon_grass": 11981.365430635446,
+    "carbon_boiler": 11981.365430635446,
+    "carbon_avoid": 0.0,
+    "carbon_net": 11981.365430635446,
+    "green_matching_rate": 0.0,
+    "curtailment_rate": 0.0,
+    "q_dump_total": 0.0,
+    "q_unused_total": 1.50822,
+    "q_boiler_total": 54.46075195743384,
+    "heat_from_waste_share": 0.20538720787283404,
+    "unserved_elec": 0.0,
+    "unserved_heat": 0.0,
+    "eens_critical": 0.0,
+    "eens_heat": 0.0,
+    "equivalent_cycles_Na": 0.2441121979446364,
+    "equivalent_cycles_Li": 0.0,
+    "t_island_h": 24.0,
+    "censored": true,
+    "full_service": true,
+    "full_service_strict": true,
+    "level1_proven": true,
+    "epsilon_shed_mw": 1e-09,
+    "epsilon_heat_mw_th": 1e-09
+  },
+  "solver_info": {
+    "backend": "scipy.optimize.milp/HiGHS",
+    "scipy_version": "1.15.3",
+    "highs_version": "1.8.0",
+    "time_s": 0.13821160000043164,
+    "mip_gap": 0.0,
+    "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "n_variables": 650,
+    "n_constraints": 559,
+    "level_statuses": [
+      {
+        "level": "critical",
+        "status": 0,
+        "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+        "objective": 0.0,
+        "mip_gap": 0.0,
+        "mip_dual_bound": 0.0,
+        "requested_mip_gap": 0.0,
+        "proven_optimal": true
+      },
+      {
+        "level": "noncritical",
+        "status": 0,
+        "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+        "objective": 0.0,
+        "mip_gap": 0.0,
+        "mip_dual_bound": 0.0,
+        "requested_mip_gap": 0.0,
+        "proven_optimal": true
+      },
+      {
+        "level": "heat_gap",
+        "status": 0,
+        "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+        "objective": 0.0,
+        "mip_gap": 0.0,
+        "mip_dual_bound": 0.0,
+        "requested_mip_gap": 0.0,
+        "proven_optimal": true
+      },
+      {
+        "level": "chemistry_preference",
+        "status": 0,
+        "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+        "objective": 0.0,
+        "mip_gap": 0.0,
+        "mip_dual_bound": 0.0,
+        "requested_mip_gap": 0.0,
+        "proven_optimal": true
+      }
+    ],
+    "level1_proven": true,
+    "objective_unit": "MWh",
+    "primary_objective_value": 0.0,
+    "auxiliary_objective_value": 1.5082199999999997e-06,
+    "backend_objective_value": 0.0,
+    "auxiliary_method": "weighted_single_solve",
+    "objective_constant": 0.0,
+    "positive_part_encoding": "exact joint feasible region with charge/discharge mutex z",
+    "simulation_notice": "仿真结果，非真实设备或站点数据",
+    "green_matching_scope": "direct renewable input / served bus consumption including charging; storage origins not traced",
+    "fault_storage_policy": {
+      "discharge_order": [
+        "Na",
+        "Li"
+      ],
+      "parallel_discharge": false,
+      "same_hour_dual_discharge_allowed": true,
+      "preference_level": 4,
+      "preference_chemistry": "Li",
+      "ratio_basis": "temperature power caps, excluding SOC energy limits",
+      "encoding": "service-first lexicographic preference"
+    },
+    "fault_service_freeze": {
+      "values": {
+        "critical": 0.0,
+        "noncritical": 0.0,
+        "heat_gap": 0.0
+      },
+      "rows": {
+        "critical": "freeze_service_before_preference_critical",
+        "noncritical": "freeze_service_before_preference_noncritical",
+        "heat_gap": "freeze_service_before_preference_heat_gap"
+      },
+      "basis": "achieved feasible stage-three service; not a global optimality claim"
+    }
+  },
+  "physical_checks": {
+    "power_residual_mw": 1.2434497875801753e-14,
+    "heat_residual_mw_th": 0.0
+  },
+  "trajectory": "trajectories_fault_hybrid_24h.parquet"
+}

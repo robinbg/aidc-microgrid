@@ -1,0 +1,81 @@
+{
+  "frozen_expected_sha256": {
+    "src/aidc/model/dispatch.py": "82a4db85d0daa30bf561571a93c03bc25f0a743f6e9ae3c6b8e2129185e8c59b",
+    "src/aidc/model/_baseline.py": "ecd1d13633ab448f0d3bb6defce706ce3344888a5331450eb0234921d7ba3770"
+  },
+  "files_changed_during_runs": [],
+  "runs": [
+    {
+      "label": "final-full",
+      "command": [
+        "C:\\Users\\Lee Master\\anaconda3\\python.exe",
+        "-B",
+        "-m",
+        "pytest",
+        "tests/test_chemistry_params.py",
+        "tests/test_invariants.py",
+        "tests/test_dispatch_smoke.py",
+        "-p",
+        "no:cacheprovider",
+        "--basetemp",
+        "D:\\ClaudeWorkspace\\09-aidc-microgrid-kickoff\\outputs\\m2_v29_validation\\pytest-temp-final-full",
+        "--tb=short",
+        "-ra",
+        "-o",
+        "addopts=",
+        "--junitxml",
+        "D:\\ClaudeWorkspace\\09-aidc-microgrid-kickoff\\outputs\\m2_v29_validation\\final-full.xml"
+      ],
+      "returncode": 0,
+      "elapsed_seconds": 23.125400066375732,
+      "selected_testcases": 190,
+      "by_file": {
+        "tests.test_chemistry_params": 46,
+        "tests.test_invariants": 134,
+        "tests.test_dispatch_smoke": 10
+      },
+      "counts": {
+        "passed": 190,
+        "failed": 0,
+        "skipped": 0,
+        "error": 0
+      },
+      "failed_tests": []
+    },
+    {
+      "label": "final-m1-not-solver",
+      "command": [
+        "C:\\Users\\Lee Master\\anaconda3\\python.exe",
+        "-B",
+        "-m",
+        "pytest",
+        "tests/test_invariants.py",
+        "-m",
+        "not solver",
+        "-p",
+        "no:cacheprovider",
+        "--basetemp",
+        "D:\\ClaudeWorkspace\\09-aidc-microgrid-kickoff\\outputs\\m2_v29_validation\\pytest-temp-final-m1",
+        "--tb=short",
+        "-ra",
+        "-o",
+        "addopts=",
+        "--junitxml",
+        "D:\\ClaudeWorkspace\\09-aidc-microgrid-kickoff\\outputs\\m2_v29_validation\\final-m1-not-solver.xml"
+      ],
+      "returncode": 0,
+      "elapsed_seconds": 15.226958274841309,
+      "selected_testcases": 43,
+      "by_file": {
+        "tests.test_invariants": 43
+      },
+      "counts": {
+        "passed": 43,
+        "failed": 0,
+        "skipped": 0,
+        "error": 0
+      },
+      "failed_tests": []
+    }
+  ]
+}

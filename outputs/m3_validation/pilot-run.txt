@@ -1,0 +1,18 @@
+未在画像使用的覆盖授权项: electricity_override.price_sell
+pilot: 50 feasible draws (+36 area-prefiltered), 5 workers
+未在画像使用的覆盖授权项: electricity_override.price_sell
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-NW pv simulated CF 0.104005 differs from reference 0.170000 by -0.065995 (tolerance 0.05); generation parameters were not adjusted.
+  ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
+未在画像使用的覆盖授权项: electricity_override.price_sell
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-NW pv simulated CF 0.104005 differs from reference 0.170000 by -0.065995 (tolerance 0.05); generation parameters were not adjusted.
+  ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
+未在画像使用的覆盖授权项: electricity_override.price_sell
+未在画像使用的覆盖授权项: electricity_override.price_sell
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-NW pv simulated CF 0.104005 differs from reference 0.170000 by -0.065995 (tolerance 0.05); generation parameters were not adjusted.
+  ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-NW pv simulated CF 0.104005 differs from reference 0.170000 by -0.065995 (tolerance 0.05); generation parameters were not adjusted.
+  ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
+未在画像使用的覆盖授权项: electricity_override.price_sell
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-NW pv simulated CF 0.104005 differs from reference 0.170000 by -0.065995 (tolerance 0.05); generation parameters were not adjusted.
+  ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
+  5/50 elapsed=304s

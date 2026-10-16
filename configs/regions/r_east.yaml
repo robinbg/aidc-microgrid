@@ -1,0 +1,68 @@
+# 地区画像 R-EAST：东部沿海
+# 典型场景：长三角一带（上海、苏州、杭州周边）
+#
+# ⚠️ 全部数值为占位值。气象与负荷序列由确定性生成器生成（固定种子）。
+
+region_id: R-EAST
+display_name: "东部沿海"
+latitude: 31.23
+longitude: 121.47
+
+# ---------------------------------------------------------------- 气候
+climate:
+  T_min_celsius: -5.0            # 无严寒
+  T_max_celsius: 38.0
+  T_mean_annual: 17.0
+  seasonal_amplitude: 13.0
+  diurnal_amplitude: 5.0
+  noise_std: 2.0
+  note: "冬季气温温和，低温折减几乎不构成约束"
+
+# ---------------------------------------------------------------- 可再生资源
+renewables:
+  pv_capacity_mw: 8.0            # 土地与屋顶资源受限
+  wind_capacity_mw: 6.0
+  cf_pv: 0.14
+  cf_wind: 0.22
+  wind_anticorrelation_strength: 0.2
+  source: "PLACEHOLDER"
+
+# ---------------------------------------------------------------- 电价覆盖
+electricity_override:
+  price_valley: 380.0
+  price_flat: 650.0
+  price_peak: 1150.0             # 峰段电价高，峰谷价差大
+  note: "电价高、峰谷差大，但电网强、供电可靠性高"
+
+# ---------------------------------------------------------------- 碳因子覆盖
+carbon_override:
+  ci_grid_mid: 450.0
+  note: "区域电网碳因子相对较低"
+
+# ---------------------------------------------------------------- 供热需求
+# 已按系统产热能力重标定（SPEC §7.3）；余热贡献占比约 65%
+heat:
+  q_mun_demand_peak_mw_th: 1.5
+  q_mun_demand_base_mw_th: 0.8
+  q_ind_capacity_mw_th: 1.0
+  heating_season_months: [12, 1, 2]
+  note: "供热季短、需求低，余热贡献占比相对最高"
+
+# ---------------------------------------------------------------- 算力条件
+# IT_base 为导出量，不在此处设定（SPEC §2.2）
+compute_override:
+  gpu_capacity_total: 6144
+  s1_reserved_fraction: 0.25     # 在线业务占比高 → 导出 IT_base ≈ 1.075 MW
+  # 可达性校验：E_tasks 需求 ≈ 148 MWh，最大可发电量 ≈ 542 MWh，利用率 ≈ 27%
+  flexible_task_ratio: 0.45      # 柔性较低
+  note: "靠近用户，在线推理占比高，任务时间柔性小"
+
+# ---------------------------------------------------------------- 储能布置条件
+storage_site_override:
+  area_limit_m2: 3000.0          # 土地贵，布置面积受限
+  outdoor_installation: false    # 多为室内或半室内布置
+  indoor_temp_offset: 15.0
+  indoor_temp_floor: 15.0
+  indoor_temp_ceiling: 35.0
+  note: "面积紧张 + 无低温约束 + 室内布置 —— 低温折减不起作用，
+        本画像预期给出'锂电为主'的结论（见 SPEC §7.3）"

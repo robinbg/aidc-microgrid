@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="4" skipped="0" tests="5" time="5.589" timestamp="2026-10-16T02:09:35.467665+08:00" hostname="DR-DONE"><testcase classname="tests.test_invariants" name="test_fault_chemistry_preference_preserves_noncritical_service" time="1.419" /><testcase classname="tests.test_invariants" name="test_s_base_terminal_precharge_covers_last_hour_forced_discharge" time="0.029"><failure message="ValueError: S-base storage/grid priority semantics await explicit policy confirmation">tests\test_invariants.py:1269: in test_s_base_terminal_precharge_covers_last_hour_forced_discharge
+    result = _m2_s_base_rule_result(monkeypatch, ts, tasks, cfg)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests\test_invariants.py:1243: in _m2_s_base_rule_result
+    return dispatch.solve_dispatch(ts, tasks, cfg, sizing, "S-base", 20260816,
+src\aidc\model\dispatch.py:681: in solve_dispatch
+    _apply_baseline_rules(model)
+src\aidc\model\dispatch.py:755: in _apply_baseline_rules
+    raise ValueError("S-base storage/grid priority semantics await explicit policy confirmation")
+E   ValueError: S-base storage/grid priority semantics await explicit policy confirmation</failure></testcase><testcase classname="tests.test_invariants" name="test_s_base_grid_recharge_uses_lowest_price_then_earliest_tie" time="0.038"><failure message="ValueError: S-base storage/grid priority semantics await explicit policy confirmation">tests\test_invariants.py:1290: in test_s_base_grid_recharge_uses_lowest_price_then_earliest_tie
+    result = _m2_s_base_rule_result(monkeypatch, ts, tasks, cfg)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests\test_invariants.py:1243: in _m2_s_base_rule_result
+    return dispatch.solve_dispatch(ts, tasks, cfg, sizing, "S-base", 20260816,
+src\aidc\model\dispatch.py:681: in solve_dispatch
+    _apply_baseline_rules(model)
+src\aidc\model\dispatch.py:755: in _apply_baseline_rules
+    raise ValueError("S-base storage/grid priority semantics await explicit policy confirmation")
+E   ValueError: S-base storage/grid priority semantics await explicit policy confirmation</failure></testcase><testcase classname="tests.test_invariants" name="test_s_base_surplus_stops_at_reference_and_audits_soc_cap_curtailment" time="0.035"><failure message="ValueError: S-base storage/grid priority semantics await explicit policy confirmation">tests\test_invariants.py:1304: in test_s_base_surplus_stops_at_reference_and_audits_soc_cap_curtailment
+    result = _m2_s_base_rule_result(monkeypatch, ts, tasks, cfg)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests\test_invariants.py:1243: in _m2_s_base_rule_result
+    return dispatch.solve_dispatch(ts, tasks, cfg, sizing, "S-base", 20260816,
+src\aidc\model\dispatch.py:681: in solve_dispatch
+    _apply_baseline_rules(model)
+src\aidc\model\dispatch.py:755: in _apply_baseline_rules
+    raise ValueError("S-base storage/grid priority semantics await explicit policy confirmation")
+E   ValueError: S-base storage/grid priority semantics await explicit policy confirmation</failure></testcase><testcase classname="tests.test_invariants" name="test_s_base_physical_shortage_remains_infeasible" time="0.038"><failure message="ValueError: S-base storage/grid priority semantics await explicit policy confirmation">tests\test_invariants.py:1323: in test_s_base_physical_shortage_remains_infeasible
+    result = _m2_s_base_rule_result(monkeypatch, ts, tasks, cfg,
+tests\test_invariants.py:1243: in _m2_s_base_rule_result
+    return dispatch.solve_dispatch(ts, tasks, cfg, sizing, "S-base", 20260816,
+src\aidc\model\dispatch.py:681: in solve_dispatch
+    _apply_baseline_rules(model)
+src\aidc\model\dispatch.py:755: in _apply_baseline_rules
+    raise ValueError("S-base storage/grid priority semantics await explicit policy confirmation")
+E   ValueError: S-base storage/grid priority semantics await explicit policy confirmation</failure></testcase></testsuite></testsuites>

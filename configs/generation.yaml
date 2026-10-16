@@ -1,0 +1,163 @@
+# 数据生成参数（SPEC §7.4、§1.2）
+#
+# ⚠️ 本文件中的数值分两类，报告时必须分别标注：
+#    1. `source: "placeholder"` —— 物理/统计形式参数，需用公开数据标定
+#    2. `source: "仿真设定值"` —— 无公开数据可标定的方案设定值
+#    两者都**不是**真实设备的运行参数。凡引用由本文件生成的结果，
+#    必须标注为"基于仿真生成的气象与负载序列"（SPEC §10.1）。
+#
+# 单位约定同 SPEC §1.1。所有生成必须使用确定性种子（numpy.random.default_rng）。
+
+# ---------------------------------------------------------------- 风速与风电
+#
+# Weibull 分布：k 为形状参数，c 为尺度参数（m/s）。
+# 典型取值：内陆风场 k ≈ 1.8–2.2，c ≈ 6–9 m/s。
+wind:
+  weibull:
+    k:
+      value: 2.0
+      source: "placeholder — 内陆风场典型形状参数，需用当地测风塔数据标定"
+    c:
+      value: 8.0
+      source: "placeholder — 对应年均风速约 7.1 m/s，需按地区标定"
+    # 风速的 AR(1) 自相关：反映持续性
+    ar1_rho:
+      value: 0.85
+      source: "placeholder — 需用实测序列估计"
+    # 季节调制：冬季风速偏高（北方特征），相对年均的幅度
+    seasonal_amplitude:
+      value: 0.15
+      source: "placeholder"
+    # 日周期调制：夜间风速偏高（反调峰特征的一部分，与 region 的
+    # wind_anticorrelation_strength 配合）
+    diurnal_amplitude:
+      value: 0.10
+      source: "placeholder"
+
+  # 风机功率曲线（分段线性）：(风速 m/s, 出力占额定比例)
+  power_curve:
+    points:
+      - {v: 0.0,  p: 0.00}
+      - {v: 3.0,  p: 0.00}     # 切入风速
+      - {v: 5.0,  p: 0.08}
+      - {v: 7.0,  p: 0.30}
+      - {v: 9.0,  p: 0.62}
+      - {v: 11.0, p: 0.88}
+      - {v: 12.0, p: 1.00}     # 额定风速
+      - {v: 20.0, p: 1.00}
+      - {v: 25.0, p: 0.00}     # 切出风速
+    cut_out_v: 25.0
+    source: "placeholder — 典型陆上风机曲线，需按机型标定"
+    note: "v > cut_out_v 时出力为 0（切出保护）"
+
+# ---------------------------------------------------------------- 太阳辐照与光伏
+solar:
+  # 晴空指数按天气状态给出
+  clearness_index:
+    clear:    {mean: 0.75, std: 0.06}
+    overcast: {mean: 0.30, std: 0.10}
+    rain:     {mean: 0.18, std: 0.08}
+    source: "placeholder — 需用公开辐照数据库标定"
+  # 天气状态的日间转移（马尔可夫链）
+  weather_markov:
+    states: [clear, overcast, rain]
+    transition:
+      clear:    [0.55, 0.35, 0.10]
+      overcast: [0.25, 0.55, 0.20]
+      rain:     [0.10, 0.45, 0.45]
+    source: "placeholder"
+  # 组件温度折减
+  temp_coefficient:
+    value: -0.004
+    source: "placeholder — 典型晶硅组件温度系数（每 ℃ 相对效率变化）"
+    reference_temp_celsius: 25.0
+
+# ---------------------------------------------------------------- 环境温度
+temperature:
+  # 日周期极值出现时刻
+  min_hour: {value: 5.0,  source: "placeholder — 日出前最低温"}
+  max_hour: {value: 15.0, source: "placeholder — 午后最高温"}
+  note: "季节振幅与日均温由 regions/*.yaml 的 climate 段给出"
+
+# ---------------------------------------------------------------- 序列长度
+#
+# ⚠️ 生成 8760 + 168 小时（SPEC §1.2）。
+#    多出的 168 小时用于极端代表周 W-WINX：若全年最低温落在最后 167 小时内，
+#    "从最低温起向后取 168 小时"会越界。多生成一段即可完整取窗，
+#    且不改变"全年最冷连续 168 小时"的语义（优于拼接或提前窗口）。
+series:
+  year_hours: 8760
+  extra_hours: 168
+  total_hours: 8928
+  note: "年度统计（容量因子、E_S1、年电量）只使用前 8760 小时；代表周可在全段内选取"
+
+# ---------------------------------------------------------------- 任务生成
+#
+# ⚠️ S1 不进任务表（U8、U10），因此此处**只给 S2 与 S3**。
+tasks:
+  # 任务类别的数量权重（归一化后使用，必须和为 1.0）
+  priority_mix:
+    S2: 0.4667    # = 7/15，微调类
+    S3: 0.5333    # = 8/15，批量推理/训练类
+    source: "仿真设定值 — 由原 S2:S3 = 0.35:0.40 归一化而来"
+    note: "S1 不在其中；若需调整，两者之和须为 1.0"
+
+  # 按优先级分组的分布（S2 与 S3 的负载特征不同）
+  by_priority:
+    S2:
+      # 微调：中等 GPU、较短时长、截止较紧
+      gpu_choices:
+        values: [5, 10, 20, 40]
+        weights: [0.30, 0.35, 0.25, 0.10]
+      duration_distribution:
+        values: [2, 3, 4, 6]
+        weights: [0.30, 0.30, 0.25, 0.15]
+      deadline_slack_h:          # deadline_h = arrive_h + duration_h + slack
+        min: 2.0
+        max: 24.0
+        distribution: "uniform"
+      tolerance_h: 0.0           # S2 为硬截止
+      source: "仿真设定值"
+    S3:
+      # 批量推理/训练：较大 GPU、较长时长、截止较宽
+      gpu_choices:
+        values: [10, 20, 40, 80]
+        weights: [0.25, 0.30, 0.30, 0.15]
+      duration_distribution:
+        values: [4, 6, 8, 12]
+        weights: [0.25, 0.30, 0.30, 0.15]
+      deadline_slack_h:          # 期望完成时刻距到达的余量
+        min: 6.0
+        max: 72.0
+        distribution: "uniform"
+      tolerance_h: "from_region" # S3 容忍窗口由画像或 experiments.yaml 给出
+      source: "仿真设定值"
+
+  # 任务到达强度的日周期剖面（24 个时段，相对值）
+  arrival_intensity_by_hour:
+    values: [0.6, 0.5, 0.5, 0.5, 0.5, 0.6, 0.8, 1.0, 1.3, 1.5, 1.5, 1.4,
+             1.2, 1.3, 1.4, 1.4, 1.3, 1.2, 1.1, 1.0, 0.9, 0.8, 0.7, 0.6]
+    source: "仿真设定值 — 反映工作时段的任务到达高峰"
+    note: "生成器按该剖面加权基础到达率，使任务在时间上非均匀分布"
+
+# ---------------------------------------------------------------- 生成约束与预检
+task_generation_constraints:
+  # 窗口边界自校验（SPEC §3.1）
+  window_checks:
+    - "arrive_h + duration_h <= horizon_hours"
+    - "latest_h = deadline_h + tolerance_h <= horizon_hours"
+
+  # 越界处理：重新采样该任务的到达时间与松弛（往前放）
+  # ⚠️ 禁止截断 duration、缩短 tolerance、提前 deadline 或丢弃任务
+  resample_on_violation: true
+  max_resample_attempts: 50
+  fail_on_exhausted_resample: true
+
+  # 电量上界预检（SPEC §2.2）
+  # 目标柔性占比 R 反解出的任务平均利用率必须不超过该值，否则报错
+  max_required_avg_utilization: 0.60
+  precheck_note: "通过此预检不等于任务集一定可调度（仍需满足到达、截止、非抢占约束）；可调度性的真正验证在 M2 的求解阶段"
+
+  # 柔性占比的核验容差（SPEC §2.2）
+  flexible_ratio_tolerance: 0.05
+  tolerance_note: "偏差超容差时应检查逼近逻辑，不得修改目标值"

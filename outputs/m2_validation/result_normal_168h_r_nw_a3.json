@@ -1,0 +1,78 @@
+{
+  "status": "feasible",
+  "metrics": {
+    "objective_value": 3585048.7597669773,
+    "operating_cost_yuan": 583473.2415851585,
+    "cost_total": 583473.2415851585,
+    "cost_grid": 0.0,
+    "revenue_heat": 0.0,
+    "sla_penalty_yuan": 3001575.5181818185,
+    "sla_rate": 0.9986363636363637,
+    "delay_count": 3,
+    "latency_p50": 13.0,
+    "latency_p90": 46.0,
+    "tokens_mtok": 440231.076,
+    "task_tokens_mtok": 288202.5,
+    "s1_tokens_mtok": 152028.57599999997,
+    "cost_per_mtok": 1.325379495892649,
+    "carbon_per_mtok": 0.07763986300690771,
+    "carbon_grass": 34179.48043202358,
+    "carbon_boiler": 34179.48043202358,
+    "carbon_avoid": 0.0,
+    "carbon_net": 34179.48043202358,
+    "green_matching_rate": 0.3686300796979444,
+    "curtailment_rate": 0.8173636545339493,
+    "q_dump_total": 0.0,
+    "q_unused_total": 0.7508679870259989,
+    "q_boiler_total": 155.36127469101626,
+    "heat_from_waste_share": 0.6737393141946021,
+    "unserved_elec": 0.0,
+    "unserved_heat": 0.0,
+    "eens_critical": 0.0,
+    "eens_heat": 0.0,
+    "equivalent_cycles_Na": 5.362414106388541,
+    "equivalent_cycles_Li": 10.18015163315718
+  },
+  "solver": {
+    "backend": "scipy.optimize.milp/HiGHS",
+    "scipy_version": "1.15.3",
+    "highs_version": "1.8.0",
+    "time_s": 61.93698869999935,
+    "mip_gap": 0.8442214632092646,
+    "message": "Time limit reached. (HiGHS Status 13: Time limit reached)",
+    "n_variables": 76884,
+    "n_constraints": 6065,
+    "level_statuses": [
+      {
+        "level": "normal_weighted",
+        "status": 1,
+        "message": "Time limit reached. (HiGHS Status 13: Time limit reached)",
+        "objective": 3585048.759767728,
+        "mip_gap": 0.8442214632092646,
+        "mip_dual_bound": 558473.6501200569,
+        "requested_mip_gap": 0.01,
+        "proven_optimal": false
+      }
+    ],
+    "level1_proven": true,
+    "primary_objective_value": 3585048.7597669773,
+    "auxiliary_objective_value": 7.508679870259988e-07,
+    "backend_objective_value": 3585048.759767728
+  },
+  "hours": 168,
+  "tasks": 2200,
+  "sizing": {
+    "E_Na": 100.0,
+    "P_Na": 30.0,
+    "E_Li": 50.0,
+    "P_Li": 15.0
+  },
+  "mode": "normal",
+  "checks": {
+    "power_residual_mw": 3.552713678800501e-15,
+    "heat_residual_mw_th": 4.440892098500626e-16,
+    "soc_dynamic_residual_Na": 2.220446049250313e-16,
+    "soc_dynamic_residual_Li": 2.220446049250313e-16
+  },
+  "trajectories": "trajectories_normal_168h_r_nw_a3.parquet"
+}
