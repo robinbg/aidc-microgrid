@@ -3,7 +3,7 @@
 **分四段使用。每次只发一段**，等它跑完测试、你看过产出后再发下一段。
 不要一次性把 M1–M8 全丢过去。
 
-规格现在只有一份：**`SPEC.md`（v2.9）**。`SPEC-REVISIONS*.md` 是历史留档，
+规格现在只有一份：**`SPEC.md`（v2.10）**。`SPEC-REVISIONS*.md` 是历史留档，
 **不要让它去读**（含作废结论，会被误导）。
 
 ---
@@ -24,7 +24,7 @@
    轨迹列清单是否与源码一致。
    ⚠️ **若报 ERROR，先停下报告，不要带着不一致开始实现。**
 
-1. 完整阅读 SPEC.md（v2.9，唯一权威规格）。
+1. 完整阅读 SPEC.md（v2.10，唯一权威规格）。
    再读 README.md、CHANGELOG.md，以及 configs/ 下全部 YAML。
    ⚠️ 不要读 SPEC-REVISIONS*.md —— 那是历史留档，含已作废结论。
 
@@ -310,7 +310,7 @@ M2 阶段用完整命令。不要让它用 `-k` 挑测试——那样会漏跑�
 如果只想发一句话启动：
 
 ```
-读 09-aidc-microgrid-kickoff/SPEC.md（唯一权威规格，v2.9）与 README.md，
+读 09-aidc-microgrid-kickoff/SPEC.md（唯一权威规格，v2.10）与 README.md，
 不要读 SPEC-REVISIONS*.md（历史留档，含作废结论）。
 然后只实现 M1：src/aidc/data/ 下三个模块，加上 model/storage.py 与 model/thermal.py
 的**纯函数**部分（soc_step、usable_band、energy_limits、area_requirement、

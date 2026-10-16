@@ -34,6 +34,12 @@ SEED = 20260816
 REGION = "R-NW"
 STRATEGY = "S-cost"
 
+# v2.10/BT1：configs/experiments.yaml 由规格方授权回填归一化范围（CHANGELOG
+# 「v2.10 · 三项裁定」），其哈希与 M1 冻结基线不再一致是**预期**的。
+# 复跑本脚本时该项按"授权变更"记录，不再作为失败断言；其余 10 份 YAML
+# 仍须与 M1 基线一致。本脚本产出的 M3 结果均在 v2.9 基线下生成。
+APPROVED_YAML_CHANGES = {"configs/experiments.yaml": "v2.10 BT1 spec-owner normalization backfill"}
+
 
 def clean(value):
     if isinstance(value, dict):
@@ -228,11 +234,21 @@ def main() -> None:
     report["configs_unchanged_from_m1"] = {
         path: digest == normalized_frozen.get(path)
         for path, digest in report["configs_after"].items()}
-    report["all_configs_unchanged"] = all(report["configs_unchanged_from_m1"].values())
-    assert report["all_configs_unchanged"], "configs changed during validation"
+    report["configs_stable_during_run"] = hashes_before == report["configs_after"]
+    report["approved_yaml_changes"] = {
+        path: {"reason": reason,
+               "m1_baseline_hash": normalized_frozen.get(path),
+               "current_hash": report["configs_after"].get(path)}
+        for path, reason in APPROVED_YAML_CHANGES.items()}
+    unexpected = [path for path, ok in report["configs_unchanged_from_m1"].items()
+                  if not ok and path not in APPROVED_YAML_CHANGES]
+    report["all_configs_unchanged_or_authorized"] = not unexpected
+    assert report["configs_stable_during_run"], "configs changed during validation"
+    assert not unexpected, f"unauthorized config changes: {unexpected}"
     assert report["baseline_s_base_unchanged"], "_baseline.py changed"
     write(OUT / "report_low.json", report)
-    print(json.dumps({"all_configs_unchanged": report["all_configs_unchanged"],
+    print(json.dumps({"all_configs_unchanged_or_authorized":
+                          report["all_configs_unchanged_or_authorized"],
                       "baseline_s_base_unchanged": report["baseline_s_base_unchanged"],
                       "arms": {a: report["arms"][a]["objectives_minimize"]
                                for a in report["arms"]}},

@@ -14,6 +14,3 @@ outputs/pytest-smoke-independent-*/
 outputs/m2-pytest-tmp-dispatch/
 outputs/m2-pytest-tmp-dispatch-2/
 outputs/m2-dispatch-combined-check/
-
-# 已作废的内部草稿（自我声明可删除，避免误读；见其文件头）
-reply.txt

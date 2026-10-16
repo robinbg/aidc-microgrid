@@ -36,6 +36,10 @@ SEED = 20260816
 REGION = "R-NW"
 STRATEGY = "S-cost"
 
+# v2.10/BT1：configs/experiments.yaml 由规格方授权回填归一化范围（CHANGELOG
+# 「v2.10 · 三项裁定」），其哈希与 M1 冻结基线不再一致是**预期**的。
+APPROVED_YAML_CHANGES = {"configs/experiments.yaml": "v2.10 BT1 spec-owner normalization backfill"}
+
 
 def clean(value):
     if isinstance(value, dict):
@@ -177,6 +181,7 @@ def main(arm_id: str) -> None:
     result["resilience"].pop("by_scenario")
     hashes_after = config_hashes()
     unchanged = {p: hashes_after[p] == frozen.get(p) for p in hashes_after}
+    unexpected = [p for p, ok in unchanged.items() if not ok and p not in APPROVED_YAML_CHANGES]
     entry = {
         "stage": "M3-high-fidelity", "spec_version": "2.9", "simulation": True,
         "arm": arm_id, "sizing": sizing, "strategy": STRATEGY, "region": REGION,
@@ -197,7 +202,11 @@ def main(arm_id: str) -> None:
         "windows": [{k: v for k, v in w.items() if k != "metrics"} for w in windows],
         "notes": result["notes"],
         "configs_unchanged_from_m1": unchanged,
-        "all_configs_unchanged": all(unchanged.values()),
+        "configs_stable_during_run": hashes_before == hashes_after,
+        "approved_yaml_changes": {p: {"reason": r, "m1_baseline_hash": frozen.get(p),
+                                      "current_hash": hashes_after.get(p)}
+                                  for p, r in APPROVED_YAML_CHANGES.items()},
+        "all_configs_unchanged_or_authorized": not unexpected,
         "baseline_s_base_unchanged": baseline_hash == frozen_m29["src/aidc/model/_baseline.py"],
         "configs_before": hashes_before, "configs_after": hashes_after,
     }
@@ -209,11 +218,14 @@ def main(arm_id: str) -> None:
                                      ("n_active", "n_skipped", "n_unproven", "censoring_rate",
                                       "t_island_mean", "eens", "n1_pass_rate")},
                       "hand_checks_failed": bad,
-                      "all_configs_unchanged": entry["all_configs_unchanged"],
+                      "all_configs_unchanged_or_authorized":
+                          entry["all_configs_unchanged_or_authorized"],
                       "elapsed_s": elapsed}, ensure_ascii=False, default=clean, indent=2),
           flush=True)
     assert not bad, f"hand checks failed: {bad}"
-    assert entry["all_configs_unchanged"] and entry["baseline_s_base_unchanged"]
+    assert entry["configs_stable_during_run"], "configs changed during validation"
+    assert entry["all_configs_unchanged_or_authorized"], f"unauthorized config changes: {unexpected}"
+    assert entry["baseline_s_base_unchanged"]
 
 
 if __name__ == "__main__":

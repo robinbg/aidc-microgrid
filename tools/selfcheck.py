@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""交付前自查：规格一致性检查（SPEC v2.9）。
+"""交付前自查：规格一致性检查（SPEC v2.10）。
 
 **为什么需要这个工具**：本项目的规格经过五轮复核，每轮都发现 4–9 条问题，
 其中大量是**跨文件一致性**问题（同一件事在两处写法不同、改了一处忘了另一处、
@@ -35,6 +35,14 @@ TESTS = ROOT / "tests"
 # 历史留档：**允许**出现 §U/§V/§W/§Z 这类指向它们的旧编号
 ARCHIVE_OK = {CHANGELOG.name, "reply.txt"}
 ARCHIVE_GLOB = "SPEC-REVISIONS"
+
+# `### 9.N`（N ≤ 36）的**显式白名单**：这些标题是"表格登记的测试条目"的
+# **展开说明**（§9.24 手算对照、§9.25 其他必做测试），不是 §9.37–9.39 那类规则。
+# ⚠️ 故意做成显式清单而**不是**自动推断：本检查当初正是靠"规则小节不得落在
+# 测试条目区间"抓到了 9.33→9.37 的漏改。若改成"N 在表格里出现过就放行"，
+# 那条历史 bug 就会被放过（当时 9.33 同样在表格里）。
+# 因此新增说明性标题必须**有意识地**加进这里。
+DESC_HEADINGS = {24, 25}
 
 errors: list[str] = []
 warns: list[str] = []
@@ -145,7 +153,7 @@ def check_test_numbering() -> None:
     rule_nums = [int(m.group(1)) for line in lines
                  if (m := re.match(r"^###\s+9\.(\d+)\s", line))]
     for n in rule_nums:
-        if n <= 36:
+        if n <= 36 and n not in DESC_HEADINGS:
             err(f"SPEC.md 规则小节 §9.{n} 落在测试条目区间（9.1–9.36），编号冲突")
 
     # 区间表与实际一致
@@ -182,7 +190,7 @@ def check_test_names() -> None:
 def check_versions() -> None:
     m = re.search(r"SPEC v(\d+\.\d+)", read(SPEC))
     if not m:
-        err("SPEC.md 标题行未找到版本号（形如 'SPEC v2.9'）")
+        err("SPEC.md 标题行未找到版本号（形如 'SPEC v2.10'）")
         return
     ver = m.group(1)
     # 只要求"当前版本号出现过"；允许同时出现历史版本（如"v2.1 修正"）
