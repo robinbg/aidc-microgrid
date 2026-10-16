@@ -654,6 +654,31 @@ def _extract_result(model, result, status, elapsed, stages, level1_proven=True):
         info["normal_incumbent_cut"] = meta["normal_incumbent_cut"]
     if "normal_bound_certificate" in meta:
         info["normal_bound_certificate"] = meta["normal_bound_certificate"]
+    if meta["strategy"] == "S-balance" and meta["mode"] == "normal":
+        # v2.10 §3.5 归一化越界守卫：任一分量归一化后 ∉ [0,1] → 告警并
+        # **原样报告**归一化值与原始值；不得静默截断——截断会把"区间标定
+        # 过窄"（标定缺陷）伪装成"策略触及边界"（正常结果），报告里无法区分。
+        # 守卫是报告层：目标函数本身是归一化空间上的线性式，求解不受影响。
+        ranges = meta["experiments"]["normalization"]["ranges"]
+        guard = {}
+        for comp in ("cost", "carbon", "heat"):
+            raw_value = float(components[comp] @ x)
+            low = _num(ranges[comp]["min"], f"normalization.{comp}.min")
+            high = _num(ranges[comp]["max"], f"normalization.{comp}.max")
+            normalized = (raw_value - low) / (high - low)
+            outside = not (-1e-9 <= normalized <= 1.0 + 1e-9)
+            guard[comp] = {"raw": raw_value, "normalized": normalized,
+                           "range_min": low, "range_max": high,
+                           "outside_unit_interval": outside}
+            if outside:
+                warnings.warn(
+                    f"S-balance normalization guard: {comp} normalized={normalized:.6f} "
+                    f"outside [0,1] (raw={raw_value:.6f}, range=[{low}, {high}]); "
+                    "reported as-is, NOT clipped (SPEC v2.10 §3.5). 区间可能需要重新标定；"
+                    "重新标定必须整批重跑", RuntimeWarning, stacklevel=2)
+        guard["fired"] = any(guard[c]["outside_unit_interval"] for c in ("cost", "carbon", "heat"))
+        info["s_balance_normalization_guard"] = guard
+        metrics["s_balance_guard_fired"] = guard["fired"]
     return DispatchResult(status, objective, traj, metrics, info, task_schedule)
 
 
@@ -721,13 +746,31 @@ def solve_dispatch(ts, tasks, cfg, sizing, strategy, seed,
         return _extract_result(model, outcome, outcome.status, perf_counter() - started, [])
     elif aux["method"] == "weighted_single_solve":
         objective = components["primary"] + components["auxiliary"]
-        if strategy == "S-cost" and len(model.meta["task_info"]) >= 500:
-            from aidc.model._incumbent import add_feasible_cost_cut, _merge_lower_bounds
+        # BT2-①（v2.10/M4）：S-base 规则解 + c·x ≤ c·x₀ 割的热启动对**全部
+        # 优化策略**生效。割对任意线性目标都成立（可行 x₀ ⇒ 最优 x* 满足
+        # c·x* ≤ c·x₀），不会切掉全局最优；候选排程必须先通过原模型的
+        # 逐约束独立验证（S-carbon 的 sla_floor 等策略专属行同样被检查，
+        # 不满足即整体拒绝并回退原求解路径）。此前仅 S-cost 启用，导致
+        # 其余策略在 168h/2200 任务规模下 60s 内找不到首个可行解而返回
+        # error（HiGHS Status 13, primal None）。
+        if strategy != "S-base" and len(model.meta["task_info"]) >= 500:
+            from aidc.model._incumbent import add_feasible_cost_cut
+            if strategy == "S-cost":
+                search_deadline = started + time_limit_s - 3.   # M2.5 审计过的原时序
+            else:
+                # 非 S-cost 没有认证下界分支：搜索至多占用一半预算，其余留给
+                # 主 MILP——带上 c·x ≤ c·x₀ 割后，主求解只需搜索"优于种子"的
+                # 空间，既可能找到更优解，也可能据此证明种子最优。
+                search_deadline = started + max(10.0, time_limit_s * 0.5)
             model.meta["normal_incumbent_cut"] = add_feasible_cost_cut(
-                model, objective, deadline=started + time_limit_s - 3., run_milp=_run_milp)
+                model, objective, deadline=search_deadline, run_milp=_run_milp)
         seed_x = model.meta.get("_normal_feasible_incumbent")
         lower_bound = float("nan")
         if seed_x is not None:
+            from aidc.model._incumbent import _merge_lower_bounds
+        if seed_x is not None and strategy == "S-cost":
+            # 成本下界认证模型只在 S-cost 下经过完整审计（M2.5），其余策略
+            # 使用"割 + 验证过的保留可行解"路径，不做认证宣称。
             from aidc.model._cost_bound import solve_cost_lower_bound
             remaining = max(0., time_limit_s - (perf_counter() - started) - 3.)
             lower_bound, bound_audit = solve_cost_lower_bound(model, objective, remaining, .001, _run_milp)
@@ -766,9 +809,10 @@ def solve_dispatch(ts, tasks, cfg, sizing, strategy, seed,
             best_bound, result.mip_gap = _merge_lower_bounds(upper, (
                 lower_bound, full_dual + model.objective_constant if full_dual is not None else None))
             result.mip_dual_bound = best_bound-model.objective_constant
-            model.meta["normal_bound_certificate"].update(
-                upper_bound=upper, lower_bound=best_bound, global_mip_gap=result.mip_gap,
-                target_met=bool(np.isfinite(result.mip_gap) and result.mip_gap <= mip_gap))
+            if "normal_bound_certificate" in model.meta:
+                model.meta["normal_bound_certificate"].update(
+                    upper_bound=upper, lower_bound=best_bound, global_mip_gap=result.mip_gap,
+                    target_met=bool(np.isfinite(result.mip_gap) and result.mip_gap <= mip_gap))
     elif aux["method"] == "two_stage":
         result = run(components["primary"], mip_gap, "normal_primary")
         if result.x is not None:

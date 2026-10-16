@@ -233,6 +233,7 @@ def evaluate_sizing(
     *,
     time_limit_s: float = 60.0,
     mip_gap: float = 0.01,
+    keep_week_results: bool = False,
 ) -> dict:
     """评估一组容量配置，返回四个目标值。
 
@@ -310,7 +311,8 @@ def evaluate_sizing(
                                     cfg["generation"], seed)
     gen = generation_params(cfg, region_cfg, tasks)
     if fidelity == "low":
-        core = _evaluate_low(ts_full, cfg, sizing, strategy, seed, gen, time_limit_s, mip_gap)
+        core = _evaluate_low(ts_full, cfg, sizing, strategy, seed, gen, time_limit_s, mip_gap,
+                             keep_week_results=keep_week_results)
     else:
         core = _evaluate_high(ts_full, cfg, sizing, strategy, seed, gen, time_limit_s, mip_gap)
     return _assemble(core, cfg=cfg, chem=chem, sizing=sizing, region=region, strategy=strategy,
@@ -352,6 +354,9 @@ def _window_totals(result, trajectory: pd.DataFrame) -> dict:
         "q_dump_total": float(metrics["q_dump_total"]),
         "q_unused_total": float(metrics["q_unused_total"]),
         "q_boiler_total": float(metrics["q_boiler_total"]),
+        "q_mun_hp_total": float(trajectory["Q_mun_hp"].sum()) * dt,
+        "q_mun_demand_total": float(trajectory["Q_mun_demand"].sum()) * dt,
+        "g_imp_total_mwh": float(trajectory["g_imp"].sum()) * dt,
     }
 
 
@@ -392,10 +397,11 @@ def _rates(annual: dict) -> dict:
 
 # ------------------------------------------------------------------ 低保真
 
-def _evaluate_low(ts_full, cfg, sizing, strategy, seed, gen, time_limit_s, mip_gap) -> dict:
+def _evaluate_low(ts_full, cfg, sizing, strategy, seed, gen, time_limit_s, mip_gap,
+                  *, keep_week_results: bool = False) -> dict:
     low_cfg = cfg["experiments"]["fidelity"]["low"]
     weeks, weights, week_ids = select_representative_weeks(ts_full, low_cfg)
-    windows, totals = [], []
+    windows, totals, week_results = [], [], []
     for week, weight, week_id in zip(weeks, weights, week_ids, strict=True):
         tasks_w = regenerate_window_tasks(week, gen, cfg, seed)
         result = solve_dispatch(week, tasks_w, cfg, sizing, strategy, seed,
@@ -415,13 +421,32 @@ def _evaluate_low(ts_full, cfg, sizing, strategy, seed, gen, time_limit_s, mip_g
         totals.append(_window_totals(result, result.trajectories))
         record["totals"] = totals[-1]
         windows.append(record)
+        if keep_week_results:
+            info = result.solver_info or {}
+            week_results.append({
+                "week_id": week_id, "weight": float(weight),
+                "trajectory": result.trajectories,
+                "ts": week,
+                "task_schedule": result.task_schedule,
+                "tasks": tasks_w,
+                "status": result.status,
+                "solver_info_subset": {
+                    "time_s": info.get("time_s"), "mip_gap": info.get("mip_gap"),
+                    "backend": info.get("backend"), "optimized": info.get("optimized", True),
+                    "level1_proven": info.get("level1_proven"),
+                    "normal_bound_certificate": info.get("normal_bound_certificate"),
+                    "s_balance_normalization_guard": info.get("s_balance_normalization_guard"),
+                    "s_base_curtailed_from_soc_cap_mwh": info.get("s_base_curtailed_from_soc_cap_mwh"),
+                },
+            })
     if len(totals) != len(weeks):
         return {"status": "infeasible", "windows": windows, "feasible": False,
+                "week_results": week_results,
                 "annualization": {"method": "representative_weeks", "weights": dict(zip(week_ids, map(float, weights))),
                                   "year_factor": YEAR_FACTOR}}
     annual = _annualize(totals, np.asarray(weights, dtype=float), YEAR_FACTOR)
     return {"status": _status_of([w["status"] for w in windows]), "windows": windows,
-            "feasible": True, "annual": annual,
+            "feasible": True, "annual": annual, "week_results": week_results,
             "annualization": {"method": "representative_weeks",
                               "weights": dict(zip(week_ids, map(float, weights))),
                               "year_factor": YEAR_FACTOR,
@@ -524,6 +549,9 @@ def _window_totals_from_metrics(window: dict, roll: dict) -> dict:
         "q_dump_total": float(metrics["q_dump_total"]),
         "q_unused_total": float(metrics["q_unused_total"]),
         "q_boiler_total": float(metrics["q_boiler_total"]),
+        "q_mun_hp_total": float(segment["Q_mun_hp"].sum()) * dt,
+        "q_mun_demand_total": float(segment["Q_mun_demand"].sum()) * dt,
+        "g_imp_total_mwh": float(segment["g_imp"].sum()) * dt,
     }
 
 
@@ -605,6 +633,11 @@ def _assemble(core: dict, *, cfg, chem, sizing, region, strategy, seed, fidelity
             "q_dump_total": annual["q_dump_total"],
             "q_unused_total": annual["q_unused_total"],
             "q_boiler_total": annual["q_boiler_total"],
+            # §6.4：余热（经热泵提温）占市政供热的比例 = Σ Q_mun_hp / Σ Q_mun_demand
+            # （年化分子/分母再相除；§7.3 红线：不得表述为校验值口径）
+            "heat_from_waste_share": (annual["q_mun_hp_total"] / annual["q_mun_demand_total"]
+                                      if annual["q_mun_demand_total"] > 0 else nan),
+            "g_imp_total_mwh": annual["g_imp_total_mwh"],
             "annual_energy_served_mwh": annual["energy_served_mwh"],
             "storage_annualized_cost": storage_cost,
             "storage_cost_breakdown": parts,
@@ -651,6 +684,7 @@ def _assemble(core: dict, *, cfg, chem, sizing, region, strategy, seed, fidelity
                         "initial_soc_source": core["resilience"]["initial_soc_source"]}),
         "task_generation": gen,
         "trajectory": core.get("trajectory"),   # 仅高保真返回（低保真为 None）
+        "week_results": core.get("week_results") or None,   # 仅 keep_week_results=True（低保真）
         "solver": {
             "elapsed_s": elapsed_s,
             "mip_gap_target": mip_gap_target,

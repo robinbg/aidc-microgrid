@@ -62,12 +62,39 @@ def test_infeasible_rule_candidate_does_not_constrain_the_milp():
     assert "MILP remains unchanged" in result["reason"]
 
 
-def test_non_cost_strategy_has_no_hidden_rule_objective_cut():
+@pytest.mark.solver
+def test_non_cost_strategy_cut_uses_own_objective_and_keeps_optimum():
+    """BT2-①（v2.10/M4）：S-base 规则解热启动对全部优化策略开放。
+
+    旧契约"非 S-cost 策略一律不加割"（原测试
+    test_non_cost_strategy_has_no_hidden_rule_objective_cut）已由规格方
+    BT2-① 裁定取代——此前 S-carbon/S-heat/S-balance 在 168h/2200 任务规模
+    下 60s 内找不到首个可行解，整组返回 error。本测试钉住旧测试名担心的
+    性质：割必须用**调用方传入的该策略自身目标**（不得偷用规则/成本目标），
+    候选必须通过原模型逐约束验证，且不得切掉该策略的全局最优。
+    """
     ts, tasks, cfg, sizing = instance()
-    model = build_dispatch_model(ts, tasks, cfg, sizing, "S-carbon", 1)
-    before = len(model.rows)
-    assert not add_feasible_cost_cut(model, model.objective_components["primary"])["applied"]
-    assert len(model.rows) == before
+    original = build_dispatch_model(ts, tasks, cfg, sizing, "S-carbon", 1)
+    cut = build_dispatch_model(ts, tasks, cfg, sizing, "S-carbon", 1)
+    objective = original.objective_components["primary"] + original.objective_components["auxiliary"]
+    plain = _run_milp(original, objective, 10., 0.)
+    assert plain.status == 0
+    before = len(cut.rows)
+    audit = add_feasible_cost_cut(cut, objective)
+    assert audit["applied"]
+    assert audit["bound_residual"] <= 1e-8 and audit["row_residual"] <= 1e-8
+    assert audit["integer_residual"] == 0
+    assert len(cut.rows) == before + 1
+    assert cut.meta["strategy"] == "S-carbon"
+    result = _run_milp(cut, objective, 10., 0.)
+    assert result.status == 0
+    # 全局最优保持：加割后的最优值与原模型一致（容差 1e-7）
+    assert result.fun == pytest.approx(plain.fun, abs=1e-7)
+    # S-base 与故障模式仍被拒绝（两套约束/规则驱动不可混用）
+    base_model = build_dispatch_model(ts, tasks, cfg, sizing, "S-base", 1)
+    base_audit = add_feasible_cost_cut(base_model, base_model.objective_components["primary"])
+    assert not base_audit["applied"]
+    assert "normal optimization strategies" in base_audit["reason"]
 
 
 def test_inconsistent_lower_bound_cannot_become_zero_gap():

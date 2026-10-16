@@ -27,12 +27,18 @@ def add_feasible_cost_cut(model, objective, *, deadline=None, run_milp=None):
 
     A rule failure says nothing about MILP feasibility and causes no cut. No
     objective values from a different instance or strategy are reused.
+
+    Enabled for every normal optimization strategy (BT2-①, v2.10/M4): the cut
+    c*x <= c*x0 is valid for ANY linear objective over the same feasible set,
+    and x0 is validated row-by-row against the ORIGINAL model (strategy-specific
+    rows such as S-carbon's sla_floor included) before the cut is added.
     """
     started = perf_counter()
     audit = {"applied": False, "source": "same-instance deterministic feasible schedule",
              "preserves": "full horizon, objective, integrality and globally optimal solutions"}
-    if model.meta["mode"] != "normal" or model.meta["strategy"] != "S-cost":
-        audit.update(reason="only normal S-cost is enabled", preparation_s=perf_counter() - started)
+    if model.meta["mode"] != "normal" or model.meta["strategy"] == "S-base":
+        audit.update(reason="enabled only for normal optimization strategies (not S-base/fault)",
+                     preparation_s=perf_counter() - started)
         return audit
     candidate_model = copy(model)
     candidate_model.meta = dict(model.meta, strategy="S-base")
