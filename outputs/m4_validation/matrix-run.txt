@@ -1,0 +1,618 @@
+START M4 matrix: 4 arms x 5 strategies x 5 seeds, 6 workers
+未在画像使用的覆盖授权项: electricity_override.price_sell
+未在画像使用的覆盖授权项: electricity_override.price_sell
+未在画像使用的覆盖授权项: electricity_override.price_sell
+未在画像使用的覆盖授权项: electricity_override.price_sell
+未在画像使用的覆盖授权项: electricity_override.price_sell
+未在画像使用的覆盖授权项: electricity_override.price_sell
+未在画像使用的覆盖授权项: electricity_override.price_sell
+未在画像使用的覆盖授权项: electricity_override.price_sell
+未在画像使用的覆盖授权项: electricity_override.price_sell
+未在画像使用的覆盖授权项: electricity_override.price_sell
+未在画像使用的覆盖授权项: electricity_override.price_sell
+未在画像使用的覆盖授权项: electricity_override.price_sell
+未在画像使用的覆盖授权项: electricity_override.price_sell
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-NW pv simulated CF 0.104005 differs from reference 0.170000 by -0.065995 (tolerance 0.05); generation parameters were not adjusted.
+  ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-NW pv simulated CF 0.106074 differs from reference 0.170000 by -0.063926 (tolerance 0.05); generation parameters were not adjusted.
+  ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-NW pv simulated CF 0.100910 differs from reference 0.170000 by -0.069090 (tolerance 0.05); generation parameters were not adjusted.
+  ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-NW pv simulated CF 0.103200 differs from reference 0.170000 by -0.066800 (tolerance 0.05); generation parameters were not adjusted.
+  ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-NW pv simulated CF 0.093810 differs from reference 0.170000 by -0.076190 (tolerance 0.05); generation parameters were not adjusted.
+  ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-NW pv simulated CF 0.104005 differs from reference 0.170000 by -0.065995 (tolerance 0.05); generation parameters were not adjusted.
+  ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
+未在画像使用的覆盖授权项: electricity_override.price_sell
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-NW pv simulated CF 0.106074 differs from reference 0.170000 by -0.063926 (tolerance 0.05); generation parameters were not adjusted.
+  ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
+未在画像使用的覆盖授权项: electricity_override.price_sell
+未在画像使用的覆盖授权项: electricity_override.price_sell
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-NW pv simulated CF 0.103200 differs from reference 0.170000 by -0.066800 (tolerance 0.05); generation parameters were not adjusted.
+  ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-NW pv simulated CF 0.100910 differs from reference 0.170000 by -0.069090 (tolerance 0.05); generation parameters were not adjusted.
+  ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
+未在画像使用的覆盖授权项: electricity_override.price_sell
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-NW pv simulated CF 0.093810 differs from reference 0.170000 by -0.076190 (tolerance 0.05); generation parameters were not adjusted.
+  ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
+未在画像使用的覆盖授权项: electricity_override.price_sell
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-NW pv simulated CF 0.104005 differs from reference 0.170000 by -0.065995 (tolerance 0.05); generation parameters were not adjusted.
+  ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
+未在画像使用的覆盖授权项: electricity_override.price_sell
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-NW pv simulated CF 0.106074 differs from reference 0.170000 by -0.063926 (tolerance 0.05); generation parameters were not adjusted.
+  ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\model\dispatch.py:829: RuntimeWarning: S-balance normalization guard: cost normalized=1.006400 outside [0,1] (raw=651927.870728, range=[181652.237711, 648937.064476]); reported as-is, NOT clipped (SPEC v2.10 §3.5). 区间可能需要重新标定；重新标定必须整批重跑
+  return _extract_result(model, result, status, perf_counter() - started, stages)
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\model\dispatch.py:829: RuntimeWarning: S-balance normalization guard: carbon normalized=1.003288 outside [0,1] (raw=37875.966008, range=[-26450.033867, 37665.147027]); reported as-is, NOT clipped (SPEC v2.10 §3.5). 区间可能需要重新标定；重新标定必须整批重跑
+  return _extract_result(model, result, status, perf_counter() - started, stages)
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\model\dispatch.py:829: RuntimeWarning: S-balance normalization guard: carbon normalized=1.003634 outside [0,1] (raw=37898.134624, range=[-26450.033867, 37665.147027]); reported as-is, NOT clipped (SPEC v2.10 §3.5). 区间可能需要重新标定；重新标定必须整批重跑
+  return _extract_result(model, result, status, perf_counter() - started, stages)
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\model\dispatch.py:829: RuntimeWarning: S-balance normalization guard: carbon normalized=1.025245 outside [0,1] (raw=39283.709636, range=[-26450.033867, 37665.147027]); reported as-is, NOT clipped (SPEC v2.10 §3.5). 区间可能需要重新标定；重新标定必须整批重跑
+  return _extract_result(model, result, status, perf_counter() - started, stages)
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\model\dispatch.py:829: RuntimeWarning: S-balance normalization guard: heat normalized=-0.058372 outside [0,1] (raw=22079.747933, range=[26658.6603, 105101.704082]); reported as-is, NOT clipped (SPEC v2.10 §3.5). 区间可能需要重新标定；重新标定必须整批重跑
+  return _extract_result(model, result, status, perf_counter() - started, stages)
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\model\dispatch.py:829: RuntimeWarning: S-balance normalization guard: heat normalized=-0.066614 outside [0,1] (raw=21433.228967, range=[26658.6603, 105101.704082]); reported as-is, NOT clipped (SPEC v2.10 §3.5). 区间可能需要重新标定；重新标定必须整批重跑
+  return _extract_result(model, result, status, perf_counter() - started, stages)
+未在画像使用的覆盖授权项: electricity_override.price_sell
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-NW pv simulated CF 0.103200 differs from reference 0.170000 by -0.066800 (tolerance 0.05); generation parameters were not adjusted.
+  ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
+未在画像使用的覆盖授权项: electricity_override.price_sell
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-NW pv simulated CF 0.100910 differs from reference 0.170000 by -0.069090 (tolerance 0.05); generation parameters were not adjusted.
+  ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
+未在画像使用的覆盖授权项: electricity_override.price_sell
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-NW pv simulated CF 0.093810 differs from reference 0.170000 by -0.076190 (tolerance 0.05); generation parameters were not adjusted.
+  ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
+未在画像使用的覆盖授权项: electricity_override.price_sell
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-NW pv simulated CF 0.104005 differs from reference 0.170000 by -0.065995 (tolerance 0.05); generation parameters were not adjusted.
+  ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
+未在画像使用的覆盖授权项: electricity_override.price_sell
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-NW pv simulated CF 0.106074 differs from reference 0.170000 by -0.063926 (tolerance 0.05); generation parameters were not adjusted.
+  ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
+未在画像使用的覆盖授权项: electricity_override.price_sell
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-NW pv simulated CF 0.103200 differs from reference 0.170000 by -0.066800 (tolerance 0.05); generation parameters were not adjusted.
+  ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\model\dispatch.py:829: RuntimeWarning: S-balance normalization guard: cost normalized=1.093983 outside [0,1] (raw=692853.977555, range=[181652.237711, 648937.064476]); reported as-is, NOT clipped (SPEC v2.10 §3.5). 区间可能需要重新标定；重新标定必须整批重跑
+  return _extract_result(model, result, status, perf_counter() - started, stages)
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\model\dispatch.py:829: RuntimeWarning: S-balance normalization guard: carbon normalized=1.026929 outside [0,1] (raw=39391.707994, range=[-26450.033867, 37665.147027]); reported as-is, NOT clipped (SPEC v2.10 §3.5). 区间可能需要重新标定；重新标定必须整批重跑
+  return _extract_result(model, result, status, perf_counter() - started, stages)
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\model\dispatch.py:829: RuntimeWarning: S-balance normalization guard: carbon normalized=1.000941 outside [0,1] (raw=37725.469427, range=[-26450.033867, 37665.147027]); reported as-is, NOT clipped (SPEC v2.10 §3.5). 区间可能需要重新标定；重新标定必须整批重跑
+  return _extract_result(model, result, status, perf_counter() - started, stages)
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\model\dispatch.py:829: RuntimeWarning: S-balance normalization guard: cost normalized=1.162993 outside [0,1] (raw=725101.414955, range=[181652.237711, 648937.064476]); reported as-is, NOT clipped (SPEC v2.10 §3.5). 区间可能需要重新标定；重新标定必须整批重跑
+  return _extract_result(model, result, status, perf_counter() - started, stages)
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\model\dispatch.py:829: RuntimeWarning: S-balance normalization guard: carbon normalized=1.029509 outside [0,1] (raw=39557.149349, range=[-26450.033867, 37665.147027]); reported as-is, NOT clipped (SPEC v2.10 §3.5). 区间可能需要重新标定；重新标定必须整批重跑
+  return _extract_result(model, result, status, perf_counter() - started, stages)
+未在画像使用的覆盖授权项: electricity_override.price_sell
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-NW pv simulated CF 0.100910 differs from reference 0.170000 by -0.069090 (tolerance 0.05); generation parameters were not adjusted.
+  ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
+未在画像使用的覆盖授权项: electricity_override.price_sell
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-NW pv simulated CF 0.093810 differs from reference 0.170000 by -0.076190 (tolerance 0.05); generation parameters were not adjusted.
+  ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
+未在画像使用的覆盖授权项: electricity_override.price_sell
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-NW pv simulated CF 0.104005 differs from reference 0.170000 by -0.065995 (tolerance 0.05); generation parameters were not adjusted.
+  ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\model\dispatch.py:829: RuntimeWarning: S-balance normalization guard: heat normalized=-0.067267 outside [0,1] (raw=21382.029100, range=[26658.6603, 105101.704082]); reported as-is, NOT clipped (SPEC v2.10 §3.5). 区间可能需要重新标定；重新标定必须整批重跑
+  return _extract_result(model, result, status, perf_counter() - started, stages)
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\model\dispatch.py:829: RuntimeWarning: S-balance normalization guard: heat normalized=-0.060982 outside [0,1] (raw=21875.070967, range=[26658.6603, 105101.704082]); reported as-is, NOT clipped (SPEC v2.10 §3.5). 区间可能需要重新标定；重新标定必须整批重跑
+  return _extract_result(model, result, status, perf_counter() - started, stages)
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\model\dispatch.py:829: RuntimeWarning: S-balance normalization guard: heat normalized=-0.062776 outside [0,1] (raw=21734.331533, range=[26658.6603, 105101.704082]); reported as-is, NOT clipped (SPEC v2.10 §3.5). 区间可能需要重新标定；重新标定必须整批重跑
+  return _extract_result(model, result, status, perf_counter() - started, stages)
+未在画像使用的覆盖授权项: electricity_override.price_sell
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-NW pv simulated CF 0.106074 differs from reference 0.170000 by -0.063926 (tolerance 0.05); generation parameters were not adjusted.
+  ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
+未在画像使用的覆盖授权项: electricity_override.price_sell
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-NW pv simulated CF 0.103200 differs from reference 0.170000 by -0.066800 (tolerance 0.05); generation parameters were not adjusted.
+  ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
+未在画像使用的覆盖授权项: electricity_override.price_sell
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-NW pv simulated CF 0.100910 differs from reference 0.170000 by -0.069090 (tolerance 0.05); generation parameters were not adjusted.
+  ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
+未在画像使用的覆盖授权项: electricity_override.price_sell
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-NW pv simulated CF 0.093810 differs from reference 0.170000 by -0.076190 (tolerance 0.05); generation parameters were not adjusted.
+  ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
+未在画像使用的覆盖授权项: electricity_override.price_sell
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-NW pv simulated CF 0.104005 differs from reference 0.170000 by -0.065995 (tolerance 0.05); generation parameters were not adjusted.
+  ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
+未在画像使用的覆盖授权项: electricity_override.price_sell
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-NW pv simulated CF 0.106074 differs from reference 0.170000 by -0.063926 (tolerance 0.05); generation parameters were not adjusted.
+  ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
+未在画像使用的覆盖授权项: electricity_override.price_sell
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-NW pv simulated CF 0.103200 differs from reference 0.170000 by -0.066800 (tolerance 0.05); generation parameters were not adjusted.
+  ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
+未在画像使用的覆盖授权项: electricity_override.price_sell
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-NW pv simulated CF 0.100910 differs from reference 0.170000 by -0.069090 (tolerance 0.05); generation parameters were not adjusted.
+  ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
+未在画像使用的覆盖授权项: electricity_override.price_sell
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-NW pv simulated CF 0.093810 differs from reference 0.170000 by -0.076190 (tolerance 0.05); generation parameters were not adjusted.
+  ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
+未在画像使用的覆盖授权项: electricity_override.price_sell
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-NW pv simulated CF 0.104005 differs from reference 0.170000 by -0.065995 (tolerance 0.05); generation parameters were not adjusted.
+  ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
+未在画像使用的覆盖授权项: electricity_override.price_sell
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-NW pv simulated CF 0.106074 differs from reference 0.170000 by -0.063926 (tolerance 0.05); generation parameters were not adjusted.
+  ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\model\dispatch.py:829: RuntimeWarning: S-balance normalization guard: carbon normalized=1.002129 outside [0,1] (raw=37801.616963, range=[-26450.033867, 37665.147027]); reported as-is, NOT clipped (SPEC v2.10 §3.5). 区间可能需要重新标定；重新标定必须整批重跑
+  return _extract_result(model, result, status, perf_counter() - started, stages)
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\model\dispatch.py:829: RuntimeWarning: S-balance normalization guard: carbon normalized=1.002453 outside [0,1] (raw=37822.432004, range=[-26450.033867, 37665.147027]); reported as-is, NOT clipped (SPEC v2.10 §3.5). 区间可能需要重新标定；重新标定必须整批重跑
+  return _extract_result(model, result, status, perf_counter() - started, stages)
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\model\dispatch.py:829: RuntimeWarning: S-balance normalization guard: carbon normalized=1.025222 outside [0,1] (raw=39282.254596, range=[-26450.033867, 37665.147027]); reported as-is, NOT clipped (SPEC v2.10 §3.5). 区间可能需要重新标定；重新标定必须整批重跑
+  return _extract_result(model, result, status, perf_counter() - started, stages)
+未在画像使用的覆盖授权项: electricity_override.price_sell
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-NW pv simulated CF 0.103200 differs from reference 0.170000 by -0.066800 (tolerance 0.05); generation parameters were not adjusted.
+  ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
+未在画像使用的覆盖授权项: electricity_override.price_sell
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-NW pv simulated CF 0.100910 differs from reference 0.170000 by -0.069090 (tolerance 0.05); generation parameters were not adjusted.
+  ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
+未在画像使用的覆盖授权项: electricity_override.price_sell
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-NW pv simulated CF 0.093810 differs from reference 0.170000 by -0.076190 (tolerance 0.05); generation parameters were not adjusted.
+  ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
+未在画像使用的覆盖授权项: electricity_override.price_sell
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-NW pv simulated CF 0.104005 differs from reference 0.170000 by -0.065995 (tolerance 0.05); generation parameters were not adjusted.
+  ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
+未在画像使用的覆盖授权项: electricity_override.price_sell
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-NW pv simulated CF 0.106074 differs from reference 0.170000 by -0.063926 (tolerance 0.05); generation parameters were not adjusted.
+  ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
+未在画像使用的覆盖授权项: electricity_override.price_sell
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-NW pv simulated CF 0.103200 differs from reference 0.170000 by -0.066800 (tolerance 0.05); generation parameters were not adjusted.
+  ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
+未在画像使用的覆盖授权项: electricity_override.price_sell
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-NW pv simulated CF 0.100910 differs from reference 0.170000 by -0.069090 (tolerance 0.05); generation parameters were not adjusted.
+  ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
+未在画像使用的覆盖授权项: electricity_override.price_sell
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-NW pv simulated CF 0.093810 differs from reference 0.170000 by -0.076190 (tolerance 0.05); generation parameters were not adjusted.
+  ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\model\dispatch.py:829: RuntimeWarning: S-balance normalization guard: cost normalized=1.078574 outside [0,1] (raw=685653.419896, range=[181652.237711, 648937.064476]); reported as-is, NOT clipped (SPEC v2.10 §3.5). 区间可能需要重新标定；重新标定必须整批重跑
+  return _extract_result(model, result, status, perf_counter() - started, stages)
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\model\dispatch.py:829: RuntimeWarning: S-balance normalization guard: carbon normalized=1.026144 outside [0,1] (raw=39341.356555, range=[-26450.033867, 37665.147027]); reported as-is, NOT clipped (SPEC v2.10 §3.5). 区间可能需要重新标定；重新标定必须整批重跑
+  return _extract_result(model, result, status, perf_counter() - started, stages)
+未在画像使用的覆盖授权项: electricity_override.price_sell
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-NW pv simulated CF 0.104005 differs from reference 0.170000 by -0.065995 (tolerance 0.05); generation parameters were not adjusted.
+  ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
+未在画像使用的覆盖授权项: electricity_override.price_sell
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-NW pv simulated CF 0.106074 differs from reference 0.170000 by -0.063926 (tolerance 0.05); generation parameters were not adjusted.
+  ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
+未在画像使用的覆盖授权项: electricity_override.price_sell
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-NW pv simulated CF 0.103200 differs from reference 0.170000 by -0.066800 (tolerance 0.05); generation parameters were not adjusted.
+  ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\model\dispatch.py:829: RuntimeWarning: S-balance normalization guard: cost normalized=1.146528 outside [0,1] (raw=717407.172284, range=[181652.237711, 648937.064476]); reported as-is, NOT clipped (SPEC v2.10 §3.5). 区间可能需要重新标定；重新标定必须整批重跑
+  return _extract_result(model, result, status, perf_counter() - started, stages)
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\model\dispatch.py:829: RuntimeWarning: S-balance normalization guard: carbon normalized=1.029716 outside [0,1] (raw=39570.418834, range=[-26450.033867, 37665.147027]); reported as-is, NOT clipped (SPEC v2.10 §3.5). 区间可能需要重新标定；重新标定必须整批重跑
+  return _extract_result(model, result, status, perf_counter() - started, stages)
+未在画像使用的覆盖授权项: electricity_override.price_sell
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-NW pv simulated CF 0.100910 differs from reference 0.170000 by -0.069090 (tolerance 0.05); generation parameters were not adjusted.
+  ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
+未在画像使用的覆盖授权项: electricity_override.price_sell
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-NW pv simulated CF 0.093810 differs from reference 0.170000 by -0.076190 (tolerance 0.05); generation parameters were not adjusted.
+  ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
+未在画像使用的覆盖授权项: electricity_override.price_sell
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-NW pv simulated CF 0.104005 differs from reference 0.170000 by -0.065995 (tolerance 0.05); generation parameters were not adjusted.
+  ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
+未在画像使用的覆盖授权项: electricity_override.price_sell
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-NW pv simulated CF 0.106074 differs from reference 0.170000 by -0.063926 (tolerance 0.05); generation parameters were not adjusted.
+  ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\model\dispatch.py:829: RuntimeWarning: S-balance normalization guard: heat normalized=-0.064438 outside [0,1] (raw=21603.973367, range=[26658.6603, 105101.704082]); reported as-is, NOT clipped (SPEC v2.10 §3.5). 区间可能需要重新标定；重新标定必须整批重跑
+  return _extract_result(model, result, status, perf_counter() - started, stages)
+未在画像使用的覆盖授权项: electricity_override.price_sell
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-NW pv simulated CF 0.103200 differs from reference 0.170000 by -0.066800 (tolerance 0.05); generation parameters were not adjusted.
+  ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
+未在画像使用的覆盖授权项: electricity_override.price_sell
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-NW pv simulated CF 0.100910 differs from reference 0.170000 by -0.069090 (tolerance 0.05); generation parameters were not adjusted.
+  ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
+未在画像使用的覆盖授权项: electricity_override.price_sell
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-NW pv simulated CF 0.093810 differs from reference 0.170000 by -0.076190 (tolerance 0.05); generation parameters were not adjusted.
+  ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
+未在画像使用的覆盖授权项: electricity_override.price_sell
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-NW pv simulated CF 0.104005 differs from reference 0.170000 by -0.065995 (tolerance 0.05); generation parameters were not adjusted.
+  ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
+未在画像使用的覆盖授权项: electricity_override.price_sell
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-NW pv simulated CF 0.106074 differs from reference 0.170000 by -0.063926 (tolerance 0.05); generation parameters were not adjusted.
+  ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
+未在画像使用的覆盖授权项: electricity_override.price_sell
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-NW pv simulated CF 0.103200 differs from reference 0.170000 by -0.066800 (tolerance 0.05); generation parameters were not adjusted.
+  ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
+未在画像使用的覆盖授权项: electricity_override.price_sell
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-NW pv simulated CF 0.100910 differs from reference 0.170000 by -0.069090 (tolerance 0.05); generation parameters were not adjusted.
+  ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
+未在画像使用的覆盖授权项: electricity_override.price_sell
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-NW pv simulated CF 0.093810 differs from reference 0.170000 by -0.076190 (tolerance 0.05); generation parameters were not adjusted.
+  ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
+未在画像使用的覆盖授权项: electricity_override.price_sell
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-NW pv simulated CF 0.104005 differs from reference 0.170000 by -0.065995 (tolerance 0.05); generation parameters were not adjusted.
+  ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
+未在画像使用的覆盖授权项: electricity_override.price_sell
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-NW pv simulated CF 0.106074 differs from reference 0.170000 by -0.063926 (tolerance 0.05); generation parameters were not adjusted.
+  ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\model\dispatch.py:829: RuntimeWarning: S-balance normalization guard: carbon normalized=1.003454 outside [0,1] (raw=37886.615840, range=[-26450.033867, 37665.147027]); reported as-is, NOT clipped (SPEC v2.10 §3.5). 区间可能需要重新标定；重新标定必须整批重跑
+  return _extract_result(model, result, status, perf_counter() - started, stages)
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\model\dispatch.py:829: RuntimeWarning: S-balance normalization guard: carbon normalized=1.002712 outside [0,1] (raw=37839.055252, range=[-26450.033867, 37665.147027]); reported as-is, NOT clipped (SPEC v2.10 §3.5). 区间可能需要重新标定；重新标定必须整批重跑
+  return _extract_result(model, result, status, perf_counter() - started, stages)
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\model\dispatch.py:829: RuntimeWarning: S-balance normalization guard: carbon normalized=1.025015 outside [0,1] (raw=39268.969586, range=[-26450.033867, 37665.147027]); reported as-is, NOT clipped (SPEC v2.10 §3.5). 区间可能需要重新标定；重新标定必须整批重跑
+  return _extract_result(model, result, status, perf_counter() - started, stages)
+未在画像使用的覆盖授权项: electricity_override.price_sell
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-NW pv simulated CF 0.103200 differs from reference 0.170000 by -0.066800 (tolerance 0.05); generation parameters were not adjusted.
+  ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
+未在画像使用的覆盖授权项: electricity_override.price_sell
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-NW pv simulated CF 0.100910 differs from reference 0.170000 by -0.069090 (tolerance 0.05); generation parameters were not adjusted.
+  ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
+未在画像使用的覆盖授权项: electricity_override.price_sell
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-NW pv simulated CF 0.093810 differs from reference 0.170000 by -0.076190 (tolerance 0.05); generation parameters were not adjusted.
+  ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
+未在画像使用的覆盖授权项: electricity_override.price_sell
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-NW pv simulated CF 0.104005 differs from reference 0.170000 by -0.065995 (tolerance 0.05); generation parameters were not adjusted.
+  ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
+未在画像使用的覆盖授权项: electricity_override.price_sell
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-NW pv simulated CF 0.106074 differs from reference 0.170000 by -0.063926 (tolerance 0.05); generation parameters were not adjusted.
+  ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\model\dispatch.py:829: RuntimeWarning: S-balance normalization guard: cost normalized=1.083466 outside [0,1] (raw=687939.315976, range=[181652.237711, 648937.064476]); reported as-is, NOT clipped (SPEC v2.10 §3.5). 区间可能需要重新标定；重新标定必须整批重跑
+  return _extract_result(model, result, status, perf_counter() - started, stages)
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\model\dispatch.py:829: RuntimeWarning: S-balance normalization guard: carbon normalized=1.026038 outside [0,1] (raw=39334.586666, range=[-26450.033867, 37665.147027]); reported as-is, NOT clipped (SPEC v2.10 §3.5). 区间可能需要重新标定；重新标定必须整批重跑
+  return _extract_result(model, result, status, perf_counter() - started, stages)
+未在画像使用的覆盖授权项: electricity_override.price_sell
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-NW pv simulated CF 0.103200 differs from reference 0.170000 by -0.066800 (tolerance 0.05); generation parameters were not adjusted.
+  ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
+未在画像使用的覆盖授权项: electricity_override.price_sell
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-NW pv simulated CF 0.100910 differs from reference 0.170000 by -0.069090 (tolerance 0.05); generation parameters were not adjusted.
+  ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
+未在画像使用的覆盖授权项: electricity_override.price_sell
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-NW pv simulated CF 0.093810 differs from reference 0.170000 by -0.076190 (tolerance 0.05); generation parameters were not adjusted.
+  ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
+未在画像使用的覆盖授权项: electricity_override.price_sell
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-NW pv simulated CF 0.104005 differs from reference 0.170000 by -0.065995 (tolerance 0.05); generation parameters were not adjusted.
+  ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
+未在画像使用的覆盖授权项: electricity_override.price_sell
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-NW pv simulated CF 0.106074 differs from reference 0.170000 by -0.063926 (tolerance 0.05); generation parameters were not adjusted.
+  ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
+未在画像使用的覆盖授权项: electricity_override.price_sell
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-NW pv simulated CF 0.103200 differs from reference 0.170000 by -0.066800 (tolerance 0.05); generation parameters were not adjusted.
+  ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\model\dispatch.py:829: RuntimeWarning: S-balance normalization guard: cost normalized=1.151043 outside [0,1] (raw=719517.383938, range=[181652.237711, 648937.064476]); reported as-is, NOT clipped (SPEC v2.10 §3.5). 区间可能需要重新标定；重新标定必须整批重跑
+  return _extract_result(model, result, status, perf_counter() - started, stages)
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\model\dispatch.py:829: RuntimeWarning: S-balance normalization guard: carbon normalized=1.030097 outside [0,1] (raw=39594.800679, range=[-26450.033867, 37665.147027]); reported as-is, NOT clipped (SPEC v2.10 §3.5). 区间可能需要重新标定；重新标定必须整批重跑
+  return _extract_result(model, result, status, perf_counter() - started, stages)
+未在画像使用的覆盖授权项: electricity_override.price_sell
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-NW pv simulated CF 0.100910 differs from reference 0.170000 by -0.069090 (tolerance 0.05); generation parameters were not adjusted.
+  ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\model\dispatch.py:829: RuntimeWarning: S-balance normalization guard: heat normalized=-0.065494 outside [0,1] (raw=21521.110567, range=[26658.6603, 105101.704082]); reported as-is, NOT clipped (SPEC v2.10 §3.5). 区间可能需要重新标定；重新标定必须整批重跑
+  return _extract_result(model, result, status, perf_counter() - started, stages)
+未在画像使用的覆盖授权项: electricity_override.price_sell
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-NW pv simulated CF 0.093810 differs from reference 0.170000 by -0.076190 (tolerance 0.05); generation parameters were not adjusted.
+  ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
+未在画像使用的覆盖授权项: electricity_override.price_sell
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-NW pv simulated CF 0.104005 differs from reference 0.170000 by -0.065995 (tolerance 0.05); generation parameters were not adjusted.
+  ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
+未在画像使用的覆盖授权项: electricity_override.price_sell
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-NW pv simulated CF 0.106074 differs from reference 0.170000 by -0.063926 (tolerance 0.05); generation parameters were not adjusted.
+  ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
+未在画像使用的覆盖授权项: electricity_override.price_sell
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-NW pv simulated CF 0.103200 differs from reference 0.170000 by -0.066800 (tolerance 0.05); generation parameters were not adjusted.
+  ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
+未在画像使用的覆盖授权项: electricity_override.price_sell
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-NW pv simulated CF 0.100910 differs from reference 0.170000 by -0.069090 (tolerance 0.05); generation parameters were not adjusted.
+  ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
+未在画像使用的覆盖授权项: electricity_override.price_sell
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-NW pv simulated CF 0.093810 differs from reference 0.170000 by -0.076190 (tolerance 0.05); generation parameters were not adjusted.
+  ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
+未在画像使用的覆盖授权项: electricity_override.price_sell
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-NW pv simulated CF 0.104005 differs from reference 0.170000 by -0.065995 (tolerance 0.05); generation parameters were not adjusted.
+  ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
+未在画像使用的覆盖授权项: electricity_override.price_sell
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-NW pv simulated CF 0.106074 differs from reference 0.170000 by -0.063926 (tolerance 0.05); generation parameters were not adjusted.
+  ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
+未在画像使用的覆盖授权项: electricity_override.price_sell
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-NW pv simulated CF 0.103200 differs from reference 0.170000 by -0.066800 (tolerance 0.05); generation parameters were not adjusted.
+  ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
+未在画像使用的覆盖授权项: electricity_override.price_sell
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-NW pv simulated CF 0.100910 differs from reference 0.170000 by -0.069090 (tolerance 0.05); generation parameters were not adjusted.
+  ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
+未在画像使用的覆盖授权项: electricity_override.price_sell
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-NW pv simulated CF 0.093810 differs from reference 0.170000 by -0.076190 (tolerance 0.05); generation parameters were not adjusted.
+  ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
+未在画像使用的覆盖授权项: electricity_override.price_sell
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-NW pv simulated CF 0.104005 differs from reference 0.170000 by -0.065995 (tolerance 0.05); generation parameters were not adjusted.
+  ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
+未在画像使用的覆盖授权项: electricity_override.price_sell
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-NW pv simulated CF 0.106074 differs from reference 0.170000 by -0.063926 (tolerance 0.05); generation parameters were not adjusted.
+  ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\model\dispatch.py:829: RuntimeWarning: S-balance normalization guard: carbon normalized=1.001680 outside [0,1] (raw=37772.856732, range=[-26450.033867, 37665.147027]); reported as-is, NOT clipped (SPEC v2.10 §3.5). 区间可能需要重新标定；重新标定必须整批重跑
+  return _extract_result(model, result, status, perf_counter() - started, stages)
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\model\dispatch.py:829: RuntimeWarning: S-balance normalization guard: carbon normalized=1.002642 outside [0,1] (raw=37834.553982, range=[-26450.033867, 37665.147027]); reported as-is, NOT clipped (SPEC v2.10 §3.5). 区间可能需要重新标定；重新标定必须整批重跑
+  return _extract_result(model, result, status, perf_counter() - started, stages)
+未在画像使用的覆盖授权项: electricity_override.price_sell
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-NW pv simulated CF 0.103200 differs from reference 0.170000 by -0.066800 (tolerance 0.05); generation parameters were not adjusted.
+  ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
+未在画像使用的覆盖授权项: electricity_override.price_sell
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-NW pv simulated CF 0.100910 differs from reference 0.170000 by -0.069090 (tolerance 0.05); generation parameters were not adjusted.
+  ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\model\dispatch.py:829: RuntimeWarning: S-balance normalization guard: carbon normalized=1.025216 outside [0,1] (raw=39281.885026, range=[-26450.033867, 37665.147027]); reported as-is, NOT clipped (SPEC v2.10 §3.5). 区间可能需要重新标定；重新标定必须整批重跑
+  return _extract_result(model, result, status, perf_counter() - started, stages)
+未在画像使用的覆盖授权项: electricity_override.price_sell
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-NW pv simulated CF 0.093810 differs from reference 0.170000 by -0.076190 (tolerance 0.05); generation parameters were not adjusted.
+  ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
+未在画像使用的覆盖授权项: electricity_override.price_sell
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-NW pv simulated CF 0.104005 differs from reference 0.170000 by -0.065995 (tolerance 0.05); generation parameters were not adjusted.
+  ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
+未在画像使用的覆盖授权项: electricity_override.price_sell
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-NW pv simulated CF 0.106074 differs from reference 0.170000 by -0.063926 (tolerance 0.05); generation parameters were not adjusted.
+  ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
+未在画像使用的覆盖授权项: electricity_override.price_sell
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-NW pv simulated CF 0.103200 differs from reference 0.170000 by -0.066800 (tolerance 0.05); generation parameters were not adjusted.
+  ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\model\dispatch.py:829: RuntimeWarning: S-balance normalization guard: cost normalized=1.097612 outside [0,1] (raw=694549.487960, range=[181652.237711, 648937.064476]); reported as-is, NOT clipped (SPEC v2.10 §3.5). 区间可能需要重新标定；重新标定必须整批重跑
+  return _extract_result(model, result, status, perf_counter() - started, stages)
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\model\dispatch.py:829: RuntimeWarning: S-balance normalization guard: carbon normalized=1.024678 outside [0,1] (raw=39247.388559, range=[-26450.033867, 37665.147027]); reported as-is, NOT clipped (SPEC v2.10 §3.5). 区间可能需要重新标定；重新标定必须整批重跑
+  return _extract_result(model, result, status, perf_counter() - started, stages)
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\model\dispatch.py:829: RuntimeWarning: S-balance normalization guard: heat normalized=1.033513 outside [0,1] (raw=107730.591077, range=[26658.6603, 105101.704082]); reported as-is, NOT clipped (SPEC v2.10 §3.5). 区间可能需要重新标定；重新标定必须整批重跑
+  return _extract_result(model, result, status, perf_counter() - started, stages)
+未在画像使用的覆盖授权项: electricity_override.price_sell
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-NW pv simulated CF 0.100910 differs from reference 0.170000 by -0.069090 (tolerance 0.05); generation parameters were not adjusted.
+  ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
+未在画像使用的覆盖授权项: electricity_override.price_sell
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\data\timeseries.py:260: UserWarning: R-NW pv simulated CF 0.093810 differs from reference 0.170000 by -0.076190 (tolerance 0.05); generation parameters were not adjusted.
+  ts.attrs["capacity_factor_check"] = verify_capacity_factors(ts, region, pv_capacity, wind_capacity)
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\model\dispatch.py:829: RuntimeWarning: S-balance normalization guard: cost normalized=1.126717 outside [0,1] (raw=708150.007593, range=[181652.237711, 648937.064476]); reported as-is, NOT clipped (SPEC v2.10 §3.5). 区间可能需要重新标定；重新标定必须整批重跑
+  return _extract_result(model, result, status, perf_counter() - started, stages)
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\model\dispatch.py:829: RuntimeWarning: S-balance normalization guard: carbon normalized=1.030776 outside [0,1] (raw=39638.353687, range=[-26450.033867, 37665.147027]); reported as-is, NOT clipped (SPEC v2.10 §3.5). 区间可能需要重新标定；重新标定必须整批重跑
+  return _extract_result(model, result, status, perf_counter() - started, stages)
+D:\ClaudeWorkspace\09-aidc-microgrid-kickoff\src\aidc\model\dispatch.py:829: RuntimeWarning: S-balance normalization guard: heat normalized=-0.052783 outside [0,1] (raw=22518.230133, range=[26658.6603, 105101.704082]); reported as-is, NOT clipped (SPEC v2.10 §3.5). 区间可能需要重新标定；重新标定必须整批重跑
+  return _extract_result(model, result, status, perf_counter() - started, stages)
+MATRIX DONE: 100 combos in 3914s
+{
+  "n_combos": 100,
+  "status_counts": {
+    "feasible": 100
+  },
+  "invariants_all_ok": true,
+  "s_balance_guard_fired_combos": [
+    {
+      "arm": "A0",
+      "strategy": "S-balance",
+      "seed": 20260816
+    },
+    {
+      "arm": "A0",
+      "strategy": "S-balance",
+      "seed": 1101
+    },
+    {
+      "arm": "A0",
+      "strategy": "S-balance",
+      "seed": 1102
+    },
+    {
+      "arm": "A0",
+      "strategy": "S-balance",
+      "seed": 1103
+    },
+    {
+      "arm": "A0",
+      "strategy": "S-balance",
+      "seed": 1104
+    },
+    {
+      "arm": "A1",
+      "strategy": "S-balance",
+      "seed": 20260816
+    },
+    {
+      "arm": "A1",
+      "strategy": "S-balance",
+      "seed": 1101
+    },
+    {
+      "arm": "A1",
+      "strategy": "S-balance",
+      "seed": 1102
+    },
+    {
+      "arm": "A1",
+      "strategy": "S-balance",
+      "seed": 1104
+    },
+    {
+      "arm": "A2",
+      "strategy": "S-balance",
+      "seed": 20260816
+    },
+    {
+      "arm": "A2",
+      "strategy": "S-balance",
+      "seed": 1101
+    },
+    {
+      "arm": "A2",
+      "strategy": "S-balance",
+      "seed": 1102
+    },
+    {
+      "arm": "A2",
+      "strategy": "S-balance",
+      "seed": 1104
+    },
+    {
+      "arm": "A3",
+      "strategy": "S-balance",
+      "seed": 20260816
+    },
+    {
+      "arm": "A3",
+      "strategy": "S-balance",
+      "seed": 1101
+    },
+    {
+      "arm": "A3",
+      "strategy": "S-balance",
+      "seed": 1102
+    },
+    {
+      "arm": "A3",
+      "strategy": "S-balance",
+      "seed": 1104
+    }
+  ],
+  "provisional_gap_over_2pct_combos": [
+    {
+      "arm": "A0",
+      "strategy": "S-heat",
+      "seed": 1101,
+      "max_certified_gap": 3.8884903004722524
+    },
+    {
+      "arm": "A0",
+      "strategy": "S-balance",
+      "seed": 20260816,
+      "max_certified_gap": 0.49398509004989877
+    },
+    {
+      "arm": "A0",
+      "strategy": "S-balance",
+      "seed": 1101,
+      "max_certified_gap": 0.21942700566358356
+    },
+    {
+      "arm": "A0",
+      "strategy": "S-balance",
+      "seed": 1102,
+      "max_certified_gap": 0.3485541765625371
+    },
+    {
+      "arm": "A0",
+      "strategy": "S-balance",
+      "seed": 1103,
+      "max_certified_gap": 0.4377297768134057
+    },
+    {
+      "arm": "A0",
+      "strategy": "S-balance",
+      "seed": 1104,
+      "max_certified_gap": 0.398127392457064
+    },
+    {
+      "arm": "A1",
+      "strategy": "S-heat",
+      "seed": 20260816,
+      "max_certified_gap": 7.679668251084299
+    },
+    {
+      "arm": "A1",
+      "strategy": "S-heat",
+      "seed": 1101,
+      "max_certified_gap": 7.1231505788865705
+    },
+    {
+      "arm": "A1",
+      "strategy": "S-heat",
+      "seed": 1102,
+      "max_certified_gap": 6.276953434440171
+    },
+    {
+      "arm": "A1",
+      "strategy": "S-heat",
+      "seed": 1103,
+      "max_certified_gap": 5.179451260890431
+    },
+    {
+      "arm": "A1",
+      "strategy": "S-heat",
+      "seed": 1104,
+      "max_certified_gap": 7.014438762312694
+    },
+    {
+      "arm": "A1",
+      "strategy": "S-balance",
+      "seed": 20260816,
+      "max_certified_gap": 5.749140328245229
+    },
+    {
+      "arm": "A1",
+      "strategy": "S-balance",
+      "seed": 1101,
+      "max_certified_gap": 4.755942592199691
+    },
+    {
+      "arm": "A1",
+      "strategy": "S-balance",
+      "seed": 1102,
+      "max_certified_gap": 5.352784408770481
+    },
+    {
+      "arm": "A1",
+      "strategy": "S-balance",
+      "seed": 1103,
+      "max_certified_gap": 0.08345067462674115
+    },
+    {
+      "arm": "A1",
+      "strategy": "S-balance",
+      "seed": 1104,
+      "max_certified_gap": 5.950350119961234
+    },
+    {
+      "arm": "A2",
+      "strategy": "S-heat",
+      "seed": 1101,
+      "max_certified_gap": 7.117562277486761
+    },
+    {
+      "arm": "A2",
+      "strategy": "S-heat",
+      "seed": 1103,
+      "max_certified_gap": 5.2993373113406905
+    },
+    {
+      "arm": "A2",
+      "strategy": "S-balance",
+      "seed": 20260816,
+      "max_certified_gap": 5.803485120246338
+    },
+    {
+      "arm": "A2",
+      "strategy": "S-balance",
+      "seed": 1103,
+      "max_certified_gap": 4.766049659740704
+    },
+    {
+      "arm": "A2",
+      "strategy": "S-balance",
+      "seed": 1104,
+      "max_certified_gap": 6.129207358630616
+    },
+    {
+      "arm": "A3",
+      "strategy": "S-heat",
+      "seed": 1101,
+      "max_certified_gap": 6.394872105885173
+    },
+    {
+      "arm": "A3",
+      "strategy": "S-balance",
+      "seed": 20260816,
+      "max_certified_gap": 0.032560306585822436
+    },
+    {
+      "arm": "A3",
+      "strategy": "S-balance",
+      "seed": 1101,
+      "max_certified_gap": 5.153136346991631
+    },
+    {
+      "arm": "A3",
+      "strategy": "S-balance",
+      "seed": 1102,
+      "max_certified_gap": 5.690653881392539
+    },
+    {
+      "arm": "A3",
+      "strategy": "S-balance",
+      "seed": 1103,
+      "max_certified_gap": 0.04447822335589294
+    },
+    {
+      "arm": "A3",
+      "strategy": "S-balance",
+      "seed": 1104,
+      "max_certified_gap": 20.600351326574994
+    }
+  ],
+  "sources_stable_during_run": true,
+  "strict_frozen_unchanged": true,
+  "matrix_elapsed_s": 3914.0738033000007
+}

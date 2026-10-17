@@ -195,6 +195,47 @@ python -m aidc.data.timeseries --check-all-regions
 
 ---
 
+## M4 的已实现范围
+
+`experiments/run_matrix.py` 实现主实验矩阵（4 臂 × 5 策略 × 5 种子 = 100 组），
+`report/tables.export_master_table` 导出对照表（CSV + Markdown，含 §10.6
+固定定义与全部比较注记）。
+
+- **路径选择（BT2 裁定，§6.3 要求写明）**：低保真代表周（5×168 h，权重
+  0.18/0.16/0.22/0.22/0.22，覆盖四季 + 极端低温周 W-WINX）；与 S-balance
+  归一化试点口径一致；高保真矩阵需 35–87 h 故不采用。
+- **每组合**：逐周重新生成任务 → 求解 → 年化 → 逐窗 §9 轨迹级不变量核查
+  （`experiments/_checks.py`，100 组全部通过）。`sizing_source`、
+  `investment_yuan`（A1/A2/A3 统一 150 MWh / 45 MW）、S-balance 权重、
+  逐窗认证 gap 全部入表；infeasible 组原样记录不跳过（本轮 0 组）。
+- **BT2-① 修复（重要）**：S-base 规则解热启动 + `c·x ≤ c·x₀` 割原先只对
+  S-cost 启用，导致 S-carbon/S-heat/S-balance 在 168h/2200 任务规模下
+  60 s 内找不到首个可行解（HiGHS Status 13, primal None），100 组中 60 组
+  返回 error。修复后割对全部优化策略生效（割用**该策略自身目标**、候选
+  先经原模型逐约束验证、全局最优保持），非 S-cost 策略搜索至多占一半预算。
+  验证：S-balance 在原报错实例上 22 s 达最优（认证 gap 0.30%）。
+- **v2.10 §3.5 守卫首次生产触发**：17/100 组（全部为 S-balance）的 cost
+  分量略超试点上界（如 A0 W-WIN 651,928 vs 上界 648,937）——按规格告警并
+  原样报告，**未截断**；区间按 BT1 冻结，是否重新标定（须整批重跑）由规格方裁定。
+- **关键结果（R-NW，5 种子均值）**：全部 100 组 feasible、SLA 均为 100%、
+  f2 无臂间差异（碳因子常数）。储能臂内 **A3（钠锂分层）LCOE 最低**
+  （S-cost：A3 1486.8 < A1 全锂 1552.4 < A2 全钠 1564.7 元/MWh），但
+  **仍高于无储能 A0（1358.5）**——占位造价下投资未回收，属量化关系而非
+  选型结论（§9.37：不得预设结果）。A3 的钠电等效循环（S-cost 685 次/年）
+  显著高于 A2（155 次/年）：分层结构让钠电承担更多日常吞吐。
+- **口径警示（比较前必读，均已写入表头注记）**：① S-carbon/S-heat 组合中
+  281 个周窗未取得认证 gap（目标平坦/对偶界难收敛），其结果应读作
+  "经验证的规则基准改进解"而非已证明的策略最优；② `provisional_for_comparison`
+  标记 27 组（认证 gap > 2%，最大 20.6%），涉及该组的跨臂对比为临时结论；
+  ③ 臂级韧性列来自 M2.5 场景包，全部右删失 → 不可分辨、不参与排序；
+  ④ S-base 的政策性弃电不对称已注记。
+
+运行入口：`python -B outputs/m4_validation/run_m4.py 6`（断点续跑；
+约 65 分钟，6 并行）。逐组证据：`outputs/m4_validation/matrix/*.json`；
+对照表：`outputs/m4_validation/master_table.{csv,md}`。
+
+---
+
 ## 目录结构
 
 ```

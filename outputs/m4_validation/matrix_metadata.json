@@ -1,0 +1,13 @@
+{
+  "path_choice": "低保真代表周路径（§4.2：5×168h，权重 0.18/0.16/0.22/0.22/0.22，覆盖四季 + 极端低温周 W-WINX）。§6.3 的两条路径之外按 BT2 裁定选用，与 S-balance 归一化试点口径一致；高保真矩阵需 35–87 h 故不采用",
+  "region": "R-NW",
+  "n_combos": 100,
+  "n_infeasible_recorded_not_skipped": 0,
+  "n_provisional_gap_over_2pct": 27,
+  "s_balance_guard_fired_combos": 17,
+  "invariants_all_ok": true,
+  "f3_policy": "resilience_gap = NaN（低保真，§4.2）；臂级韧性列来自 M2.5 场景包，全部右删失 → NON-DISCRIMINATING，不参与任何排序（BT2 常设警示）",
+  "sizing_source": "config_fixed_candidate",
+  "scale_normalization": "A1/A2/A3 统一 150 MWh / 45 MW（§6.1 规模可比）；A0 投资为 0，跨臂比较须结合 investment_yuan 列说明",
+  "elapsed_s": 3913.8693968000007
+}

@@ -1,0 +1,354 @@
+{
+  "stage": "M4-matrix",
+  "spec_version": "2.10",
+  "simulation": true,
+  "path_choice": "低保真代表周（5×168h，BT2 裁定；§6.3 要求写明）",
+  "n_combos": 100,
+  "status_counts": {
+    "feasible": 100
+  },
+  "n_infeasible_recorded_not_skipped": 0,
+  "invariants_all_ok": true,
+  "s_balance_guard_fired_combos": [
+    {
+      "arm": "A0",
+      "strategy": "S-balance",
+      "seed": 20260816
+    },
+    {
+      "arm": "A0",
+      "strategy": "S-balance",
+      "seed": 1101
+    },
+    {
+      "arm": "A0",
+      "strategy": "S-balance",
+      "seed": 1102
+    },
+    {
+      "arm": "A0",
+      "strategy": "S-balance",
+      "seed": 1103
+    },
+    {
+      "arm": "A0",
+      "strategy": "S-balance",
+      "seed": 1104
+    },
+    {
+      "arm": "A1",
+      "strategy": "S-balance",
+      "seed": 20260816
+    },
+    {
+      "arm": "A1",
+      "strategy": "S-balance",
+      "seed": 1101
+    },
+    {
+      "arm": "A1",
+      "strategy": "S-balance",
+      "seed": 1102
+    },
+    {
+      "arm": "A1",
+      "strategy": "S-balance",
+      "seed": 1104
+    },
+    {
+      "arm": "A2",
+      "strategy": "S-balance",
+      "seed": 20260816
+    },
+    {
+      "arm": "A2",
+      "strategy": "S-balance",
+      "seed": 1101
+    },
+    {
+      "arm": "A2",
+      "strategy": "S-balance",
+      "seed": 1102
+    },
+    {
+      "arm": "A2",
+      "strategy": "S-balance",
+      "seed": 1104
+    },
+    {
+      "arm": "A3",
+      "strategy": "S-balance",
+      "seed": 20260816
+    },
+    {
+      "arm": "A3",
+      "strategy": "S-balance",
+      "seed": 1101
+    },
+    {
+      "arm": "A3",
+      "strategy": "S-balance",
+      "seed": 1102
+    },
+    {
+      "arm": "A3",
+      "strategy": "S-balance",
+      "seed": 1104
+    }
+  ],
+  "provisional_gap_over_2pct_combos": [
+    {
+      "arm": "A0",
+      "strategy": "S-heat",
+      "seed": 1101,
+      "max_certified_gap": 3.8884903004722524
+    },
+    {
+      "arm": "A0",
+      "strategy": "S-balance",
+      "seed": 20260816,
+      "max_certified_gap": 0.49398509004989877
+    },
+    {
+      "arm": "A0",
+      "strategy": "S-balance",
+      "seed": 1101,
+      "max_certified_gap": 0.21942700566358356
+    },
+    {
+      "arm": "A0",
+      "strategy": "S-balance",
+      "seed": 1102,
+      "max_certified_gap": 0.3485541765625371
+    },
+    {
+      "arm": "A0",
+      "strategy": "S-balance",
+      "seed": 1103,
+      "max_certified_gap": 0.4377297768134057
+    },
+    {
+      "arm": "A0",
+      "strategy": "S-balance",
+      "seed": 1104,
+      "max_certified_gap": 0.398127392457064
+    },
+    {
+      "arm": "A1",
+      "strategy": "S-heat",
+      "seed": 20260816,
+      "max_certified_gap": 7.679668251084299
+    },
+    {
+      "arm": "A1",
+      "strategy": "S-heat",
+      "seed": 1101,
+      "max_certified_gap": 7.1231505788865705
+    },
+    {
+      "arm": "A1",
+      "strategy": "S-heat",
+      "seed": 1102,
+      "max_certified_gap": 6.276953434440171
+    },
+    {
+      "arm": "A1",
+      "strategy": "S-heat",
+      "seed": 1103,
+      "max_certified_gap": 5.179451260890431
+    },
+    {
+      "arm": "A1",
+      "strategy": "S-heat",
+      "seed": 1104,
+      "max_certified_gap": 7.014438762312694
+    },
+    {
+      "arm": "A1",
+      "strategy": "S-balance",
+      "seed": 20260816,
+      "max_certified_gap": 5.749140328245229
+    },
+    {
+      "arm": "A1",
+      "strategy": "S-balance",
+      "seed": 1101,
+      "max_certified_gap": 4.755942592199691
+    },
+    {
+      "arm": "A1",
+      "strategy": "S-balance",
+      "seed": 1102,
+      "max_certified_gap": 5.352784408770481
+    },
+    {
+      "arm": "A1",
+      "strategy": "S-balance",
+      "seed": 1103,
+      "max_certified_gap": 0.08345067462674115
+    },
+    {
+      "arm": "A1",
+      "strategy": "S-balance",
+      "seed": 1104,
+      "max_certified_gap": 5.950350119961234
+    },
+    {
+      "arm": "A2",
+      "strategy": "S-heat",
+      "seed": 1101,
+      "max_certified_gap": 7.117562277486761
+    },
+    {
+      "arm": "A2",
+      "strategy": "S-heat",
+      "seed": 1103,
+      "max_certified_gap": 5.2993373113406905
+    },
+    {
+      "arm": "A2",
+      "strategy": "S-balance",
+      "seed": 20260816,
+      "max_certified_gap": 5.803485120246338
+    },
+    {
+      "arm": "A2",
+      "strategy": "S-balance",
+      "seed": 1103,
+      "max_certified_gap": 4.766049659740704
+    },
+    {
+      "arm": "A2",
+      "strategy": "S-balance",
+      "seed": 1104,
+      "max_certified_gap": 6.129207358630616
+    },
+    {
+      "arm": "A3",
+      "strategy": "S-heat",
+      "seed": 1101,
+      "max_certified_gap": 6.394872105885173
+    },
+    {
+      "arm": "A3",
+      "strategy": "S-balance",
+      "seed": 20260816,
+      "max_certified_gap": 0.032560306585822436
+    },
+    {
+      "arm": "A3",
+      "strategy": "S-balance",
+      "seed": 1101,
+      "max_certified_gap": 5.153136346991631
+    },
+    {
+      "arm": "A3",
+      "strategy": "S-balance",
+      "seed": 1102,
+      "max_certified_gap": 5.690653881392539
+    },
+    {
+      "arm": "A3",
+      "strategy": "S-balance",
+      "seed": 1103,
+      "max_certified_gap": 0.04447822335589294
+    },
+    {
+      "arm": "A3",
+      "strategy": "S-balance",
+      "seed": 1104,
+      "max_certified_gap": 20.600351326574994
+    }
+  ],
+  "f3_policy": "resilience_gap 全为 NaN（低保真，§4.2）；臂级韧性列来自 M2.5 场景包，全部右删失 → NON-DISCRIMINATING，不参与任何排序",
+  "green_rate_scope": "分母含充电、不追溯储能来源；不可跨储能规模直接对比",
+  "s_base_note": "规则驱动，objective 为 NaN 属契约；BS3 政策性弃电不对称已注记",
+  "investment_note": "A1/A2/A3 统一 150 MWh / 45 MW；A0 投资 0；跨臂比较须携带投资额",
+  "matrix_elapsed_s": 3914.0738033000007,
+  "total_elapsed_s": 3914.1682236000006,
+  "sources_stable_during_run": true,
+  "strict_frozen_unchanged": true,
+  "dispatch_note": "dispatch.py 哈希与基线不同属预期：基线采集于 v2.10 归一化越界守卫实现之前（CHANGELOG「哈希基线必须重取」+ §3.5 守卫为 v2.10 规范性要求）",
+  "hashes_before": {
+    "configs/chemistry_li.yaml": "7125833501d101b04ec5994f0e5cced6dfbd5227187023f2b2778c3d65162fae",
+    "configs/chemistry_na.yaml": "5807a8141c79ca1638fa50f53bda1312d1d834e0bee5bc3dc2e71541c52a3345",
+    "configs/economics.yaml": "f1fa0ffe0e7b6e8cdbce9553a1a3796d7bf358a29e3bcad1d792369cf14a5d5c",
+    "configs/experiments.yaml": "3c6be15a731fab9b7d8ad000d2ad986ca89af06a278442c3d65173360ddb58fc",
+    "configs/generation.yaml": "2a86aa4a7cd62ea0c2687f1c85b677c3fcbc60b9af611f1d5f3558b563e57809",
+    "configs/regions/r_east.yaml": "4be4d6afd85f77c3552a49897052de32a1703bf11b692423a3d360e6a03a9f70",
+    "configs/regions/r_nw.yaml": "303ac1f6e3dd18128d2a755bc778ac64bff88d3780542c65907beae3db75970f",
+    "configs/regions/r_south.yaml": "b543da1bc05092030e69d756bcbe96a6f161094854ccb20e44020031ecd3bd24",
+    "configs/regions/r_wpv.yaml": "7b9c6e30ca0baedb50d2309cf02fe3225acc3e921d590f9dc7e07e3925ffc69a",
+    "configs/registry.yaml": "68d7feccf943e74118597ec9f9262a20abe6df7f05f29579d58fca30f545f149",
+    "configs/system.yaml": "8de2c0e758dafc153e80043d52257c4459fbc34e541468fd077cadaf4cb97b07",
+    "src/aidc/model/_baseline.py": "ecd1d13633ab448f0d3bb6defce706ce3344888a5331450eb0234921d7ba3770",
+    "src/aidc/model/dispatch.py": "fb868ba06872022ec71caa5d69674d3023de84290bbcaa33d821c2ce28bcd64e"
+  },
+  "hashes_after": {
+    "configs/chemistry_li.yaml": "7125833501d101b04ec5994f0e5cced6dfbd5227187023f2b2778c3d65162fae",
+    "configs/chemistry_na.yaml": "5807a8141c79ca1638fa50f53bda1312d1d834e0bee5bc3dc2e71541c52a3345",
+    "configs/economics.yaml": "f1fa0ffe0e7b6e8cdbce9553a1a3796d7bf358a29e3bcad1d792369cf14a5d5c",
+    "configs/experiments.yaml": "3c6be15a731fab9b7d8ad000d2ad986ca89af06a278442c3d65173360ddb58fc",
+    "configs/generation.yaml": "2a86aa4a7cd62ea0c2687f1c85b677c3fcbc60b9af611f1d5f3558b563e57809",
+    "configs/regions/r_east.yaml": "4be4d6afd85f77c3552a49897052de32a1703bf11b692423a3d360e6a03a9f70",
+    "configs/regions/r_nw.yaml": "303ac1f6e3dd18128d2a755bc778ac64bff88d3780542c65907beae3db75970f",
+    "configs/regions/r_south.yaml": "b543da1bc05092030e69d756bcbe96a6f161094854ccb20e44020031ecd3bd24",
+    "configs/regions/r_wpv.yaml": "7b9c6e30ca0baedb50d2309cf02fe3225acc3e921d590f9dc7e07e3925ffc69a",
+    "configs/registry.yaml": "68d7feccf943e74118597ec9f9262a20abe6df7f05f29579d58fca30f545f149",
+    "configs/system.yaml": "8de2c0e758dafc153e80043d52257c4459fbc34e541468fd077cadaf4cb97b07",
+    "src/aidc/model/_baseline.py": "ecd1d13633ab448f0d3bb6defce706ce3344888a5331450eb0234921d7ba3770",
+    "src/aidc/model/dispatch.py": "fb868ba06872022ec71caa5d69674d3023de84290bbcaa33d821c2ce28bcd64e"
+  },
+  "master_table": {
+    "csv": "outputs\\m4_validation\\master_table.csv",
+    "md": "outputs\\m4_validation\\master_table.md"
+  },
+  "columns": [
+    "arm",
+    "strategy",
+    "seed",
+    "season",
+    "sizing_source",
+    "E_Na",
+    "P_Na",
+    "E_Li",
+    "P_Li",
+    "investment_yuan",
+    "status",
+    "LCOE",
+    "net_annual_cost",
+    "total_annualized_cost_per_mtok",
+    "cost_per_mtok",
+    "carbon_per_mtok",
+    "green_matching_rate",
+    "curtailment_rate",
+    "sla_rate",
+    "delay_count",
+    "latency_p50_h",
+    "latency_p90_h",
+    "resilience_gap",
+    "resilience_gap_note",
+    "t_island_mean_h",
+    "t_island_worst_h",
+    "censoring_rate",
+    "eens_mwh",
+    "n1_pass_rate",
+    "resilience_source",
+    "equivalent_cycles_Na",
+    "equivalent_cycles_Li",
+    "capacity_fade_Na_1y_est",
+    "capacity_fade_Li_1y_est",
+    "q_dump_total",
+    "q_unused_total",
+    "heat_from_waste_share",
+    "n_windows",
+    "windows_certified_frac",
+    "max_certified_gap",
+    "provisional_for_comparison",
+    "s_balance_guard_fired",
+    "invariants_all_ok",
+    "invariants_max_soc_residual",
+    "elapsed_s",
+    "windows_gap_unknown"
+  ]
+}
